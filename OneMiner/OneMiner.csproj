@@ -34,6 +34,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,11 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\BaseCoin.cs" />
     <Compile Include="Core\CoinsFactory.cs" />
+    <Compile Include="Core\Interfaces\ICoin.cs" />
+    <Compile Include="Core\Interfaces\IHashAlgorithm.cs" />
     <Compile Include="EthHash\Ethereum.cs" />
     <Compile Include="EthHash\EthereumData.cs" />
     <Compile Include="EthHash\EthHash.cs" />
+    <Compile Include="Model\FileIO\AppData.cs" />
+    <Compile Include="Model\FileIO\ConfigFileManager.cs" />
     <Compile Include="Model\Config\JsonValues.cs" />
+    <Compile Include="Model\FileIO\IFileIO.cs" />
+    <Compile Include="Model\FileIO\LocalFolder.cs" />
     <Compile Include="View\About.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +98,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

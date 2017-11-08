@@ -11,7 +11,7 @@ namespace OneMiner.Model.Config
         public string Name { get; set; }
         public MinerData()
         {
-            Name="Unset"
+            Name = "Unset";
         }
     }
     public class Options

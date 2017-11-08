@@ -1,25 +1,27 @@
-﻿using OneMiner.Core;
-using OneMiner.Core.Interfaces;
+﻿using OneMiner.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OneMiner.EthHash
+namespace OneMiner.Core
 {
-    class Ethereum : BaseCoin, ICoin
+    class BaseCoin:ICoin
     {
-
-        public override string Name
-        {
-            get { return "Ethereum"; }
-        }
-
-        public override string Logo
+        public string Name
         {
             get { throw new NotImplementedException(); }
         }
 
+        public string Logo
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public System.Windows.Forms.Form SettingsScreen
+        {
+            get { throw new NotImplementedException(); }
+        }
 
         public bool SupportsDualMining
         {
@@ -32,7 +34,7 @@ namespace OneMiner.EthHash
             {
                 return null;
             }
-
+           
         }
     }
 }

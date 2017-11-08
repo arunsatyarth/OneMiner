@@ -7,8 +7,8 @@ namespace OneMiner.Model.FileIO
 {
     interface IFileIO
     {
-        string FileName { get; set; }
-        string FolderName { get; set; }
+        string FileName { get;  }
+        string FolderName { get;  }
         Boolean Verify();
     }
 }
