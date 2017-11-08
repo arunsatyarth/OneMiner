@@ -5,7 +5,8 @@ using System.Text;
 
 namespace OneMiner
 {
-    class EthHash
+    class Ethereum
     {
+
     }
 }
