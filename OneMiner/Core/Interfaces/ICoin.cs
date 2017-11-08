@@ -11,8 +11,7 @@ namespace OneMiner.Core.Interfaces
         string Name { get;  }
         string Logo { get;  }
         Form SettingsScreen { get;  }
-        Boolean SupportsDualMining { get; }
-        ICoin DualCoin { get; }
+
 
     }
 }

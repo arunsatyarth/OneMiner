@@ -8,6 +8,14 @@ namespace OneMiner.EthHash
 {
     class EthHash : IHashAlgorithm
     {
+        List<ICoin> m_SupportedDualCoins = new List<ICoin>();
+        List<ICoin> m_SupportedCoins = new List<ICoin>();
+        public EthHash()
+        {
+            m_SupportedCoins.Add(new Ethereum());
+            m_SupportedDualCoins.Add(new Decred());
+
+        }
         public string Name
         {
             get
@@ -20,10 +28,22 @@ namespace OneMiner.EthHash
         { 
             get 
             {
-                List<ICoin> coins = new List<ICoin>();
-                coins.Add(new Ethereum());
-                return coins;
+                return m_SupportedCoins;
             } 
+        }
+
+        public bool SupportsDualMining
+        {
+            get { return true; }
+        }
+
+        public List<ICoin> SupportedDualCoins
+        {
+            get
+            {
+                return m_SupportedDualCoins;
+            }
+
         }
 
     }

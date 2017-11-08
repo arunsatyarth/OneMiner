@@ -11,3 +11,4 @@ Features
 1. Automatic connection to Wifi
 2. Automatically mine the most profitable coin
 3. Switch between coins with ease
+4. Automatic Dual mining off on temperature increase

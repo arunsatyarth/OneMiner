@@ -7,12 +7,8 @@ using System.Text;
 
 namespace OneMiner.EthHash
 {
-    /// <summary>
-    /// These classes dont store user data. They are to drive the UI
-    /// </summary>
-    class Ethereum : BaseCoin, ICoin
+    class Decred : BaseCoin, ICoin
     {
-
         public override string Name
         {
             get { return "Ethereum"; }
@@ -23,7 +19,5 @@ namespace OneMiner.EthHash
             get { throw new NotImplementedException(); }
         }
 
-
-  
     }
 }

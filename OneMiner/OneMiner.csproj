@@ -50,6 +50,7 @@
     <Compile Include="Core\CoinsFactory.cs" />
     <Compile Include="Core\Interfaces\ICoin.cs" />
     <Compile Include="Core\Interfaces\IHashAlgorithm.cs" />
+    <Compile Include="EthHash\Decred.cs" />
     <Compile Include="EthHash\Ethereum.cs" />
     <Compile Include="EthHash\EthereumData.cs" />
     <Compile Include="EthHash\EthHash.cs" />

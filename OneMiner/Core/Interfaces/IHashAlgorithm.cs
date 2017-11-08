@@ -9,7 +9,8 @@ namespace OneMiner.Core.Interfaces
     {
         string Name { get; }
         List<ICoin> SupportedCoins { get; }
-
+        Boolean SupportsDualMining { get; }
+        List<ICoin> SupportedDualCoins { get; }
 
     }
 }
