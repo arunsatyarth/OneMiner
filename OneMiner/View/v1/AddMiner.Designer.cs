@@ -31,8 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtMinername = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.lstAlgoSelect = new System.Windows.Forms.ListView();
-            this.lstCoinSelect = new System.Windows.Forms.ListView();
             this.btnNext = new System.Windows.Forms.Button();
             this.lbAlgoSelect = new System.Windows.Forms.ListBox();
             this.lbCoinSelect = new System.Windows.Forms.ListBox();
@@ -63,22 +61,6 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Select Coin";
             // 
-            // lstAlgoSelect
-            // 
-            this.lstAlgoSelect.Location = new System.Drawing.Point(163, 106);
-            this.lstAlgoSelect.Name = "lstAlgoSelect";
-            this.lstAlgoSelect.Size = new System.Drawing.Size(162, 153);
-            this.lstAlgoSelect.TabIndex = 3;
-            this.lstAlgoSelect.UseCompatibleStateImageBehavior = false;
-            // 
-            // lstCoinSelect
-            // 
-            this.lstCoinSelect.Location = new System.Drawing.Point(432, 106);
-            this.lstCoinSelect.Name = "lstCoinSelect";
-            this.lstCoinSelect.Size = new System.Drawing.Size(162, 153);
-            this.lstCoinSelect.TabIndex = 4;
-            this.lstCoinSelect.UseCompatibleStateImageBehavior = false;
-            // 
             // btnNext
             // 
             this.btnNext.Enabled = false;
@@ -92,7 +74,7 @@
             // lbAlgoSelect
             // 
             this.lbAlgoSelect.FormattingEnabled = true;
-            this.lbAlgoSelect.Location = new System.Drawing.Point(118, 184);
+            this.lbAlgoSelect.Location = new System.Drawing.Point(185, 134);
             this.lbAlgoSelect.Name = "lbAlgoSelect";
             this.lbAlgoSelect.Size = new System.Drawing.Size(162, 160);
             this.lbAlgoSelect.TabIndex = 6;
@@ -100,7 +82,7 @@
             // lbCoinSelect
             // 
             this.lbCoinSelect.FormattingEnabled = true;
-            this.lbCoinSelect.Location = new System.Drawing.Point(443, 147);
+            this.lbCoinSelect.Location = new System.Drawing.Point(438, 134);
             this.lbCoinSelect.Name = "lbCoinSelect";
             this.lbCoinSelect.Size = new System.Drawing.Size(162, 160);
             this.lbCoinSelect.TabIndex = 7;
@@ -113,8 +95,6 @@
             this.Controls.Add(this.lbCoinSelect);
             this.Controls.Add(this.lbAlgoSelect);
             this.Controls.Add(this.btnNext);
-            this.Controls.Add(this.lstCoinSelect);
-            this.Controls.Add(this.lstAlgoSelect);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtMinername);
             this.Controls.Add(this.label1);
@@ -131,8 +111,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtMinername;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListView lstAlgoSelect;
-        private System.Windows.Forms.ListView lstCoinSelect;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.ListBox lbAlgoSelect;
         private System.Windows.Forms.ListBox lbCoinSelect;

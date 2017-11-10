@@ -20,6 +20,15 @@ namespace OneMiner.View.v1
         {
             InitializeComponent();
         }
+
+        public void EnableNextButton()
+        {
+            if((lbAlgoSelect.SelectedIndex>=0 && lbAlgoSelect.SelectedIndex<=(lbAlgoSelect.Items.Count-1))
+                || (lbCoinSelect.SelectedIndex>=0 && lbCoinSelect.SelectedIndex<=(lbCoinSelect.Items.Count-1)))
+            {
+                btnNext.Enabled = true;
+            }
+        }
         private void SelectFirstAlgo(int index,IHashAlgorithm algo)
         {
             lbAlgoSelect.SelectedIndex = index;
@@ -61,7 +70,7 @@ namespace OneMiner.View.v1
 
                 SelectFirstAlgo(m_currentAlgoIndex,defaultAlgo);
                 lbAlgoSelect.SelectedIndexChanged += lstAlgoSelect_SelectedIndexChanged;
-
+                EnableNextButton();
             }
             catch (Exception ex)
             {
@@ -84,6 +93,7 @@ namespace OneMiner.View.v1
                 m_currentAlgoIndex = index;
 
                 DisplayCoinsinList(algo);
+                EnableNextButton();
                
             }
             catch (Exception )
