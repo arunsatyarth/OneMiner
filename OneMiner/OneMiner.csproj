@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Coins\EthHash\EtherClassic.cs" />
     <Compile Include="Core\BaseCoin.cs" />
     <Compile Include="Core\Factory.cs" />
     <Compile Include="Core\Interfaces\ICoin.cs" />

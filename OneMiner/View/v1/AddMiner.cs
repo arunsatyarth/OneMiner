@@ -13,48 +13,76 @@ namespace OneMiner.View.v1
 {
     public partial class AddMiner : Form
     {
+        private int m_currentAlgoIndex = 0;
+        private int m_currentCoinIndex = 0;
+
         public AddMiner()
         {
             InitializeComponent();
         }
-        private void SelectFirstAlgo(IHashAlgorithm algo)
+        private void SelectFirstAlgo(int index,IHashAlgorithm algo)
         {
-            lstAlgoSelect.Items[0].Selected = true;
+            lbAlgoSelect.SelectedIndex = index;
             DisplayCoinsinList(algo);
 
         }
         private void DisplayCoinsinList(IHashAlgorithm algo)
         {
+
+            ICoin defaultCoin = algo.DefaultCoin;
+            int i = 0;
             foreach (ICoin item in algo.SupportedCoins)
             {
-                lstCoinSelect.Items.Add(item.Name);
-                lstCoinSelect.Items.Add(item.Name);
-
+                lbCoinSelect.Items.Add(item.Name);
+                if (item == defaultCoin)
+                    m_currentCoinIndex = i;
+                i++;
             }
+            lbCoinSelect.SelectedIndex = m_currentCoinIndex;
+
 
         }
 
         private void AddMiner_Load(object sender, EventArgs e)
         {
-            List<IHashAlgorithm> algos = Factory.Instance.Algorithms;
+            try
+            {
+                List<IHashAlgorithm> algos = Factory.Instance.Algorithms;
+                IHashAlgorithm defaultAlgo = Factory.Instance.DefaultAlgorithm;
+                int i=0;
+                foreach (IHashAlgorithm item in algos)
+                {
+                    lbAlgoSelect.Items.Add(item.Name);
+                    if (item == defaultAlgo)
+                        m_currentAlgoIndex = i;
+                    i++;
 
-            foreach (IHashAlgorithm item in algos)
-	        {
-                lstAlgoSelect.Items.Add(item.Name);
-                lstAlgoSelect.Items.Add(item.Name);
-		 
-	        }
-            lstAlgoSelect.SelectedIndexChanged += lstAlgoSelect_SelectedIndexChanged;
-            SelectFirstAlgo(algos[0]);
+                }
+
+                SelectFirstAlgo(m_currentAlgoIndex,defaultAlgo);
+                lbAlgoSelect.SelectedIndexChanged += lstAlgoSelect_SelectedIndexChanged;
+
+            }
+            catch (Exception ex)
+            {
+            }
+            
         }
 
         void lstAlgoSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
+                int index = lbAlgoSelect.SelectedIndex;
+
+                if (m_currentAlgoIndex == index)
+                    return;
+                lbCoinSelect.Items.Clear();
                 List<IHashAlgorithm> algos = Factory.Instance.Algorithms;
-                int index = lstAlgoSelect.SelectedIndices[0];
+
                 IHashAlgorithm algo = algos[index];
+                m_currentAlgoIndex = index;
+
                 DisplayCoinsinList(algo);
                
             }

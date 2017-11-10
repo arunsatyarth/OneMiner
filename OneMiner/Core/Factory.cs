@@ -39,6 +39,16 @@ namespace OneMiner.Core
                 return m_algorithms;
             }
         }
+        /// <summary>
+        /// This will be the algo that will be given precendence if we hav to display anywhere
+        /// </summary>
+        public IHashAlgorithm DefaultAlgorithm
+        {
+            get
+            {
+                return m_algorithms[0];
+            }
+        }
 
     }
 }

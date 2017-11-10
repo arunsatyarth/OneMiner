@@ -27,5 +27,10 @@ namespace OneMiner.Core.Interfaces
         /// </summary>
         List<ICoin> SupportedDualCoins { get; }
 
+        /// <summary>
+        /// This will be the coin that will be given precendence if we hav to display anywhere
+        /// </summary>
+        ICoin DefaultCoin{get;}
+
     }
 }

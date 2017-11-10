@@ -34,6 +34,8 @@
             this.lstAlgoSelect = new System.Windows.Forms.ListView();
             this.lstCoinSelect = new System.Windows.Forms.ListView();
             this.btnNext = new System.Windows.Forms.Button();
+            this.lbAlgoSelect = new System.Windows.Forms.ListBox();
+            this.lbCoinSelect = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -87,11 +89,29 @@
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
             // 
+            // lbAlgoSelect
+            // 
+            this.lbAlgoSelect.FormattingEnabled = true;
+            this.lbAlgoSelect.Location = new System.Drawing.Point(118, 184);
+            this.lbAlgoSelect.Name = "lbAlgoSelect";
+            this.lbAlgoSelect.Size = new System.Drawing.Size(162, 160);
+            this.lbAlgoSelect.TabIndex = 6;
+            // 
+            // lbCoinSelect
+            // 
+            this.lbCoinSelect.FormattingEnabled = true;
+            this.lbCoinSelect.Location = new System.Drawing.Point(443, 147);
+            this.lbCoinSelect.Name = "lbCoinSelect";
+            this.lbCoinSelect.Size = new System.Drawing.Size(162, 160);
+            this.lbCoinSelect.TabIndex = 7;
+            // 
             // AddMiner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(848, 433);
+            this.Controls.Add(this.lbCoinSelect);
+            this.Controls.Add(this.lbAlgoSelect);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.lstCoinSelect);
             this.Controls.Add(this.lstAlgoSelect);
@@ -114,5 +134,7 @@
         private System.Windows.Forms.ListView lstAlgoSelect;
         private System.Windows.Forms.ListView lstCoinSelect;
         private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.ListBox lbAlgoSelect;
+        private System.Windows.Forms.ListBox lbCoinSelect;
     }
 }
