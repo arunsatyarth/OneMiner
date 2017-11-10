@@ -10,7 +10,8 @@ namespace OneMiner.Core.Interfaces
     {
         string Name { get;  }
         string Logo { get;  }
-        Form SettingsScreen { get;  }
+        Form SettingsScreen { get; }
+        IOutputReader Outputreader { get; }
 
 
     }
