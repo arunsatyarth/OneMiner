@@ -7,14 +7,14 @@ using System.Text;
 
 namespace OneMiner.EthHash
 {
-    class Decred : BaseCoin, ICoin
+    class Decred : BaseCoin,ICoin
     {
-        public override string Name
+        public  string Name
         {
-            get { return "Ethereum"; }
+             get  { return "Ethereum"; }
         }
 
-        public override string Logo
+        public  string Logo
         {
             get { throw new NotImplementedException(); }
         }

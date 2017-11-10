@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OneMiner.View.v1;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,13 @@ namespace OneMiner
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void btnAddMiner_Click(object sender, EventArgs e)
+        {
+            //Todo permission from core to add miner
+            AddMiner addMiner = new AddMiner();
+            addMiner.ShowDialog();
         }
 
 

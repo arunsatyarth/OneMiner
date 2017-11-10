@@ -66,6 +66,12 @@
     <Compile Include="View\v1\About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\v1\AddMiner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\v1\AddMiner.Designer.cs">
+      <DependentUpon>AddMiner.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\v1\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="View\v1\About.resx">
       <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\v1\AddMiner.resx">
+      <DependentUpon>AddMiner.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\v1\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

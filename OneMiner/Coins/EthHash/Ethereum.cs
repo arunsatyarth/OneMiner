@@ -10,15 +10,15 @@ namespace OneMiner.EthHash
     /// <summary>
     /// These classes dont store user data. They are to drive the UI
     /// </summary>
-    class Ethereum : BaseCoin, ICoin
+    class Ethereum : BaseCoin,ICoin
     {
 
-        public override string Name
+        public  string Name
         {
             get { return "Ethereum"; }
         }
 
-        public override string Logo
+        public string Logo
         {
             get { throw new NotImplementedException(); }
         }

@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.miningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.profitabilityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.advancedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.miningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMiner = new System.Windows.Forms.Panel();
-            this.btnAddMiner = new System.Windows.Forms.Button();
             this.pnlTemplate = new System.Windows.Forms.Panel();
             this.pbTemplate = new System.Windows.Forms.PictureBox();
+            this.btnAddMiner = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.pnlMiner.SuspendLayout();
             this.pnlTemplate.SuspendLayout();
@@ -57,6 +57,12 @@
             this.menuStrip1.Size = new System.Drawing.Size(1085, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // miningToolStripMenuItem
+            // 
+            this.miningToolStripMenuItem.Name = "miningToolStripMenuItem";
+            this.miningToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.miningToolStripMenuItem.Text = "Mining";
             // 
             // profitabilityToolStripMenuItem
             // 
@@ -91,12 +97,6 @@
             this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
             this.aboutToolStripMenuItem1.Text = "About";
             // 
-            // miningToolStripMenuItem
-            // 
-            this.miningToolStripMenuItem.Name = "miningToolStripMenuItem";
-            this.miningToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.miningToolStripMenuItem.Text = "Mining";
-            // 
             // pnlMiner
             // 
             this.pnlMiner.Controls.Add(this.pnlTemplate);
@@ -104,15 +104,6 @@
             this.pnlMiner.Name = "pnlMiner";
             this.pnlMiner.Size = new System.Drawing.Size(435, 272);
             this.pnlMiner.TabIndex = 1;
-            // 
-            // btnAddMiner
-            // 
-            this.btnAddMiner.Location = new System.Drawing.Point(23, 55);
-            this.btnAddMiner.Name = "btnAddMiner";
-            this.btnAddMiner.Size = new System.Drawing.Size(75, 23);
-            this.btnAddMiner.TabIndex = 2;
-            this.btnAddMiner.Text = "Add Miner";
-            this.btnAddMiner.UseVisualStyleBackColor = true;
             // 
             // pnlTemplate
             // 
@@ -129,6 +120,16 @@
             this.pbTemplate.Size = new System.Drawing.Size(201, 50);
             this.pbTemplate.TabIndex = 0;
             this.pbTemplate.TabStop = false;
+            // 
+            // btnAddMiner
+            // 
+            this.btnAddMiner.Location = new System.Drawing.Point(23, 55);
+            this.btnAddMiner.Name = "btnAddMiner";
+            this.btnAddMiner.Size = new System.Drawing.Size(75, 23);
+            this.btnAddMiner.TabIndex = 2;
+            this.btnAddMiner.Text = "Add Miner";
+            this.btnAddMiner.UseVisualStyleBackColor = true;
+            this.btnAddMiner.Click += new System.EventHandler(this.btnAddMiner_Click);
             // 
             // MainForm
             // 
