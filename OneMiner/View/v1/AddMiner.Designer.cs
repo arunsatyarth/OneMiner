@@ -100,6 +100,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddMiner";
             this.Text = "AddMiner";
+            this.Load += new System.EventHandler(this.AddMiner_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

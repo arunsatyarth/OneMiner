@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\BaseCoin.cs" />
-    <Compile Include="Core\CoinsFactory.cs" />
+    <Compile Include="Core\Factory.cs" />
     <Compile Include="Core\Interfaces\ICoin.cs" />
     <Compile Include="Core\Interfaces\IHashAlgorithm.cs" />
     <Compile Include="Core\Interfaces\IOutputReader.cs" />
@@ -60,6 +60,7 @@
     <Compile Include="Model\Config\JsonValues.cs" />
     <Compile Include="Model\FileIO\IFileIO.cs" />
     <Compile Include="Model\FileIO\LocalFolder.cs" />
+    <Compile Include="View\IView.cs" />
     <Compile Include="View\v1\About.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +82,7 @@
     <Compile Include="Model\Config\Config.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\v1\V1View.cs" />
     <EmbeddedResource Include="View\v1\About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>

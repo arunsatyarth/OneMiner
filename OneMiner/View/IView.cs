@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OneMiner.Core
+namespace OneMiner.View
 {
-    class CoinsFactory
+    interface IView
     {
+        void InitializeView();
+        void StartView();
     }
 }
