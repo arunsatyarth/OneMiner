@@ -16,7 +16,7 @@ namespace OneMiner.View.v1
         AddMiner m_addMiner = null;
         AddDualMiner m_addDualMiner = null;
         ConfigureMiner m_configureMiner = null;
-        private ICoin m_selected_coin=null;
+        private ICoin m_selected_coin = null;
         public AddMinerContainer()
         {
             m_addMiner = new AddMiner(this);
@@ -27,6 +27,19 @@ namespace OneMiner.View.v1
         {
             btnNext.Enabled = true;
         }
+        public void EnablePreviousButton()
+        {
+            btnPrevious.Enabled = true;
+        }
+        public void DisableNextButton()
+        {
+            btnNext.Enabled = false;
+        }
+        public void DisablePreviousButton()
+        {
+            btnPrevious.Enabled = false;
+        }
+
         public void SelectedCoin(ICoin coin)
         {
             m_selected_coin = coin;
@@ -36,7 +49,18 @@ namespace OneMiner.View.v1
         {
             m_currentState++;
             ShowStage();
-          
+            EnablePreviousButton();
+
+        }
+        public void PreviousStage()
+        {
+            if (m_currentState > 0)
+            {
+                m_currentState--;
+                ShowStage();
+                if (m_currentState == 0)
+                    DisablePreviousButton();
+            }
         }
         public void ShowStage()
         {
@@ -62,7 +86,7 @@ namespace OneMiner.View.v1
 
 
             }
-            if(objForm!=null)
+            if (objForm != null)
             {
                 objForm.TopLevel = false;
                 pnlForm.Controls.Clear();
@@ -82,6 +106,11 @@ namespace OneMiner.View.v1
         private void AddMinerContainer_Load(object sender, EventArgs e)
         {
             ShowStage();
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            PreviousStage();
         }
     }
 }
