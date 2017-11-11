@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Coins\EthHash\EtherClassic.cs" />
-    <Compile Include="Core\BaseCoin.cs" />
     <Compile Include="Core\Factory.cs" />
     <Compile Include="Core\Interfaces\ICoin.cs" />
     <Compile Include="Core\Interfaces\ICoinConfigurer.cs" />
@@ -87,6 +86,12 @@
     <Compile Include="View\v1\AddMinerContainer.Designer.cs">
       <DependentUpon>AddMinerContainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\v1\AddMinerFinish.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\v1\AddMinerFinish.Designer.cs">
+      <DependentUpon>AddMinerFinish.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\v1\ConfigureMiner.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\v1\AddMinerContainer.resx">
       <DependentUpon>AddMinerContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\v1\AddMinerFinish.resx">
+      <DependentUpon>AddMinerFinish.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\v1\ConfigureMiner.resx">
       <DependentUpon>ConfigureMiner.cs</DependentUpon>

@@ -10,6 +10,12 @@ namespace OneMiner.Coins.EthHash
 {
     class EtherClassic : ICoin
     {
+        public IHashAlgorithm Algorithm { get; set; }
+        public EtherClassic(IHashAlgorithm algo)
+        {
+            Algorithm = algo;
+
+        }
         public string Name
         {
             get { return "Ethereum Classic"; }

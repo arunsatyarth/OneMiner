@@ -17,6 +17,7 @@ namespace OneMiner.View.v1
         AddDualMiner m_addDualMiner = null;
         ConfigureMiner m_configureMiner = null;
         private ICoin m_selected_coin = null;
+        private ICoin m_selected_dual_coin = null;
         public AddMinerContainer()
         {
             m_addMiner = new AddMiner(this);
@@ -27,13 +28,14 @@ namespace OneMiner.View.v1
         {
             btnNext.Enabled = true;
         }
-        public void EnablePreviousButton()
-        {
-            btnPrevious.Enabled = true;
-        }
+
         public void DisableNextButton()
         {
             btnNext.Enabled = false;
+        }
+        public void EnablePreviousButton()
+        {
+            btnPrevious.Enabled = true;
         }
         public void DisablePreviousButton()
         {
@@ -43,6 +45,10 @@ namespace OneMiner.View.v1
         public void SelectedCoin(ICoin coin)
         {
             m_selected_coin = coin;
+        }
+        public void SelectedDualCoin(ICoin coin)
+        {
+            m_selected_dual_coin = coin;
         }
 
         public void NextStage()
@@ -80,8 +86,20 @@ namespace OneMiner.View.v1
                         objForm = form as Form;
                     }
                     break;
-                case 2:
-                    objForm = m_addMiner;
+                case 2://Dual miner selection screen
+                    m_addDualMiner.SelectedCoin=m_selected_coin;
+                    objForm = m_addDualMiner;
+                    break;
+                case 3://Dual miner settings screen
+                    if (m_selected_coin != null)
+                    {
+                        ICoinConfigurer form = m_selected_coin.SettingsScreen;
+                        form.AssignParent(this);
+                        objForm = form as Form;
+                    }
+                    break;
+                case 4://Finish screen
+                    objForm = m_addDualMiner;
                     break;
 
 
@@ -111,6 +129,12 @@ namespace OneMiner.View.v1
         private void btnPrevious_Click(object sender, EventArgs e)
         {
             PreviousStage();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            NextStage();
+            NextStage();
         }
     }
 }

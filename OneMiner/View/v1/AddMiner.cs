@@ -27,7 +27,7 @@ namespace OneMiner.View.v1
         private bool AlgorithmSelected()
         {
             if ((lbAlgoSelect.SelectedIndex >= 0 && lbAlgoSelect.SelectedIndex <= (lbAlgoSelect.Items.Count - 1))
-               || (lbCoinSelect.SelectedIndex >= 0 && lbCoinSelect.SelectedIndex <= (lbCoinSelect.Items.Count - 1)))
+               && (lbCoinSelect.SelectedIndex >= 0 && lbCoinSelect.SelectedIndex <= (lbCoinSelect.Items.Count - 1)))
             {
                 return true;
             }
@@ -47,12 +47,12 @@ namespace OneMiner.View.v1
             }
             return false;
         }
-        public void EnableNextButton()
+        public void SetNextButtonState()
         {
             if (AlgorithmSelected() && NameAdded())
-            {
                 m_parent.EnableNextButton();
-            }
+            else
+                m_parent.DisableNextButton();
         }
         public void SelectedCoin()
         {
@@ -105,7 +105,7 @@ namespace OneMiner.View.v1
                 lbCoinSelect.SelectedIndexChanged += lbCoinSelect_SelectedIndexChanged;
                 txtMinername.TextChanged += txtMinername_TextChanged;
                 //check and eneble next button
-                EnableNextButton();
+                SetNextButtonState();
                 //Tell parent which coin is currently seelcted
                 SelectedCoin();
             }
@@ -128,7 +128,7 @@ namespace OneMiner.View.v1
                 m_defaultCoin = coins[index];
                 m_currentCoinIndex = index;
 
-                EnableNextButton();
+                SetNextButtonState();
                 //Tell parent which coin is currently seelcted
                 SelectedCoin();
 
@@ -141,7 +141,7 @@ namespace OneMiner.View.v1
 
         void txtMinername_TextChanged(object sender, EventArgs e)
         {
-            EnableNextButton();
+            SetNextButtonState();
         }
 
         void lstAlgoSelect_SelectedIndexChanged(object sender, EventArgs e)
@@ -159,7 +159,7 @@ namespace OneMiner.View.v1
                 m_currentAlgoIndex = index;
 
                 DisplayCoinsinList(m_defaultAlgorithm);
-                EnableNextButton();
+                SetNextButtonState();
                 //Tell parent which coin is currently seelcted
                 SelectedCoin();
                

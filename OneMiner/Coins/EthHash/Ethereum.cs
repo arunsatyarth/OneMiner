@@ -13,7 +13,13 @@ namespace OneMiner.EthHash
     /// </summary>
     class Ethereum : ICoin
     {
+        public IHashAlgorithm Algorithm { get; set; }
 
+        
+        public Ethereum(IHashAlgorithm algo)
+        {
+            Algorithm = algo;
+        }
         public  string Name
         {
             get { return "Ethereum"; }

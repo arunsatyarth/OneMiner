@@ -29,10 +29,10 @@ namespace OneMiner.EthHash
 
         public EthHash()
         {
-            m_CoinsHash[EthHashCoins.Ethereum] = new Ethereum();
-            m_CoinsHash[EthHashCoins.EtherClassic] = new EtherClassic();
+            m_CoinsHash[EthHashCoins.Ethereum] = new Ethereum(this);
+            m_CoinsHash[EthHashCoins.EtherClassic] = new EtherClassic(this);
 
-            m_CoinsHash[EthHashDualCoins.Decred] = new Decred();
+            m_CoinsHash[EthHashDualCoins.Decred] = new Decred(this);
 
             //Now add it to the lists
             m_SupportedCoins.Add(m_CoinsHash[EthHashCoins.EtherClassic] as ICoin);
@@ -76,6 +76,15 @@ namespace OneMiner.EthHash
             get
             {
                 return m_CoinsHash[EthHashCoins.Ethereum] as ICoin;
+            }
+
+        }
+
+        public ICoin DefaultDualCoin
+        {
+            get
+            {
+                return m_CoinsHash[EthHashDualCoins.Decred] as ICoin;
             }
 
         }

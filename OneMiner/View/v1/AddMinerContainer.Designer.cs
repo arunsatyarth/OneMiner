@@ -31,6 +31,7 @@
             this.pnlForm = new System.Windows.Forms.Panel();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
+            this.btnSkip = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pnlForm
@@ -62,11 +63,24 @@
             this.btnPrevious.UseVisualStyleBackColor = true;
             this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
+            // btnSkip
+            // 
+            this.btnSkip.Enabled = false;
+            this.btnSkip.Location = new System.Drawing.Point(450, 388);
+            this.btnSkip.Name = "btnSkip";
+            this.btnSkip.Size = new System.Drawing.Size(109, 23);
+            this.btnSkip.TabIndex = 8;
+            this.btnSkip.Text = "Skip Dual Mining";
+            this.btnSkip.UseVisualStyleBackColor = true;
+            this.btnSkip.Visible = false;
+            this.btnSkip.Click += new System.EventHandler(this.button1_Click);
+            // 
             // AddMinerContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(740, 445);
+            this.Controls.Add(this.btnSkip);
             this.Controls.Add(this.btnPrevious);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.pnlForm);
@@ -82,5 +96,6 @@
         private System.Windows.Forms.Panel pnlForm;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPrevious;
+        private System.Windows.Forms.Button btnSkip;
     }
 }

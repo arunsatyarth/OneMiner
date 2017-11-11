@@ -2,6 +2,7 @@
 using OneMiner.View;
 using OneMiner.View.v1;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,12 +11,22 @@ namespace OneMiner.Core
 {
     class Factory
     {
+        enum AlgoEnums
+        {
+            EthHash = 0,
+            Equihash,
+            Cryptonyte,
+            End
+        }
         private static Factory s_obj=null;
         private List<IHashAlgorithm> m_algorithms = new List<IHashAlgorithm>();
+        Hashtable m_algoHash = new Hashtable();
+
         private IView s_view = null;
         private Factory ()
 	    {
-            m_algorithms.Add(new EthHash.EthHash());
+            m_algoHash[AlgoEnums.EthHash] = new EthHash.EthHash();
+            m_algorithms.Add(m_algoHash[AlgoEnums.EthHash] as IHashAlgorithm);
             s_view = new V1View();
 	    }
         public static Factory Instance
@@ -48,7 +59,7 @@ namespace OneMiner.Core
         {
             get
             {
-                return m_algorithms[0];
+                return m_algoHash[AlgoEnums.EthHash] as IHashAlgorithm;
             }
         }
 

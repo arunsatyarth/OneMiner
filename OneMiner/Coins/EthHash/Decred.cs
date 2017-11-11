@@ -11,9 +11,15 @@ namespace OneMiner.EthHash
 {
     class Decred : ICoin
     {
+        public IHashAlgorithm Algorithm { get; set; }
+        public Decred(IHashAlgorithm algo)
+        {
+            Algorithm = algo;
+
+        }
         public string Name
         {
-            get { return "Ethereum"; }
+            get { return "Decred"; }
         }
 
         public string Logo

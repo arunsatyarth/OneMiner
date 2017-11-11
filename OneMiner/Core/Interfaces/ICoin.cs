@@ -30,6 +30,8 @@ namespace OneMiner.Core.Interfaces
         /// </summary>
         //IOutputReader OutputReader { get; }//Todo this might be neede to move as coins dont have readers. coins have miners(1 or more) which have readers
 
+        IHashAlgorithm Algorithm { get; set; }
+
 
     }
 }
