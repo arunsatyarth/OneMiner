@@ -12,3 +12,5 @@ Features
 2. Automatically mine the most profitable coin
 3. Switch between coins with ease
 4. Automatic Dual mining off on temperature increase
+5. Benchmark against different algos aith profitability
+6. Identify new coins in market for mining

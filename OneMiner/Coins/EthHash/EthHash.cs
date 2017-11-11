@@ -11,7 +11,7 @@ namespace OneMiner.EthHash
     class EthHash : IHashAlgorithm
     {
         enum EthHashCoins{
-            Ethereum,
+            Ethereum=0,
             EtherClassic,
             Ubiq,
             Expanse,
@@ -19,7 +19,7 @@ namespace OneMiner.EthHash
         }
         enum EthHashDualCoins
         {
-            Siacoin,
+            Siacoin=0,
             Decred,
             End
         }

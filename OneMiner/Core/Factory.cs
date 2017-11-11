@@ -10,11 +10,13 @@ namespace OneMiner.Core
 {
     class Factory
     {
-        public static Factory s_obj=null;
+        private static Factory s_obj=null;
         private List<IHashAlgorithm> m_algorithms = new List<IHashAlgorithm>();
+        private IView s_view = null;
         private Factory ()
 	    {
             m_algorithms.Add(new EthHash.EthHash());
+            s_view = new V1View();
 	    }
         public static Factory Instance
         {
@@ -29,7 +31,7 @@ namespace OneMiner.Core
         {
             get
             {
-                return new V1View();
+                return s_view;
             }
         }
         public List<IHashAlgorithm> Algorithms
