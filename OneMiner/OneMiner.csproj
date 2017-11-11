@@ -50,6 +50,7 @@
     <Compile Include="Core\BaseCoin.cs" />
     <Compile Include="Core\Factory.cs" />
     <Compile Include="Core\Interfaces\ICoin.cs" />
+    <Compile Include="Core\Interfaces\ICoinConfigurer.cs" />
     <Compile Include="Core\Interfaces\IHashAlgorithm.cs" />
     <Compile Include="Core\Interfaces\IOutputReader.cs" />
     <Compile Include="Coins\EthHash\Decred.cs" />
@@ -68,11 +69,29 @@
     <Compile Include="View\v1\About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\v1\AddDualMiner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\v1\AddDualMiner.Designer.cs">
+      <DependentUpon>AddDualMiner.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\v1\AddMiner.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\v1\AddMiner.Designer.cs">
       <DependentUpon>AddMiner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\v1\AddMinerContainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\v1\AddMinerContainer.Designer.cs">
+      <DependentUpon>AddMinerContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\v1\ConfigureMiner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\v1\ConfigureMiner.Designer.cs">
+      <DependentUpon>ConfigureMiner.cs</DependentUpon>
     </Compile>
     <Compile Include="View\v1\MainForm.cs">
       <SubType>Form</SubType>
@@ -87,8 +106,17 @@
     <EmbeddedResource Include="View\v1\About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\v1\AddDualMiner.resx">
+      <DependentUpon>AddDualMiner.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\v1\AddMiner.resx">
       <DependentUpon>AddMiner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\v1\AddMinerContainer.resx">
+      <DependentUpon>AddMinerContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\v1\ConfigureMiner.resx">
+      <DependentUpon>ConfigureMiner.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\v1\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

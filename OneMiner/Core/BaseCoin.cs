@@ -19,7 +19,7 @@ namespace OneMiner.Core
             get { throw new NotImplementedException(); }
         }
 
-        public  Form SettingsScreen
+        public  ICoinConfigurer SettingsScreen
         {
             get { throw new NotImplementedException(); }
         }

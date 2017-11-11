@@ -1,5 +1,6 @@
 ﻿using OneMiner.Core;
 using OneMiner.Core.Interfaces;
+using OneMiner.View.v1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace OneMiner.EthHash
     /// <summary>
     /// These classes dont store user data. They are to drive the UI
     /// </summary>
-    class Ethereum : BaseCoin,ICoin
+    class Ethereum : ICoin
     {
 
         public  string Name
@@ -21,6 +22,16 @@ namespace OneMiner.EthHash
         public string Logo
         {
             get { throw new NotImplementedException(); }
+        }
+
+        public ICoinConfigurer SettingsScreen
+        {
+            get
+            {
+                ICoinConfigurer form = new ConfigureMiner();
+                form.AssignCoin(this);
+                return form;
+            }
         }
 
 

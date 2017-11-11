@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OneMiner.Core.Interfaces
 {
-    interface IHashAlgorithm
+    public interface IHashAlgorithm
     {
         /// <summary>
         /// Name of the algo

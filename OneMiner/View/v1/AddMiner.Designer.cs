@@ -31,7 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtMinername = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnNext = new System.Windows.Forms.Button();
             this.lbAlgoSelect = new System.Windows.Forms.ListBox();
             this.lbCoinSelect = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
@@ -61,20 +60,10 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Select Coin";
             // 
-            // btnNext
-            // 
-            this.btnNext.Enabled = false;
-            this.btnNext.Location = new System.Drawing.Point(486, 355);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(75, 23);
-            this.btnNext.TabIndex = 5;
-            this.btnNext.Text = "Next";
-            this.btnNext.UseVisualStyleBackColor = true;
-            // 
             // lbAlgoSelect
             // 
             this.lbAlgoSelect.FormattingEnabled = true;
-            this.lbAlgoSelect.Location = new System.Drawing.Point(185, 134);
+            this.lbAlgoSelect.Location = new System.Drawing.Point(163, 111);
             this.lbAlgoSelect.Name = "lbAlgoSelect";
             this.lbAlgoSelect.Size = new System.Drawing.Size(162, 160);
             this.lbAlgoSelect.TabIndex = 6;
@@ -82,7 +71,7 @@
             // lbCoinSelect
             // 
             this.lbCoinSelect.FormattingEnabled = true;
-            this.lbCoinSelect.Location = new System.Drawing.Point(438, 134);
+            this.lbCoinSelect.Location = new System.Drawing.Point(368, 111);
             this.lbCoinSelect.Name = "lbCoinSelect";
             this.lbCoinSelect.Size = new System.Drawing.Size(162, 160);
             this.lbCoinSelect.TabIndex = 7;
@@ -91,10 +80,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(848, 433);
+            this.ClientSize = new System.Drawing.Size(681, 531);
             this.Controls.Add(this.lbCoinSelect);
             this.Controls.Add(this.lbAlgoSelect);
-            this.Controls.Add(this.btnNext);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtMinername);
             this.Controls.Add(this.label1);
@@ -111,7 +99,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtMinername;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.ListBox lbAlgoSelect;
         private System.Windows.Forms.ListBox lbCoinSelect;
     }

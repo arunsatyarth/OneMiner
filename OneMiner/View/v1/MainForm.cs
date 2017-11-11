@@ -20,7 +20,7 @@ namespace OneMiner
         private void btnAddMiner_Click(object sender, EventArgs e)
         {
             //Todo permission from core to add miner
-            AddMiner addMiner = new AddMiner();
+            AddMinerContainer addMiner = new AddMinerContainer();
             addMiner.ShowDialog();
         }
 

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace OneMiner.Core.Interfaces
 {
-    interface ICoin
+    public interface ICoin
     {
         /// <summary>
         /// nam of coin
@@ -22,7 +22,7 @@ namespace OneMiner.Core.Interfaces
         /// Most coins would have its own way of setting the miner. if u have custom options u can provide 
         /// a custom ui to take the settings
         /// </summary>
-        Form SettingsScreen { get; }
+        ICoinConfigurer SettingsScreen { get; }
 
         /// <summary>
         /// The output of different miners would come i different formats
