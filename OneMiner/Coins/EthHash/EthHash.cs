@@ -88,5 +88,13 @@ namespace OneMiner.EthHash
             }
 
         }
+        IMiner CreateMiner(ICoin mainCoin, ICoinConfigurer mainCoinConfigurer,bool dualMining,
+            ICoin dualCoin, ICoinConfigurer dualCoinConfigurer, string minerName)
+        {
+            IMiner miner = new EthereumData( mainCoin,  mainCoinConfigurer,
+             dualMining,  dualCoin,  dualCoinConfigurer,  minerName);
+            return miner;
+        }
+
     }
 }

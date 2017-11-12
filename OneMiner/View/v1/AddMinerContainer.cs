@@ -294,10 +294,16 @@ namespace OneMiner.View.v1
             m_bAddDualMiner = true;
             NextStage();
         }
-
+        private void Verify()
+        {
+            return true;
+        }
         private void btnFinish_Click(object sender, EventArgs e)
         {
+            if (Verify())
+            {
 
+            }
         }
     }
 }

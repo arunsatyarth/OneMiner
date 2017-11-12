@@ -37,5 +37,8 @@ namespace OneMiner.Core.Interfaces
         /// </summary>
         ICoin DefaultDualCoin { get; }
 
+        IMiner CreateMiner(ICoin mainCoin, ICoinConfigurer mainCoinConfigurer,
+                bool dualMining, ICoin dualCoin, ICoinConfigurer dualCoinConfigurer, string minerName);
+
     }
 }

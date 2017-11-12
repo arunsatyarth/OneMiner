@@ -7,5 +7,6 @@ namespace OneMiner.Core.Interfaces
 {
     public interface IMiner
     {
+        public void StartMining();
     }
 }
