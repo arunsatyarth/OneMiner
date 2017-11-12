@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(652, 387);
             this.Name = "AddMinerFinish";
             this.Text = "AddMinerFinish";
+            this.Load += new System.EventHandler(this.AddMinerFinish_Load);
             this.ResumeLayout(false);
 
         }

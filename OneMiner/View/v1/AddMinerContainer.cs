@@ -15,13 +15,16 @@ namespace OneMiner.View.v1
         private int m_currentState = 0;
         AddMiner m_addMiner = null;
         AddDualMiner m_addDualMiner = null;
+        AddMinerFinish m_finishScreen = null;
         ConfigureMiner m_configureMiner = null;
         private ICoin m_selected_coin = null;
         private ICoin m_selected_dual_coin = null;
+        private bool m_bAddDualMiner = false;
         public AddMinerContainer()
         {
             m_addMiner = new AddMiner(this);
             m_addDualMiner = new AddDualMiner(this);
+            m_finishScreen = new AddMinerFinish(this);
             InitializeComponent();
         }
         public void EnableNextButton()
@@ -41,6 +44,34 @@ namespace OneMiner.View.v1
         {
             btnPrevious.Enabled = false;
         }
+        public void EnableDualMinerButton()
+        {
+            btnAddDualMiner.Enabled = true;
+            btnAddDualMiner.Visible = true;
+
+        }
+        public void DisableDualMinerButton()
+        {
+            btnAddDualMiner.Enabled = false;
+        }
+        public void HideDualMinerButton()
+        {
+            btnAddDualMiner.Visible = false;
+        }
+        public void ReverseNextFinish(bool val)
+        {
+            if(val)
+            {
+                btnNext.Visible = false;
+                btnFinish.Visible = true;
+            }
+            else
+            {
+                btnNext.Visible = true;
+                btnFinish.Visible = false;
+            }
+            
+        }
 
         public void SelectedCoin(ICoin coin)
         {
@@ -50,23 +81,95 @@ namespace OneMiner.View.v1
         {
             m_selected_dual_coin = coin;
         }
+        private void ChangeUIState()
+        {
+            switch (m_currentState)
+            {
+                case 0:
+                    DisablePreviousButton();
+                    EnableNextButton();
+                    HideDualMinerButton();
 
+                    ReverseNextFinish(false);
+
+                    break;
+                case 1:
+                    EnablePreviousButton();
+                    EnableNextButton();
+                    EnableDualMinerButton();
+                    ReverseNextFinish(false);
+                    break;
+
+                case 2://Dual miner selection screen
+                    EnablePreviousButton();
+                    EnableNextButton();
+                    HideDualMinerButton();
+                    ReverseNextFinish(false);
+                    break;
+
+                case 3://Dual miner settings screen
+                    EnablePreviousButton();
+                    EnableNextButton();
+                    HideDualMinerButton();
+                    ReverseNextFinish(false);
+                    break;
+                case 4://Finish screen
+                    EnablePreviousButton();
+                    ReverseNextFinish(true);
+                    HideDualMinerButton();
+                    break;
+
+
+            }
+        }
         public void NextStage()
         {
-            m_currentState++;
+            switch (m_currentState)
+            {
+                case 0:
+                    m_currentState++;
+                    break;
+                case 1:
+                    if (m_bAddDualMiner)
+                        m_currentState++;
+                    else
+                        m_currentState += 3;//to finish. skip dualminerselection and dual miner configuraton
+                    break;
+                case 2://Dual miner selection screen
+                case 3://Dual miner settings screen
+                case 4://Finish screen
+                    m_currentState++;
+                    break;
+
+
+            }
             ShowStage();
-            EnablePreviousButton();
+            ChangeUIState();
+            //EnablePreviousButton();
 
         }
         public void PreviousStage()
         {
-            if (m_currentState > 0)
+            switch (m_currentState)
             {
-                m_currentState--;
-                ShowStage();
-                if (m_currentState == 0)
-                    DisablePreviousButton();
+                case 0:
+                case 1:
+                case 2://Dual miner selection screen
+                case 3://Dual miner settings screen
+                    m_currentState--;
+                    break;
+                case 4://Finish screen
+                    if (m_bAddDualMiner)
+                        m_currentState--;
+                    else
+                        m_currentState -= 3;
+                    break;
+
+
             }
+            ShowStage();
+            ChangeUIState();
+
         }
         public void ShowStage()
         {
@@ -87,19 +190,19 @@ namespace OneMiner.View.v1
                     }
                     break;
                 case 2://Dual miner selection screen
-                    m_addDualMiner.SelectedCoin=m_selected_coin;
+                    m_addDualMiner.SelectedCoin = m_selected_coin;
                     objForm = m_addDualMiner;
                     break;
                 case 3://Dual miner settings screen
                     if (m_selected_coin != null)
                     {
-                        ICoinConfigurer form = m_selected_coin.SettingsScreen;
+                        ICoinConfigurer form = m_selected_dual_coin.SettingsScreen;
                         form.AssignParent(this);
                         objForm = form as Form;
                     }
                     break;
                 case 4://Finish screen
-                    objForm = m_addDualMiner;
+                    objForm = m_finishScreen;
                     break;
 
 
@@ -124,6 +227,7 @@ namespace OneMiner.View.v1
         private void AddMinerContainer_Load(object sender, EventArgs e)
         {
             ShowStage();
+            ChangeUIState();
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)
@@ -133,8 +237,18 @@ namespace OneMiner.View.v1
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnAddDualMiner_Click(object sender, EventArgs e)
+        {
+            m_bAddDualMiner = true;
             NextStage();
-            NextStage();
+        }
+
+        private void btnFinish_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

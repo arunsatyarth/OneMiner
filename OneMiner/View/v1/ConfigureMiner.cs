@@ -35,5 +35,10 @@ namespace OneMiner.View.v1
             lblCoinName.Text = m_selected_coin.Name;
         }
 
+        private void btnAddDualMiner_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

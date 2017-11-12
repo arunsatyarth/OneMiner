@@ -11,9 +11,17 @@ namespace OneMiner.View.v1
 {
     public partial class AddMinerFinish : Form
     {
-        public AddMinerFinish()
+        private AddMinerContainer m_parent = null;
+
+        public AddMinerFinish(AddMinerContainer parent)
         {
+            m_parent = parent;
             InitializeComponent();
+        }
+
+        private void AddMinerFinish_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

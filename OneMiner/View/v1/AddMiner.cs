@@ -59,7 +59,11 @@ namespace OneMiner.View.v1
             if (m_defaultCoin!=null)
             {
                 m_parent.SelectedCoin(m_defaultCoin);
+                lblSelectedCoin.Text = m_defaultCoin.Name;
             }
+            else
+                lblSelectedCoin.Text = "No Coin Selected";
+
         }
         private void SelectFirstAlgo(int index,IHashAlgorithm algo)
         {
@@ -170,6 +174,7 @@ namespace OneMiner.View.v1
             }
          
         }
+
 
 
     }

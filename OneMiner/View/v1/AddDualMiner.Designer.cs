@@ -30,6 +30,8 @@
         {
             this.lbCoinSelect = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblSelectedCoin = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbCoinSelect
@@ -49,11 +51,31 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Select Dual Mining Coin";
             // 
+            // lblSelectedCoin
+            // 
+            this.lblSelectedCoin.AutoSize = true;
+            this.lblSelectedCoin.Location = new System.Drawing.Point(313, 292);
+            this.lblSelectedCoin.Name = "lblSelectedCoin";
+            this.lblSelectedCoin.Size = new System.Drawing.Size(88, 13);
+            this.lblSelectedCoin.TabIndex = 11;
+            this.lblSelectedCoin.Text = "Default Selection";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(157, 292);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Selected Coin";
+            // 
             // AddDualMiner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(707, 381);
+            this.Controls.Add(this.lblSelectedCoin);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.lbCoinSelect);
             this.Controls.Add(this.label2);
             this.Name = "AddDualMiner";
@@ -68,5 +90,7 @@
 
         private System.Windows.Forms.ListBox lbCoinSelect;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblSelectedCoin;
+        private System.Windows.Forms.Label label3;
     }
 }
