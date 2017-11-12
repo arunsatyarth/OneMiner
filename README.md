@@ -14,3 +14,7 @@ Features
 4. Automatic Dual mining off on temperature increase
 5. Benchmark against different algos aith profitability
 6. Identify new coins in market for mining
+7. supports 1 click mining(ethereum), silent mode/console mode(mines sither setup  thing or default ethereum) also
+	by default u will have an ethereum miner. when you start it will ask for wallet address. future version will have automatic wallet generation with private key also
+
+	
