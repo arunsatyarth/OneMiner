@@ -1,4 +1,5 @@
 ﻿using OneMiner.Coins.EthHash;
+using OneMiner.Core;
 using OneMiner.Core.Interfaces;
 using OneMiner.Model.Config;
 using System;
@@ -42,7 +43,8 @@ namespace OneMiner.EthHash
         {
             foreach (IMiner item in MinerPrograms)
             {
-                item.StartMining();
+                //push miners into mining queue wher they wud be picked up by threads and executed
+                Factory.Instance.CoreObject.MiningQueue.Enqueue(item);
             }
         }
 

@@ -22,12 +22,17 @@ namespace OneMiner.Core
         private List<IHashAlgorithm> m_algorithms = new List<IHashAlgorithm>();
         Hashtable m_algoHash = new Hashtable();
 
+        public OneMiner CoreObject { get; set; }
+
+
+
         private IView s_view = null;
         private Factory ()
 	    {
             m_algoHash[AlgoEnums.EthHash] = new EthHash.EthHash();
             m_algorithms.Add(m_algoHash[AlgoEnums.EthHash] as IHashAlgorithm);
             s_view = new V1View();
+            CoreObject = new OneMiner();
 	    }
         public static Factory Instance
         {
