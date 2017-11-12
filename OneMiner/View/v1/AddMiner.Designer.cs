@@ -52,6 +52,7 @@
             this.txtMinername.Name = "txtMinername";
             this.txtMinername.Size = new System.Drawing.Size(121, 20);
             this.txtMinername.TabIndex = 1;
+            this.txtMinername.TextChanged += new System.EventHandler(this.txtMinername_TextChanged);
             // 
             // label2
             // 

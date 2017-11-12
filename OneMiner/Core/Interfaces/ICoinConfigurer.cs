@@ -15,5 +15,9 @@ namespace OneMiner.Core.Interfaces
 
         void AssignCoin(ICoin coin);
 
+        string Pool {get;set;}
+
+        string Wallet {get;set;}
+
     }
 }

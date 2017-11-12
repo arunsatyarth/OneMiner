@@ -17,8 +17,21 @@ namespace OneMiner.View.v1
         AddDualMiner m_addDualMiner = null;
         AddMinerFinish m_finishScreen = null;
         ConfigureMiner m_configureMiner = null;
+
         private ICoin m_selected_coin = null;
         private ICoin m_selected_dual_coin = null;
+
+        public ICoin SelectedCoin { get; set; }
+        public ICoin SelectedDualCoin { get; set; }
+        public string Minername { get; set; }
+        public string MainCoinPool { get; set; }
+        public string MainCoinWallet { get; set; }
+        public string DualCoinPool { get; set; }
+        public string DualCoinWallet { get; set; }
+
+
+
+
         private bool m_bAddDualMiner = false;
         public AddMinerContainer()
         {
@@ -60,7 +73,7 @@ namespace OneMiner.View.v1
         }
         public void ReverseNextFinish(bool val)
         {
-            if(val)
+            if (val)
             {
                 btnNext.Visible = false;
                 btnFinish.Visible = true;
@@ -70,14 +83,22 @@ namespace OneMiner.View.v1
                 btnNext.Visible = true;
                 btnFinish.Visible = false;
             }
-            
+
+        }
+        public void EnableFinishButton()
+        {
+            btnFinish.Enabled = true;
+        }
+        public void DisableFinishButton()
+        {
+            btnFinish.Enabled = false;
         }
 
-        public void SelectedCoin(ICoin coin)
+        public void MakeSelectedCoin(ICoin coin)
         {
             m_selected_coin = coin;
         }
-        public void SelectedDualCoin(ICoin coin)
+        public void MakeSelectedDualCoin(ICoin coin)
         {
             m_selected_dual_coin = coin;
         }
@@ -87,7 +108,7 @@ namespace OneMiner.View.v1
             {
                 case 0:
                     DisablePreviousButton();
-                    EnableNextButton();
+                    //EnableNextButton();
                     HideDualMinerButton();
 
                     ReverseNextFinish(false);
@@ -202,6 +223,9 @@ namespace OneMiner.View.v1
                     }
                     break;
                 case 4://Finish screen
+                    //m_finishScreen.SelectedCoin = m_selected_coin;
+                    //m_finishScreen.SelectedDualCoin = m_selected_dual_coin;
+
                     objForm = m_finishScreen;
                     break;
 
@@ -221,7 +245,13 @@ namespace OneMiner.View.v1
 
         private void btnNext_Click(object sender, EventArgs e)
         {
+            //if there is any final things to be performed in this stage do it
+            FinalAction();
             NextStage();
+        }
+        private void FinalAction()
+        {
+            m_
         }
 
         private void AddMinerContainer_Load(object sender, EventArgs e)

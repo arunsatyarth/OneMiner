@@ -28,13 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.rchFinish = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
+            // 
+            // rchFinish
+            // 
+            this.rchFinish.Location = new System.Drawing.Point(106, 26);
+            this.rchFinish.Name = "rchFinish";
+            this.rchFinish.Size = new System.Drawing.Size(499, 332);
+            this.rchFinish.TabIndex = 1;
+            this.rchFinish.Text = "";
             // 
             // AddMinerFinish
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(652, 387);
+            this.ClientSize = new System.Drawing.Size(729, 423);
+            this.Controls.Add(this.rchFinish);
             this.Name = "AddMinerFinish";
             this.Text = "AddMinerFinish";
             this.Load += new System.EventHandler(this.AddMinerFinish_Load);
@@ -43,5 +53,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.RichTextBox rchFinish;
     }
 }

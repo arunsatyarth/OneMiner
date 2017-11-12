@@ -61,18 +61,18 @@ namespace OneMiner.View.v1
                 lbCoinSelect.SelectedIndex = m_currentCoinIndex;
                 lbCoinSelect.SelectedIndexChanged+=lbCoinSelect_SelectedIndexChanged;
                 SetNextButtonState();
-                SelectedDualCoin();
+                MakeSelectedDualCoin();
                 
             }
             catch (Exception ex)
             {
             }
         }
-        public void SelectedDualCoin()
+        public void MakeSelectedDualCoin()
         {
             if (m_selectedDualCoin != null)
             {
-                m_parent.SelectedDualCoin(m_selectedDualCoin);
+                m_parent.MakeSelectedDualCoin(m_selectedDualCoin);
                 lblSelectedCoin.Text = m_selectedDualCoin.Name;
             }
             else
@@ -94,7 +94,7 @@ namespace OneMiner.View.v1
 
                 SetNextButtonState();
                 //Tell parent which coin is currently seelcted
-                SelectedDualCoin();
+                MakeSelectedDualCoin();
 
             }
             catch (Exception)

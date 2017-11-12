@@ -39,6 +39,8 @@ namespace OneMiner.View.v1
         {
 
         }
+        public string Pool { get; set; }
 
+        public string Wallet { get; set; }
     }
 }

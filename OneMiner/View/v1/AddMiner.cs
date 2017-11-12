@@ -54,11 +54,11 @@ namespace OneMiner.View.v1
             else
                 m_parent.DisableNextButton();
         }
-        public void SelectedCoin()
+        public void MakeSelectedCoin()
         {
             if (m_defaultCoin!=null)
             {
-                m_parent.SelectedCoin(m_defaultCoin);
+                m_parent.MakeSelectedCoin(m_defaultCoin);
                 lblSelectedCoin.Text = m_defaultCoin.Name;
             }
             else
@@ -107,11 +107,10 @@ namespace OneMiner.View.v1
                 SelectFirstAlgo(m_currentAlgoIndex, m_defaultAlgorithm);
                 lbAlgoSelect.SelectedIndexChanged += lstAlgoSelect_SelectedIndexChanged;
                 lbCoinSelect.SelectedIndexChanged += lbCoinSelect_SelectedIndexChanged;
-                txtMinername.TextChanged += txtMinername_TextChanged;
                 //check and eneble next button
                 SetNextButtonState();
                 //Tell parent which coin is currently seelcted
-                SelectedCoin();
+                MakeSelectedCoin();
             }
             catch (Exception ex)
             {
@@ -134,7 +133,7 @@ namespace OneMiner.View.v1
 
                 SetNextButtonState();
                 //Tell parent which coin is currently seelcted
-                SelectedCoin();
+                MakeSelectedCoin();
 
             }
             catch (Exception)
@@ -146,6 +145,7 @@ namespace OneMiner.View.v1
         void txtMinername_TextChanged(object sender, EventArgs e)
         {
             SetNextButtonState();
+            m_parent.Minername = txtMinername.Text;
         }
 
         void lstAlgoSelect_SelectedIndexChanged(object sender, EventArgs e)
@@ -165,7 +165,7 @@ namespace OneMiner.View.v1
                 DisplayCoinsinList(m_defaultAlgorithm);
                 SetNextButtonState();
                 //Tell parent which coin is currently seelcted
-                SelectedCoin();
+                MakeSelectedCoin();
                
             }
             catch (Exception )
@@ -174,6 +174,8 @@ namespace OneMiner.View.v1
             }
          
         }
+
+
 
 
 

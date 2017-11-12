@@ -15,10 +15,13 @@ namespace OneMiner.EthHash
     {
         public IHashAlgorithm Algorithm { get; set; }
 
+        ICoinConfigurer Configurer;
+
         
         public Ethereum(IHashAlgorithm algo)
         {
             Algorithm = algo;
+
         }
         public  string Name
         {
@@ -34,9 +37,12 @@ namespace OneMiner.EthHash
         {
             get
             {
-                ICoinConfigurer form = new ConfigureMiner();
-                form.AssignCoin(this);
-                return form;
+                if (Configurer == null)
+                {
+                    Configurer = new ConfigureMiner();
+                    Configurer.AssignCoin(this);
+                }
+                return Configurer;
             }
         }
 
