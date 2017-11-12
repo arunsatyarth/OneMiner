@@ -13,16 +13,37 @@ namespace OneMiner.View.v1
     public partial class AddMinerContainer : Form
     {
         private int m_currentState = 0;
-        AddMiner m_addMiner = null;
-        AddDualMiner m_addDualMiner = null;
+        public AddMiner AddMiner { get; set; }
+        public AddDualMiner AddDualMiner { get; set; }
+
         AddMinerFinish m_finishScreen = null;
-        ConfigureMiner m_configureMiner = null;
 
         private ICoin m_selected_coin = null;
         private ICoin m_selected_dual_coin = null;
 
-        public ICoin SelectedCoin { get; set; }
-        public ICoin SelectedDualCoin { get; set; }
+        public ICoin SelectedCoin
+        {
+            get
+            {
+                return m_selected_coin;
+            }
+            set
+            {
+                m_selected_coin = value;
+            }
+        }
+        public ICoin SelectedDualCoin
+        {
+            get
+            {
+                return m_selected_dual_coin;
+            }
+            set
+            {
+                m_selected_dual_coin = value;
+            }
+        }
+
         public string Minername { get; set; }
         public string MainCoinPool { get; set; }
         public string MainCoinWallet { get; set; }
@@ -35,8 +56,8 @@ namespace OneMiner.View.v1
         private bool m_bAddDualMiner = false;
         public AddMinerContainer()
         {
-            m_addMiner = new AddMiner(this);
-            m_addDualMiner = new AddDualMiner(this);
+            AddMiner = new AddMiner(this);
+            AddDualMiner = new AddDualMiner(this);
             m_finishScreen = new AddMinerFinish(this);
             InitializeComponent();
         }
@@ -198,10 +219,9 @@ namespace OneMiner.View.v1
             switch (m_currentState)
             {
                 case 0:
-                    objForm = m_addMiner;
+                    objForm = AddMiner;
                     break;
                 case 1:
-                    //objForm = m_configureMiner;
 
                     if (m_selected_coin != null)
                     {
@@ -211,8 +231,8 @@ namespace OneMiner.View.v1
                     }
                     break;
                 case 2://Dual miner selection screen
-                    m_addDualMiner.SelectedCoin = m_selected_coin;
-                    objForm = m_addDualMiner;
+                    AddDualMiner.SelectedCoin = m_selected_coin;
+                    objForm = AddDualMiner;
                     break;
                 case 3://Dual miner settings screen
                     if (m_selected_coin != null)
@@ -251,7 +271,6 @@ namespace OneMiner.View.v1
         }
         private void FinalAction()
         {
-            m_
         }
 
         private void AddMinerContainer_Load(object sender, EventArgs e)

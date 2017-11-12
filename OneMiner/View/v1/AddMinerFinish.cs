@@ -26,23 +26,28 @@ namespace OneMiner.View.v1
         private void AddMinerFinish_Load(object sender, EventArgs e)
         {
 
-            if (SelectedCoin == null)
+            ICoin selectedCoin = m_parent.SelectedCoin;
+            ICoin selectedDualCoin = m_parent.SelectedDualCoin;
+            if (selectedCoin == null)
             {
                 //disable finish button in last screen
                 m_parent.DisableFinishButton();
             }
             else
             {
-                string minername = m_parent.m_;
+                string minername = m_parent.AddMiner.Minername;
                 string selection="";
-                if (SelectedDualCoin==null)
-                    selection = SelectedCoin.Name ;
+                if (selectedDualCoin == null)
+                    selection = selectedCoin.Name;
                 else
-                    selection = SelectedCoin.Name +" + " + SelectedDualCoin.Name;
+                    selection = selectedCoin.Name + " + " + selectedDualCoin.Name;
 
                 string commandline = "";
 
                 rchFinish.Text = minername;
+                rchFinish.Text += "\n";
+                rchFinish.Text += selection;
+
 
 
 

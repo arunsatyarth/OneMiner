@@ -33,9 +33,9 @@
             // 
             // rchFinish
             // 
-            this.rchFinish.Location = new System.Drawing.Point(106, 26);
+            this.rchFinish.Location = new System.Drawing.Point(25, 26);
             this.rchFinish.Name = "rchFinish";
-            this.rchFinish.Size = new System.Drawing.Size(499, 332);
+            this.rchFinish.Size = new System.Drawing.Size(676, 332);
             this.rchFinish.TabIndex = 1;
             this.rchFinish.Text = "";
             // 

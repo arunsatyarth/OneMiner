@@ -18,6 +18,7 @@ namespace OneMiner.View.v1
         private AddMinerContainer m_parent = null;
         private IHashAlgorithm m_defaultAlgorithm = null;
         private ICoin m_defaultCoin = null;
+        public string Minername { get; set; }
 
         public AddMiner(AddMinerContainer parent)
         {
@@ -40,8 +41,8 @@ namespace OneMiner.View.v1
         }
         private bool NameAdded()
         {
-            string minername=txtMinername.Text.Trim();
-            if (minername.Length > 0 && UniqueMinerName(minername))
+            Minername = txtMinername.Text.Trim();
+            if (Minername.Length > 0 && UniqueMinerName(Minername))
             {
                 return true;
             }
@@ -144,8 +145,9 @@ namespace OneMiner.View.v1
 
         void txtMinername_TextChanged(object sender, EventArgs e)
         {
+            Minername = txtMinername.Text.Trim();
             SetNextButtonState();
-            m_parent.Minername = txtMinername.Text;
+
         }
 
         void lstAlgoSelect_SelectedIndexChanged(object sender, EventArgs e)
