@@ -50,6 +50,7 @@ namespace OneMiner.Core
                 return s_view;
             }
         }
+        //Todo: maybe this shud be created w=everytime addminer is clicked. that way we wont be reusing ojects
         public List<IHashAlgorithm> Algorithms
         {
             get
@@ -64,6 +65,7 @@ namespace OneMiner.Core
         {
             get
             {
+                //Todo: maybe this shud be created w=everytime addminer is clicked. that way we wont be reusing ojects
                 return m_algoHash[AlgoEnums.EthHash] as IHashAlgorithm;
             }
         }

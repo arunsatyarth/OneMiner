@@ -36,7 +36,8 @@ namespace OneMiner.EthHash
 
         public void SetupMiner()
         {
-            MinerPrograms.Add(new ClaymoreMiner());
+            MinerPrograms.Add(new ClaymoreMiner(MainCoin, MainCoinConfigurer,
+             DualMining, DualCoin, DualCoinConfigurer, Name));
 
         }
         public void StartMining()
