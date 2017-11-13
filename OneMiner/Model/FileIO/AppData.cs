@@ -8,6 +8,15 @@ namespace OneMiner.Model.FileIO
 {
     class AppData:IFileIO
     {
+        private string m_Foldershortname;
+        private string m_Fileshortname;
+
+        public AppData(string folder,string file)
+        {
+            m_Foldershortname = folder;
+            m_Fileshortname = file;
+        }
+
         public string FileName
         {
             get
@@ -41,7 +50,7 @@ namespace OneMiner.Model.FileIO
         }
         public void GetFileName()
         {
-            m_filename = m_foldername + @"\config.json";
+            m_filename = m_foldername + @"\" + m_Fileshortname;
         }
 
         public void GetFolderName()
@@ -49,7 +58,7 @@ namespace OneMiner.Model.FileIO
             string appdata_path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             try
             {
-                m_foldername = appdata_path + @"\OneMiner\";
+                m_foldername = appdata_path + @"\" + m_Foldershortname + @"\";
                 DirectoryInfo folder = new DirectoryInfo(m_foldername);
                 if (!folder.Exists)
                 {

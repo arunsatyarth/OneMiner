@@ -1,4 +1,5 @@
-﻿using OneMiner.Core.Interfaces;
+﻿using OneMiner.Core;
+using OneMiner.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -294,7 +295,7 @@ namespace OneMiner.View.v1
             m_bAddDualMiner = true;
             NextStage();
         }
-        private void Verify()
+        private bool Verify()
         {
             return true;
         }
@@ -302,7 +303,7 @@ namespace OneMiner.View.v1
         {
             if (Verify())
             {
-
+                IMiner miner=Factory.Create
             }
         }
     }

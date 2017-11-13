@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OneMiner.Core.Interfaces
 {
-    interface  IMinerProgram
+    public interface  IMinerProgram
     {
     }
 }

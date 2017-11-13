@@ -17,7 +17,7 @@ namespace OneMiner.Model
         {
             IFileIO fileio = null;
         
-            fileio = new AppData();
+            fileio = new AppData("OneMiner", "config.json");
             if (fileio.Verify())
                 return fileio;
             fileio = new LocalFolder();
