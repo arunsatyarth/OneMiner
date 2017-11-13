@@ -306,8 +306,7 @@ namespace OneMiner.View.v1
                 bool dualMining=false;
                 if(m_selected_dual_coin!=null)
                     dualMining=true;
-                IMiner miner = m_selected_coin.Algorithm.CreateMiner(m_selected_coin, m_selected_coin.SettingsScreen,
-                    dualMining, m_selected_dual_coin, m_selected_dual_coin.SettingsScreen, Name);
+                IMiner miner = m_selected_coin.Algorithm.CreateMiner(m_selected_coin,dualMining, m_selected_dual_coin, Name);
 
                 Factory.Instance.CoreObject.AddMiner(miner,true);
 

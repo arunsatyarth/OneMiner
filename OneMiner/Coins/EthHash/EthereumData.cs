@@ -15,20 +15,15 @@ namespace OneMiner.EthHash
         public ICoin MainCoin { get; set; }
         public ICoin DualCoin { get; set; }
 
-        public ICoinConfigurer MainCoinConfigurer { get; set; }
-        public ICoinConfigurer DualCoinConfigurer { get; set; }
         public bool  DualMining { get; set; }
 
         public string Name { get; set; }
         public string Logo { get; set; }//not sure if needed
 
-        public EthereumData (ICoin mainCoin, ICoinConfigurer mainCoinConfigurer,bool dualMining, ICoin dualCoin,
-            ICoinConfigurer dualCoinConfigurer, string minerName)
+        public EthereumData (ICoin mainCoin,bool dualMining, ICoin dualCoin, string minerName)
         {
             MainCoin = mainCoin;
-            MainCoinConfigurer = mainCoinConfigurer;
             DualCoin = dualCoin;
-            DualCoinConfigurer = dualCoinConfigurer;
             DualMining = dualMining;
             Name = minerName;
             MinerPrograms = new List<IMinerProgram>();
@@ -36,8 +31,7 @@ namespace OneMiner.EthHash
 
         public void SetupMiner()
         {
-            MinerPrograms.Add(new ClaymoreMiner(MainCoin, MainCoinConfigurer,
-             DualMining, DualCoin, DualCoinConfigurer, Name));
+            MinerPrograms.Add(new ClaymoreMiner(MainCoin,DualMining, DualCoin, Name));
 
         }
         public void StartMining()

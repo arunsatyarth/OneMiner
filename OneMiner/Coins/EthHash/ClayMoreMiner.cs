@@ -31,8 +31,7 @@ namespace OneMiner.Coins.EthHash
         public bool DualMining { get; set; }
         public string Name { get; set; }
 
-        public ClaymoreMiner(ICoin mainCoin, ICoinConfigurer mainCoinConfigurer, bool dualMining, ICoin dualCoin,
-            ICoinConfigurer dualCoinConfigurer, string minerName)
+        public ClaymoreMiner(ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName)
         {
 
             MinerState = MinerProgramState.Stopped;
@@ -40,9 +39,10 @@ namespace OneMiner.Coins.EthHash
 
 
             MainCoin = mainCoin;
-            MainCoinConfigurer = mainCoinConfigurer;
+            MainCoinConfigurer = mainCoin.SettingsScreen;
             DualCoin = dualCoin;
-            DualCoinConfigurer = dualCoinConfigurer;
+            if (DualCoin!=null)
+                DualCoinConfigurer = DualCoin.SettingsScreen;
             DualMining = dualMining;
             Name = minerName;
 

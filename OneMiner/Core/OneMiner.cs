@@ -10,7 +10,7 @@ namespace OneMiner.Core
 {
     class OneMiner
     {
-        public List<IMiner> Miners = null;
+        public List<IMiner> Miners = new List<IMiner>();
         public IMiner ActiveMiner = null;
 
         //expose them with funs
@@ -34,7 +34,7 @@ namespace OneMiner.Core
             if (makeActive)
                 ActiveMiner = miner;
 
-            Factory.Instance.ViewObject.UpdateView();
+            Factory.Instance.ViewObject.UpdateMinerList();
         }
         void MiningThread(object obj)
         {
