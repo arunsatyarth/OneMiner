@@ -27,6 +27,7 @@ namespace OneMiner.EthHash
             DualMining = dualMining;
             Name = minerName;
             MinerPrograms = new List<IMinerProgram>();
+            SetupMiner();
         }
 
         public void SetupMiner()
@@ -36,10 +37,19 @@ namespace OneMiner.EthHash
         }
         public void StartMining()
         {
+
             foreach (IMinerProgram item in MinerPrograms)
             {
                 //push miners into mining queue wher they wud be picked up by threads and executed
                 Factory.Instance.CoreObject.MiningQueue.Enqueue(item);
+            }
+        }
+        public void StopMining()
+        {
+            foreach (IMinerProgram item in MinerPrograms)
+            {
+                //push miners into mining queue wher they wud be picked up by threads and executed
+                item.KillMiner();
             }
         }
 

@@ -12,5 +12,8 @@ namespace OneMiner.Core.Interfaces
         string Name { get; set; }
 
         void StartMining();
+        void StopMining();
+
+
     }
 }

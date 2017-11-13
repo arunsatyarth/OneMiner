@@ -10,6 +10,10 @@ namespace OneMiner.Core.Interfaces
         bool ProgramPresent();
         void DownloadProgram();
         void StartMining();
+        /// <summary>
+        /// to stop the miner
+        /// </summary>
+        void KillMiner();
 
     }
     enum MinerProgramState

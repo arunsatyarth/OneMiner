@@ -15,6 +15,8 @@ namespace OneMiner.Model
     {
         private string m_url;
         private string m_zipFilename;
+        private string m_zipFilePath;
+        private string m_UnzipedFilePath;
         private string m_verifyName;
         private IFileIO m_fileio = null;
 
@@ -30,7 +32,7 @@ namespace OneMiner.Model
             fileio = new AppData("OneMiner", "sample");
             if (fileio.Verify())
                 return fileio;
-            fileio = new LocalFolder();
+            fileio = new LocalFolder("OneMiner", "sample");
             if (fileio.Verify())
                 return fileio;
 
@@ -44,15 +46,30 @@ namespace OneMiner.Model
         {
             try
             {
+                //get the appdata path and get name of target zipfile
                 m_fileio = GetFileIOObject();
                 m_zipFilename = GetFileName();
-                using (var client = new WebClient())
-                {
-                    client.DownloadFile(m_url, m_zipFilename);
+                m_zipFilePath = m_fileio.FolderName  + m_zipFilename;
 
+                //get name of target unzipped folder
+                FileInfo fileInfo = new FileInfo(m_zipFilePath);
+                string curFile = fileInfo.FullName;
+                string m_UnzipedFilePath = curFile.Remove(curFile.Length -fileInfo.Extension.Length);
+                m_UnzipedFilePath += "\\";
+                DirectoryInfo unzippedFolder = new DirectoryInfo(m_UnzipedFilePath);
+                //download only if unzipped folder dosent exist
+                if(!unzippedFolder.Exists)
+                {
+                    using (var client = new WebClient())
+                    {
+                        client.DownloadFile(m_url, m_zipFilePath);
+
+                    }
+                    //unzip
+                    return Decompress();
                 }
-                //unzip
-                return Decompress();
+                return unzippedFolder.FullName;
+
 
             }
             catch (Exception e)
@@ -66,12 +83,10 @@ namespace OneMiner.Model
         /// </summary>
         public  string Decompress()
         {
-            FileInfo fileInfo = new FileInfo(m_zipFilename);
-            string curFile = fileInfo.FullName;
-            string folder = curFile.Remove(curFile.Length -fileInfo.Extension.Length);
-            UnzipManager unzip = new UnzipManager(m_zipFilename, m_verifyName, folder);
+
+            UnzipManager unzip = new UnzipManager(m_zipFilePath, m_verifyName, m_UnzipedFilePath);
             if (unzip.Unzip())
-                return folder;
+                return m_UnzipedFilePath;
             return "";
 
         }
@@ -88,11 +103,9 @@ namespace OneMiner.Model
                 try
                 {
                     Uri uri = new Uri(m_url);
-                    if (uri.IsFile)
-                    {
-                        filename = System.IO.Path.GetFileName(uri.LocalPath);
-                    }
-                    return filename;
+                    filename = System.IO.Path.GetFileName(uri.LocalPath);
+                    if(filename!="")
+                        return filename;
                 }
                 catch (Exception e)
                 {

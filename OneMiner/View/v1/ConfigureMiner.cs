@@ -42,5 +42,17 @@ namespace OneMiner.View.v1
         public string Pool { get; set; }
 
         public string Wallet { get; set; }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            Pool = txtPool.Text.Trim();
+
+        }
+
+        private void txtWallet_TextChanged(object sender, EventArgs e)
+        {
+            Wallet = txtWallet.Text.Trim();
+
+        }
     }
 }

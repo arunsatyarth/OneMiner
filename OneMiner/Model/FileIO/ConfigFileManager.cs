@@ -20,7 +20,7 @@ namespace OneMiner.Model
             fileio = new AppData("OneMiner", "config.json");
             if (fileio.Verify())
                 return fileio;
-            fileio = new LocalFolder();
+            fileio = new LocalFolder("OneMiner", "config.json");
             if (fileio.Verify())
                 return fileio;
          

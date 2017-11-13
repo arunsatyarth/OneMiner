@@ -303,10 +303,11 @@ namespace OneMiner.View.v1
         {
             if (Verify())
             {
+                this.Close();
                 bool dualMining=false;
                 if(m_selected_dual_coin!=null)
                     dualMining=true;
-                IMiner miner = m_selected_coin.Algorithm.CreateMiner(m_selected_coin,dualMining, m_selected_dual_coin, Name);
+                IMiner miner = m_selected_coin.Algorithm.CreateMiner(m_selected_coin,dualMining, m_selected_dual_coin, AddMiner.Minername);
 
                 Factory.Instance.CoreObject.AddMiner(miner,true);
 

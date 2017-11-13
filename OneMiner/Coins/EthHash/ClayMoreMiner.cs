@@ -50,7 +50,7 @@ namespace OneMiner.Coins.EthHash
 
         public bool ProgramPresent()
         {
-            if (MinerEXE != "")
+            if (MinerEXE == null || MinerEXE == "")
                 return false;
             FileInfo miner = new FileInfo(MinerEXE);
             if (miner.Exists)
@@ -89,7 +89,10 @@ namespace OneMiner.Coins.EthHash
             MinerState = MinerProgramState.Stopped;
 
         }
-
+        public void KillMiner()
+        {
+            //Todo:
+        }
         private void GenerateScript()
         {
             try
@@ -132,11 +135,13 @@ namespace OneMiner.Coins.EthHash
 
 
 
-        private const string SCRIPT1 = @"setx GPU_FORCE_64BIT_PTR 0\n
-                setx GPU_MAX_HEAP_SIZE 100\n
-                setx GPU_USE_SYNC_OBJECTS 1\n
-                setx GPU_MAX_ALLOC_PERCENT 100\n
-                setx GPU_SINGLE_ALLOC_PERCENT 100\n";
+        private const string SCRIPT1 = 
+@"setx GPU_FORCE_64BIT_PTR 0
+setx GPU_MAX_HEAP_SIZE 100
+setx GPU_USE_SYNC_OBJECTS 1
+setx GPU_MAX_ALLOC_PERCENT 100
+setx GPU_SINGLE_ALLOC_PERCENT 100
+";
 
     }
 }

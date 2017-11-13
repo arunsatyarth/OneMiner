@@ -29,15 +29,18 @@
         private void InitializeComponent()
         {
             this.pnlTemplate = new System.Windows.Forms.Panel();
-            this.pbTemplate = new System.Windows.Forms.PictureBox();
             this.lblMinername = new System.Windows.Forms.Label();
             this.lblCoinType = new System.Windows.Forms.Label();
+            this.pbTemplate = new System.Windows.Forms.PictureBox();
+            this.btnStartMining = new System.Windows.Forms.Button();
             this.pnlTemplate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTemplate)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlTemplate
             // 
+            this.pnlTemplate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlTemplate.Controls.Add(this.btnStartMining);
             this.pnlTemplate.Controls.Add(this.lblCoinType);
             this.pnlTemplate.Controls.Add(this.lblMinername);
             this.pnlTemplate.Controls.Add(this.pbTemplate);
@@ -46,14 +49,6 @@
             this.pnlTemplate.Size = new System.Drawing.Size(385, 58);
             this.pnlTemplate.TabIndex = 3;
             this.pnlTemplate.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlTemplate_Paint);
-            // 
-            // pbTemplate
-            // 
-            this.pbTemplate.Location = new System.Drawing.Point(3, 3);
-            this.pbTemplate.Name = "pbTemplate";
-            this.pbTemplate.Size = new System.Drawing.Size(63, 50);
-            this.pbTemplate.TabIndex = 0;
-            this.pbTemplate.TabStop = false;
             // 
             // lblMinername
             // 
@@ -72,6 +67,24 @@
             this.lblCoinType.Size = new System.Drawing.Size(52, 13);
             this.lblCoinType.TabIndex = 2;
             this.lblCoinType.Text = "CoinType";
+            // 
+            // pbTemplate
+            // 
+            this.pbTemplate.Location = new System.Drawing.Point(3, 3);
+            this.pbTemplate.Name = "pbTemplate";
+            this.pbTemplate.Size = new System.Drawing.Size(63, 50);
+            this.pbTemplate.TabIndex = 0;
+            this.pbTemplate.TabStop = false;
+            // 
+            // btnStartMining
+            // 
+            this.btnStartMining.Location = new System.Drawing.Point(278, 18);
+            this.btnStartMining.Name = "btnStartMining";
+            this.btnStartMining.Size = new System.Drawing.Size(75, 23);
+            this.btnStartMining.TabIndex = 3;
+            this.btnStartMining.Text = "Start";
+            this.btnStartMining.UseVisualStyleBackColor = true;
+            this.btnStartMining.Click += new System.EventHandler(this.btnStartMining_Click);
             // 
             // MinerView
             // 
@@ -95,5 +108,6 @@
         private System.Windows.Forms.PictureBox pbTemplate;
         private System.Windows.Forms.Label lblCoinType;
         private System.Windows.Forms.Label lblMinername;
+        private System.Windows.Forms.Button btnStartMining;
     }
 }

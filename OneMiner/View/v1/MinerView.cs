@@ -1,4 +1,5 @@
-﻿using OneMiner.Core.Interfaces;
+﻿using OneMiner.Core;
+using OneMiner.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,6 +44,12 @@ namespace OneMiner.View.v1
         private void pnlTemplate_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnStartMining_Click(object sender, EventArgs e)
+        {
+
+            Factory.Instance.CoreObject.StartMining(m_miner);
         }
     }
 }

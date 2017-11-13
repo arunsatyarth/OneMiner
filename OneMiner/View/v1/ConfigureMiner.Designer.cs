@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtPool = new System.Windows.Forms.TextBox();
+            this.txtWallet = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblCoinName = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -44,19 +44,21 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Pool";
             // 
-            // textBox1
+            // txtPool
             // 
-            this.textBox1.Location = new System.Drawing.Point(197, 91);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(285, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtPool.Location = new System.Drawing.Point(197, 91);
+            this.txtPool.Name = "txtPool";
+            this.txtPool.Size = new System.Drawing.Size(285, 20);
+            this.txtPool.TabIndex = 1;
+            this.txtPool.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textBox2
+            // txtWallet
             // 
-            this.textBox2.Location = new System.Drawing.Point(197, 128);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(285, 20);
-            this.textBox2.TabIndex = 3;
+            this.txtWallet.Location = new System.Drawing.Point(197, 128);
+            this.txtWallet.Name = "txtWallet";
+            this.txtWallet.Size = new System.Drawing.Size(285, 20);
+            this.txtWallet.TabIndex = 3;
+            this.txtWallet.TextChanged += new System.EventHandler(this.txtWallet_TextChanged);
             // 
             // label2
             // 
@@ -82,9 +84,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(708, 394);
             this.Controls.Add(this.lblCoinName);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtWallet);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtPool);
             this.Controls.Add(this.label1);
             this.Name = "ConfigureMiner";
             this.Text = "ConfigureMiner";
@@ -97,8 +99,8 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtPool;
+        private System.Windows.Forms.TextBox txtWallet;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblCoinName;
     }

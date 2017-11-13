@@ -15,6 +15,9 @@ namespace OneMiner.Model.FileIO
         {
             m_Foldershortname = folder;
             m_Fileshortname = file;
+            GetFolderName();
+            GetFileName();
+            Verify();
         }
         public string FileName
         {
@@ -41,13 +44,7 @@ namespace OneMiner.Model.FileIO
         private string m_filename = "";
         private string m_foldername = "";
 
-        public LocalFolder()
-        {
-            GetFolderName();
-            GetFileName();
-            Verify();
-
-        }
+ 
         public void GetFileName()
         {
             m_filename = m_foldername + @"\" + m_Fileshortname;

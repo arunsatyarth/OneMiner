@@ -10,11 +10,16 @@ namespace OneMiner.Model.FileIO
     {
         private string m_Foldershortname;
         private string m_Fileshortname;
-
+        private Boolean m_success = false;
+        private string m_filename = "";
+        private string m_foldername = "";
         public AppData(string folder,string file)
         {
             m_Foldershortname = folder;
             m_Fileshortname = file;
+            GetFolderName();
+            GetFileName();
+            Verify();
         }
 
         public string FileName
@@ -34,20 +39,13 @@ namespace OneMiner.Model.FileIO
             {
                 if (!m_success)
                     throw new Exception("Couldnt create file");
-                return m_filename;
+                return m_foldername;
             }
      
         }
-        private Boolean m_success = false;
-        private string m_filename = "";
-        private string m_foldername = "";
 
-        public AppData()
-        {
-            GetFolderName();
-            GetFileName();
-            Verify();
-        }
+
+  
         public void GetFileName()
         {
             m_filename = m_foldername + @"\" + m_Fileshortname;
