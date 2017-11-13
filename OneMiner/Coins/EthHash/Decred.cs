@@ -3,6 +3,7 @@ using OneMiner.Core.Interfaces;
 using OneMiner.View.v1;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -22,9 +23,10 @@ namespace OneMiner.EthHash
             get { return "Decred"; }
         }
 
-        public string Logo
+        public Bitmap Logo
         {
-            get { throw new NotImplementedException(); }
+            get { return OneMiner.Properties.Resources.decred; }
+            
         }
         public ICoinConfigurer SettingsScreen
         {

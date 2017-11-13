@@ -9,6 +9,6 @@ namespace OneMiner.View
     {
         void InitializeView();
         void StartView();
-        void UpdateView();
+        void UpdateMinerList();
     }
 }

@@ -8,7 +8,7 @@ namespace OneMiner.View.v1
 {
     class V1View: IView
     {
-
+        MainForm m_MainForm = null;
         public void InitializeView()
         {
         }
@@ -17,11 +17,13 @@ namespace OneMiner.View.v1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
-        }
-        public void UpdateView()
-        {
+            m_MainForm = new MainForm(); 
 
+            Application.Run(m_MainForm);
+        }
+        public void UpdateMinerList()
+        {
+            m_MainForm.UpdateMinerList();
         }
     }
 }

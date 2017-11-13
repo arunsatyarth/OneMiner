@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -16,7 +17,7 @@ namespace OneMiner.Core.Interfaces
         /// <summary>
         /// logo of the coin. this would be reqiired to show in thr ui
         /// </summary>
-        string Logo { get;  }
+        Bitmap Logo { get; }
 
         /// <summary>
         /// Most coins would have its own way of setting the miner. if u have custom options u can provide 

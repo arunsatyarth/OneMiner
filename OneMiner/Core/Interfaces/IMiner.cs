@@ -7,6 +7,10 @@ namespace OneMiner.Core.Interfaces
 {
     public interface IMiner
     {
+        ICoin MainCoin { get; set; }
+        ICoin DualCoin { get; set; }
+        string Name { get; set; }
+
         void StartMining();
     }
 }

@@ -36,13 +36,9 @@
             this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMiner = new System.Windows.Forms.Panel();
-            this.pnlTemplate = new System.Windows.Forms.Panel();
-            this.pbTemplate = new System.Windows.Forms.PictureBox();
             this.btnAddMiner = new System.Windows.Forms.Button();
+            this.pnlMinerInfo = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
-            this.pnlMiner.SuspendLayout();
-            this.pnlTemplate.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbTemplate)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -99,27 +95,10 @@
             // 
             // pnlMiner
             // 
-            this.pnlMiner.Controls.Add(this.pnlTemplate);
-            this.pnlMiner.Location = new System.Drawing.Point(214, 55);
+            this.pnlMiner.Location = new System.Drawing.Point(129, 46);
             this.pnlMiner.Name = "pnlMiner";
-            this.pnlMiner.Size = new System.Drawing.Size(435, 272);
+            this.pnlMiner.Size = new System.Drawing.Size(834, 272);
             this.pnlMiner.TabIndex = 1;
-            // 
-            // pnlTemplate
-            // 
-            this.pnlTemplate.Controls.Add(this.pbTemplate);
-            this.pnlTemplate.Location = new System.Drawing.Point(63, 33);
-            this.pnlTemplate.Name = "pnlTemplate";
-            this.pnlTemplate.Size = new System.Drawing.Size(274, 58);
-            this.pnlTemplate.TabIndex = 2;
-            // 
-            // pbTemplate
-            // 
-            this.pbTemplate.Location = new System.Drawing.Point(14, 5);
-            this.pbTemplate.Name = "pbTemplate";
-            this.pbTemplate.Size = new System.Drawing.Size(201, 50);
-            this.pbTemplate.TabIndex = 0;
-            this.pbTemplate.TabStop = false;
             // 
             // btnAddMiner
             // 
@@ -131,22 +110,28 @@
             this.btnAddMiner.UseVisualStyleBackColor = true;
             this.btnAddMiner.Click += new System.EventHandler(this.btnAddMiner_Click);
             // 
+            // pnlMinerInfo
+            // 
+            this.pnlMinerInfo.Location = new System.Drawing.Point(12, 324);
+            this.pnlMinerInfo.Name = "pnlMinerInfo";
+            this.pnlMinerInfo.Size = new System.Drawing.Size(1073, 272);
+            this.pnlMinerInfo.TabIndex = 2;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1085, 504);
+            this.ClientSize = new System.Drawing.Size(1085, 607);
+            this.Controls.Add(this.pnlMinerInfo);
             this.Controls.Add(this.btnAddMiner);
             this.Controls.Add(this.pnlMiner);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.pnlMiner.ResumeLayout(false);
-            this.pnlTemplate.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbTemplate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,9 +147,8 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem miningToolStripMenuItem;
         private System.Windows.Forms.Panel pnlMiner;
-        private System.Windows.Forms.Panel pnlTemplate;
-        private System.Windows.Forms.PictureBox pbTemplate;
         private System.Windows.Forms.Button btnAddMiner;
+        private System.Windows.Forms.Panel pnlMinerInfo;
     }
 }
 

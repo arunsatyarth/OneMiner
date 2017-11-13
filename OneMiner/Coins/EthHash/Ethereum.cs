@@ -3,6 +3,7 @@ using OneMiner.Core.Interfaces;
 using OneMiner.View.v1;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 
@@ -28,9 +29,10 @@ namespace OneMiner.EthHash
             get { return "Ethereum"; }
         }
 
-        public string Logo
+        public Bitmap Logo
         {
-            get { throw new NotImplementedException(); }
+            get { return OneMiner.Properties.Resources.ethereum; }
+            
         }
 
         public ICoinConfigurer SettingsScreen
