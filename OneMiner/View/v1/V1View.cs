@@ -19,5 +19,9 @@ namespace OneMiner.View.v1
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
         }
+        public void UpdateView()
+        {
+
+        }
     }
 }

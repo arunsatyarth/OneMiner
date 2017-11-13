@@ -16,7 +16,7 @@ namespace OneMiner.Core
         //expose them with funs
         public Queue<IMinerProgram> MiningQueue { get; set; }
         public Queue<IMinerProgram> DownloadingQueue { get; set; }
-        public volatile bool m_keepMining=true;
+        public volatile bool m_keepMining = true;
         Thread m_minerThread;
         Thread m_downloadingThread;
         public OneMiner()
@@ -27,6 +27,14 @@ namespace OneMiner.Core
             m_minerThread = new Thread(new ParameterizedThreadStart(MiningThread));
             m_downloadingThread = new Thread(new ParameterizedThreadStart(DownLoadingThread));
 
+        }
+        public void AddMiner(IMiner miner, bool makeActive)
+        {
+            Miners.Add(miner);
+            if (makeActive)
+                ActiveMiner = miner;
+
+            Factory.Instance.ViewObject.UpdateView();
         }
         void MiningThread(object obj)
         {
@@ -45,7 +53,7 @@ namespace OneMiner.Core
                         DownloadingQueue.Enqueue(miner);
                 }
             }
-        
+
         }
         void DownLoadingThread(object obj)
         {
@@ -77,7 +85,7 @@ namespace OneMiner.Core
         }
         void StopMining()
         {
-            m_keepMining=false;
+            m_keepMining = false;
         }
 
     }
