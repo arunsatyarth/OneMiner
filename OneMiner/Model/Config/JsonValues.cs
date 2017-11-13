@@ -33,7 +33,7 @@ namespace OneMiner.Model.Config
         public JsonValues()
         {
             Option = new Options();
-            MinerData basicMiner = new EthereumData();
+            MinerData basicMiner = null;// new EthereumData();
             CurrentMiner = basicMiner;
             Miners.Add(basicMiner);
         }

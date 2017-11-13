@@ -8,7 +8,7 @@ namespace OneMiner.Model.UnZip
     interface  IUnzip
     {
         bool Unzip();
-        void Init(string zipfile, string outputfile);
+        void Init(string zipfile, string outputfile, string verifyName);
         void SetNExtChain(IUnzip unzip);
     }
 }

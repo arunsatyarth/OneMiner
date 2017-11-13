@@ -14,15 +14,15 @@ namespace OneMiner.Core
         public IMiner ActiveMiner = null;
 
         //expose them with funs
-        public Queue<IMiner> MiningQueue { get; set; }
-        public Queue<IMiner> DownloadingQueue { get; set; }
+        public Queue<IMinerProgram> MiningQueue { get; set; }
+        public Queue<IMinerProgram> DownloadingQueue { get; set; }
         public volatile bool m_keepMining=true;
         Thread m_minerThread;
         Thread m_downloadingThread;
         public OneMiner()
         {
-            MiningQueue = new Queue<IMiner>();
-            DownloadingQueue = new Queue<IMiner>();
+            MiningQueue = new Queue<IMinerProgram>();
+            DownloadingQueue = new Queue<IMinerProgram>();
 
             m_minerThread = new Thread(new ParameterizedThreadStart(MiningThread));
             m_downloadingThread = new Thread(new ParameterizedThreadStart(DownLoadingThread));
@@ -36,7 +36,7 @@ namespace OneMiner.Core
                     Thread.Sleep(4000);
                 else
                 {
-                    IMiner miner = MiningQueue.Dequeue();
+                    IMinerProgram miner = MiningQueue.Dequeue();
                     if (miner.ProgramPresent())
                     {
                         miner.StartMining();
@@ -55,7 +55,7 @@ namespace OneMiner.Core
                     Thread.Sleep(4000);
                 else
                 {
-                    IMiner miner = DownloadingQueue.Dequeue();
+                    IMinerProgram miner = DownloadingQueue.Dequeue();
                     miner.DownloadProgram();
                     if (miner.ProgramPresent())
                         MiningQueue.Enqueue(miner);

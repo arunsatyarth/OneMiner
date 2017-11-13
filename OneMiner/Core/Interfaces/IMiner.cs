@@ -7,8 +7,6 @@ namespace OneMiner.Core.Interfaces
 {
     public interface IMiner
     {
-        bool ProgramPresent();
-        void DownloadProgram();
         void StartMining();
     }
 }

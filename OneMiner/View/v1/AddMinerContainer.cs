@@ -303,7 +303,7 @@ namespace OneMiner.View.v1
         {
             if (Verify())
             {
-                IMiner miner=Factory.Create
+                //IMiner miner=Factory.Create
             }
         }
     }

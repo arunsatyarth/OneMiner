@@ -65,7 +65,13 @@
     <Compile Include="Model\Config\JsonValues.cs" />
     <Compile Include="Model\FileIO\IFileIO.cs" />
     <Compile Include="Model\FileIO\LocalFolder.cs" />
+    <Compile Include="Model\UnZip\IUnzip.cs" />
+    <Compile Include="Model\UnZip\UnZipBase.cs" />
+    <Compile Include="Model\UnZip\UnZipGZipStream.cs" />
+    <Compile Include="Model\UnZip\UnzipManager.cs" />
     <Compile Include="Model\MinerDownloader.cs" />
+    <Compile Include="Model\UnZip\UnZipRarLocal.cs" />
+    <Compile Include="Model\UnZip\UnZipRarSystem.cs" />
     <Compile Include="View\IView.cs" />
     <Compile Include="View\v1\About.cs">
       <SubType>Form</SubType>

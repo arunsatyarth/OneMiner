@@ -39,9 +39,9 @@ namespace OneMiner.EthHash
             MinerPrograms.Add(new ClaymoreMiner());
 
         }
-        public void StartMiner()
+        public void StartMining()
         {
-            foreach (IMiner item in MinerPrograms)
+            foreach (IMinerProgram item in MinerPrograms)
             {
                 //push miners into mining queue wher they wud be picked up by threads and executed
                 Factory.Instance.CoreObject.MiningQueue.Enqueue(item);
