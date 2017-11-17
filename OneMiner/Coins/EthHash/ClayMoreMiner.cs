@@ -73,20 +73,29 @@ namespace OneMiner.Coins.EthHash
 
         public void  StartMining()
         {
-            MinerState = MinerProgramState.Running;
-            ProcessStartInfo info = new ProcessStartInfo();
-            info.UseShellExecute = false;
-            info.FileName = BATFILE;
-            info.WindowStyle = ProcessWindowStyle.Hidden;
-            //objStartInfo.WorkingDirectory = WorkingDirectory + "\\";
+            FileInfo file = new FileInfo(BATFILE);
+            try
+            {
+                MinerState = MinerProgramState.Running;
+                ProcessStartInfo info = new ProcessStartInfo();
+                info.UseShellExecute = false;
+                info.FileName = BATFILE;
+                info.WindowStyle = ProcessWindowStyle.Hidden;
+                info.WorkingDirectory = file.DirectoryName + "\\";
 
-            Process objProcess = new Process();
-            objProcess.StartInfo = info;
-            objProcess.Start();
-            objProcess.WaitForExit();
+                Process objProcess = new Process();
+                objProcess.StartInfo = info;
+                objProcess.Start();
+                objProcess.WaitForExit();
+            }
+            catch (Exception e)
+            {
+            }
+            finally
+            {
+                MinerState = MinerProgramState.Stopped;
 
-
-            MinerState = MinerProgramState.Stopped;
+            }
 
         }
         public void KillMiner()
