@@ -99,7 +99,7 @@ namespace OneMiner.View.v1
                 foreach (IHashAlgorithm item in algos)
                 {
                     lbAlgoSelect.Items.Add(item.Name);
-                    if (item == m_defaultAlgorithm)
+                    if (item.Name == m_defaultAlgorithm.Name)
                         m_currentAlgoIndex = i;
                     i++;
 

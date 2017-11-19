@@ -69,21 +69,15 @@ namespace OneMiner.Core
                 return s_obj;
             }
         }
-        /*
-        public IView ViewObject
-        {
-            get
-            {
-                return s_view;
-            }
-        }
-         * */
+
         //Todo: maybe this shud be created w=everytime addminer is clicked. that way we wont be reusing ojects
         public List<IHashAlgorithm> Algorithms
         {
             get
             {
-                return m_algorithms;
+                List<IHashAlgorithm> algos = new List<IHashAlgorithm>();
+                algos.Add(new EthHash.EthHash());
+                return algos;
             }
         }
         /// <summary>
@@ -94,7 +88,8 @@ namespace OneMiner.Core
             get
             {
                 //Todo: maybe this shud be created w=everytime addminer is clicked. that way we wont be reusing ojects
-                return m_algoHash[AlgoEnums.EthHash] as IHashAlgorithm;
+                //return m_algoHash[AlgoEnums.EthHash] as IHashAlgorithm;
+                return new EthHash.EthHash();
             }
         }
 

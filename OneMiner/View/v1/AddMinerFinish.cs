@@ -21,6 +21,7 @@ namespace OneMiner.View.v1
         {
             m_parent = parent;
             InitializeComponent();
+            //this.Activated
         }
 
         private void AddMinerFinish_Load(object sender, EventArgs e)

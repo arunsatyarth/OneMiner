@@ -51,7 +51,7 @@ namespace OneMiner.View.v1
                 foreach (ICoin item in algo.SupportedDualCoins)
                 {
                     lbCoinSelect.Items.Add(item.Name);
-                    if (item == m_selectedDualCoin)
+                    if (item.Name == m_selectedDualCoin.Name)
                         m_currentCoinIndex = i;
                     i++;
 

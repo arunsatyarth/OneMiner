@@ -12,6 +12,10 @@ namespace OneMiner.Coins.EthHash
     class EtherClassic : ICoin
     {
         public IHashAlgorithm Algorithm { get; set; }
+
+        ICoinConfigurer Configurer;
+
+
         public EtherClassic(IHashAlgorithm algo)
         {
             Algorithm = algo;
@@ -30,9 +34,12 @@ namespace OneMiner.Coins.EthHash
         {
             get
             {
-                ICoinConfigurer form = new ConfigureMiner();
-                form.AssignCoin(this);
-                return form;
+                if (Configurer == null)
+                {
+                    Configurer = new ConfigureMiner();
+                    Configurer.AssignCoin(this);
+                }
+                return Configurer;
             }
         }
 

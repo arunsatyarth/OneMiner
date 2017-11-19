@@ -27,6 +27,8 @@ namespace OneMiner.View.v1
             pnlTemplate.Click += pnlTemplate_Click;
 
             lblCoinType.Text = m_miner.MainCoin.Name;
+            if(miner.DualMining)
+                lblCoinType.Text = lblCoinType.Text + " + " + m_miner.DualCoin.Name;
             lblMinername.Text = m_miner.Name;
 
         }
