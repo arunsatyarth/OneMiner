@@ -1,4 +1,5 @@
 ﻿using OneMiner.Core.Interfaces;
+using OneMiner.Model.Config;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -48,6 +49,7 @@ namespace OneMiner.Core
         }
         public OneMiner()
         {
+            LoadDBData();
             MiningQueue = new Queue<IMinerProgram>();
             DownloadingQueue = new Queue<IMinerProgram>();
 
@@ -110,7 +112,7 @@ namespace OneMiner.Core
         public void StartMining()
         {
             //check if current mining threads have exited properly
-            while (GetThreadCount()>0)
+            while (GetThreadCount() > 0)
             {
                 Thread.Sleep(2000);
             }
@@ -131,6 +133,14 @@ namespace OneMiner.Core
             SelectedMiner.StopMining();
             ActiveMiner = null;
         }
+        public void LoadDBData()
+        {
+            Config config = new Config();
+            //loda core from the db
+            //1. Load mineralgos and miner programs
+            //2. load configured miners
+        }
+
 
     }
 }

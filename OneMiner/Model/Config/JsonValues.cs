@@ -88,27 +88,30 @@ namespace OneMiner.Model.Config
     }
     public class Miner
     {
+        public string Id { get; set; }
         public string Name { get; set; }
         public string BATFileName { get; set; }
-        public string Name { get; set; }
-        public string Name { get; set; }
-        public string Name { get; set; }
-        public string Name { get; set; }
+        public string MainCoin { get; set; }
+        public string MainCoinPool { get; set; }
+        public string MainCoinWallet { get; set; }
+        public bool DualMining { get; set; }
+        public string DualCoin { get; set; }
+        public string DualCoinPool { get; set; }
+        public string DualCoinWallet { get; set; }
 
     }
 
 
     public class DB
     {
-        public MinerData CurrentMiner { get; set; }
-        public List<MinerData> Miners { get; set; }
+        public string CurrentMinerId { get; set; }//uniquely identifies a miner from 
+        public List<MinerAlgo> MinerAlgos { get; set; }
+        public List<Miner> Miners { get; set; }
         public Options Option{ get; set; }
         public DB()
         {
             Option = new Options();
             MinerData basicMiner = null;// new EthereumData();
-            CurrentMiner = basicMiner;
-            Miners.Add(basicMiner);
         }
 
     }

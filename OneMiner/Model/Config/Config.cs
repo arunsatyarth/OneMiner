@@ -8,18 +8,21 @@ namespace OneMiner.Model.Config
 {
     class Config
     {
-        public JsonValues Data{get;set;}
+        public DB Data{get;set;}
         private ConfigFileManager m_config_manager = new ConfigFileManager();
         public Config()
         {
             try
             {
-                Data = (JsonValues)new JavaScriptSerializer().Deserialize(m_config_manager.Data, typeof(JsonValues));
+                Data = null;
+                Data = (DB)new JavaScriptSerializer().Deserialize(m_config_manager.Data, typeof(DB));
 
             }
             catch (FormatException ex)
             {
-
+            }
+            catch (Exception ex)
+            {
             }
         }
         public void Save()
@@ -33,7 +36,9 @@ namespace OneMiner.Model.Config
             }
             catch (FormatException ex)
             {
-
+            }
+            catch (Exception ex)
+            {
             }
         }
 

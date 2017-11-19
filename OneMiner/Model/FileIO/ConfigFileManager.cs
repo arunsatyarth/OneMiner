@@ -30,6 +30,7 @@ namespace OneMiner.Model
         {
             try
             {
+                Data = "";
                 m_fileio = GetFileIOObject();
                 LoadData();
             }
