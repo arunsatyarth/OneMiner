@@ -38,14 +38,15 @@ namespace OneMiner
         public void UpdateMinerList()
         {
             List<IMiner> miners = Factory.Instance.CoreObject.Miners;
+            pnlMiner.Controls.Clear();
+
             foreach (IMiner item in miners)
             {
                 MinerView view = new MinerView(item,this);
                 view.TopLevel = false;
-                pnlMiner.Controls.Clear();
                 pnlMiner.Controls.Add(view);
                 view.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-                view.Dock = DockStyle.Fill;
+                //view.Dock = DockStyle.Fill;
                 view.Show();
             }
         }

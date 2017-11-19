@@ -188,6 +188,9 @@
   <ItemGroup>
     <None Include="Coins\EthHash\Images\ethereum.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="View\v1\Images\ethereum_bg1.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

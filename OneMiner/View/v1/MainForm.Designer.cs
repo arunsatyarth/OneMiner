@@ -35,9 +35,9 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnlMiner = new System.Windows.Forms.Panel();
             this.btnAddMiner = new System.Windows.Forms.Button();
             this.pnlMinerInfo = new System.Windows.Forms.Panel();
+            this.pnlMiner = new System.Windows.Forms.FlowLayoutPanel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,16 +93,9 @@
             this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
             this.aboutToolStripMenuItem1.Text = "About";
             // 
-            // pnlMiner
-            // 
-            this.pnlMiner.Location = new System.Drawing.Point(129, 46);
-            this.pnlMiner.Name = "pnlMiner";
-            this.pnlMiner.Size = new System.Drawing.Size(834, 272);
-            this.pnlMiner.TabIndex = 1;
-            // 
             // btnAddMiner
             // 
-            this.btnAddMiner.Location = new System.Drawing.Point(23, 55);
+            this.btnAddMiner.Location = new System.Drawing.Point(12, 27);
             this.btnAddMiner.Name = "btnAddMiner";
             this.btnAddMiner.Size = new System.Drawing.Size(75, 23);
             this.btnAddMiner.TabIndex = 2;
@@ -112,23 +105,32 @@
             // 
             // pnlMinerInfo
             // 
-            this.pnlMinerInfo.Location = new System.Drawing.Point(12, 324);
+            this.pnlMinerInfo.Location = new System.Drawing.Point(12, 355);
             this.pnlMinerInfo.Name = "pnlMinerInfo";
-            this.pnlMinerInfo.Size = new System.Drawing.Size(1073, 272);
+            this.pnlMinerInfo.Size = new System.Drawing.Size(1061, 272);
             this.pnlMinerInfo.TabIndex = 2;
+            // 
+            // pnlMiner
+            // 
+            this.pnlMiner.Location = new System.Drawing.Point(15, 56);
+            this.pnlMiner.Name = "pnlMiner";
+            this.pnlMiner.Size = new System.Drawing.Size(1058, 284);
+            this.pnlMiner.TabIndex = 3;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1085, 607);
+            this.BackgroundImage = global::OneMiner.Properties.Resources.ethereum_bg1;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1085, 653);
+            this.Controls.Add(this.pnlMiner);
             this.Controls.Add(this.pnlMinerInfo);
             this.Controls.Add(this.btnAddMiner);
-            this.Controls.Add(this.pnlMiner);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "OneMiner - 1 Click Miner for Ethereum, ZCash";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -146,9 +148,9 @@
         private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem miningToolStripMenuItem;
-        private System.Windows.Forms.Panel pnlMiner;
         private System.Windows.Forms.Button btnAddMiner;
         private System.Windows.Forms.Panel pnlMinerInfo;
+        private System.Windows.Forms.FlowLayoutPanel pnlMiner;
     }
 }
 
