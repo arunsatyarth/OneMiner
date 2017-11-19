@@ -56,7 +56,7 @@ namespace OneMiner.Model.Config
 }
      * 
      */
-    /// </summary>
+    /*
     public class MinerData//mark as abstract class
     {
         public string Name { get; set; }
@@ -64,7 +64,7 @@ namespace OneMiner.Model.Config
         {
             Name = "Unset";
         }
-    }
+    }*/
     public class Options
     {
         public Boolean Startup { get; set; }
@@ -92,10 +92,11 @@ namespace OneMiner.Model.Config
         }
 
     }
-    public class Miner
+    public class MinerData : IMinerData
     {
         public string Id { get; set; }
         public string Name { get; set; }
+        public string Algorithm { get; set; }
         public string BATFileName { get; set; }
         public string MainCoin { get; set; }
         public string MainCoinPool { get; set; }
@@ -104,11 +105,11 @@ namespace OneMiner.Model.Config
         public string DualCoin { get; set; }
         public string DualCoinPool { get; set; }
         public string DualCoinWallet { get; set; }
-        public Miner()
+        public MinerData()
         {
             Id = "";
             Name = "";
-            Name = "";
+            Algorithm = "";
             BATFileName ="";
             MainCoin ="";
             MainCoinPool ="";
@@ -126,14 +127,13 @@ namespace OneMiner.Model.Config
     {
         public string CurrentMinerId { get; set; }//uniquely identifies a miner from 
         public List<MinerAlgo> MinerAlgos { get; set; }
-        public List<Miner> Miners { get; set; }
+        public List<MinerData> Miners { get; set; }
         public Options Option { get; set; }
         public DB()
         {
             Option = new Options();
-            MinerData basicMiner = null;// new EthereumData();
             MinerAlgos = new List<MinerAlgo>();
-            Miners = new List<Miner>();
+            Miners = new List<MinerData>();
         }
         public MinerAlgo FindAlgo(IHashAlgorithm algo)
         {
@@ -217,10 +217,11 @@ namespace OneMiner.Model.Config
             if (miner.DualMining)
                 dualCoinConfigurer=miner.DualCoin.SettingsScreen;
 
-            Miner newMiner = new Miner();
+            MinerData newMiner = new MinerData();
 
             newMiner.Id =miner.Id;
-            newMiner.Name=miner.Name;
+            newMiner.Name = miner.Name;
+            newMiner.Algorithm = miner.MainCoin.Algorithm.Name;
             newMiner.BATFileName ="";
             newMiner.MainCoin=miner.MainCoin.Name;
             newMiner.MainCoinPool =mainCoinConfigurer.Pool;
@@ -236,9 +237,9 @@ namespace OneMiner.Model.Config
             //if a similar type is alredy present, them remove it
             List<int> removeIds = new List<int>();
             int i = 0;
-            foreach (Miner item in Miners)
+            foreach (MinerData item in Miners)
             {
-                if (item.Name == item.Name)
+                if (item.Name == miner.Name)
                 {
                     removeIds.Add(i);
                 }

@@ -17,6 +17,8 @@ namespace OneMiner
         {
             IView view = Factory.Instance.ViewObject;
             view.InitializeView();
+
+            Factory.Instance.CoreObject.LoadDBData();
             view.StartView();
         }
     }

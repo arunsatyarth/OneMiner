@@ -39,5 +39,8 @@ namespace OneMiner.Core.Interfaces
 
         IMiner CreateMiner(ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName);
 
+        IMiner RegenerateMiner(IMinerData miner);
+
+
     }
 }

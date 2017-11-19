@@ -11,13 +11,15 @@ namespace OneMiner.View.v1
         MainForm m_MainForm = null;
         public void InitializeView()
         {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
         }
 
         public void StartView()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            m_MainForm = new MainForm(); 
+
+            m_MainForm = new MainForm();
+            UpdateMinerList();
 
             Application.Run(m_MainForm);
         }

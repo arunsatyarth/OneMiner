@@ -53,6 +53,7 @@
     <Compile Include="Core\Interfaces\ICoin.cs" />
     <Compile Include="Core\Interfaces\ICoinConfigurer.cs" />
     <Compile Include="Core\Interfaces\IHashAlgorithm.cs" />
+    <Compile Include="Core\Interfaces\IMinerData.cs" />
     <Compile Include="Core\Interfaces\IMinerProgram.cs" />
     <Compile Include="Core\Interfaces\IOutputReader.cs" />
     <Compile Include="Coins\EthHash\Decred.cs" />

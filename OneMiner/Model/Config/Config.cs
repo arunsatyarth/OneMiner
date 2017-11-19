@@ -26,7 +26,7 @@ namespace OneMiner.Model.Config
             {
                 m_AlgoHash[item.Name] = item;
             }
-            foreach (Miner item in Data.Miners)
+            foreach (IMinerData item in Data.Miners)
             {
                 m_MinerHash[item.Id] = item;
                 m_MinerNameHash[item.Name] = item;

@@ -96,12 +96,70 @@ namespace OneMiner.EthHash
             string id=Factory.Instance.Model.GenerateUniqueID();
             return id;
         }
-        public IMiner CreateMiner(ICoin mainCoin,bool dualMining,ICoin dualCoin , string minerName)
+        public IMiner CreateMiner(ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName)
         {
 
-            IMiner miner = new EthereumData(GenerateUniqueID(), mainCoin,  dualMining,  dualCoin,    minerName);
+            IMiner miner = CreateMiner(GenerateUniqueID(), mainCoin, dualMining, dualCoin, minerName);
             return miner;
         }
+        private ICoin CreateCoinObject(string name)
+        {
+            ICoin coin = null;
+            switch (name)
+            {
+                case "Ethereum":
+                    coin = m_CoinsHash[EthHashCoins.Ethereum] as ICoin;
+                    break;
+                case "Ethereum Classic":
+                    coin = m_CoinsHash[EthHashCoins.EtherClassic] as ICoin;
+                    break;
+                case "Decred":
+                    coin = m_CoinsHash[EthHashDualCoins.Decred] as ICoin;
+                    break;
+            }
+            return coin;
+        }
+        public IMiner RegenerateMiner(IMinerData minerData)
+        {
+            IMiner miner=null;
+            try
+            {
+                ICoin mainCoin = CreateCoinObject(minerData.MainCoin);
+                ICoin dualCoin = null;
+
+                if (mainCoin != null)
+                {
+                    ICoinConfigurer mainCoinConfigurer = mainCoin.SettingsScreen;
+                    mainCoinConfigurer.Pool = minerData.MainCoinPool;
+                    mainCoinConfigurer.Wallet = minerData.MainCoinWallet;
+                    if (minerData.DualMining)
+                    {
+                        dualCoin = CreateCoinObject(minerData.DualCoin);
+                        if (dualCoin != null)
+                        {
+                            ICoinConfigurer dualCoinConfigurer = dualCoin.SettingsScreen;
+                            dualCoinConfigurer.Pool = minerData.DualCoinPool;
+                            dualCoinConfigurer.Wallet = minerData.DualCoinWallet;
+                        }
+                    }
+                }
+                miner = CreateMiner(minerData.Id, mainCoin, minerData.DualMining, dualCoin, minerData.Name);
+
+            }
+            catch (Exception e)
+            {
+                miner = null;
+            }
+            return miner;
+        }
+
+        private  IMiner CreateMiner(string id,ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName)
+        {
+
+            IMiner miner = new EthereumData(id, mainCoin, dualMining, dualCoin, minerName);
+            return miner;
+        }
+
 
     }
 }

@@ -25,23 +25,37 @@ namespace OneMiner.Core
 
         public OneMiner CoreObject { get; set; }
         public Config Model { get; set; }
+        public IView ViewObject { get; set; }
 
 
 
-        private IView s_view = null;
+        //private IView s_view = null;
         private Factory ()
 	    {
 
-            s_view = new V1View();
+            ViewObject = new V1View();
             Model = new Config();
-            CoreObject = new OneMiner(Model);
+            CoreObject = new OneMiner();
             m_algoHash[AlgoEnums.EthHash] = new EthHash.EthHash();
             m_algorithms.Add(m_algoHash[AlgoEnums.EthHash] as IHashAlgorithm);
 	    }
         private void Init()
         {
-
+            //if there is no config file, we shud popolate the list of algos so that later we can add miner programs etc
+            //It only adds if there if algo is not present i config file
             Model.AddAlgorithms(m_algorithms);
+        }
+        public IHashAlgorithm CreateAlgoObject(string name)
+        {
+            IHashAlgorithm algo = null;
+            switch(name)
+            {
+                case "Ethhash":
+                    algo = new EthHash.EthHash();
+                    break;
+
+            }
+            return algo;
         }
         public static Factory Instance
         {
@@ -55,6 +69,7 @@ namespace OneMiner.Core
                 return s_obj;
             }
         }
+        /*
         public IView ViewObject
         {
             get
@@ -62,6 +77,7 @@ namespace OneMiner.Core
                 return s_view;
             }
         }
+         * */
         //Todo: maybe this shud be created w=everytime addminer is clicked. that way we wont be reusing ojects
         public List<IHashAlgorithm> Algorithms
         {

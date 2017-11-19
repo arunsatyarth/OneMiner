@@ -47,9 +47,8 @@ namespace OneMiner.Core
                 return m_ThreadCount;
             }
         }
-        public OneMiner(Config model_obj)
+        public OneMiner()
         {
-            LoadDBData(model_obj);
             MiningQueue = new Queue<IMinerProgram>();
             DownloadingQueue = new Queue<IMinerProgram>();
 
@@ -134,11 +133,18 @@ namespace OneMiner.Core
             SelectedMiner.StopMining();
             ActiveMiner = null;
         }
-        public void LoadDBData(Config model_obj)
+        public void LoadDBData()
         {
             //Todo:loda core from the db
-            DB db = model_obj.Data;
+            DB db = Factory.Instance.Model.Data;
             //1. Load mineralgos and miner programs
+            foreach (IMinerData item in db.Miners)
+            {
+                IHashAlgorithm algo = Factory.Instance.CreateAlgoObject(item.Algorithm);
+                IMiner miner=algo.RegenerateMiner(item);
+                if(miner!=null)
+                    Miners.Add(miner);
+            }
             //2. load configured miners
         }
 
