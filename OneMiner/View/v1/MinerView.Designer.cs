@@ -39,12 +39,12 @@
             // 
             // pnlTemplate
             // 
-            this.pnlTemplate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlTemplate.BackColor = System.Drawing.Color.Transparent;
             this.pnlTemplate.Controls.Add(this.btnStartMining);
             this.pnlTemplate.Controls.Add(this.lblCoinType);
             this.pnlTemplate.Controls.Add(this.lblMinername);
             this.pnlTemplate.Controls.Add(this.pbTemplate);
-            this.pnlTemplate.Location = new System.Drawing.Point(12, 12);
+            this.pnlTemplate.Location = new System.Drawing.Point(4, 5);
             this.pnlTemplate.Name = "pnlTemplate";
             this.pnlTemplate.Size = new System.Drawing.Size(385, 58);
             this.pnlTemplate.TabIndex = 3;
@@ -80,9 +80,11 @@
             // 
             // pbTemplate
             // 
+            this.pbTemplate.Image = global::OneMiner.Properties.Resources.ethereum;
             this.pbTemplate.Location = new System.Drawing.Point(3, 3);
             this.pbTemplate.Name = "pbTemplate";
             this.pbTemplate.Size = new System.Drawing.Size(63, 50);
+            this.pbTemplate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTemplate.TabIndex = 0;
             this.pbTemplate.TabStop = false;
             // 
@@ -90,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 75);
+            this.ClientSize = new System.Drawing.Size(388, 64);
             this.Controls.Add(this.pnlTemplate);
             this.Name = "MinerView";
             this.Text = "MinerView";
