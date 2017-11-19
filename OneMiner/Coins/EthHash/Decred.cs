@@ -13,6 +13,8 @@ namespace OneMiner.EthHash
     class Decred : ICoin
     {
         public IHashAlgorithm Algorithm { get; set; }
+        ICoinConfigurer Configurer;
+
         public Decred(IHashAlgorithm algo)
         {
             Algorithm = algo;
@@ -32,9 +34,12 @@ namespace OneMiner.EthHash
         {
             get
             {
-                ICoinConfigurer form = new ConfigureMiner();
-                form.AssignCoin(this);
-                return form;
+                if (Configurer == null)
+                {
+                    Configurer = new ConfigureMiner();
+                    Configurer.AssignCoin(this);
+                }
+                return Configurer;
             }
         }
 
