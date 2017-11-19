@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.miningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.profitabilityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,11 +44,6 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miningToolStripMenuItem,
-            this.profitabilityToolStripMenuItem,
-            this.advancedToolStripMenuItem,
-            this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1085, 24);
@@ -128,6 +124,7 @@
             this.Controls.Add(this.pnlMinerInfo);
             this.Controls.Add(this.btnAddMiner);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "OneMiner - 1 Click Miner for Ethereum, ZCash";
