@@ -47,9 +47,9 @@ namespace OneMiner.Core
                 return m_ThreadCount;
             }
         }
-        public OneMiner()
+        public OneMiner(Config model_obj)
         {
-            LoadDBData();
+            LoadDBData(model_obj);
             MiningQueue = new Queue<IMinerProgram>();
             DownloadingQueue = new Queue<IMinerProgram>();
 
@@ -60,6 +60,7 @@ namespace OneMiner.Core
         public void AddMiner(IMiner miner, bool makeSelected)
         {
             Miners.Add(miner);
+            Factory.Instance.Model.AddMiner(miner);
             if (makeSelected)
                 SelectedMiner = miner;
 
@@ -133,10 +134,10 @@ namespace OneMiner.Core
             SelectedMiner.StopMining();
             ActiveMiner = null;
         }
-        public void LoadDBData()
+        public void LoadDBData(Config model_obj)
         {
-            Config config = new Config();
-            //loda core from the db
+            //Todo:loda core from the db
+            DB db = model_obj.Data;
             //1. Load mineralgos and miner programs
             //2. load configured miners
         }

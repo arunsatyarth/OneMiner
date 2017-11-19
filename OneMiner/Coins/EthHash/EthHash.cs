@@ -1,5 +1,7 @@
 ﻿using OneMiner.Coins.EthHash;
+using OneMiner.Core;
 using OneMiner.Core.Interfaces;
+using OneMiner.Model.Config;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -50,6 +52,7 @@ namespace OneMiner.EthHash
             }
            
         }
+
         public List<ICoin> SupportedCoins 
         { 
             get 
@@ -88,9 +91,15 @@ namespace OneMiner.EthHash
             }
 
         }
+        string GenerateUniqueID()
+        {
+            string id=Factory.Instance.Model.GenerateUniqueID();
+            return id;
+        }
         public IMiner CreateMiner(ICoin mainCoin,bool dualMining,ICoin dualCoin , string minerName)
         {
-            IMiner miner = new EthereumData( mainCoin,  dualMining,  dualCoin,    minerName);
+
+            IMiner miner = new EthereumData(GenerateUniqueID(), mainCoin,  dualMining,  dualCoin,    minerName);
             return miner;
         }
 

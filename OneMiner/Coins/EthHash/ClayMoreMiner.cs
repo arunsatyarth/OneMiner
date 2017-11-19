@@ -1,5 +1,7 @@
-﻿using OneMiner.Core.Interfaces;
+﻿using OneMiner.Core;
+using OneMiner.Core.Interfaces;
 using OneMiner.Model;
+using OneMiner.Model.Config;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,6 +11,11 @@ using System.Text;
 
 namespace OneMiner.Coins.EthHash
 {
+    /// <summary>
+    /// this class does not represent a miner program. coz this contains specif info like batfilepath etc
+    /// this represents a miner program inside a configured miner. there could be many miners of the same type. eg ethereum, ethereum_sia
+    /// for the real representation fo a miner program, look at JsonData.MinerProgram
+    /// </summary>
     class ClaymoreMiner:IMinerProgram
     {
 
@@ -30,6 +37,8 @@ namespace OneMiner.Coins.EthHash
         public ICoinConfigurer DualCoinConfigurer { get; set; }
         public bool DualMining { get; set; }
         public string Name { get; set; }
+        public string Type { get; set; }//claymore ccminer etc
+
 
         public ClaymoreMiner(ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName)
         {
@@ -45,8 +54,11 @@ namespace OneMiner.Coins.EthHash
                 DualCoinConfigurer = DualCoin.SettingsScreen;
             DualMining = dualMining;
             Name = minerName;
+            Type = "Claymore";
 
         }
+        
+
 
         public bool ProgramPresent()
         {
@@ -57,15 +69,24 @@ namespace OneMiner.Coins.EthHash
                 return true;
             return false;
         }
+        public void SaveToDB()
+        {
+            if (ProgramPresent())
+            {
+                Config model = Factory.Instance.Model;
+                model.AddMinerProgram(this);
+
+            }
+        }
         public  void DownloadProgram()
         {
             MinerState = MinerProgramState.Downloading;
             MinerDownloader downloader = new MinerDownloader(MINERURL, EXENAME);
 
-            string MinerFolder = downloader.DownloadFile();
+            MinerFolder = downloader.DownloadFile();
             MinerEXE = MinerFolder + @"\" + EXENAME;
             BATFILE = MinerFolder + @"\" + Name+".bat";
-
+            SaveToDB();
             ConfigureMiner();
             MinerState = MinerProgramState.Stopped;
 

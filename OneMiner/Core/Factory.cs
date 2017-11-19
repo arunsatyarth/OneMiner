@@ -1,4 +1,5 @@
 ﻿using OneMiner.Core.Interfaces;
+using OneMiner.Model.Config;
 using OneMiner.View;
 using OneMiner.View.v1;
 using System;
@@ -23,23 +24,34 @@ namespace OneMiner.Core
         Hashtable m_algoHash = new Hashtable();
 
         public OneMiner CoreObject { get; set; }
+        public Config Model { get; set; }
 
 
 
         private IView s_view = null;
         private Factory ()
 	    {
+
+            s_view = new V1View();
+            Model = new Config();
+            CoreObject = new OneMiner(Model);
             m_algoHash[AlgoEnums.EthHash] = new EthHash.EthHash();
             m_algorithms.Add(m_algoHash[AlgoEnums.EthHash] as IHashAlgorithm);
-            s_view = new V1View();
-            CoreObject = new OneMiner();
 	    }
+        private void Init()
+        {
+
+            Model.AddAlgorithms(m_algorithms);
+        }
         public static Factory Instance
         {
             get
             {
                 if (s_obj == null)
+                {
                     s_obj = new Factory();
+                    s_obj.Init();
+                }
                 return s_obj;
             }
         }

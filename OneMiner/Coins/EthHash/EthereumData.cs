@@ -17,11 +17,13 @@ namespace OneMiner.EthHash
 
         public bool  DualMining { get; set; }
 
+        public string Id { get; set; }
         public string Name { get; set; }
         public string Logo { get; set; }//not sure if needed
 
-        public EthereumData (ICoin mainCoin,bool dualMining, ICoin dualCoin, string minerName)
+        public EthereumData (string id,ICoin mainCoin,bool dualMining, ICoin dualCoin, string minerName)
         {
+            Id = id;
             MainCoin = mainCoin;
             DualCoin = dualCoin;
             DualMining = dualMining;

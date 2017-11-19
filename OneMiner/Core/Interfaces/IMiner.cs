@@ -10,6 +10,8 @@ namespace OneMiner.Core.Interfaces
         ICoin MainCoin { get; set; }
         ICoin DualCoin { get; set; }
         string Name { get; set; }
+        bool DualMining { get; set; }
+        string Id { get; set; }
 
         void StartMining();
         void StopMining();

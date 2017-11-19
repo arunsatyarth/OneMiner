@@ -14,6 +14,13 @@ namespace OneMiner.Core.Interfaces
         /// to stop the miner
         /// </summary>
         void KillMiner();
+        string Type { get; set; }//claymore ccminer etc
+        ICoin MainCoin { get; set; }
+        string MinerFolder { get; set; }
+        string MinerEXE { get; set; }
+
+
+
 
     }
     enum MinerProgramState
