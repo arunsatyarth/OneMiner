@@ -141,6 +141,11 @@ namespace OneMiner.Core
             if (db.Miners.Count == 0)
             {
                 //load default ether miner
+                IHashAlgorithm algo = Factory.Instance.DefaultAlgorithm;
+                IMiner miner = algo.DefaultMiner();
+                if (miner != null)
+                    Miners.Add(miner);
+
 
 
             }

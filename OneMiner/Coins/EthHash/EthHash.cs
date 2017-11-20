@@ -96,6 +96,42 @@ namespace OneMiner.EthHash
             string id=Factory.Instance.Model.GenerateUniqueID();
             return id;
         }
+        
+        public IMiner DefaultMiner()
+        {
+            IMiner miner = null;
+            try
+            {
+                ICoin mainCoin = DefaultCoin;
+                ICoin dualCoin = null;
+
+                if (mainCoin != null)
+                {
+                    ICoinConfigurer mainCoinConfigurer = mainCoin.SettingsScreen;
+                    mainCoinConfigurer.Pool = minerData.MainCoinPool;
+                    mainCoinConfigurer.Wallet = minerData.MainCoinWallet;
+                    if (minerData.DualMining)
+                    {
+                        dualCoin = CreateCoinObject(minerData.DualCoin);
+                        if (dualCoin != null)
+                        {
+                            ICoinConfigurer dualCoinConfigurer = dualCoin.SettingsScreen;
+                            dualCoinConfigurer.Pool = minerData.DualCoinPool;
+                            dualCoinConfigurer.Wallet = minerData.DualCoinWallet;
+                        }
+                    }
+                }
+                miner = CreateMiner(minerData.Id, mainCoin, minerData.DualMining, dualCoin, minerData.Name);
+
+            }
+            catch (Exception e)
+            {
+                miner = null;
+            }
+            return miner;
+
+        }
+
         public IMiner CreateMiner(ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName)
         {
 

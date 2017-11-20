@@ -3,6 +3,7 @@ using OneMiner.Core.Interfaces;
 using OneMiner.Model.Config;
 using OneMiner.View;
 using OneMiner.View.v1;
+using OneMiner.View.v1.Corousal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +11,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace OneMiner
@@ -20,6 +22,8 @@ namespace OneMiner
         {
             InitializeComponent();
         }
+        List<Form> m_Corousals = new List<Form>();
+        int m_CurrentCarousal = 0;
 
         private void btnAddMiner_Click(object sender, EventArgs e)
         {
@@ -31,19 +35,65 @@ namespace OneMiner
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.CenterToScreen();
-            UpdateSettingsView();
-            Timer t = new Timer();
+
+            RunCarousal();
+        }
+        public void RunCarousal()
+        {
+            m_Corousals.Add(new SettingsSummary());
+            m_Corousals.Add(new ProfitabilitySummary());
+
+            Form next = m_Corousals.ElementAt<Form>(m_CurrentCarousal);
+            BringToView(next);
+            System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
             t.Interval = 60000;
-            t.Interval = 5000;
             t.Tick += t_Tick;
             t.Start();
+        }
+        public void RemoveFromView(Form previous)
+        {
+            /*
+            for (int i = 0; i < 10; i++)
+            {
+                Thread.Sleep(600);
+                previous.Opacity -= .1;
+                previous.Refresh();
 
+            }
+             */
+        }
+        public void BringToView(Form next)
+        {
+            next.TopLevel = false;
+            pnlCarousal.Controls.Clear();
+            pnlCarousal.Controls.Add(next);
+            next.Dock = DockStyle.Fill;
+            //next.Opacity = .5;//opacity doesnt work for embedded forms
+            next.Show();
+            /*
+            for (int i = 0; i < 10; i++)
+            {
+                Thread.Sleep(600);
+                next.Opacity += .1;
+                next.Refresh();
+            }
+             */
         }
 
         void t_Tick(object sender, EventArgs e)
         {
-            UpdateTime();
+
+            Form previous=m_Corousals.ElementAt<Form>(m_CurrentCarousal);
+            m_CurrentCarousal++;
+            if (m_CurrentCarousal >= m_Corousals.Count)
+                m_CurrentCarousal = 0;
+
+            Form next = m_Corousals.ElementAt<Form>(m_CurrentCarousal);
+
+            RemoveFromView(previous);
+            BringToView(next);
         }
+
         private Panel ClonePanel(Panel p)
         {
             return null;
@@ -63,39 +113,7 @@ namespace OneMiner
                 view.Show();
             }
         }
-        public void UpdateTime()
-        {
-            TimeSpan time = DateTime.Now - Factory.Instance.StartTime;
-            //lblRunningTime.Text = time.ToString(@"dd\:hh\:mm");
-            string timeStr;
-            if (time.Days > 0)
-                timeStr = string.Format("{0:00} Day: {0:00} :{1:00}", time.Days, time.TotalHours, time.Minutes);
-            else
-                timeStr = string.Format("{0:00}:{1:00}", time.TotalHours, time.Minutes);
-            lblRunningTime.Text = timeStr;
-        }
-        public void UpdateSettingsView()
-        {
-            try
-            {
-                Config model = Factory.Instance.Model;
-                IMiner miner = Factory.Instance.CoreObject.ActiveMiner;
-                if (miner != null)
-                {
-                    lblActiveMiner.Text = miner.Name;
-                }
-                string mineonStartup = "No";
-                if (model.Data.Option.MineOnStartup)
-                    mineonStartup = "Yes";
-                lblMineOnStartup.Text = mineonStartup;
-                
-                
-                UpdateTime();
-            }
-            catch (Exception e)
-            {
-            }
-        }
+        
 
         public void ShowBottom(IMiner miner)
         {

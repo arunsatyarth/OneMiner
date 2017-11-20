@@ -41,6 +41,8 @@ namespace OneMiner.Core.Interfaces
 
         IMiner RegenerateMiner(IMinerData miner);
 
+        IMiner DefaultMiner();
+
 
     }
 }
