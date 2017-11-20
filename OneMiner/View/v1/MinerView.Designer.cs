@@ -39,7 +39,7 @@
             // 
             // pnlTemplate
             // 
-            this.pnlTemplate.BackColor = System.Drawing.Color.Transparent;
+            this.pnlTemplate.BackColor = System.Drawing.Color.White;
             this.pnlTemplate.Controls.Add(this.btnStartMining);
             this.pnlTemplate.Controls.Add(this.lblCoinType);
             this.pnlTemplate.Controls.Add(this.lblMinername);
@@ -92,6 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(388, 64);
             this.Controls.Add(this.pnlTemplate);
             this.Name = "MinerView";
