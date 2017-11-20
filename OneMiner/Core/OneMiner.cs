@@ -160,10 +160,11 @@ namespace OneMiner.Core
             }
             else
             {
+                IMiner miner =null;
                 foreach (IMinerData item in db.Miners)
                 {
                     IHashAlgorithm algo = Factory.Instance.CreateAlgoObject(item.Algorithm);
-                    IMiner miner = algo.RegenerateMiner(item);
+                    miner = algo.RegenerateMiner(item);
                     if (miner != null)
                     {
                         Miners.Add(miner);
@@ -171,6 +172,8 @@ namespace OneMiner.Core
                             SelectedMiner = miner;
                     }
                 }
+                if (SelectedMiner == null)
+                    SelectedMiner = miner;
             }
             //2. load configured miners
         }

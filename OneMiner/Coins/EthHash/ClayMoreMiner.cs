@@ -123,7 +123,7 @@ namespace OneMiner.Coins.EthHash
         {
             //Todo:
         }
-        private void GenerateScript()
+        public  string GenerateScript()
         {
             try
             {
@@ -140,9 +140,11 @@ namespace OneMiner.Coins.EthHash
                 }
 
                 Script = SCRIPT1+command;
+                return Script;
             }
             catch (Exception e)
             {
+                return "";
             }
         }
         private void ConfigureMiner()

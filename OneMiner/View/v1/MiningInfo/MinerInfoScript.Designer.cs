@@ -28,20 +28,94 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btnTemplate = new System.Windows.Forms.Button();
+            this.txtScriptArea = new System.Windows.Forms.TextBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.lnkEdit = new System.Windows.Forms.LinkLabel();
+            this.btnDefault = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // btnTemplate
+            // 
+            this.btnTemplate.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnTemplate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTemplate.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTemplate.ForeColor = System.Drawing.Color.White;
+            this.btnTemplate.Location = new System.Drawing.Point(-45, 12);
+            this.btnTemplate.Name = "btnTemplate";
+            this.btnTemplate.Size = new System.Drawing.Size(67, 23);
+            this.btnTemplate.TabIndex = 11;
+            this.btnTemplate.Text = "Default";
+            this.btnTemplate.UseVisualStyleBackColor = false;
+            this.btnTemplate.Visible = false;
+            // 
+            // txtScriptArea
+            // 
+            this.txtScriptArea.Location = new System.Drawing.Point(12, 53);
+            this.txtScriptArea.Multiline = true;
+            this.txtScriptArea.Name = "txtScriptArea";
+            this.txtScriptArea.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtScriptArea.Size = new System.Drawing.Size(742, 196);
+            this.txtScriptArea.TabIndex = 12;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(771, 80);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(59, 23);
+            this.btnSave.TabIndex = 14;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // lnkEdit
+            // 
+            this.lnkEdit.AutoSize = true;
+            this.lnkEdit.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.lnkEdit.LinkColor = System.Drawing.Color.SteelBlue;
+            this.lnkEdit.Location = new System.Drawing.Point(768, 53);
+            this.lnkEdit.Name = "lnkEdit";
+            this.lnkEdit.Size = new System.Drawing.Size(25, 13);
+            this.lnkEdit.TabIndex = 22;
+            this.lnkEdit.TabStop = true;
+            this.lnkEdit.Text = "Edit";
+            this.lnkEdit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkEdit_LinkClicked);
+            // 
+            // btnDefault
+            // 
+            this.btnDefault.Location = new System.Drawing.Point(771, 125);
+            this.btnDefault.Name = "btnDefault";
+            this.btnDefault.Size = new System.Drawing.Size(59, 23);
+            this.btnDefault.TabIndex = 23;
+            this.btnDefault.Text = "Reset";
+            this.btnDefault.UseVisualStyleBackColor = true;
+            this.btnDefault.Click += new System.EventHandler(this.btnDefault_Click);
             // 
             // MinerInfoScript
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(927, 344);
+            this.Controls.Add(this.btnDefault);
+            this.Controls.Add(this.lnkEdit);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.txtScriptArea);
+            this.Controls.Add(this.btnTemplate);
             this.Name = "MinerInfoScript";
             this.Text = "MinerInfoScript";
             this.Load += new System.EventHandler(this.MinerInfoScript_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnTemplate;
+        private System.Windows.Forms.TextBox txtScriptArea;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.LinkLabel lnkEdit;
+        private System.Windows.Forms.Button btnDefault;
     }
 }

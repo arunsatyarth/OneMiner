@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(849, 314);
             this.Name = "MinerInfoSummary";
             this.Text = "MinerInfoSummary";
+            this.Load += new System.EventHandler(this.MinerInfoSummary_Load);
             this.ResumeLayout(false);
 
         }

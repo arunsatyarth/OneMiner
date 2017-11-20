@@ -125,7 +125,7 @@
             this.pnlMinerInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlMinerInfo.Location = new System.Drawing.Point(238, 41);
             this.pnlMinerInfo.Name = "pnlMinerInfo";
-            this.pnlMinerInfo.Size = new System.Drawing.Size(841, 316);
+            this.pnlMinerInfo.Size = new System.Drawing.Size(841, 265);
             this.pnlMinerInfo.TabIndex = 14;
             // 
             // MinerInfo

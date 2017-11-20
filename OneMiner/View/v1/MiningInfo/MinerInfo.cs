@@ -19,13 +19,17 @@ namespace OneMiner.View.v1
         MainForm m_Parent = null;
         List<Button> m_tabButtons = new List<Button>();
 
-        Form m_Summary = new MinerInfoSummary();
-        Form m_Script = new MinerInfoSummary();
-        Form m_Logs = new MinerInfoSummary();
+        Form m_Summary = null;
+        Form m_Script =null;
+        Form m_Logs = null;
         public MinerInfo(IMiner miner, MainForm parent)
         {
             Miner = miner;
             m_Parent = parent;
+
+            m_Summary = new MinerInfoSummary(Miner, this);
+            m_Script = new MinerInfoScript(Miner, this);
+            m_Logs = new MinerInfoLogs(Miner, this);
             InitializeComponent();
         }
         public void SelectView(Button btn)
@@ -74,13 +78,13 @@ namespace OneMiner.View.v1
         private void btntabInfo_Click(object sender, EventArgs e)
         {
             SelectView(sender as Button) ;
-            //ShowTabInfo(m_Summary);
+            ShowTabInfo(m_Summary);
         }
 
         private void btntabScript_Click(object sender, EventArgs e)
         {
             SelectView(sender as Button);
-            //ShowTabInfo(m_Script);
+            ShowTabInfo(m_Script);
 
 
         }
@@ -88,7 +92,7 @@ namespace OneMiner.View.v1
         private void btntabLogs_Click(object sender, EventArgs e)
         {
             SelectView(sender as Button);
-            //ShowTabInfo(m_Logs);
+            ShowTabInfo(m_Logs);
 
 
         }

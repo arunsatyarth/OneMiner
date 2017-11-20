@@ -18,6 +18,8 @@ namespace OneMiner.Core.Interfaces
         ICoin MainCoin { get; set; }
         string MinerFolder { get; set; }
         string MinerEXE { get; set; }
+        string GenerateScript();
+
 
 
 

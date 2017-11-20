@@ -124,9 +124,9 @@
             // 
             this.pnlMinerInfo.BackColor = System.Drawing.Color.White;
             this.pnlMinerInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlMinerInfo.Location = new System.Drawing.Point(12, 355);
+            this.pnlMinerInfo.Location = new System.Drawing.Point(12, 326);
             this.pnlMinerInfo.Name = "pnlMinerInfo";
-            this.pnlMinerInfo.Size = new System.Drawing.Size(1117, 272);
+            this.pnlMinerInfo.Size = new System.Drawing.Size(1117, 323);
             this.pnlMinerInfo.TabIndex = 2;
             this.pnlMinerInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMinerInfo_Paint);
             // 
@@ -136,7 +136,7 @@
             this.pnlMiner.BackColor = System.Drawing.Color.Transparent;
             this.pnlMiner.Location = new System.Drawing.Point(15, 56);
             this.pnlMiner.Name = "pnlMiner";
-            this.pnlMiner.Size = new System.Drawing.Size(796, 284);
+            this.pnlMiner.Size = new System.Drawing.Size(796, 264);
             this.pnlMiner.TabIndex = 3;
             // 
             // pnlCarousal
@@ -144,7 +144,7 @@
             this.pnlCarousal.BackColor = System.Drawing.Color.White;
             this.pnlCarousal.Location = new System.Drawing.Point(817, 56);
             this.pnlCarousal.Name = "pnlCarousal";
-            this.pnlCarousal.Size = new System.Drawing.Size(312, 284);
+            this.pnlCarousal.Size = new System.Drawing.Size(312, 264);
             this.pnlCarousal.TabIndex = 0;
             // 
             // MainForm
@@ -153,7 +153,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::OneMiner.Properties.Resources.ethereum_bg1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1141, 653);
+            this.ClientSize = new System.Drawing.Size(1141, 658);
             this.Controls.Add(this.pnlCarousal);
             this.Controls.Add(this.pnlMiner);
             this.Controls.Add(this.pnlMinerInfo);

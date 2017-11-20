@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OneMiner.Core.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,8 +12,13 @@ namespace OneMiner.View.v1.MiningInfo
 {
     public partial class MinerInfoLogs : Form
     {
-        public MinerInfoLogs()
+        public IMiner Miner { get; set; }
+        MinerInfo m_Parent = null;
+
+        public MinerInfoLogs(IMiner miner, MinerInfo parent)
         {
+            Miner = miner;
+            m_Parent = parent;
             InitializeComponent();
         }
 
