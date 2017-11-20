@@ -13,34 +13,34 @@ namespace OneMiner.View.v1
 {
     public partial class MinerView : Form
     {
-        IMiner m_miner = null;
+        public IMiner Miner { get; set; }
         MainForm m_Parent = null;
         public MinerView(IMiner miner, MainForm parent)
         {
-            m_miner = miner;
+            Miner = miner;
             m_Parent = parent;
 
             InitializeComponent();
 
 
-            pbTemplate.Image = m_miner.MainCoin.Logo;
+            pbTemplate.Image = Miner.MainCoin.Logo;
             pnlTemplate.Click += pnlTemplate_Click;
 
-            lblCoinType.Text = m_miner.MainCoin.Name;
+            lblCoinType.Text = Miner.MainCoin.Name;
             if(miner.DualMining)
-                lblCoinType.Text = lblCoinType.Text + " + " + m_miner.DualCoin.Name;
-            lblMinername.Text = m_miner.Name;
+                lblCoinType.Text = lblCoinType.Text + " + " + Miner.DualCoin.Name;
+            lblMinername.Text = Miner.Name;
 
         }
 
         private void MinerView_Load(object sender, EventArgs e)
         {
-           
+            this.ContextMenuStrip = optionsMenu;
         }
 
         void pnlTemplate_Click(object sender, EventArgs e)
         {
-            m_Parent.ShowBottom(m_miner);
+            m_Parent.ShowBottom(Miner);
         }
 
         private void pnlTemplate_Paint(object sender, PaintEventArgs e)
@@ -51,12 +51,26 @@ namespace OneMiner.View.v1
         private void btnStartMining_Click(object sender, EventArgs e)
         {
 
-            Factory.Instance.CoreObject.StartMining(m_miner);
+            Factory.Instance.CoreObject.StartMining(Miner);
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             
+        }
+
+        private void selectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //MinerView view = sender as MinerView;
+            var menuItem = sender as ToolStripMenuItem;
+            var contextMenu = menuItem.GetCurrentParent() as ContextMenuStrip;
+            MinerView view = contextMenu.SourceControl as MinerView;
+            if (view != null)
+            {
+                Factory.Instance.CoreObject.SelectMiner(view.Miner);
+            }
+
+
         }
     }
 }

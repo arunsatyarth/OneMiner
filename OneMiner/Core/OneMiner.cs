@@ -62,12 +62,17 @@ namespace OneMiner.Core
             Factory.Instance.Model.AddMiner(miner);
             if (makeSelected)
             {
-                SelectedMiner = miner;
-                Factory.Instance.Model.MakeSelectedMiner(miner);
+                SelectMiner(miner);
             }
-
             Factory.Instance.ViewObject.UpdateMinerList();
         }
+        public void SelectMiner(IMiner miner)
+        {
+            SelectedMiner = miner;
+            Factory.Instance.Model.MakeSelectedMiner(miner);
+            Factory.Instance.ViewObject.UpdateMinerList();
+        }
+
         void MiningThread(object obj)
         {
             IncrThreadCount();

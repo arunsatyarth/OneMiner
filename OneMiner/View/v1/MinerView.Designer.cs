@@ -28,14 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlTemplate = new System.Windows.Forms.Panel();
             this.btnStartMining = new System.Windows.Forms.Button();
             this.lblCoinType = new System.Windows.Forms.Label();
             this.lblMinername = new System.Windows.Forms.Label();
             this.pbTemplate = new System.Windows.Forms.PictureBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.optionsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startMiningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteMinerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlTemplate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTemplate)).BeginInit();
+            this.optionsMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTemplate
@@ -105,6 +112,41 @@
             this.linkLabel1.Text = "Edit";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // optionsMenu
+            // 
+            this.optionsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem,
+            this.selectToolStripMenuItem,
+            this.startMiningToolStripMenuItem,
+            this.deleteMinerToolStripMenuItem});
+            this.optionsMenu.Name = "optionsMenu";
+            this.optionsMenu.Size = new System.Drawing.Size(153, 114);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editToolStripMenuItem.Text = "Edit Miner";
+            // 
+            // selectToolStripMenuItem
+            // 
+            this.selectToolStripMenuItem.Name = "selectToolStripMenuItem";
+            this.selectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.selectToolStripMenuItem.Text = "Make Default";
+            this.selectToolStripMenuItem.Click += new System.EventHandler(this.selectToolStripMenuItem_Click);
+            // 
+            // startMiningToolStripMenuItem
+            // 
+            this.startMiningToolStripMenuItem.Name = "startMiningToolStripMenuItem";
+            this.startMiningToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.startMiningToolStripMenuItem.Text = "Start Mining";
+            // 
+            // deleteMinerToolStripMenuItem
+            // 
+            this.deleteMinerToolStripMenuItem.Name = "deleteMinerToolStripMenuItem";
+            this.deleteMinerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteMinerToolStripMenuItem.Text = "Delete Miner";
+            // 
             // MinerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -119,6 +161,7 @@
             this.pnlTemplate.ResumeLayout(false);
             this.pnlTemplate.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTemplate)).EndInit();
+            this.optionsMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -132,5 +175,10 @@
         private System.Windows.Forms.Label lblMinername;
         private System.Windows.Forms.Button btnStartMining;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.ContextMenuStrip optionsMenu;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startMiningToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteMinerToolStripMenuItem;
     }
 }
