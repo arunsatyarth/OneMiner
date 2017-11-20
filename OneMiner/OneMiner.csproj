@@ -110,6 +110,12 @@
     <Compile Include="View\v1\ConfigureMiner.Designer.cs">
       <DependentUpon>ConfigureMiner.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\v1\Donate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\v1\Donate.Designer.cs">
+      <DependentUpon>Donate.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\v1\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\v1\ConfigureMiner.resx">
       <DependentUpon>ConfigureMiner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\v1\Donate.resx">
+      <DependentUpon>Donate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\v1\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -193,6 +202,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="View\v1\Images\miner_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="View\v1\Images\litecoin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="View\v1\Images\zcash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="View\v1\Images\bitcoin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="View\v1\Images\MyAddr\bitcoin_address.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="View\v1\Images\MyAddr\ethereum_addr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="View\v1\Images\MyAddr\litecoin_addr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="View\v1\Images\MyAddr\zcash_addr.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

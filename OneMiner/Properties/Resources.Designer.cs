@@ -63,6 +63,26 @@ namespace OneMiner.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bitcoin {
+            get {
+                object obj = ResourceManager.GetObject("bitcoin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bitcoin_address {
+            get {
+                object obj = ResourceManager.GetObject("bitcoin_address", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap decred {
             get {
                 object obj = ResourceManager.GetObject("decred", resourceCulture);
@@ -93,9 +113,39 @@ namespace OneMiner.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ethereum_addr {
+            get {
+                object obj = ResourceManager.GetObject("ethereum_addr", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ethereum_bg1 {
             get {
                 object obj = ResourceManager.GetObject("ethereum_bg1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap litecoin {
+            get {
+                object obj = ResourceManager.GetObject("litecoin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap litecoin_addr {
+            get {
+                object obj = ResourceManager.GetObject("litecoin_addr", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -107,6 +157,26 @@ namespace OneMiner.Properties {
             get {
                 object obj = ResourceManager.GetObject("miner_icon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zcash {
+            get {
+                object obj = ResourceManager.GetObject("zcash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zcash_addr {
+            get {
+                object obj = ResourceManager.GetObject("zcash_addr", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

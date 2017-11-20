@@ -36,6 +36,7 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.donateToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddMiner = new System.Windows.Forms.Button();
             this.pnlMinerInfo = new System.Windows.Forms.Panel();
             this.pnlMiner = new System.Windows.Forms.FlowLayoutPanel();
@@ -48,7 +49,8 @@
             this.miningToolStripMenuItem,
             this.profitabilityToolStripMenuItem,
             this.advancedToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.donateToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1085, 24);
@@ -70,8 +72,8 @@
             // advancedToolStripMenuItem
             // 
             this.advancedToolStripMenuItem.Name = "advancedToolStripMenuItem";
-            this.advancedToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
-            this.advancedToolStripMenuItem.Text = "Advanced";
+            this.advancedToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.advancedToolStripMenuItem.Text = "Settings";
             // 
             // aboutToolStripMenuItem
             // 
@@ -79,20 +81,28 @@
             this.donateToolStripMenuItem,
             this.aboutToolStripMenuItem1});
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.aboutToolStripMenuItem.Text = "Help";
             // 
             // donateToolStripMenuItem
             // 
             this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
-            this.donateToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.donateToolStripMenuItem.Text = "Donate";
+            this.donateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.donateToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem1.Text = "About";
+            this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
+            // 
+            // donateToolStripMenuItem1
+            // 
+            this.donateToolStripMenuItem1.Name = "donateToolStripMenuItem1";
+            this.donateToolStripMenuItem1.Size = new System.Drawing.Size(57, 20);
+            this.donateToolStripMenuItem1.Text = "Donate";
+            this.donateToolStripMenuItem1.Click += new System.EventHandler(this.donateToolStripMenuItem1_Click);
             // 
             // btnAddMiner
             // 
@@ -157,6 +167,7 @@
         private System.Windows.Forms.Button btnAddMiner;
         private System.Windows.Forms.Panel pnlMinerInfo;
         private System.Windows.Forms.FlowLayoutPanel pnlMiner;
+        private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem1;
     }
 }
 

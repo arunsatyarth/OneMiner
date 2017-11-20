@@ -1,5 +1,6 @@
 ﻿using OneMiner.Core;
 using OneMiner.Core.Interfaces;
+using OneMiner.View;
 using OneMiner.View.v1;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace OneMiner
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            
+            this.CenterToScreen();
 
         }
         private Panel ClonePanel(Panel p)
@@ -59,6 +60,18 @@ namespace OneMiner
             view.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             view.Dock = DockStyle.Fill;
             view.Show();
+        }
+
+        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            About abt = new About();
+            abt.ShowDialog();
+        }
+
+        private void donateToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Donate donate = new Donate();
+            donate.ShowDialog();
         }
 
 
