@@ -113,6 +113,7 @@
             // 
             // pnlMiner
             // 
+            this.pnlMiner.AutoScroll = true;
             this.pnlMiner.BackColor = System.Drawing.Color.Transparent;
             this.pnlMiner.Location = new System.Drawing.Point(15, 56);
             this.pnlMiner.Name = "pnlMiner";
