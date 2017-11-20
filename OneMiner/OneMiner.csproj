@@ -74,46 +74,58 @@
     <Compile Include="Model\UnZip\UnZipRarLocal.cs" />
     <Compile Include="Model\UnZip\UnZipRarSystem.cs" />
     <Compile Include="View\IView.cs" />
-    <Compile Include="View\v1\About.cs">
+    <Compile Include="View\v1\Corousal\ProfitabilitySummary.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\v1\About.Designer.cs">
+    <Compile Include="View\v1\Corousal\ProfitabilitySummary.Designer.cs">
+      <DependentUpon>ProfitabilitySummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\v1\Corousal\SettingsSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\v1\Corousal\SettingsSummary.Designer.cs">
+      <DependentUpon>SettingsSummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\v1\ExtraScreens\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\v1\ExtraScreens\About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\v1\AddDualMiner.cs">
+    <Compile Include="View\v1\AddMinerScreen\AddDualMiner.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\v1\AddDualMiner.Designer.cs">
+    <Compile Include="View\v1\AddMinerScreen\AddDualMiner.Designer.cs">
       <DependentUpon>AddDualMiner.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\v1\AddMiner.cs">
+    <Compile Include="View\v1\AddMinerScreen\AddMiner.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\v1\AddMiner.Designer.cs">
+    <Compile Include="View\v1\AddMinerScreen\AddMiner.Designer.cs">
       <DependentUpon>AddMiner.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\v1\AddMinerContainer.cs">
+    <Compile Include="View\v1\AddMinerScreen\AddMinerContainer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\v1\AddMinerContainer.Designer.cs">
+    <Compile Include="View\v1\AddMinerScreen\AddMinerContainer.Designer.cs">
       <DependentUpon>AddMinerContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\v1\AddMinerFinish.cs">
+    <Compile Include="View\v1\AddMinerScreen\AddMinerFinish.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\v1\AddMinerFinish.Designer.cs">
+    <Compile Include="View\v1\AddMinerScreen\AddMinerFinish.Designer.cs">
       <DependentUpon>AddMinerFinish.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\v1\ConfigureMiner.cs">
+    <Compile Include="View\v1\AddMinerScreen\ConfigureMiner.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\v1\ConfigureMiner.Designer.cs">
+    <Compile Include="View\v1\AddMinerScreen\ConfigureMiner.Designer.cs">
       <DependentUpon>ConfigureMiner.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\v1\Donate.cs">
+    <Compile Include="View\v1\ExtraScreens\Donate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\v1\Donate.Designer.cs">
+    <Compile Include="View\v1\ExtraScreens\Donate.Designer.cs">
       <DependentUpon>Donate.cs</DependentUpon>
     </Compile>
     <Compile Include="View\v1\MainForm.cs">
@@ -138,25 +150,31 @@
       <DependentUpon>MinerView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\v1\V1View.cs" />
-    <EmbeddedResource Include="View\v1\About.resx">
+    <EmbeddedResource Include="View\v1\Corousal\ProfitabilitySummary.resx">
+      <DependentUpon>ProfitabilitySummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\v1\Corousal\SettingsSummary.resx">
+      <DependentUpon>SettingsSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\v1\ExtraScreens\About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\v1\AddDualMiner.resx">
+    <EmbeddedResource Include="View\v1\AddMinerScreen\AddDualMiner.resx">
       <DependentUpon>AddDualMiner.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\v1\AddMiner.resx">
+    <EmbeddedResource Include="View\v1\AddMinerScreen\AddMiner.resx">
       <DependentUpon>AddMiner.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\v1\AddMinerContainer.resx">
+    <EmbeddedResource Include="View\v1\AddMinerScreen\AddMinerContainer.resx">
       <DependentUpon>AddMinerContainer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\v1\AddMinerFinish.resx">
+    <EmbeddedResource Include="View\v1\AddMinerScreen\AddMinerFinish.resx">
       <DependentUpon>AddMinerFinish.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\v1\ConfigureMiner.resx">
+    <EmbeddedResource Include="View\v1\AddMinerScreen\ConfigureMiner.resx">
       <DependentUpon>ConfigureMiner.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\v1\Donate.resx">
+    <EmbeddedResource Include="View\v1\ExtraScreens\Donate.resx">
       <DependentUpon>Donate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\v1\MainForm.resx">
