@@ -1,5 +1,7 @@
 # OneMiner
-Simple UI to mixed GPU Miners(Nvidia &amp; AMD) for Ethereum, ZCash  etc
+Simple UI to mixed GPU Miners(Nvidia &amp; AMD) for Ethereum, ZCash  etc.
+
+The name was meant to signify that it is a one click miner but also to hold a subtle  reference to the 'One Ring" from 'Lord of the Rings'. But I hold no delusions of grandeur about its supremacy.
 
 
 You should use this for the following reasons

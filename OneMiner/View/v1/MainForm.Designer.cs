@@ -130,6 +130,7 @@
             this.Controls.Add(this.pnlMinerInfo);
             this.Controls.Add(this.btnAddMiner);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";

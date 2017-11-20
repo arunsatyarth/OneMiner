@@ -138,12 +138,21 @@ namespace OneMiner.Core
             //Todo:loda core from the db
             DB db = Factory.Instance.Model.Data;
             //1. Load mineralgos and miner programs
-            foreach (IMinerData item in db.Miners)
+            if (db.Miners.Count == 0)
             {
-                IHashAlgorithm algo = Factory.Instance.CreateAlgoObject(item.Algorithm);
-                IMiner miner=algo.RegenerateMiner(item);
-                if(miner!=null)
-                    Miners.Add(miner);
+                //load default ether miner
+
+
+            }
+            else
+            {
+                foreach (IMinerData item in db.Miners)
+                {
+                    IHashAlgorithm algo = Factory.Instance.CreateAlgoObject(item.Algorithm);
+                    IMiner miner = algo.RegenerateMiner(item);
+                    if (miner != null)
+                        Miners.Add(miner);
+                }
             }
             //2. load configured miners
         }
