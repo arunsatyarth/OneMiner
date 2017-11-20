@@ -126,6 +126,7 @@
             this.pnlMinerInfo.Name = "pnlMinerInfo";
             this.pnlMinerInfo.Size = new System.Drawing.Size(1117, 272);
             this.pnlMinerInfo.TabIndex = 2;
+            this.pnlMinerInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMinerInfo_Paint);
             // 
             // pnlMiner
             // 

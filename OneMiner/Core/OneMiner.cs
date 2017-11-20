@@ -61,7 +61,10 @@ namespace OneMiner.Core
             Miners.Add(miner);
             Factory.Instance.Model.AddMiner(miner);
             if (makeSelected)
+            {
                 SelectedMiner = miner;
+                Factory.Instance.Model.MakeSelectedMiner(miner);
+            }
 
             Factory.Instance.ViewObject.UpdateMinerList();
         }
@@ -145,6 +148,7 @@ namespace OneMiner.Core
                 IMiner miner = algo.DefaultMiner();
                 if (miner != null)
                     Miners.Add(miner);
+                SelectedMiner = miner;
 
 
 
@@ -156,7 +160,11 @@ namespace OneMiner.Core
                     IHashAlgorithm algo = Factory.Instance.CreateAlgoObject(item.Algorithm);
                     IMiner miner = algo.RegenerateMiner(item);
                     if (miner != null)
+                    {
                         Miners.Add(miner);
+                        if (miner.Id == db.CurrentMinerId)
+                            SelectedMiner = miner;
+                    }
                 }
             }
             //2. load configured miners

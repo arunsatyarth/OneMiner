@@ -108,20 +108,10 @@ namespace OneMiner.EthHash
                 if (mainCoin != null)
                 {
                     ICoinConfigurer mainCoinConfigurer = mainCoin.SettingsScreen;
-                    mainCoinConfigurer.Pool = minerData.MainCoinPool;
-                    mainCoinConfigurer.Wallet = minerData.MainCoinWallet;
-                    if (minerData.DualMining)
-                    {
-                        dualCoin = CreateCoinObject(minerData.DualCoin);
-                        if (dualCoin != null)
-                        {
-                            ICoinConfigurer dualCoinConfigurer = dualCoin.SettingsScreen;
-                            dualCoinConfigurer.Pool = minerData.DualCoinPool;
-                            dualCoinConfigurer.Wallet = minerData.DualCoinWallet;
-                        }
-                    }
+                    mainCoinConfigurer.Pool = "eu1.ethermine.org:4444";
+                    mainCoinConfigurer.Wallet = "0x033ff6918d434cef3887d8e529c14d1bcb91ca8b";
                 }
-                miner = CreateMiner(minerData.Id, mainCoin, minerData.DualMining, dualCoin, minerData.Name);
+                miner = CreateMiner(GenerateUniqueID(), mainCoin, false, null, "Default Ethereum Miner");
 
             }
             catch (Exception e)

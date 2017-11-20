@@ -29,7 +29,13 @@ namespace OneMiner.View.v1.Corousal
         }
         void t_Tick(object sender, EventArgs e)
         {
-            UpdateTime();
+            try
+            {
+                UpdateTime();
+            }
+            catch (Exception )
+            {
+            }
         }
         public void UpdateTime()
         {
@@ -48,7 +54,7 @@ namespace OneMiner.View.v1.Corousal
             try
             {
                 Config model = Factory.Instance.Model;
-                IMiner miner = Factory.Instance.CoreObject.ActiveMiner;
+                IMiner miner = Factory.Instance.CoreObject.SelectedMiner;
                 if (miner != null)
                 {
                     lblActiveMiner.Text = miner.Name;
@@ -57,7 +63,6 @@ namespace OneMiner.View.v1.Corousal
                 if (model.Data.Option.MineOnStartup)
                     mineonStartup = "Yes";
                 lblMineOnStartup.Text = mineonStartup;
-
 
                 UpdateTime();
             }

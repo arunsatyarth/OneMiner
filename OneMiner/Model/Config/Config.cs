@@ -10,7 +10,7 @@ namespace OneMiner.Model.Config
 {
     class Config
     {
-        public DB Data{get;set;}
+        public DB Data { get; set; }
         Hashtable m_AlgoHash = new Hashtable();
         Hashtable m_MinerHash = new Hashtable();
         Hashtable m_MinerNameHash = new Hashtable();
@@ -18,7 +18,7 @@ namespace OneMiner.Model.Config
         private ConfigFileManager m_config_manager = new ConfigFileManager();
         private void InitData()
         {
-            Data=new DB();
+            Data = new DB();
         }
         private void PopulateData()
         {
@@ -37,7 +37,7 @@ namespace OneMiner.Model.Config
         {
             try
             {
-                InitData();                
+                InitData();
                 DB d = (DB)new JavaScriptSerializer().Deserialize(m_config_manager.Data, typeof(DB));
                 if (d != null)
                 {
@@ -50,11 +50,23 @@ namespace OneMiner.Model.Config
             {
             }
         }
+        public void MakeSelectedMiner(IMiner miner)
+        {
+            try
+            {
+                Data.CurrentMinerId = miner.Id;
+                Save();
+
+            }
+            catch (Exception ex)
+            {
+            }
+        }
         public void Save()
         {
             try
             {
-                string data=new JavaScriptSerializer().Serialize(Data);
+                string data = new JavaScriptSerializer().Serialize(Data);
                 m_config_manager.Data = data;
                 m_config_manager.WriteData();
 
@@ -75,7 +87,7 @@ namespace OneMiner.Model.Config
             {
             }
 
-        }        
+        }
         public void AddMinerProgram(IMinerProgram program)
         {
             try

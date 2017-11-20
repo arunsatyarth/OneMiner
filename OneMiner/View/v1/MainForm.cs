@@ -38,15 +38,22 @@ namespace OneMiner
 
             RunCarousal();
         }
+        SettingsSummary m_SettingsSummary = new SettingsSummary();
+        ProfitabilitySummary m_ProfitabilitySummary = new ProfitabilitySummary();
+        public void ShowSettingsCarausal()
+        {
+            m_SettingsSummary.UpdateSettingsView();
+            BringToView(m_SettingsSummary);
+        }
         public void RunCarousal()
         {
-            m_Corousals.Add(new SettingsSummary());
-            m_Corousals.Add(new ProfitabilitySummary());
+            m_Corousals.Add(m_SettingsSummary);
+            m_Corousals.Add(m_ProfitabilitySummary);
 
             Form next = m_Corousals.ElementAt<Form>(m_CurrentCarousal);
             BringToView(next);
             System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
-            t.Interval = 60000;
+            t.Interval = 6000;
             t.Tick += t_Tick;
             t.Start();
         }
@@ -112,6 +119,7 @@ namespace OneMiner
                 //view.Dock = DockStyle.Fill;
                 view.Show();
             }
+            ShowSettingsCarausal();
         }
         
 
@@ -136,6 +144,10 @@ namespace OneMiner
         {
             Donate donate = new Donate();
             donate.ShowDialog();
+        }
+
+        private void pnlMinerInfo_Paint(object sender, PaintEventArgs e)
+        {
         }
 
 
