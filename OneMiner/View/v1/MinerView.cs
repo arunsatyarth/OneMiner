@@ -53,5 +53,10 @@ namespace OneMiner.View.v1
 
             Factory.Instance.CoreObject.StartMining(m_miner);
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            
+        }
     }
 }

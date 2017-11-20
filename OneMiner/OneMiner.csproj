@@ -128,6 +128,12 @@
     <Compile Include="View\v1\ExtraScreens\Donate.Designer.cs">
       <DependentUpon>Donate.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\v1\ExtraScreens\Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\v1\ExtraScreens\Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\v1\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\v1\ExtraScreens\Donate.resx">
       <DependentUpon>Donate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\v1\ExtraScreens\Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\v1\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

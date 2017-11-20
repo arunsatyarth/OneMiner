@@ -4,6 +4,7 @@ using OneMiner.Model.Config;
 using OneMiner.View;
 using OneMiner.View.v1;
 using OneMiner.View.v1.Corousal;
+using OneMiner.View.v1.ExtraScreens;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,7 +54,7 @@ namespace OneMiner
             Form next = m_Corousals.ElementAt<Form>(m_CurrentCarousal);
             BringToView(next);
             System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
-            t.Interval = 6000;
+            t.Interval = 60000;
             t.Tick += t_Tick;
             t.Start();
         }
@@ -148,6 +149,12 @@ namespace OneMiner
 
         private void pnlMinerInfo_Paint(object sender, PaintEventArgs e)
         {
+        }
+
+        private void advancedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Settings settings = new Settings();
+            settings.ShowDialog();
         }
 
 

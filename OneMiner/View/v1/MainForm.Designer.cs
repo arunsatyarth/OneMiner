@@ -76,6 +76,7 @@
             this.advancedToolStripMenuItem.Name = "advancedToolStripMenuItem";
             this.advancedToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.advancedToolStripMenuItem.Text = "Settings";
+            this.advancedToolStripMenuItem.Click += new System.EventHandler(this.advancedToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 

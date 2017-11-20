@@ -1,6 +1,7 @@
 ﻿using OneMiner.Core;
 using OneMiner.Core.Interfaces;
 using OneMiner.Model.Config;
+using OneMiner.View.v1.ExtraScreens;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -69,6 +70,12 @@ namespace OneMiner.View.v1.Corousal
             catch (Exception e)
             {
             }
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Settings settings = new Settings();
+            settings.ShowDialog();
         }
     }
 }
