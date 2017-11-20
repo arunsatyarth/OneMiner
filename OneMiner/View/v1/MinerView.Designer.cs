@@ -33,6 +33,7 @@
             this.lblCoinType = new System.Windows.Forms.Label();
             this.lblMinername = new System.Windows.Forms.Label();
             this.pbTemplate = new System.Windows.Forms.PictureBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.pnlTemplate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTemplate)).BeginInit();
             this.SuspendLayout();
@@ -52,6 +53,7 @@
             // 
             // btnStartMining
             // 
+            this.btnStartMining.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStartMining.Location = new System.Drawing.Point(278, 18);
             this.btnStartMining.Name = "btnStartMining";
             this.btnStartMining.Size = new System.Drawing.Size(75, 23);
@@ -63,18 +65,20 @@
             // lblCoinType
             // 
             this.lblCoinType.AutoSize = true;
+            this.lblCoinType.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCoinType.Location = new System.Drawing.Point(83, 28);
             this.lblCoinType.Name = "lblCoinType";
-            this.lblCoinType.Size = new System.Drawing.Size(52, 13);
+            this.lblCoinType.Size = new System.Drawing.Size(58, 15);
             this.lblCoinType.TabIndex = 2;
             this.lblCoinType.Text = "CoinType";
             // 
             // lblMinername
             // 
             this.lblMinername.AutoSize = true;
+            this.lblMinername.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMinername.Location = new System.Drawing.Point(83, 3);
             this.lblMinername.Name = "lblMinername";
-            this.lblMinername.Size = new System.Drawing.Size(56, 13);
+            this.lblMinername.Size = new System.Drawing.Size(64, 15);
             this.lblMinername.TabIndex = 1;
             this.lblMinername.Text = "CoinName";
             // 
@@ -88,12 +92,25 @@
             this.pbTemplate.TabIndex = 0;
             this.pbTemplate.TabStop = false;
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.linkLabel1.LinkColor = System.Drawing.Color.SteelBlue;
+            this.linkLabel1.Location = new System.Drawing.Point(332, 5);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(25, 13);
+            this.linkLabel1.TabIndex = 4;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Edit";
+            // 
             // MinerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(388, 64);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.pnlTemplate);
             this.Name = "MinerView";
             this.Text = "MinerView";
@@ -102,6 +119,7 @@
             this.pnlTemplate.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTemplate)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -112,5 +130,6 @@
         private System.Windows.Forms.Label lblCoinType;
         private System.Windows.Forms.Label lblMinername;
         private System.Windows.Forms.Button btnStartMining;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

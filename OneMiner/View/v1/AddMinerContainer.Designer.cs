@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddMinerContainer));
             this.pnlForm = new System.Windows.Forms.Panel();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
@@ -94,8 +95,9 @@
             this.Controls.Add(this.btnPrevious);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.pnlForm);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddMinerContainer";
-            this.Text = "AddMinerContainer";
+            this.Text = "Add Miner";
             this.Load += new System.EventHandler(this.AddMinerContainer_Load);
             this.ResumeLayout(false);
 

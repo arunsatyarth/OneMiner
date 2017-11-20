@@ -127,6 +127,9 @@
   <data name="decred" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Coins\EthHash\Images\decred.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\View\v1\Images\edit.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ethclassic" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Coins\EthHash\Images\ethclassic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

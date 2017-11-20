@@ -278,6 +278,8 @@ namespace OneMiner.View.v1
         {
             ShowStage();
             ChangeUIState();
+            this.CenterToScreen();
+
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)
