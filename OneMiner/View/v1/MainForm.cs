@@ -116,6 +116,16 @@ namespace OneMiner
                     item.DeSelectView();
             }
         }
+        public void ActivateMiningView(MinerView view)
+        {
+            foreach (MinerView item in pnlMiner.Controls)
+            {
+                if (item == view)
+                    item.ActivateView();
+                else
+                    item.DeActivateView();
+            }
+        }
         public void UpdateMinerList()
         {
             List<IMiner> miners = Factory.Instance.CoreObject.Miners;
@@ -131,13 +141,16 @@ namespace OneMiner
                 //view.Dock = DockStyle.Fill;
                 view.Show();
                 if (Factory.Instance.CoreObject.SelectedMiner == item)
+                {
                     view.SelectView();
+                    view.ActivateView();
+                }
             }
             ShowSettingsCarausal();
         }
 
 
-        public void ShowBottom(IMiner miner)
+        public void ShowMiningView(IMiner miner)
         {
             MinerInfo view = new MinerInfo(miner, this);
             view.TopLevel = false;

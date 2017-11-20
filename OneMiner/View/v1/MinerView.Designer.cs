@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pnlTemplate = new System.Windows.Forms.Panel();
+            this.pbSelected = new System.Windows.Forms.PictureBox();
             this.btnStartMining = new System.Windows.Forms.Button();
             this.lblCoinType = new System.Windows.Forms.Label();
             this.lblMinername = new System.Windows.Forms.Label();
@@ -40,6 +41,7 @@
             this.startMiningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteMinerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlTemplate.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSelected)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTemplate)).BeginInit();
             this.optionsMenu.SuspendLayout();
             this.SuspendLayout();
@@ -47,6 +49,7 @@
             // pnlTemplate
             // 
             this.pnlTemplate.BackColor = System.Drawing.Color.White;
+            this.pnlTemplate.Controls.Add(this.pbSelected);
             this.pnlTemplate.Controls.Add(this.btnStartMining);
             this.pnlTemplate.Controls.Add(this.lblCoinType);
             this.pnlTemplate.Controls.Add(this.lblMinername);
@@ -56,6 +59,17 @@
             this.pnlTemplate.Size = new System.Drawing.Size(385, 58);
             this.pnlTemplate.TabIndex = 3;
             this.pnlTemplate.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlTemplate_Paint);
+            // 
+            // pbSelected
+            // 
+            this.pbSelected.Image = global::OneMiner.Properties.Resources.selected;
+            this.pbSelected.Location = new System.Drawing.Point(0, 3);
+            this.pbSelected.Name = "pbSelected";
+            this.pbSelected.Size = new System.Drawing.Size(25, 24);
+            this.pbSelected.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSelected.TabIndex = 4;
+            this.pbSelected.TabStop = false;
+            this.pbSelected.Visible = false;
             // 
             // btnStartMining
             // 
@@ -101,36 +115,36 @@
             // optionsMenu
             // 
             this.optionsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editToolStripMenuItem,
             this.selectToolStripMenuItem,
             this.startMiningToolStripMenuItem,
+            this.editToolStripMenuItem,
             this.deleteMinerToolStripMenuItem});
             this.optionsMenu.Name = "optionsMenu";
-            this.optionsMenu.Size = new System.Drawing.Size(145, 92);
+            this.optionsMenu.Size = new System.Drawing.Size(153, 114);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editToolStripMenuItem.Text = "Edit Miner";
             // 
             // selectToolStripMenuItem
             // 
             this.selectToolStripMenuItem.Name = "selectToolStripMenuItem";
-            this.selectToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.selectToolStripMenuItem.Text = "Make Default";
+            this.selectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.selectToolStripMenuItem.Text = "Activate";
             this.selectToolStripMenuItem.Click += new System.EventHandler(this.selectToolStripMenuItem_Click);
             // 
             // startMiningToolStripMenuItem
             // 
             this.startMiningToolStripMenuItem.Name = "startMiningToolStripMenuItem";
-            this.startMiningToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.startMiningToolStripMenuItem.Text = "Start Mining";
+            this.startMiningToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.startMiningToolStripMenuItem.Text = "Start";
             // 
             // deleteMinerToolStripMenuItem
             // 
             this.deleteMinerToolStripMenuItem.Name = "deleteMinerToolStripMenuItem";
-            this.deleteMinerToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.deleteMinerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.deleteMinerToolStripMenuItem.Text = "Delete Miner";
             // 
             // MinerView
@@ -146,6 +160,7 @@
             this.Load += new System.EventHandler(this.MinerView_Load);
             this.pnlTemplate.ResumeLayout(false);
             this.pnlTemplate.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSelected)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTemplate)).EndInit();
             this.optionsMenu.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -164,5 +179,6 @@
         private System.Windows.Forms.ToolStripMenuItem selectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startMiningToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteMinerToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pbSelected;
     }
 }

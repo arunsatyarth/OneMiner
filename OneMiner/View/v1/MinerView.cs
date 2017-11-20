@@ -37,6 +37,16 @@ namespace OneMiner.View.v1
         {
             this.ContextMenuStrip = optionsMenu;
         }
+
+        public void ActivateView()
+        {
+            pbSelected.Visible = true;
+        }
+        public void DeActivateView()
+        {
+            pbSelected.Visible = false;
+            //pbSelected.Image = Properties.Resources.selected;
+        }       
         public void SelectView()
         {
             this.BackColor = Color.SteelBlue;
@@ -51,7 +61,7 @@ namespace OneMiner.View.v1
         {
             m_Parent.SelectMiningView(this);
 
-            m_Parent.ShowBottom(Miner);
+            m_Parent.ShowMiningView(Miner);
         }
 
         private void pnlTemplate_Paint(object sender, PaintEventArgs e)
