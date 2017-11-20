@@ -123,6 +123,7 @@
             // pnlMinerInfo
             // 
             this.pnlMinerInfo.BackColor = System.Drawing.Color.White;
+            this.pnlMinerInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlMinerInfo.Location = new System.Drawing.Point(12, 355);
             this.pnlMinerInfo.Name = "pnlMinerInfo";
             this.pnlMinerInfo.Size = new System.Drawing.Size(1117, 272);

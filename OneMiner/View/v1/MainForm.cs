@@ -36,7 +36,6 @@ namespace OneMiner
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.CenterToScreen();
-
             RunCarousal();
         }
         SettingsSummary m_SettingsSummary = new SettingsSummary();
