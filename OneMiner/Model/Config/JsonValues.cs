@@ -75,6 +75,9 @@ namespace OneMiner.Model.Config
             MineOnStartup = true;
         }
     }
+    /// <summary>
+    /// minerprogram is specific to an algorithm but MinerScript is specific to a miner object
+    /// </summary>
     public class MinerProgram
     {
         public string ProgramType { get; set; }//eg:mvidia or AMD
@@ -92,12 +95,19 @@ namespace OneMiner.Model.Config
         }
 
     }
+    public class MinerScript : IMinerScript
+    {
+        public string ProgramType { get; set; }//eg:mvidia or AMD
+        public string BATfile { get; set; }
+        public bool AutomaticScriptGeneration { get; set; }
+
+    }
     public class MinerData : IMinerData
     {
         public string Id { get; set; }
         public string Name { get; set; }
         public string Algorithm { get; set; }
-        public string BATFileName { get; set; }
+        //public string BATFileName { get; set; }
         public string MainCoin { get; set; }
         public string MainCoinPool { get; set; }
         public string MainCoinWallet { get; set; }
@@ -105,12 +115,14 @@ namespace OneMiner.Model.Config
         public string DualCoin { get; set; }
         public string DualCoinPool { get; set; }
         public string DualCoinWallet { get; set; }
+        public List<IMinerScript> MinerScripts { get; set; }
+
         public MinerData()
         {
             Id = "";
             Name = "";
             Algorithm = "";
-            BATFileName ="";
+            //BATFileName ="";
             MainCoin ="";
             MainCoinPool ="";
             MainCoinWallet ="";
@@ -118,6 +130,8 @@ namespace OneMiner.Model.Config
             DualCoin ="";
             DualCoinPool ="";
             DualCoinWallet ="";
+            MinerScripts = new List<IMinerScript>();
+
         }
 
     }
@@ -208,6 +222,39 @@ namespace OneMiner.Model.Config
             return toSave;
 
         }
+        public bool AddMinerScript(IMinerProgram program,IMiner miner)
+        {
+            bool toSave = false;
+
+            foreach (MinerData item in Miners)
+            {
+                if(item.Id==miner.Id)
+                {
+                    //identified the miner
+                    foreach (MinerScript script in item.MinerScripts)
+                    {
+                        if (script.ProgramType == program.Type)
+                        {
+                            script.BATfile = program.BATFILE;
+                            script.AutomaticScriptGeneration = program.AutomaticScriptGeneration;
+                            toSave = true;
+                        }
+                    }
+                    if(toSave == false)
+                    {
+                        MinerScript script = new MinerScript();
+                        script.ProgramType = program.Type;
+                        script.BATfile = program.BATFILE;
+                        script.AutomaticScriptGeneration = program.AutomaticScriptGeneration;
+                        item.MinerScripts.Add(script);
+                        toSave = true;
+                    }
+
+                }
+            }
+            return toSave;
+
+        }
         public bool AddMiner(IMiner miner)
         {
             bool toSave = false;
@@ -222,7 +269,7 @@ namespace OneMiner.Model.Config
             newMiner.Id =miner.Id;
             newMiner.Name = miner.Name;
             newMiner.Algorithm = miner.MainCoin.Algorithm.Name;
-            newMiner.BATFileName ="";
+            //newMiner.BATFileName ="";
             newMiner.MainCoin=miner.MainCoin.Name;
             newMiner.MainCoinPool =mainCoinConfigurer.Pool;
             newMiner.MainCoinWallet =mainCoinConfigurer.Wallet;
@@ -232,6 +279,16 @@ namespace OneMiner.Model.Config
                 newMiner.DualCoin = miner.DualCoin.Name;
                 newMiner.DualCoinPool = dualCoinConfigurer.Pool;
                 newMiner.DualCoinWallet = dualCoinConfigurer.Wallet;
+            }
+            //minerprograms
+            foreach (IMinerProgram item in miner.MinerPrograms)
+            {
+                MinerScript script = new MinerScript();
+                script.BATfile = item.BATFILE;
+                script.ProgramType = item.Type;
+                script.AutomaticScriptGeneration = item.AutomaticScriptGeneration;
+                newMiner.MinerScripts.Add(script);
+                
             }
 
             //if a similar type is alredy present, them remove it

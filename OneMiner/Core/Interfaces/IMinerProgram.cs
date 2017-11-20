@@ -7,7 +7,8 @@ namespace OneMiner.Core.Interfaces
 {
     public interface  IMinerProgram
     {
-        bool ProgramPresent();
+        bool MiningScriptsPresent();//bat file
+        bool ProgramPresent();//exe files
         void DownloadProgram();
         void StartMining();
         /// <summary>
@@ -16,9 +17,16 @@ namespace OneMiner.Core.Interfaces
         void KillMiner();
         string Type { get; set; }//claymore ccminer etc
         ICoin MainCoin { get; set; }
+        string BATFILE { get; set; }
+        //if script HashSet been changed manually, WeakReference CannotUnloadAppDomainException generate script automatically anymore
+        bool AutomaticScriptGeneration { get; set; }
+        
+
         string MinerFolder { get; set; }
         string MinerEXE { get; set; }
         string GenerateScript();
+        void ModifyScript(string script);
+
 
 
 

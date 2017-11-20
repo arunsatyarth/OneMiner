@@ -26,10 +26,13 @@ namespace OneMiner.Coins.EthHash
 
         public string MinerFolder { get; set; }
         public string MinerEXE { get; set; }
-        private string BATFILE  { get; set; }
+        public string BATFILE  { get; set; }
+        public bool AutomaticScriptGeneration { get; set; }
+
 
         public MinerProgramState MinerState { get; set; }
 
+        public IMiner Miner { get; set; }
         public ICoin MainCoin { get; set; }
         public ICoin DualCoin { get; set; }
 
@@ -40,12 +43,10 @@ namespace OneMiner.Coins.EthHash
         public string Type { get; set; }//claymore ccminer etc
 
 
-        public ClaymoreMiner(ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName)
+        public ClaymoreMiner(ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName,IMiner miner)
         {
 
             MinerState = MinerProgramState.Stopped;
-            //Todo: load the minerxee from config file if alredy donloaded
-
 
             MainCoin = mainCoin;
             MainCoinConfigurer = mainCoin.SettingsScreen;
@@ -54,12 +55,23 @@ namespace OneMiner.Coins.EthHash
                 DualCoinConfigurer = DualCoin.SettingsScreen;
             DualMining = dualMining;
             Name = minerName;
+            Miner = miner;
+            AutomaticScriptGeneration = true;
             Type = "Claymore";
 
         }
-        
 
 
+
+        public bool MiningScriptsPresent()
+        {
+            if ( BATFILE == null || BATFILE == "")
+                return false;
+            FileInfo script = new FileInfo(BATFILE);
+            if (script.Exists)
+                return true;
+            return ProgramPresent();
+        }
         public bool ProgramPresent()
         {
             if (MinerEXE == null || MinerEXE == "")
@@ -69,7 +81,7 @@ namespace OneMiner.Coins.EthHash
                 return true;
             return false;
         }
-        public void SaveToDB()
+        public void SaveProgramToDB()
         {
             if (ProgramPresent())
             {
@@ -78,16 +90,30 @@ namespace OneMiner.Coins.EthHash
 
             }
         }
+        public void SaveScriptToDB()
+        {
+            if (MiningScriptsPresent())
+            {
+                Config model = Factory.Instance.Model;
+                model.AddMinerScript(this, Miner);
+
+            }
+        }
         public  void DownloadProgram()
         {
-            MinerState = MinerProgramState.Downloading;
-            MinerDownloader downloader = new MinerDownloader(MINERURL, EXENAME);
+            if (!ProgramPresent())
+            {
+                MinerState = MinerProgramState.Downloading;
+                MinerDownloader downloader = new MinerDownloader(MINERURL, EXENAME);
 
-            MinerFolder = downloader.DownloadFile();
-            MinerEXE = MinerFolder + @"\" + EXENAME;
-            BATFILE = MinerFolder + @"\" + Name+".bat";
-            SaveToDB();
+                MinerFolder = downloader.DownloadFile();
+                MinerEXE = MinerFolder + @"\" + EXENAME;
+                SaveProgramToDB();
+
+            }
+            BATFILE = MinerFolder + @"\" + Name + ".bat";
             ConfigureMiner();
+            SaveScriptToDB();
             MinerState = MinerProgramState.Stopped;
 
         }
@@ -147,12 +173,30 @@ namespace OneMiner.Coins.EthHash
                 return "";
             }
         }
+        public void ModifyScript(string script)
+        {
+            Script = script;
+            SaveToBAtFile();
+            AutomaticScriptGeneration = false;
+
+        }
         private void ConfigureMiner()
         {
             try
             {
                 GenerateScript();
-                FileStream stream=File.Open(BATFILE,FileMode.Create);
+                SaveToBAtFile();
+
+            }
+            catch (Exception e)
+            {
+            }
+        }
+        private void SaveToBAtFile()
+        {
+            try
+            {
+                FileStream stream = File.Open(BATFILE, FileMode.Create);
                 StreamWriter sw = new StreamWriter(stream);
                 sw.Write(Script);
                 sw.Flush();

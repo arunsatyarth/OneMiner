@@ -94,6 +94,12 @@ namespace OneMiner.View.v1.MiningInfo
         private void btnSave_Click(object sender, EventArgs e)
         {
             DisableEdit();
+            if (m_currentButton != null)
+            {
+                IMinerProgram prog = m_ButtonToMiner[m_currentButton.Name] as IMinerProgram;
+                prog.ModifyScript(txtScriptArea.Text);
+
+            }
         }
 
         private void btnDefault_Click(object sender, EventArgs e)

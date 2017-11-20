@@ -83,7 +83,7 @@ namespace OneMiner.Core
                 else
                 {
                     IMinerProgram miner = MiningQueue.Dequeue();
-                    if (miner.ProgramPresent())
+                    if (miner.MiningScriptsPresent())
                     {
                         miner.StartMining();
                     }
@@ -105,7 +105,7 @@ namespace OneMiner.Core
                 {
                     IMinerProgram miner = DownloadingQueue.Dequeue();
                     miner.DownloadProgram();
-                    if (miner.ProgramPresent())
+                    if (miner.MiningScriptsPresent())
                         MiningQueue.Enqueue(miner);
 
                 }

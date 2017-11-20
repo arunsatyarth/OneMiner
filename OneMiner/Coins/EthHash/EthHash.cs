@@ -111,7 +111,7 @@ namespace OneMiner.EthHash
                     mainCoinConfigurer.Pool = "eu1.ethermine.org:4444";
                     mainCoinConfigurer.Wallet = "0x033ff6918d434cef3887d8e529c14d1bcb91ca8b";
                 }
-                miner = CreateMiner(GenerateUniqueID(), mainCoin, false, null, "Default Ethereum Miner");
+                miner = CreateMiner(GenerateUniqueID(), mainCoin, false, null, "Default Ethereum Miner",null);
 
             }
             catch (Exception e)
@@ -125,7 +125,7 @@ namespace OneMiner.EthHash
         public IMiner CreateMiner(ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName)
         {
 
-            IMiner miner = CreateMiner(GenerateUniqueID(), mainCoin, dualMining, dualCoin, minerName);
+            IMiner miner = CreateMiner(GenerateUniqueID(), mainCoin, dualMining, dualCoin, minerName,null);
             return miner;
         }
         private ICoin CreateCoinObject(string name)
@@ -169,7 +169,8 @@ namespace OneMiner.EthHash
                         }
                     }
                 }
-                miner = CreateMiner(minerData.Id, mainCoin, minerData.DualMining, dualCoin, minerData.Name);
+                miner = CreateMiner(minerData.Id, mainCoin, minerData.DualMining, dualCoin, minerData.Name,minerData);
+                miner.InitializePrograms();
 
             }
             catch (Exception e)
@@ -179,10 +180,10 @@ namespace OneMiner.EthHash
             return miner;
         }
 
-        private  IMiner CreateMiner(string id,ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName)
+        private  IMiner CreateMiner(string id,ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName,IMinerData data)
         {
 
-            IMiner miner = new EthereumData(id, mainCoin, dualMining, dualCoin, minerName);
+            IMiner miner = new EthereumData(id, mainCoin, dualMining, dualCoin, minerName,data);
             return miner;
         }
 

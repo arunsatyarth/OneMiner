@@ -17,6 +17,7 @@ namespace OneMiner.Core.Interfaces
 
         void StartMining();
         void StopMining();
+        void InitializePrograms();
 
 
     }

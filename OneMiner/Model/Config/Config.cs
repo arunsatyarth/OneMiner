@@ -100,6 +100,18 @@ namespace OneMiner.Model.Config
             }
 
         }
+        public void AddMinerScript(IMinerProgram program,IMiner miner)
+        {
+            try
+            {
+                if (Data.AddMinerScript(program,miner))
+                    Save();
+            }
+            catch (Exception e)
+            {
+            }
+
+        }
         public void AddMiner(IMiner miner)
         {
             try
