@@ -37,9 +37,20 @@ namespace OneMiner.View.v1
         {
             this.ContextMenuStrip = optionsMenu;
         }
+        public void SelectView()
+        {
+            this.BackColor = Color.SteelBlue;
 
+        }
+        public void DeSelectView()
+        {
+            this.BackColor = Color.White;
+
+        }
         void pnlTemplate_Click(object sender, EventArgs e)
         {
+            m_Parent.SelectMiningView(this);
+
             m_Parent.ShowBottom(Miner);
         }
 

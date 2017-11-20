@@ -46,6 +46,7 @@ namespace OneMiner
             m_SettingsSummary.UpdateSettingsView();
             BringToView(m_SettingsSummary);
         }
+
         public void RunCarousal()
         {
             m_Corousals.Add(m_SettingsSummary);
@@ -91,7 +92,7 @@ namespace OneMiner
         void t_Tick(object sender, EventArgs e)
         {
 
-            Form previous=m_Corousals.ElementAt<Form>(m_CurrentCarousal);
+            Form previous = m_Corousals.ElementAt<Form>(m_CurrentCarousal);
             m_CurrentCarousal++;
             if (m_CurrentCarousal >= m_Corousals.Count)
                 m_CurrentCarousal = 0;
@@ -106,6 +107,16 @@ namespace OneMiner
         {
             return null;
         }
+        public void SelectMiningView(MinerView view)
+        {
+            foreach (MinerView item in pnlMiner.Controls)
+            {
+                if(item==view)
+                    item.SelectView();
+                else
+                    item.DeSelectView();
+            }
+        }
         public void UpdateMinerList()
         {
             List<IMiner> miners = Factory.Instance.CoreObject.Miners;
@@ -113,16 +124,19 @@ namespace OneMiner
 
             foreach (IMiner item in miners)
             {
+
                 MinerView view = new MinerView(item, this);
                 view.TopLevel = false;
                 pnlMiner.Controls.Add(view);
                 view.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
                 //view.Dock = DockStyle.Fill;
                 view.Show();
+                if (Factory.Instance.CoreObject.SelectedMiner == item)
+                    view.SelectView();
             }
             ShowSettingsCarausal();
         }
-        
+
 
         public void ShowBottom(IMiner miner)
         {

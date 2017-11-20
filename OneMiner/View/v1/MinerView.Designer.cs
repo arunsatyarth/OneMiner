@@ -34,7 +34,6 @@
             this.lblCoinType = new System.Windows.Forms.Label();
             this.lblMinername = new System.Windows.Forms.Label();
             this.pbTemplate = new System.Windows.Forms.PictureBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.optionsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,9 +60,9 @@
             // btnStartMining
             // 
             this.btnStartMining.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStartMining.Location = new System.Drawing.Point(278, 18);
+            this.btnStartMining.Location = new System.Drawing.Point(287, 23);
             this.btnStartMining.Name = "btnStartMining";
-            this.btnStartMining.Size = new System.Drawing.Size(75, 23);
+            this.btnStartMining.Size = new System.Drawing.Size(53, 25);
             this.btnStartMining.TabIndex = 3;
             this.btnStartMining.Text = "Start";
             this.btnStartMining.UseVisualStyleBackColor = true;
@@ -99,19 +98,6 @@
             this.pbTemplate.TabIndex = 0;
             this.pbTemplate.TabStop = false;
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.linkLabel1.LinkColor = System.Drawing.Color.SteelBlue;
-            this.linkLabel1.Location = new System.Drawing.Point(332, 5);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(25, 13);
-            this.linkLabel1.TabIndex = 4;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Edit";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
             // optionsMenu
             // 
             this.optionsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -120,31 +106,31 @@
             this.startMiningToolStripMenuItem,
             this.deleteMinerToolStripMenuItem});
             this.optionsMenu.Name = "optionsMenu";
-            this.optionsMenu.Size = new System.Drawing.Size(153, 114);
+            this.optionsMenu.Size = new System.Drawing.Size(145, 92);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.editToolStripMenuItem.Text = "Edit Miner";
             // 
             // selectToolStripMenuItem
             // 
             this.selectToolStripMenuItem.Name = "selectToolStripMenuItem";
-            this.selectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.selectToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.selectToolStripMenuItem.Text = "Make Default";
             this.selectToolStripMenuItem.Click += new System.EventHandler(this.selectToolStripMenuItem_Click);
             // 
             // startMiningToolStripMenuItem
             // 
             this.startMiningToolStripMenuItem.Name = "startMiningToolStripMenuItem";
-            this.startMiningToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.startMiningToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.startMiningToolStripMenuItem.Text = "Start Mining";
             // 
             // deleteMinerToolStripMenuItem
             // 
             this.deleteMinerToolStripMenuItem.Name = "deleteMinerToolStripMenuItem";
-            this.deleteMinerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteMinerToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.deleteMinerToolStripMenuItem.Text = "Delete Miner";
             // 
             // MinerView
@@ -152,9 +138,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(388, 64);
-            this.Controls.Add(this.linkLabel1);
+            this.ClientSize = new System.Drawing.Size(392, 67);
             this.Controls.Add(this.pnlTemplate);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MinerView";
             this.Text = "MinerView";
             this.Load += new System.EventHandler(this.MinerView_Load);
@@ -163,7 +149,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbTemplate)).EndInit();
             this.optionsMenu.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -174,7 +159,6 @@
         private System.Windows.Forms.Label lblCoinType;
         private System.Windows.Forms.Label lblMinername;
         private System.Windows.Forms.Button btnStartMining;
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.ContextMenuStrip optionsMenu;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selectToolStripMenuItem;
