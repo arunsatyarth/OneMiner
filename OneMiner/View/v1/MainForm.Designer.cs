@@ -39,9 +39,15 @@
             this.donateToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddMiner = new System.Windows.Forms.Button();
             this.pnlMinerInfo = new System.Windows.Forms.Panel();
+            this.tabMinerInfo = new System.Windows.Forms.TabControl();
+            this.tbPageGeneralInfo = new System.Windows.Forms.TabPage();
+            this.tbPageScript = new System.Windows.Forms.TabPage();
+            this.tbPageLog = new System.Windows.Forms.TabPage();
             this.pnlMiner = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlCarousal = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
+            this.pnlMinerInfo.SuspendLayout();
+            this.tabMinerInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -124,11 +130,52 @@
             // 
             this.pnlMinerInfo.BackColor = System.Drawing.Color.White;
             this.pnlMinerInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMinerInfo.Controls.Add(this.tabMinerInfo);
             this.pnlMinerInfo.Location = new System.Drawing.Point(12, 355);
             this.pnlMinerInfo.Name = "pnlMinerInfo";
             this.pnlMinerInfo.Size = new System.Drawing.Size(1117, 272);
             this.pnlMinerInfo.TabIndex = 2;
             this.pnlMinerInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMinerInfo_Paint);
+            // 
+            // tabMinerInfo
+            // 
+            this.tabMinerInfo.Controls.Add(this.tbPageGeneralInfo);
+            this.tabMinerInfo.Controls.Add(this.tbPageScript);
+            this.tabMinerInfo.Controls.Add(this.tbPageLog);
+            this.tabMinerInfo.Location = new System.Drawing.Point(1000, 23);
+            this.tabMinerInfo.Name = "tabMinerInfo";
+            this.tabMinerInfo.SelectedIndex = 0;
+            this.tabMinerInfo.Size = new System.Drawing.Size(97, 95);
+            this.tabMinerInfo.TabIndex = 4;
+            // 
+            // tbPageGeneralInfo
+            // 
+            this.tbPageGeneralInfo.Location = new System.Drawing.Point(4, 22);
+            this.tbPageGeneralInfo.Name = "tbPageGeneralInfo";
+            this.tbPageGeneralInfo.Padding = new System.Windows.Forms.Padding(3);
+            this.tbPageGeneralInfo.Size = new System.Drawing.Size(89, 69);
+            this.tbPageGeneralInfo.TabIndex = 0;
+            this.tbPageGeneralInfo.Text = "Info";
+            this.tbPageGeneralInfo.UseVisualStyleBackColor = true;
+            // 
+            // tbPageScript
+            // 
+            this.tbPageScript.Location = new System.Drawing.Point(4, 22);
+            this.tbPageScript.Name = "tbPageScript";
+            this.tbPageScript.Padding = new System.Windows.Forms.Padding(3);
+            this.tbPageScript.Size = new System.Drawing.Size(89, 69);
+            this.tbPageScript.TabIndex = 1;
+            this.tbPageScript.Text = "Scripts";
+            this.tbPageScript.UseVisualStyleBackColor = true;
+            // 
+            // tbPageLog
+            // 
+            this.tbPageLog.Location = new System.Drawing.Point(4, 22);
+            this.tbPageLog.Name = "tbPageLog";
+            this.tbPageLog.Size = new System.Drawing.Size(89, 69);
+            this.tbPageLog.TabIndex = 2;
+            this.tbPageLog.Text = "Logs";
+            this.tbPageLog.UseVisualStyleBackColor = true;
             // 
             // pnlMiner
             // 
@@ -168,6 +215,8 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.pnlMinerInfo.ResumeLayout(false);
+            this.tabMinerInfo.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,6 +236,10 @@
         private System.Windows.Forms.FlowLayoutPanel pnlMiner;
         private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem1;
         private System.Windows.Forms.Panel pnlCarousal;
+        private System.Windows.Forms.TabControl tabMinerInfo;
+        private System.Windows.Forms.TabPage tbPageGeneralInfo;
+        private System.Windows.Forms.TabPage tbPageScript;
+        private System.Windows.Forms.TabPage tbPageLog;
     }
 }
 
