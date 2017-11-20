@@ -36,9 +36,9 @@
             this.lblMinername = new System.Windows.Forms.Label();
             this.pbTemplate = new System.Windows.Forms.PictureBox();
             this.optionsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startMiningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteMinerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlTemplate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSelected)).BeginInit();
@@ -56,7 +56,7 @@
             this.pnlTemplate.Controls.Add(this.pbTemplate);
             this.pnlTemplate.Location = new System.Drawing.Point(4, 5);
             this.pnlTemplate.Name = "pnlTemplate";
-            this.pnlTemplate.Size = new System.Drawing.Size(385, 58);
+            this.pnlTemplate.Size = new System.Drawing.Size(366, 58);
             this.pnlTemplate.TabIndex = 3;
             this.pnlTemplate.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlTemplate_Paint);
             // 
@@ -120,31 +120,31 @@
             this.editToolStripMenuItem,
             this.deleteMinerToolStripMenuItem});
             this.optionsMenu.Name = "optionsMenu";
-            this.optionsMenu.Size = new System.Drawing.Size(153, 114);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.editToolStripMenuItem.Text = "Edit Miner";
+            this.optionsMenu.Size = new System.Drawing.Size(142, 92);
             // 
             // selectToolStripMenuItem
             // 
             this.selectToolStripMenuItem.Name = "selectToolStripMenuItem";
-            this.selectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.selectToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.selectToolStripMenuItem.Text = "Activate";
             this.selectToolStripMenuItem.Click += new System.EventHandler(this.selectToolStripMenuItem_Click);
             // 
             // startMiningToolStripMenuItem
             // 
             this.startMiningToolStripMenuItem.Name = "startMiningToolStripMenuItem";
-            this.startMiningToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.startMiningToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.startMiningToolStripMenuItem.Text = "Start";
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.editToolStripMenuItem.Text = "Edit Miner";
             // 
             // deleteMinerToolStripMenuItem
             // 
             this.deleteMinerToolStripMenuItem.Name = "deleteMinerToolStripMenuItem";
-            this.deleteMinerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteMinerToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.deleteMinerToolStripMenuItem.Text = "Delete Miner";
             // 
             // MinerView
@@ -152,7 +152,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(392, 67);
+            this.ClientSize = new System.Drawing.Size(373, 67);
             this.Controls.Add(this.pnlTemplate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MinerView";

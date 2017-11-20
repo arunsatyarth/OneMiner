@@ -35,6 +35,7 @@
             this.lblMinerType = new System.Windows.Forms.Label();
             this.pbTemplate = new System.Windows.Forms.PictureBox();
             this.lblMinerState = new System.Windows.Forms.Label();
+            this.pnlMinerInfo = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pbTemplate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,25 +53,27 @@
             // 
             this.btntabScript.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btntabScript.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btntabScript.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btntabScript.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btntabScript.Location = new System.Drawing.Point(310, 12);
             this.btntabScript.Name = "btntabScript";
             this.btntabScript.Size = new System.Drawing.Size(75, 23);
             this.btntabScript.TabIndex = 10;
             this.btntabScript.Text = "Script";
             this.btntabScript.UseVisualStyleBackColor = false;
+            this.btntabScript.Click += new System.EventHandler(this.btntabScript_Click);
             // 
             // btntabLogs
             // 
             this.btntabLogs.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btntabLogs.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btntabLogs.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btntabLogs.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btntabLogs.Location = new System.Drawing.Point(381, 12);
             this.btntabLogs.Name = "btntabLogs";
             this.btntabLogs.Size = new System.Drawing.Size(75, 23);
             this.btntabLogs.TabIndex = 9;
-            this.btntabLogs.Text = "Log";
+            this.btntabLogs.Text = "Logs";
             this.btntabLogs.UseVisualStyleBackColor = false;
+            this.btntabLogs.Click += new System.EventHandler(this.btntabLogs_Click);
             // 
             // btntabInfo
             // 
@@ -82,7 +85,7 @@
             this.btntabInfo.Name = "btntabInfo";
             this.btntabInfo.Size = new System.Drawing.Size(75, 23);
             this.btntabInfo.TabIndex = 8;
-            this.btntabInfo.Text = "Info";
+            this.btntabInfo.Text = "Summary";
             this.btntabInfo.UseVisualStyleBackColor = false;
             this.btntabInfo.Click += new System.EventHandler(this.btntabInfo_Click);
             // 
@@ -116,11 +119,22 @@
             this.lblMinerState.TabIndex = 13;
             this.lblMinerState.Text = "Defaultstate";
             // 
+            // pnlMinerInfo
+            // 
+            this.pnlMinerInfo.BackColor = System.Drawing.Color.White;
+            this.pnlMinerInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMinerInfo.Location = new System.Drawing.Point(238, 41);
+            this.pnlMinerInfo.Name = "pnlMinerInfo";
+            this.pnlMinerInfo.Size = new System.Drawing.Size(841, 316);
+            this.pnlMinerInfo.TabIndex = 14;
+            // 
             // MinerInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1091, 499);
+            this.Controls.Add(this.pnlMinerInfo);
             this.Controls.Add(this.lblMinerState);
             this.Controls.Add(this.pbTemplate);
             this.Controls.Add(this.lblMinerType);
@@ -146,5 +160,6 @@
         private System.Windows.Forms.Label lblMinerType;
         private System.Windows.Forms.PictureBox pbTemplate;
         private System.Windows.Forms.Label lblMinerState;
+        private System.Windows.Forms.Panel pnlMinerInfo;
     }
 }

@@ -136,15 +136,15 @@
             this.pnlMiner.BackColor = System.Drawing.Color.Transparent;
             this.pnlMiner.Location = new System.Drawing.Point(15, 56);
             this.pnlMiner.Name = "pnlMiner";
-            this.pnlMiner.Size = new System.Drawing.Size(808, 284);
+            this.pnlMiner.Size = new System.Drawing.Size(796, 284);
             this.pnlMiner.TabIndex = 3;
             // 
             // pnlCarousal
             // 
             this.pnlCarousal.BackColor = System.Drawing.Color.White;
-            this.pnlCarousal.Location = new System.Drawing.Point(839, 56);
+            this.pnlCarousal.Location = new System.Drawing.Point(817, 56);
             this.pnlCarousal.Name = "pnlCarousal";
-            this.pnlCarousal.Size = new System.Drawing.Size(290, 284);
+            this.pnlCarousal.Size = new System.Drawing.Size(312, 284);
             this.pnlCarousal.TabIndex = 0;
             // 
             // MainForm

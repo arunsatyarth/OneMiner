@@ -144,6 +144,7 @@ namespace OneMiner
                 {
                     view.SelectView();
                     view.ActivateView();
+                    ShowMiningView(item);
                 }
             }
             ShowSettingsCarausal();

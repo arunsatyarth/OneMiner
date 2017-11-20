@@ -1,4 +1,5 @@
 ﻿using OneMiner.Core.Interfaces;
+using OneMiner.View.v1.MiningInfo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,10 @@ namespace OneMiner.View.v1
         
         MainForm m_Parent = null;
         List<Button> m_tabButtons = new List<Button>();
+
+        Form m_Summary = new MinerInfoSummary();
+        Form m_Script = new MinerInfoSummary();
+        Form m_Logs = new MinerInfoSummary();
         public MinerInfo(IMiner miner, MainForm parent)
         {
             Miner = miner;
@@ -25,16 +30,23 @@ namespace OneMiner.View.v1
         }
         public void SelectView(Button btn)
         {
-            btn.BackColor = Color.SteelBlue;
-            btn.ForeColor = Color.White;
+            foreach (Button item in m_tabButtons)
+            {
+                if(btn==item)
+                {
+                    item.BackColor = Color.SteelBlue;
+                    item.ForeColor = Color.White;
+                }
+                else
+                {
+                    item.BackColor = Color.LightSteelBlue;
+                    item.ForeColor = Color.Black;
+                }
+            }
+
 
         }
-        public void DeSelectView(Button btn)
-        {
-            btn.BackColor = Color.LightSteelBlue;
-            btn.ForeColor = Color.Black;
 
-        }
 
         private void MinerInfo_Load(object sender, EventArgs e)
         {
@@ -50,10 +62,35 @@ namespace OneMiner.View.v1
             m_tabButtons.Add(btntabScript);
             //btntabInfo.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
         }
-
+        public void ShowTabInfo(Form form)
+        {
+            form.TopLevel = false;
+            pnlMinerInfo.Controls.Clear();
+            pnlMinerInfo.Controls.Add(form);
+            form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+            form.Show();
+        }
         private void btntabInfo_Click(object sender, EventArgs e)
         {
             SelectView(sender as Button) ;
+            //ShowTabInfo(m_Summary);
+        }
+
+        private void btntabScript_Click(object sender, EventArgs e)
+        {
+            SelectView(sender as Button);
+            //ShowTabInfo(m_Script);
+
+
+        }
+
+        private void btntabLogs_Click(object sender, EventArgs e)
+        {
+            SelectView(sender as Button);
+            //ShowTabInfo(m_Logs);
+
+
         }
     }
 }
