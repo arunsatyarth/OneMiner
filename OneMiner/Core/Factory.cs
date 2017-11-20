@@ -26,6 +26,7 @@ namespace OneMiner.Core
         public OneMiner CoreObject { get; set; }
         public Config Model { get; set; }
         public IView ViewObject { get; set; }
+        public DateTime StartTime { get; set; }
 
 
 
@@ -38,6 +39,7 @@ namespace OneMiner.Core
             CoreObject = new OneMiner();
             m_algoHash[AlgoEnums.EthHash] = new EthHash.EthHash();
             m_algorithms.Add(m_algoHash[AlgoEnums.EthHash] as IHashAlgorithm);
+            StartTime = DateTime.Now;
 	    }
         private void Init()
         {
