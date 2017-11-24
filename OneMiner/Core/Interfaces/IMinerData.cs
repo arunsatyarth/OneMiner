@@ -10,6 +10,7 @@ namespace OneMiner.Core.Interfaces
     {
         string ProgramType { get; set; }//eg:mvidia or AMD
         string BATfile { get; set; }
+        bool BATCopied { get; set; }//bat file has been copied inside miner folder. true generally means its ready to mine
         bool AutomaticScriptGeneration { get; set; }
     }
     public interface IMinerData

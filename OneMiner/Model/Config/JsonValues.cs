@@ -99,12 +99,15 @@ namespace OneMiner.Model.Config
     {
         public string ProgramType { get; set; }//eg:mvidia or AMD
         public string BATfile { get; set; }
+        public bool BATCopied { get; set; }//bat file has been copied inside miner folder. true generally means its ready to mine
+
         public bool AutomaticScriptGeneration { get; set; }
         public MinerScript()
         {
             ProgramType = "";
             BATfile = "";
             AutomaticScriptGeneration = true;
+            BATCopied = false;
         }
 
     }
@@ -242,6 +245,7 @@ namespace OneMiner.Model.Config
                         if (script.ProgramType == program.Type)
                         {
                             script.BATfile = program.BATFILE;
+                            script.BATCopied = program.BATCopied;
                             script.AutomaticScriptGeneration = program.AutomaticScriptGeneration;
                             toSave = true;
                         }
@@ -251,6 +255,7 @@ namespace OneMiner.Model.Config
                         MinerScript script = new MinerScript();
                         script.ProgramType = program.Type;
                         script.BATfile = program.BATFILE;
+                        script.BATCopied = program.BATCopied;
                         script.AutomaticScriptGeneration = program.AutomaticScriptGeneration;
                         item.MinerScripts.Add(script);
                         toSave = true;

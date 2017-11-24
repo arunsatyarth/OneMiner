@@ -51,8 +51,8 @@ namespace OneMiner.Model
                 {
                     folder.Create();
                 }
-                string batName = folderFullname + name + ".bat";
-                return batName;
+                //string batName = folderFullname + name + ".bat";
+                return folderFullname;
 
             }
             catch (Exception )

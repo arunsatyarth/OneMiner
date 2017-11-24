@@ -27,6 +27,8 @@ namespace OneMiner.Coins.EthHash
         public string MinerFolder { get; set; }
         public string MinerEXE { get; set; }
         public string BATFILE  { get; set; }
+        public bool BATCopied { get; set; }
+
         public bool AutomaticScriptGeneration { get; set; }
 
 
@@ -60,12 +62,16 @@ namespace OneMiner.Coins.EthHash
             AutomaticScriptGeneration = true;
             Type = "Claymore";
             m_downloader = new MinerDownloader(MINERURL, EXENAME);
-
+            GenerateScript();
 
         }
 
 
 
+        public bool ReadyForMining()
+        {
+            return MiningScriptsPresent() && ProgramPresent() && BATCopied;
+        }
         public bool MiningScriptsPresent()
         {
             if ( BATFILE == null || BATFILE == "")
@@ -102,33 +108,45 @@ namespace OneMiner.Coins.EthHash
 
             }
         }
+
+        public string FormBatFileName(string folder)
+        {
+            return folder+ @"\" +Miner.Name+".bat";
+        }
         public  void DownloadProgram()
         {
-            if (!ProgramPresent())
+            try
             {
-                MinerState = MinerProgramState.Downloading;
-
-                MinerFolder = m_downloader.DownloadFile();
-                MinerEXE = MinerFolder + @"\" + EXENAME;
-                SaveProgramToDB();
-
-            }
-            string actualBatfileName = MinerFolder + @"\" + Name + ".bat";
-
-            if(AutomaticScriptGeneration==false)
-            {
-                //this might be becoz user has edited the bat file
-                FileInfo file = new FileInfo(BATFILE);
-                if(file.Exists)
+                if (!ProgramPresent())
                 {
-                    file.CopyTo(actualBatfileName);
-                }
-            }
-            BATFILE = actualBatfileName;
-            ConfigureMiner();
-            SaveScriptToDB();
-            MinerState = MinerProgramState.Stopped;
+                    MinerState = MinerProgramState.Downloading;
 
+                    MinerFolder = m_downloader.DownloadFile();
+                    MinerEXE = MinerFolder + @"\" + EXENAME;
+                    SaveProgramToDB();
+
+                }
+                string actualBatfileName = FormBatFileName(MinerFolder);
+
+                if (AutomaticScriptGeneration == false)
+                {
+                    //this might be becoz user has edited the bat file
+                    FileInfo file = new FileInfo(BATFILE);
+                    if (file.Exists)
+                    {
+                        file.CopyTo(actualBatfileName,true);
+                    }
+                }
+                BATFILE = actualBatfileName;
+                ConfigureMiner();
+                BATCopied = true;
+                SaveScriptToDB();
+                MinerState = MinerProgramState.Stopped;
+            }
+            catch (Exception e)
+            {
+                Logger.Instance.LogError(e.Message);
+            }
         }
 
         public void  StartMining()
@@ -193,7 +211,14 @@ namespace OneMiner.Coins.EthHash
         public void ModifyScript(string script)
         {
             Script = script;
-            string tempBatFile = m_downloader.GetTempBatFile(Miner.Id,Type,Miner.Name);
+            string tempBatFile = "";
+            string tempBatFileFolder = "";
+            if (MinerFolder!=null && MinerFolder!="")
+                tempBatFileFolder = MinerFolder;
+            else
+                tempBatFileFolder = m_downloader.GetTempBatFile(Miner.Id, Type, Miner.Name);
+            tempBatFile = FormBatFileName(tempBatFileFolder);
+
             if(tempBatFile!="")
             {
                 BATFILE = tempBatFile;

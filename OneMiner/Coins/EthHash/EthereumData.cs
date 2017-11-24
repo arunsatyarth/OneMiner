@@ -77,6 +77,7 @@ namespace OneMiner.EthHash
                             if (scr != null)
                             {
                                 item.BATFILE = scr.BATfile;
+                                item.BATCopied = scr.BATCopied;
                                 item.AutomaticScriptGeneration = scr.AutomaticScriptGeneration;
                                 item.LoadScript();
 
