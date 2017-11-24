@@ -33,7 +33,6 @@ namespace OneMiner.Core
 
         private Logger()
         {
-            s_obj = new Logger();
         }
 
         public static ILogger Instance
