@@ -24,6 +24,8 @@ namespace OneMiner.Model
         {
             m_url = url;
             m_verifyName = verifyName;
+            m_fileio = GetFileIOObject();
+
         }
         private IFileIO GetFileIOObject()
         {
@@ -38,6 +40,26 @@ namespace OneMiner.Model
 
             throw new Exception("Couldnt create file");
         }
+        public string GetTempBatFile(string Id,string type,string name)
+        {
+            try
+            {
+                string foldername = Id + "_" + type;
+                string folderFullname = m_fileio.FolderName + @"\NonDownloadedMiners\" + foldername + @"\";
+                DirectoryInfo folder = new DirectoryInfo(folderFullname);
+                if(!folder.Exists)
+                {
+                    folder.Create();
+                }
+                string batName = folderFullname + name + ".bat";
+                return batName;
+
+            }
+            catch (Exception )
+            {
+                return "";
+            }
+        }
         /// <summary>
         /// doenloads the zip file uncompresses it and returns the foldername
         /// </summary>
@@ -47,7 +69,6 @@ namespace OneMiner.Model
             try
             {
                 //get the appdata path and get name of target zipfile
-                m_fileio = GetFileIOObject();
                 m_zipFilename = GetFileName();
                 m_zipFilePath = m_fileio.FolderName  + m_zipFilename;
 

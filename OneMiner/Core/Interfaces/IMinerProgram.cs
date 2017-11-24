@@ -25,7 +25,10 @@ namespace OneMiner.Core.Interfaces
         string MinerFolder { get; set; }
         string MinerEXE { get; set; }
         string GenerateScript();
+        void LoadScript();
         void ModifyScript(string script);
+        string Script { get; set; }
+
 
 
 

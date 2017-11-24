@@ -41,6 +41,7 @@ namespace OneMiner.Coins.EthHash
         public bool DualMining { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }//claymore ccminer etc
+        MinerDownloader m_downloader = null;
 
 
         public ClaymoreMiner(ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName,IMiner miner)
@@ -58,6 +59,8 @@ namespace OneMiner.Coins.EthHash
             Miner = miner;
             AutomaticScriptGeneration = true;
             Type = "Claymore";
+            m_downloader = new MinerDownloader(MINERURL, EXENAME);
+
 
         }
 
@@ -104,14 +107,24 @@ namespace OneMiner.Coins.EthHash
             if (!ProgramPresent())
             {
                 MinerState = MinerProgramState.Downloading;
-                MinerDownloader downloader = new MinerDownloader(MINERURL, EXENAME);
 
-                MinerFolder = downloader.DownloadFile();
+                MinerFolder = m_downloader.DownloadFile();
                 MinerEXE = MinerFolder + @"\" + EXENAME;
                 SaveProgramToDB();
 
             }
-            BATFILE = MinerFolder + @"\" + Name + ".bat";
+            string actualBatfileName = MinerFolder + @"\" + Name + ".bat";
+
+            if(AutomaticScriptGeneration==false)
+            {
+                //this might be becoz user has edited the bat file
+                FileInfo file = new FileInfo(BATFILE);
+                if(file.Exists)
+                {
+                    file.CopyTo(actualBatfileName);
+                }
+            }
+            BATFILE = actualBatfileName;
             ConfigureMiner();
             SaveScriptToDB();
             MinerState = MinerProgramState.Stopped;
@@ -149,6 +162,8 @@ namespace OneMiner.Coins.EthHash
         {
             //Todo:
         }
+
+
         public  string GenerateScript()
         {
             try
@@ -166,6 +181,8 @@ namespace OneMiner.Coins.EthHash
                 }
 
                 Script = SCRIPT1+command;
+                AutomaticScriptGeneration = true;
+                SaveScriptToDB();
                 return Script;
             }
             catch (Exception e)
@@ -176,14 +193,22 @@ namespace OneMiner.Coins.EthHash
         public void ModifyScript(string script)
         {
             Script = script;
-            SaveToBAtFile();
-            AutomaticScriptGeneration = false;
-
+            string tempBatFile = m_downloader.GetTempBatFile(Miner.Id,Type,Miner.Name);
+            if(tempBatFile!="")
+            {
+                BATFILE = tempBatFile;
+                SaveToBAtFile();
+                AutomaticScriptGeneration = false;
+                SaveScriptToDB();
+            }
         }
         private void ConfigureMiner()
         {
             try
             {
+                if (AutomaticScriptGeneration == false)
+                    return;
+
                 GenerateScript();
                 SaveToBAtFile();
 
@@ -203,6 +228,26 @@ namespace OneMiner.Coins.EthHash
                 sw.Close();
                 //generate script and write to folder
 
+            }
+            catch (Exception e)
+            {
+            }
+        }
+        public void LoadScript()
+        {
+            try
+            {
+                if (AutomaticScriptGeneration)
+                {
+                    GenerateScript();
+                }
+                else
+                {
+                    FileStream stream = File.Open(BATFILE, FileMode.Open);
+                    StreamReader sr = new StreamReader(stream);
+                    Script = sr.ReadToEnd();
+                    sr.Close();
+                }
             }
             catch (Exception e)
             {

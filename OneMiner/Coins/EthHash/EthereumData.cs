@@ -52,8 +52,8 @@ namespace OneMiner.EthHash
                 if (algo != null)
                 {
                     List<MinerProgram> programs = algo.MinerPrograms;
-                    if (programs != null && programs.Count > 0)
-                    {
+                    //if (programs != null && programs.Count > 0)
+                    //{
                         //at least 1 program is there
                         Hashtable progs = new Hashtable();
                         Hashtable scripts = new Hashtable();
@@ -78,9 +78,11 @@ namespace OneMiner.EthHash
                             {
                                 item.BATFILE = scr.BATfile;
                                 item.AutomaticScriptGeneration = scr.AutomaticScriptGeneration;
+                                item.LoadScript();
+
                             }
                         }
-                    }
+                    //}
 
                 }
             }

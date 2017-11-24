@@ -68,7 +68,7 @@ namespace OneMiner.View.v1.MiningInfo
             if (btn != null)
             {
                 IMinerProgram prog = m_ButtonToMiner[btn.Name] as IMinerProgram;
-                string script = prog.GenerateScript();
+                string script = prog.Script;
                 txtScriptArea.Text = script;
                 DisableEdit();
 
