@@ -100,6 +100,12 @@ namespace OneMiner.Model.Config
         public string ProgramType { get; set; }//eg:mvidia or AMD
         public string BATfile { get; set; }
         public bool AutomaticScriptGeneration { get; set; }
+        public MinerScript()
+        {
+            ProgramType = "";
+            BATfile = "";
+            AutomaticScriptGeneration = true;
+        }
 
     }
     public class MinerData : IMinerData
@@ -115,7 +121,7 @@ namespace OneMiner.Model.Config
         public string DualCoin { get; set; }
         public string DualCoinPool { get; set; }
         public string DualCoinWallet { get; set; }
-        public List<IMinerScript> MinerScripts { get; set; }
+        public List<MinerScript> MinerScripts { get; set; }
 
         public MinerData()
         {
@@ -130,7 +136,7 @@ namespace OneMiner.Model.Config
             DualCoin ="";
             DualCoinPool ="";
             DualCoinWallet ="";
-            MinerScripts = new List<IMinerScript>();
+            MinerScripts = new List<MinerScript>();
 
         }
 

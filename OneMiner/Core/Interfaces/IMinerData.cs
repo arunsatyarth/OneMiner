@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OneMiner.Model.Config;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,7 @@ namespace OneMiner.Core.Interfaces
         string DualCoin { get; set; }
         string DualCoinPool { get; set; }
         string DualCoinWallet { get; set; }
-        List<IMinerScript> MinerScripts { get; set; }
+        List<MinerScript> MinerScripts { get; set; }
 
     }
 }
