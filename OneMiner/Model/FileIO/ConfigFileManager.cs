@@ -76,5 +76,41 @@ namespace OneMiner.Model
 
             }
         }
+        //if config file couldnt be read for whatever reason, then any new data entries would overwrite previous values
+        //so take a backup
+        public void BackupConfigFile()
+        {
+            try
+            {
+                bool unique = false;
+                Random rnd = new Random();
+                string oldfile = GetFileName();
+                FileInfo f1 = new FileInfo(oldfile);
+                FileInfo f2=null;
+                int tries = 0;
+                while (!unique && tries<5)
+                {
+                    int num = rnd.Next(1, 9999999);
+
+                    string filename = oldfile + num.ToString();
+
+                    f2 = new FileInfo(filename);
+                    if (!f2.Exists)
+                    {
+                        unique = true;
+                    }
+                    tries++;
+                }
+                if(unique)
+                {
+                    f1.CopyTo(f2.FullName);
+                }
+             
+            }
+            catch (Exception)
+            {
+            }
+
+        }
     }
 }

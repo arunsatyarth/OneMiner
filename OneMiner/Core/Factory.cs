@@ -26,6 +26,7 @@ namespace OneMiner.Core
         public OneMiner CoreObject { get; set; }
         public Config Model { get; set; }
         public IView ViewObject { get; set; }
+        public ILogger Logger { get; set; }
         public DateTime StartTime { get; set; }
 
 

@@ -49,6 +49,7 @@
     <Compile Include="Coins\EthHash\ClaymoreMiner.cs" />
     <Compile Include="Coins\EthHash\EtherClassic.cs" />
     <Compile Include="Core\Factory.cs" />
+    <Compile Include="Core\Interfaces\ILogger.cs" />
     <Compile Include="Core\Interfaces\IMiner.cs" />
     <Compile Include="Core\Interfaces\ICoin.cs" />
     <Compile Include="Core\Interfaces\ICoinConfigurer.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Coins\EthHash\Ethereum.cs" />
     <Compile Include="Coins\EthHash\EthereumData.cs" />
     <Compile Include="Coins\EthHash\EthHash.cs" />
+    <Compile Include="Core\Logger.cs" />
     <Compile Include="Core\OneMiner.cs" />
     <Compile Include="Model\FileIO\AppData.cs" />
     <Compile Include="Model\FileIO\ConfigFileManager.cs" />

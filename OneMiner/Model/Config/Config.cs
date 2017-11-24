@@ -1,4 +1,5 @@
-﻿using OneMiner.Core.Interfaces;
+﻿using OneMiner.Core;
+using OneMiner.Core.Interfaces;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,6 +34,7 @@ namespace OneMiner.Model.Config
             }
 
         }
+
         public Config()
         {
             try
@@ -48,6 +50,8 @@ namespace OneMiner.Model.Config
             }
             catch (Exception ex)
             {
+                Logger.Instance.LogError(ex.Message);
+                m_config_manager.BackupConfigFile();
             }
         }
         public void MakeSelectedMiner(IMiner miner)
@@ -100,11 +104,11 @@ namespace OneMiner.Model.Config
             }
 
         }
-        public void AddMinerScript(IMinerProgram program,IMiner miner)
+        public void AddMinerScript(IMinerProgram program, IMiner miner)
         {
             try
             {
-                if (Data.AddMinerScript(program,miner))
+                if (Data.AddMinerScript(program, miner))
                     Save();
             }
             catch (Exception e)
@@ -144,13 +148,16 @@ namespace OneMiner.Model.Config
             Random rnd = new Random();
             bool unique = false;
             string name = "";
-            while (!unique)
+            int tries = 0;
+
+            while (!unique && tries < 5)
             {
                 int num = rnd.Next(1, 100);
                 name = "Miner" + num.ToString();
                 object item = m_MinerNameHash[name];
                 if (item == null)
                     unique = true;
+                tries++;
             }
             return name;
         }
