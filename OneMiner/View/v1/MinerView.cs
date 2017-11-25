@@ -15,13 +15,6 @@ namespace OneMiner.View.v1
     {
         public IMiner Miner { get; set; }
         MainForm m_Parent = null;
-        enum ViewState
-        {
-            Started=0,
-            Stopped,
-            END
-        }
-        ViewState m_ViewState = ViewState.Stopped;
         public MinerView(IMiner miner, MainForm parent)
         {
             Miner = miner;
@@ -62,7 +55,7 @@ namespace OneMiner.View.v1
                     buttontext = "Stop";
                     break;
                 case MinerProgramState.Downloading:
-                    lblMinerState.ForeColor = SystemColors.GradientActiveCaption;
+                    lblMinerState.ForeColor = SystemColors.HotTrack;
                     labelName = Miner.MinerState.ToString();
                     buttontext = "Stop";
                     break;
@@ -128,23 +121,6 @@ namespace OneMiner.View.v1
 
         private void btnStartMining_Click(object sender, EventArgs e)
         {
-            string text = "";
-            /*
-            if (m_ViewState == ViewState.Stopped)
-            {
-                Factory.Instance.CoreObject.StartMining(Miner);
-                m_ViewState = ViewState.Started;
-                text = "Stop";
-            }
-            else
-            {
-                Factory.Instance.CoreObject.StopMining();
-                m_ViewState = ViewState.Stopped;
-                text = "Start";
-            }
-            btnStartMining.Text = text;
-            optionsMenu.Items[1].Text = text;
-             */
             switch (Miner.MinerState)
             {
                 case MinerProgramState.Starting:

@@ -124,6 +124,7 @@ namespace OneMiner.Coins.EthHash
                 if (!ProgramPresent())
                 {
                     MinerState = MinerProgramState.Downloading;
+                    Miner.SetRunningState(this, MinerState);
 
                     MinerFolder = m_downloader.DownloadFile();
                     MinerEXE = MinerFolder + @"\" + EXENAME;
@@ -244,6 +245,8 @@ namespace OneMiner.Coins.EthHash
                     }
                     m_Process = null;
                     MinerState = MinerProgramState.Stopped;
+                    Miner.SetRunningState(this, MinerState);
+
                 }
                 catch (Exception e)
                 {

@@ -116,6 +116,10 @@ namespace OneMiner.EthHash
                 MinerState = MinerProgramState.Running;
             else
                 MinerState = MinerProgramState.Stopping;//ideally it shudnt com here
+
+            //if its not running or partiallyrunning then check if its downloading. if so then set it
+            if (MinerState == MinerProgramState.Stopped && state == MinerProgramState.Downloading)
+                MinerState = MinerProgramState.Downloading;
             Factory.Instance.ViewObject.UpDateMinerState();
 
         }

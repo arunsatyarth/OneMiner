@@ -84,7 +84,6 @@ namespace OneMiner.Core
         void MiningThread(object obj)
         {
             IncrThreadCount();
-            //List<IMinerProgram> runningMiners = new List<IMinerProgram>();
             while (m_keepRunning)//thread runs as long as app is on
             {
                 try
@@ -126,25 +125,6 @@ namespace OneMiner.Core
                                 }
 
                             }
-                            /*
-                                foreach (IMinerProgram item in RunningMiners)
-
-                            {
-                                if (!item.Running())
-                                {
-                                    item.SetRunningState(MinerProgramState.Stopped);
-                                    //just to be sure. we never want to start miner twice
-                                    item.KillMiner();
-                                    //Dont directly start mining. push it to queue and let the workflow start. also only if mining is stil on
-                                    if (m_keepMining)
-                                    {
-                                        MessageBox.Show(item.Miner.Name);
-                                        MiningQueue.Enqueue(item);
-                                    }
-                                    stoppedMiners.Add(item);
-                                }
-                            }
-                             * */
                             //if a miner has stopped, we need to remove it from the running list as anyway it will be added once run
                             foreach (IMinerProgram item in stoppedMiners)
                             {
@@ -198,6 +178,7 @@ namespace OneMiner.Core
                 catch (ThreadAbortException e)
                 {
                     Logger.Instance.LogInfo("Downloading Thread has been stopped and will resume again!!");
+                    Thread.ResetAbort();
                 }
                 catch (Exception e)
                 {

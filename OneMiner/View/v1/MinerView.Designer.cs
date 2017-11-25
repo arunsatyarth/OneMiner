@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pnlTemplate = new System.Windows.Forms.Panel();
+            this.lblMinerState = new System.Windows.Forms.Label();
             this.pbSelected = new System.Windows.Forms.PictureBox();
             this.btnStartMining = new System.Windows.Forms.Button();
             this.lblCoinType = new System.Windows.Forms.Label();
@@ -40,7 +41,6 @@
             this.startMiningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteMinerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblMinerState = new System.Windows.Forms.Label();
             this.pnlTemplate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSelected)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTemplate)).BeginInit();
@@ -61,6 +61,18 @@
             this.pnlTemplate.Size = new System.Drawing.Size(366, 58);
             this.pnlTemplate.TabIndex = 3;
             this.pnlTemplate.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlTemplate_Paint);
+            // 
+            // lblMinerState
+            // 
+            this.lblMinerState.AutoSize = true;
+            this.lblMinerState.BackColor = System.Drawing.Color.White;
+            this.lblMinerState.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMinerState.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblMinerState.Location = new System.Drawing.Point(182, 30);
+            this.lblMinerState.Name = "lblMinerState";
+            this.lblMinerState.Size = new System.Drawing.Size(54, 15);
+            this.lblMinerState.TabIndex = 5;
+            this.lblMinerState.Text = "Stopped";
             // 
             // pbSelected
             // 
@@ -122,7 +134,7 @@
             this.editToolStripMenuItem,
             this.deleteMinerToolStripMenuItem});
             this.optionsMenu.Name = "optionsMenu";
-            this.optionsMenu.Size = new System.Drawing.Size(153, 114);
+            this.optionsMenu.Size = new System.Drawing.Size(142, 92);
             // 
             // selectToolStripMenuItem
             // 
@@ -134,7 +146,7 @@
             // startMiningToolStripMenuItem
             // 
             this.startMiningToolStripMenuItem.Name = "startMiningToolStripMenuItem";
-            this.startMiningToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.startMiningToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.startMiningToolStripMenuItem.Text = "Start";
             this.startMiningToolStripMenuItem.Click += new System.EventHandler(this.startMiningToolStripMenuItem_Click);
             // 
@@ -149,17 +161,6 @@
             this.deleteMinerToolStripMenuItem.Name = "deleteMinerToolStripMenuItem";
             this.deleteMinerToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.deleteMinerToolStripMenuItem.Text = "Delete Miner";
-            // 
-            // lblMinerState
-            // 
-            this.lblMinerState.AutoSize = true;
-            this.lblMinerState.BackColor = System.Drawing.Color.White;
-            this.lblMinerState.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMinerState.Location = new System.Drawing.Point(182, 30);
-            this.lblMinerState.Name = "lblMinerState";
-            this.lblMinerState.Size = new System.Drawing.Size(54, 15);
-            this.lblMinerState.TabIndex = 5;
-            this.lblMinerState.Text = "Stopped";
             // 
             // MinerView
             // 
