@@ -126,7 +126,15 @@ namespace OneMiner
             }
              */
         }
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == 3000)
+            {
+                showToolStripMenuItem_Click(null, new EventArgs());
+            }
 
+            base.WndProc(ref m);
+        }
         void t_Tick()
         {
             TimeSpan elapsedTime = DateTime.Now - m_LastCarousalTurn;
