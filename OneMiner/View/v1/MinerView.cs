@@ -15,6 +15,13 @@ namespace OneMiner.View.v1
     {
         public IMiner Miner { get; set; }
         MainForm m_Parent = null;
+        enum ViewState
+        {
+            Started=0,
+            Stopped,
+            END
+        }
+        ViewState m_ViewState = ViewState.Stopped;
         public MinerView(IMiner miner, MainForm parent)
         {
             Miner = miner;
@@ -40,41 +47,54 @@ namespace OneMiner.View.v1
         public void UpdateState()
         {
             string labelName = "";
+            string buttontext = "";
+
             switch(Miner.MinerState)
             {
                 case MinerProgramState.Starting:
                     lblMinerState.ForeColor = SystemColors.Info;
                     labelName = Miner.MinerState.ToString();
+                    buttontext = "Stop";
                     break;
                 case MinerProgramState.PartiallyRunning:
                     lblMinerState.ForeColor = SystemColors.Info;
                     labelName = Miner.MinerState.ToString();
+                    buttontext = "Stop";
                     break;
                 case MinerProgramState.Downloading:
                     lblMinerState.ForeColor = SystemColors.GradientActiveCaption;
                     labelName = Miner.MinerState.ToString();
+                    buttontext = "Stop";
                     break;
                 case MinerProgramState.Running:
                     lblMinerState.ForeColor = Color.MediumSeaGreen;
                     labelName = Miner.MinerState.ToString();
+                    buttontext = "Stop";
+
                     break;
                 case MinerProgramState.Stopping:
                        lblMinerState.ForeColor = Color.Tomato;
                     labelName = Miner.MinerState.ToString();
+                    buttontext = "Start";
                     break;
                 case MinerProgramState.Stopped:
                     lblMinerState.ForeColor = Color.Tomato;
                     labelName = Miner.MinerState.ToString();
+                    buttontext = "Start";
                     break;
                 default:
                     lblMinerState.ForeColor = SystemColors.Info;
                     labelName = "unknown state";
+                    buttontext = "unknown";
                     break;
 
             }
             lblMinerState.Text = labelName;
+            btnStartMining.Text = buttontext;
+            optionsMenu.Items[1].Text = buttontext;
 
         }
+
         public void ActivateView()
         {
             pbSelected.Visible = true;
@@ -108,8 +128,46 @@ namespace OneMiner.View.v1
 
         private void btnStartMining_Click(object sender, EventArgs e)
         {
-
-            Factory.Instance.CoreObject.StartMining(Miner);
+            string text = "";
+            /*
+            if (m_ViewState == ViewState.Stopped)
+            {
+                Factory.Instance.CoreObject.StartMining(Miner);
+                m_ViewState = ViewState.Started;
+                text = "Stop";
+            }
+            else
+            {
+                Factory.Instance.CoreObject.StopMining();
+                m_ViewState = ViewState.Stopped;
+                text = "Start";
+            }
+            btnStartMining.Text = text;
+            optionsMenu.Items[1].Text = text;
+             */
+            switch (Miner.MinerState)
+            {
+                case MinerProgramState.Starting:
+                    Factory.Instance.CoreObject.StopMining();
+                    break;
+                case MinerProgramState.PartiallyRunning:
+                    Factory.Instance.CoreObject.StopMining();
+                    break;
+                case MinerProgramState.Downloading:
+                    Factory.Instance.CoreObject.StopMining();
+                    break;
+                case MinerProgramState.Running:
+                    Factory.Instance.CoreObject.StopMining();
+                    break;
+                case MinerProgramState.Stopping:
+                    Factory.Instance.CoreObject.StartMining(Miner);
+                    break;
+                case MinerProgramState.Stopped:
+                    Factory.Instance.CoreObject.StartMining(Miner);
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -129,6 +187,11 @@ namespace OneMiner.View.v1
             }
 
 
+        }
+
+        private void startMiningToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnStartMining_Click(sender, e);
         }
     }
 }

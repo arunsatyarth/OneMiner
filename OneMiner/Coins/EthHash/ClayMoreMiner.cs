@@ -21,6 +21,7 @@ namespace OneMiner.Coins.EthHash
 
         private const string MINERURL = "https://github.com/nanopool/Claymore-Dual-Miner/releases/download/v10.0/Claymore.s.Dual.Ethereum.Decred_Siacoin_Lbry_Pascal.AMD.NVIDIA.GPU.Miner.v10.0.zip";
         private const string EXENAME = "EthDcrMiner64.exe";
+        private const string PROCESSNAME = "EthDcrMiner64";
         public string Script { get; set; }
         public IOutputReader Reader { get; set; }
 
@@ -225,6 +226,7 @@ namespace OneMiner.Coins.EthHash
                     {
                         try
                         {
+                            //this actually dos4nt work as we get handle to command prompt used by the miner as its a batch file
                             m_Process.Kill();
                         }
                         catch (Exception e)
@@ -232,7 +234,7 @@ namespace OneMiner.Coins.EthHash
                             Logger.Instance.LogError(e.ToString());
                         }
                     }
-                    Process[] allprocess = Process.GetProcessesByName(EXENAME);
+                    Process[] allprocess = Process.GetProcessesByName(PROCESSNAME);//this does the job
                     if (allprocess != null && allprocess.Length > 0)
                     {
                         foreach (Process item in allprocess)

@@ -19,6 +19,7 @@ namespace OneMiner.Core
         //expose them with funs
         public TSQueue<IMinerProgram> MiningQueue { get; set; }
         public TSQueue<IMinerProgram> DownloadingQueue { get; set; }
+        public TSList<IMinerProgram> RunningMiners { get; set; }//these are the miners that are currently ruuning and will be automatically restarted if closes
         public MinerProgramCommand MiningCommand { get; set; }
         public volatile bool m_keepMining = true;
         public volatile bool m_keepRunning = true;
@@ -55,6 +56,7 @@ namespace OneMiner.Core
         {
             MiningQueue = new TSQueue<IMinerProgram>();
             DownloadingQueue = new TSQueue<IMinerProgram>();
+            RunningMiners = new TSList<IMinerProgram>();
             MiningCommand = MinerProgramCommand.Stop;
 
             m_minerThread = new Thread(new ParameterizedThreadStart(MiningThread));
@@ -82,7 +84,7 @@ namespace OneMiner.Core
         void MiningThread(object obj)
         {
             IncrThreadCount();
-            List<IMinerProgram> runningMiners = new List<IMinerProgram>();
+            //List<IMinerProgram> runningMiners = new List<IMinerProgram>();
             while (m_keepRunning)//thread runs as long as app is on
             {
                 try
@@ -95,7 +97,7 @@ namespace OneMiner.Core
                         if (miner.ReadyForMining())
                         {
                             miner.StartMining();
-                            runningMiners.Add(miner);
+                            RunningMiners.Add(miner);
                         }
                         else
                             DownloadingQueue.Enqueue(miner);
@@ -106,22 +108,47 @@ namespace OneMiner.Core
                         {
                             List<IMinerProgram> stoppedMiners = new List<IMinerProgram>();
                             //Ensure all started miners are still running
-                            foreach (IMinerProgram item in runningMiners)
+                            for (int i = 0; i < RunningMiners.Count; i++)
+                            {
+                                IMinerProgram item = RunningMiners[i];
+                                if (!item.Running())
+                                {
+                                    item.SetRunningState(MinerProgramState.Stopped);
+                                    //just to be sure. we never want to start miner twice
+                                    item.KillMiner();
+                                    //Dont directly start mining. push it to queue and let the workflow start. also only if mining is stil on
+                                    if (m_keepMining)
+                                    {
+                                        //MessageBox.Show(item.Miner.Name);
+                                        MiningQueue.Enqueue(item);
+                                    }
+                                    stoppedMiners.Add(item);
+                                }
+
+                            }
+                            /*
+                                foreach (IMinerProgram item in RunningMiners)
+
                             {
                                 if (!item.Running())
                                 {
                                     item.SetRunningState(MinerProgramState.Stopped);
                                     //just to be sure. we never want to start miner twice
                                     item.KillMiner();
-                                    //Dont directly start mining. push it to queue and let the workflow start
-                                    MiningQueue.Enqueue(item);
+                                    //Dont directly start mining. push it to queue and let the workflow start. also only if mining is stil on
+                                    if (m_keepMining)
+                                    {
+                                        MessageBox.Show(item.Miner.Name);
+                                        MiningQueue.Enqueue(item);
+                                    }
                                     stoppedMiners.Add(item);
                                 }
                             }
+                             * */
                             //if a miner has stopped, we need to remove it from the running list as anyway it will be added once run
                             foreach (IMinerProgram item in stoppedMiners)
                             {
-                                runningMiners.Remove(item);
+                                RunningMiners.Remove(item);
                             }
                         }
                         catch (Exception e)
@@ -132,11 +159,12 @@ namespace OneMiner.Core
                     else
                     {
                         //Kill all running  miners and go to sleep for some time
-                        foreach (IMinerProgram item in runningMiners)
+                        for (int i = 0; i < RunningMiners.Count; i++)
                         {
+                            IMinerProgram item = RunningMiners[i];
                             item.KillMiner();
                         }
-                        runningMiners.Clear();
+                        RunningMiners.Clear();
                     }
                 }
                 catch (Exception e)
@@ -209,7 +237,10 @@ namespace OneMiner.Core
             if (m_Downloading)
                 m_downloadingThread.Abort();
             MiningQueue.Clear();
+            RunningMiners.Clear();
+
             SelectedMiner.StopMining();
+
             ActiveMiner = null;
         }
         public void LoadDBData()

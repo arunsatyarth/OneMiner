@@ -122,7 +122,7 @@
             this.editToolStripMenuItem,
             this.deleteMinerToolStripMenuItem});
             this.optionsMenu.Name = "optionsMenu";
-            this.optionsMenu.Size = new System.Drawing.Size(142, 92);
+            this.optionsMenu.Size = new System.Drawing.Size(153, 114);
             // 
             // selectToolStripMenuItem
             // 
@@ -134,8 +134,9 @@
             // startMiningToolStripMenuItem
             // 
             this.startMiningToolStripMenuItem.Name = "startMiningToolStripMenuItem";
-            this.startMiningToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.startMiningToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.startMiningToolStripMenuItem.Text = "Start";
+            this.startMiningToolStripMenuItem.Click += new System.EventHandler(this.startMiningToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
