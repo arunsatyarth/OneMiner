@@ -70,7 +70,22 @@ namespace OneMiner
         }
         public void UpDateMinerState()
         {
-            
+            try
+            {
+                foreach (Control item in pnlMiner.Controls)
+                {
+                    MinerView form = item as MinerView;
+                    if(form!=null)
+                    {
+                        form.UpdateState();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Logger.Instance.LogError("Error while updating minerstate" + e.Message);
+            }
+         
         }
 
         public void RemoveFromView(Form previous)
@@ -156,6 +171,7 @@ namespace OneMiner
                 view.TopLevel = false;
                 pnlMiner.Controls.Add(view);
                 view.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+                view.UpdateState();
                 //view.Dock = DockStyle.Fill;
                 view.Show();
                 if (Factory.Instance.CoreObject.SelectedMiner == item)

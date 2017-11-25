@@ -18,7 +18,7 @@ namespace OneMiner.View.v1
             m_Timer = new System.Windows.Forms.Timer();
             m_Timer.Interval = 60000;
 #if DEBUG
-            m_Timer.Interval = 6000;
+            m_Timer.Interval = 60000;
 #endif
             m_Timer.Tick += t_Tick;
         }

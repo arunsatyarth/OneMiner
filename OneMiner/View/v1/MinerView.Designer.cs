@@ -152,9 +152,11 @@
             // lblMinerState
             // 
             this.lblMinerState.AutoSize = true;
+            this.lblMinerState.BackColor = System.Drawing.Color.White;
+            this.lblMinerState.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMinerState.Location = new System.Drawing.Point(182, 30);
             this.lblMinerState.Name = "lblMinerState";
-            this.lblMinerState.Size = new System.Drawing.Size(47, 13);
+            this.lblMinerState.Size = new System.Drawing.Size(54, 15);
             this.lblMinerState.TabIndex = 5;
             this.lblMinerState.Text = "Stopped";
             // 

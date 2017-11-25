@@ -37,7 +37,41 @@ namespace OneMiner.View.v1
         {
             this.ContextMenuStrip = optionsMenu;
         }
+        public void UpdateState()
+        {
+            switch(Miner.MinerState)
+            {
+                case MinerProgramState.Starting:
+                    lblMinerState.ForeColor = SystemColors.Info;
+                    lblMinerState.Text = Miner.MinerState.ToString();
+                    break;
+                case MinerProgramState.PartiallyRunning:
+                    lblMinerState.ForeColor = SystemColors.Info;
+                    lblMinerState.Text = Miner.MinerState.ToString();
+                    break;
+                case MinerProgramState.Downloading:
+                    lblMinerState.ForeColor = SystemColors.GradientActiveCaption;
+                    lblMinerState.Text = Miner.MinerState.ToString();
+                    break;
+                case MinerProgramState.Running:
+                    lblMinerState.ForeColor = Color.MediumSeaGreen;
+                    lblMinerState.Text = Miner.MinerState.ToString();
+                    break;
+                case MinerProgramState.Stopping:
+                       lblMinerState.ForeColor = Color.Tomato;
+                    lblMinerState.Text = Miner.MinerState.ToString();
+                    break;
+                case MinerProgramState.Stopped:
+                    lblMinerState.ForeColor = Color.Tomato;
+                    lblMinerState.Text = Miner.MinerState.ToString();
+                    break;
+                default:
+                    lblMinerState.ForeColor = SystemColors.Info;
+                    lblMinerState.Text = "unknown state";
+                    break;
 
+            }
+        }
         public void ActivateView()
         {
             pbSelected.Visible = true;
