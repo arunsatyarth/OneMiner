@@ -16,17 +16,17 @@ namespace OneMiner.Coins.EthHash
     /// this represents a miner program inside a configured miner. there could be many miners of the same type. eg ethereum, ethereum_sia
     /// for the real representation fo a miner program, look at JsonData.MinerProgram
     /// </summary>
-    class ClaymoreMiner:IMinerProgram
+    class ClaymoreMiner : IMinerProgram
     {
 
         private const string MINERURL = "https://github.com/nanopool/Claymore-Dual-Miner/releases/download/v10.0/Claymore.s.Dual.Ethereum.Decred_Siacoin_Lbry_Pascal.AMD.NVIDIA.GPU.Miner.v10.0.zip";
         private const string EXENAME = "EthDcrMiner64.exe";
-        public  string Script { get; set; }
+        public string Script { get; set; }
         public IOutputReader Reader { get; set; }
 
         public string MinerFolder { get; set; }
         public string MinerEXE { get; set; }
-        public string BATFILE  { get; set; }
+        public string BATFILE { get; set; }
         public bool BATCopied { get; set; }
 
         public bool AutomaticScriptGeneration { get; set; }
@@ -45,9 +45,11 @@ namespace OneMiner.Coins.EthHash
         public string Type { get; set; }//claymore ccminer etc
         MinerDownloader m_downloader = null;
         private Process m_Process = null;
+        private object m_accesssynch = new object();
 
 
-        public ClaymoreMiner(ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName,IMiner miner)
+
+        public ClaymoreMiner(ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName, IMiner miner)
         {
 
             MinerState = MinerProgramState.Stopped;
@@ -55,7 +57,7 @@ namespace OneMiner.Coins.EthHash
             MainCoin = mainCoin;
             MainCoinConfigurer = mainCoin.SettingsScreen;
             DualCoin = dualCoin;
-            if (DualCoin!=null)
+            if (DualCoin != null)
                 DualCoinConfigurer = DualCoin.SettingsScreen;
             DualMining = dualMining;
             Name = minerName;
@@ -75,7 +77,7 @@ namespace OneMiner.Coins.EthHash
         }
         public bool MiningScriptsPresent()
         {
-            if ( BATFILE == null || BATFILE == "")
+            if (BATFILE == null || BATFILE == "")
                 return false;
             FileInfo script = new FileInfo(BATFILE);
             if (script.Exists)
@@ -112,9 +114,9 @@ namespace OneMiner.Coins.EthHash
 
         public string FormBatFileName(string folder)
         {
-            return folder+ @"\" +Miner.Name+".bat";
+            return folder + @"\" + Miner.Name + ".bat";
         }
-        public  void DownloadProgram()
+        public void DownloadProgram()
         {
             try
             {
@@ -135,7 +137,7 @@ namespace OneMiner.Coins.EthHash
                     FileInfo file = new FileInfo(BATFILE);
                     if (file.Exists)
                     {
-                        file.CopyTo(actualBatfileName,true);
+                        file.CopyTo(actualBatfileName, true);
                     }
                 }
                 BATFILE = actualBatfileName;
@@ -150,73 +152,98 @@ namespace OneMiner.Coins.EthHash
             }
         }
 
-        public void  StartMining()
+        public void StartMining()
         {
-            try
+            //lock ensures that neither can someone kill a miner while it is being started, nor can 2 people start it at same time
+            lock (m_accesssynch)
             {
-                FileInfo file = new FileInfo(BATFILE);
-                if(file.Exists)
+                try
                 {
-                    MinerState = MinerProgramState.Running;
-                    ProcessStartInfo info = new ProcessStartInfo();
-                    info.UseShellExecute = false;
-                    //Todo: Enable this when we have feature to configure the settings
-                    //info.CreateNoWindow = ! Factory.Instance.Model.Data.Option.ShowMinerWindows;
-                    info.FileName = BATFILE;
-                    info.WindowStyle = ProcessWindowStyle.Hidden;
-                    info.WorkingDirectory = file.DirectoryName + "\\";
-
-                    m_Process = new Process();
-                    m_Process.StartInfo = info;
-                    bool success=m_Process.Start();
-                    if(success)
+                    FileInfo file = new FileInfo(BATFILE);
+                    if (Factory.Instance.CoreObject.MiningCommand!=MinerProgramCommand.Run)
+                    {
+                        throw new Exception("Mining command is not 'Run'");
+                    }
+                    if (m_Process != null)
+                    {
+                        throw new Exception("Process object is not null while starting");
+                    }
+                    if (file.Exists)
                     {
                         MinerState = MinerProgramState.Running;
+                        ProcessStartInfo info = new ProcessStartInfo();
+                        info.UseShellExecute = false;
+                        //Todo: Enable this when we have feature to configure the settings
+                        //info.CreateNoWindow = ! Factory.Instance.Model.Data.Option.ShowMinerWindows;
+                        info.FileName = BATFILE;
+                        info.WindowStyle = ProcessWindowStyle.Hidden;
+                        info.WorkingDirectory = file.DirectoryName + "\\";
+
+                        m_Process = new Process();
+                        m_Process.StartInfo = info;
+                        bool success = m_Process.Start();
+                        if (success)
+                        {
+                            MinerState = MinerProgramState.Running;
+                            Miner.SetRunningState(this, MinerProgramState.Running);
+                        }
+
                     }
 
                 }
-
+                catch (Exception e)
+                {
+                    Logger.Instance.LogError(e.ToString());
+                }
+                finally
+                {
+                    //MinerState = MinerProgramState.Stopped;
+                }
             }
-            catch (Exception e)
-            {
-            }
-            finally
-            {
-                //MinerState = MinerProgramState.Stopped;
-
-            }
-
         }
         public void KillMiner()
         {
-            try
+            lock (m_accesssynch)
             {
-                if (m_Process!=null)
+                try
                 {
-                    m_Process.Kill();
-                }
-                else
-                {
+                    if (MinerState == MinerProgramState.Stopped)
+                        return;
+                    if (m_Process != null)
+                    {
+                        try
+                        {
+                            m_Process.Kill();
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Instance.LogError(e.ToString());
+                        }
+                    }
                     Process[] allprocess = Process.GetProcessesByName(EXENAME);
-                    if(allprocess!=null && allprocess.Length>0)
+                    if (allprocess != null && allprocess.Length > 0)
                     {
                         foreach (Process item in allprocess)
                         {
                             item.Kill();
                         }
                     }
+                    m_Process = null;
+                    MinerState = MinerProgramState.Stopped;
+                }
+                catch (Exception e)
+                {
+                    Logger.Instance.LogError(e.ToString());
                 }
             }
-            catch (Exception e)
-            {
-            }
         }
+
         public bool Running()
         {
             bool running = false;
             try
             {
-                running= !m_Process.HasExited;
+                running = !m_Process.HasExited;
             }
             catch (Exception e)
             {
@@ -227,7 +254,7 @@ namespace OneMiner.Coins.EthHash
 
 
 
-        public  string GenerateScript()
+        public string GenerateScript()
         {
             try
             {
@@ -235,7 +262,7 @@ namespace OneMiner.Coins.EthHash
                 string command = EXENAME + " -epool " + MainCoinConfigurer.Pool;
                 command += " -ewal " + MainCoinConfigurer.Wallet;
                 command += " -epsw x ";
-                if(DualCoin!=null)
+                if (DualCoin != null)
                 {
                     command += " -dpool " + DualCoinConfigurer.Pool;
                     command += " -dwal " + MainCoinConfigurer.Wallet;
@@ -243,7 +270,7 @@ namespace OneMiner.Coins.EthHash
 
                 }
 
-                Script = SCRIPT1+command;
+                Script = SCRIPT1 + command;
                 AutomaticScriptGeneration = true;
                 SaveScriptToDB();
                 return Script;
@@ -258,13 +285,13 @@ namespace OneMiner.Coins.EthHash
             Script = script;
             string tempBatFile = "";
             string tempBatFileFolder = "";
-            if (MinerFolder!=null && MinerFolder!="")
+            if (MinerFolder != null && MinerFolder != "")
                 tempBatFileFolder = MinerFolder;
             else
                 tempBatFileFolder = m_downloader.GetTempBatFile(Miner.Id, Type, Miner.Name);
             tempBatFile = FormBatFileName(tempBatFileFolder);
 
-            if(tempBatFile!="")
+            if (tempBatFile != "")
             {
                 BATFILE = tempBatFile;
                 SaveToBAtFile();
@@ -326,7 +353,7 @@ namespace OneMiner.Coins.EthHash
 
 
 
-        private const string SCRIPT1 = 
+        private const string SCRIPT1 =
 @"setx GPU_FORCE_64BIT_PTR 0
 setx GPU_MAX_HEAP_SIZE 100
 setx GPU_USE_SYNC_OBJECTS 1

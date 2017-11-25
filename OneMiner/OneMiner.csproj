@@ -61,6 +61,7 @@
     <Compile Include="Coins\EthHash\Ethereum.cs" />
     <Compile Include="Coins\EthHash\EthereumData.cs" />
     <Compile Include="Coins\EthHash\EthHash.cs" />
+    <Compile Include="Core\TSQueue.cs" />
     <Compile Include="Core\Logger.cs" />
     <Compile Include="Core\OneMiner.cs" />
     <Compile Include="Model\FileIO\AppData.cs" />

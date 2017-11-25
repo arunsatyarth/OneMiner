@@ -13,6 +13,9 @@ namespace OneMiner.EthHash
     public class EthereumData : MinerData, IMiner
     {
         public List<IMinerProgram> MinerPrograms { get; set; }
+        Hashtable m_MinerProgsHash = new Hashtable();
+        HashSet<string> m_MinerRunningHash =new  HashSet<string>();
+
         public ICoin MainCoin { get; set; }
         public ICoin DualCoin { get; set; }
         private IMinerData MinerData { get; set; }
@@ -22,9 +25,12 @@ namespace OneMiner.EthHash
         public string Id { get; set; }
         public string Name { get; set; }
         public string Logo { get; set; }//not sure if needed
+        public MinerProgramState MinerState { get; set; }
+
 
         public EthereumData(string id, ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName, IMinerData minerData)
         {
+            MinerState = MinerProgramState.Stopped;
             Id = id;
             MainCoin = mainCoin;
             DualCoin = dualCoin;
@@ -91,14 +97,32 @@ namespace OneMiner.EthHash
             {
             }
         }
+        public void SetRunningState(IMinerProgram program, MinerProgramState state)
+        {
+            int count = MinerPrograms.Count;
+            if(state!=MinerProgramState.Running)
+            {
+                m_MinerRunningHash.Remove(program.Type);
+            }
+            else
+            {
+                m_MinerRunningHash.Add(program.Type);
+            }
+            if (MinerPrograms.Count == m_MinerRunningHash.Count)
+                MinerState = MinerProgramState.Running;
+            else 
+                MinerState = MinerProgramState.PartiallyRunning;
 
+        }
         public void SetupMiner()
         {
-            MinerPrograms.Add(new ClaymoreMiner(MainCoin, DualMining, DualCoin, Name,this));
-
+            IMinerProgram prog=new ClaymoreMiner(MainCoin, DualMining, DualCoin, Name,this);
+            MinerPrograms.Add(prog);
+            m_MinerProgsHash.Add(prog.Type, prog);
         }
         public void StartMining()
         {
+            MinerState = MinerProgramState.Starting;
 
             foreach (IMinerProgram item in MinerPrograms)
             {
@@ -108,11 +132,16 @@ namespace OneMiner.EthHash
         }
         public void StopMining()
         {
+            MinerState = MinerProgramState.Stopping;
+            m_MinerRunningHash.Clear();
+
             foreach (IMinerProgram item in MinerPrograms)
             {
                 //push miners into mining queue wher they wud be picked up by threads and executed
                 item.KillMiner();
             }
+            MinerState = MinerProgramState.Stopped;
+
         }
 
 

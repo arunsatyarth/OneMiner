@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace OneMiner.Core
 {
@@ -14,6 +16,19 @@ namespace OneMiner.Core
         private static ILogger s_obj = null;
         private static object s_singletonsynch = new object();
         private static object s_accesssynch = new object();
+        public string GetMessage(string msg)
+        {
+            string message = "";
+            try
+            {
+                int threadId = Thread.CurrentThread.ManagedThreadId;
+                message = "Thread: " + threadId.ToString() + ": " + msg;
+            }
+            catch (Exception e)
+            {
+            }
+            return message;
+        }
         public void LogInfo(string error)
         {
             lock (s_accesssynch)
@@ -26,8 +41,16 @@ namespace OneMiner.Core
         {
             lock (s_accesssynch)
             {
-                //logging code
-
+                try
+                {
+                    string message = GetMessage(error);
+#if DEBUG
+                    MessageBox.Show(message);
+#endif
+                }
+                catch (Exception e)
+                {
+                }
             }
         }
 

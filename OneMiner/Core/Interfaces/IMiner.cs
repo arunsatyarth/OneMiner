@@ -18,6 +18,8 @@ namespace OneMiner.Core.Interfaces
         void StartMining();
         void StopMining();
         void InitializePrograms();
+        void SetRunningState(IMinerProgram program, MinerProgramState state);
+
 
 
     }

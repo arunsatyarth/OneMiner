@@ -40,11 +40,20 @@ namespace OneMiner.Core.Interfaces
 
 
     }
-    enum MinerProgramState
+    public enum MinerProgramState
     {
         Downloading=0,
+        Starting,
         Running,
+        PartiallyRunning,//if some of all miners are active
+        Stopping,
         Stopped,
+        END
+    }
+    public enum MinerProgramCommand
+    {
+        Run = 0,
+        Stop,
         END
     }
 }

@@ -17,10 +17,12 @@ namespace OneMiner.Core
         public IMiner SelectedMiner = null;//the one who is selected. if no miners are mining selectedminer cud be still not null
 
         //expose them with funs
-        public Queue<IMinerProgram> MiningQueue { get; set; }
-        public Queue<IMinerProgram> DownloadingQueue { get; set; }
+        public TSQueue<IMinerProgram> MiningQueue { get; set; }
+        public TSQueue<IMinerProgram> DownloadingQueue { get; set; }
+        public MinerProgramCommand MiningCommand { get; set; }
         public volatile bool m_keepMining = true;
         public volatile bool m_keepRunning = true;
+        public volatile bool m_Downloading = false;//tells if downloading thread is stuck in a download activity
         Thread m_minerThread;
         Thread m_downloadingThread;
         private object m_locker = new object();
@@ -51,11 +53,13 @@ namespace OneMiner.Core
         }
         public OneMiner()
         {
-            MiningQueue = new Queue<IMinerProgram>();
-            DownloadingQueue = new Queue<IMinerProgram>();
+            MiningQueue = new TSQueue<IMinerProgram>();
+            DownloadingQueue = new TSQueue<IMinerProgram>();
+            MiningCommand = MinerProgramCommand.Stop;
 
             m_minerThread = new Thread(new ParameterizedThreadStart(MiningThread));
             m_downloadingThread = new Thread(new ParameterizedThreadStart(DownLoadingThread));
+            InitiateThreads();
 
         }
         public void AddMiner(IMiner miner, bool makeSelected)
@@ -81,41 +85,62 @@ namespace OneMiner.Core
             List<IMinerProgram> runningMiners = new List<IMinerProgram>();
             while (m_keepRunning)//thread runs as long as app is on
             {
-                if (MiningQueue.Count == 0 || m_keepMining==false)
-                    Thread.Sleep(2000);
-                else
+                try
                 {
-                    IMinerProgram miner = MiningQueue.Dequeue();
-                    if (miner.ReadyForMining())
+                    if (MiningQueue.Count == 0 || m_keepMining == false)
+                        Thread.Sleep(2000);
+                    else
                     {
-                        miner.StartMining();
-                        runningMiners.Add(miner);
+                        IMinerProgram miner = MiningQueue.Dequeue();
+                        if (miner.ReadyForMining())
+                        {
+                            miner.StartMining();
+                            runningMiners.Add(miner);
+                        }
+                        else
+                            DownloadingQueue.Enqueue(miner);
+                    }
+                    if (m_keepMining)
+                    {
+                        try
+                        {
+                            List<IMinerProgram> stoppedMiners = new List<IMinerProgram>();
+                            //Ensure all started miners are still running
+                            foreach (IMinerProgram item in runningMiners)
+                            {
+                                if (!item.Running())
+                                {
+                                    //just to be sure. we never want to start miner twice
+                                    item.KillMiner();
+                                    //Dont directly start mining. push it to queue and let the workflow start
+                                    MiningQueue.Enqueue(item);
+                                    stoppedMiners.Add(item);
+                                }
+                            }
+                            //if a miner has stopped, we need to remove it from the running list as anyway it will be added once run
+                            foreach (IMinerProgram item in stoppedMiners)
+                            {
+                                runningMiners.Remove(item);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                        }
+              
                     }
                     else
-                        DownloadingQueue.Enqueue(miner);
-                }
-                if(m_keepMining)
-                {
-                    //Ensure all started miners are still running
-                    foreach (IMinerProgram item in runningMiners)
                     {
-                        if(!item.Running())
+                        //Kill all running  miners and go to sleep for some time
+                        foreach (IMinerProgram item in runningMiners)
                         {
-                            //just to be sure. we never want to start miner twice
                             item.KillMiner();
-                            //Dont directly start mining. push it to queue and let the workflow start
-                            MiningQueue.Enqueue(item);
                         }
+                        runningMiners.Clear();
                     }
                 }
-                else
+                catch (Exception e)
                 {
-                    //Kill all running  miners and go to sleep for some time
-                    foreach (IMinerProgram item in runningMiners)
-                    {
-                        item.KillMiner();
-                    }
-
+                    Logger.Instance.LogError(e.Message);
                 }
             }
             DecrThreadCount();
@@ -126,19 +151,34 @@ namespace OneMiner.Core
             IncrThreadCount();
             while (m_keepRunning)
             {
-                if (DownloadingQueue.Count == 0 || m_keepMining == false)
-                    Thread.Sleep(2000);
-                else
+                try
                 {
-                    IMinerProgram miner = DownloadingQueue.Dequeue();
-                    miner.DownloadProgram();
-                    if (miner.ReadyForMining())
-                        MiningQueue.Enqueue(miner);
-
+                    m_Downloading = false;
+                    if (DownloadingQueue.Count == 0 || m_keepMining == false)
+                        Thread.Sleep(2000);
+                    else
+                    {
+                        IMinerProgram miner = DownloadingQueue.Dequeue();
+                        m_Downloading = true;
+                        miner.DownloadProgram();
+                        m_Downloading = false;
+                        if (miner.ReadyForMining())
+                            MiningQueue.Enqueue(miner);
+                    }
                 }
+                catch (ThreadAbortException e)
+                {
+                    Logger.Instance.LogInfo("Downloading Thread has been stopped and will resume again!!");
+                }
+                catch (Exception e)
+                {
+                    Logger.Instance.LogError(e.Message);
+                    //if we feel the need to exit when there is an error in miner thread
+                    //m_keepRunning = false;
+                }
+                m_Downloading = false;
             }
             DecrThreadCount();
-
         }
         void InitiateThreads()
         {
@@ -147,25 +187,27 @@ namespace OneMiner.Core
         }
         public void StartMining()
         {
-            //check if current mining threads have exited properly
-            while (GetThreadCount() > 0)
-            {
-                Thread.Sleep(2000);
-            }
             m_keepMining = true;
             ActiveMiner = SelectedMiner;
             SelectedMiner.StartMining();
-            InitiateThreads();
         }
         public void StartMining(IMiner miner)
         {
             StopMining();
+            MiningCommand = MinerProgramCommand.Run;
             SelectedMiner = miner;
             StartMining();
         }
         public void StopMining()
         {
             m_keepMining = false;
+            MiningCommand = MinerProgramCommand.Stop;
+            //clear both queues so that threads wint start running them 
+            DownloadingQueue.Clear();
+            //sometimes if downloaidnf thread is stuck in a long download and we want to stop we might hav to abort thread
+            if (m_Downloading)
+                m_downloadingThread.Abort();
+            MiningQueue.Clear();
             SelectedMiner.StopMining();
             ActiveMiner = null;
         }
