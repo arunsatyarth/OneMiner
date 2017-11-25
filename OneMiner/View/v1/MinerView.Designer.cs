@@ -40,6 +40,7 @@
             this.startMiningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteMinerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblMinerState = new System.Windows.Forms.Label();
             this.pnlTemplate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSelected)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTemplate)).BeginInit();
@@ -49,6 +50,7 @@
             // pnlTemplate
             // 
             this.pnlTemplate.BackColor = System.Drawing.Color.White;
+            this.pnlTemplate.Controls.Add(this.lblMinerState);
             this.pnlTemplate.Controls.Add(this.pbSelected);
             this.pnlTemplate.Controls.Add(this.btnStartMining);
             this.pnlTemplate.Controls.Add(this.lblCoinType);
@@ -147,6 +149,15 @@
             this.deleteMinerToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.deleteMinerToolStripMenuItem.Text = "Delete Miner";
             // 
+            // lblMinerState
+            // 
+            this.lblMinerState.AutoSize = true;
+            this.lblMinerState.Location = new System.Drawing.Point(182, 30);
+            this.lblMinerState.Name = "lblMinerState";
+            this.lblMinerState.Size = new System.Drawing.Size(47, 13);
+            this.lblMinerState.TabIndex = 5;
+            this.lblMinerState.Text = "Stopped";
+            // 
             // MinerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -180,5 +191,6 @@
         private System.Windows.Forms.ToolStripMenuItem startMiningToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteMinerToolStripMenuItem;
         private System.Windows.Forms.PictureBox pbSelected;
+        private System.Windows.Forms.Label lblMinerState;
     }
 }

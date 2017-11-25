@@ -23,12 +23,10 @@ namespace OneMiner.View.v1.Corousal
         private void SettingsSummary_Load(object sender, EventArgs e)
         {
             UpdateSettingsView();
-            Timer t = new Timer();
-            t.Interval = 60000;
-            t.Tick += t_Tick;
-            t.Start();
+            Factory.Instance.ViewObject.RegisterForTimer(t_Tick);
+            
         }
-        void t_Tick(object sender, EventArgs e)
+        void t_Tick()
         {
             try
             {

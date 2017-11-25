@@ -25,6 +25,8 @@ namespace OneMiner
         }
         List<Form> m_Corousals = new List<Form>();
         int m_CurrentCarousal = 0;
+        DateTime m_LastCarousalTurn = DateTime.Now;
+        private const int CAROUSAL_WAIT=60000;
 
         private void btnAddMiner_Click(object sender, EventArgs e)
         {
@@ -62,11 +64,15 @@ namespace OneMiner
 
             Form next = m_Corousals.ElementAt<Form>(m_CurrentCarousal);
             BringToView(next);
-            System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
-            t.Interval = 60000;
-            t.Tick += t_Tick;
-            t.Start();
+
+            Factory.Instance.ViewObject.RegisterForTimer(t_Tick);
+            Factory.Instance.ViewObject.RegisterForTimer(UpDateMinerState);
         }
+        public void UpDateMinerState()
+        {
+            
+        }
+
         public void RemoveFromView(Form previous)
         {
             /*
@@ -97,9 +103,12 @@ namespace OneMiner
              */
         }
 
-        void t_Tick(object sender, EventArgs e)
+        void t_Tick()
         {
-
+            TimeSpan elapsedTime = DateTime.Now - m_LastCarousalTurn;
+            if (elapsedTime.Seconds < CAROUSAL_WAIT)
+                return;
+            m_LastCarousalTurn = DateTime.Now;
             Form previous = m_Corousals.ElementAt<Form>(m_CurrentCarousal);
             m_CurrentCarousal++;
             if (m_CurrentCarousal >= m_Corousals.Count)
