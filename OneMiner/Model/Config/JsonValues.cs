@@ -69,10 +69,12 @@ namespace OneMiner.Model.Config
     {
         public Boolean Startup { get; set; }
         public Boolean MineOnStartup { get; set; }
+        public Boolean ShowMinerWindows { get; set; }
         public Options()
         {
             Startup = true;
             MineOnStartup = true;
+            ShowMinerWindows = true;
         }
     }
     /// <summary>

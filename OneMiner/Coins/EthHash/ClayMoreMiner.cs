@@ -44,6 +44,7 @@ namespace OneMiner.Coins.EthHash
         public string Name { get; set; }
         public string Type { get; set; }//claymore ccminer etc
         MinerDownloader m_downloader = null;
+        private Process m_Process = null;
 
 
         public ClaymoreMiner(ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName,IMiner miner)
@@ -157,14 +158,16 @@ namespace OneMiner.Coins.EthHash
                 MinerState = MinerProgramState.Running;
                 ProcessStartInfo info = new ProcessStartInfo();
                 info.UseShellExecute = false;
+                //Todo: Enable this when we have feature to configure the settings
+                //info.CreateNoWindow = ! Factory.Instance.Model.Data.Option.ShowMinerWindows;
                 info.FileName = BATFILE;
                 info.WindowStyle = ProcessWindowStyle.Hidden;
                 info.WorkingDirectory = file.DirectoryName + "\\";
 
-                Process objProcess = new Process();
-                objProcess.StartInfo = info;
-                objProcess.Start();
-                objProcess.WaitForExit();
+                m_Process = new Process();
+                m_Process.StartInfo = info;
+                m_Process.Start();
+                m_Process.WaitForExit();
             }
             catch (Exception e)
             {
@@ -178,7 +181,7 @@ namespace OneMiner.Coins.EthHash
         }
         public void KillMiner()
         {
-            //Todo:
+            Process [] allprocess=Process.GetProcessesByName()
         }
 
 
