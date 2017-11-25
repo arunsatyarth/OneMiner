@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace OneMiner.Core
 {
@@ -91,7 +92,6 @@ namespace OneMiner.Core
                         DownloadingQueue.Enqueue(miner);
                 }
             }
-            DecrThreadCount();
 
         }
         void DownLoadingThread(object obj)
@@ -110,7 +110,6 @@ namespace OneMiner.Core
 
                 }
             }
-            DecrThreadCount();
         }
         void InitiateThreads()
         {
@@ -176,6 +175,12 @@ namespace OneMiner.Core
                     SelectedMiner = miner;
             }
             //2. load configured miners
+        }
+
+        public void CloseApp()
+        {
+            Environment.Exit(0);
+            
         }
 
 

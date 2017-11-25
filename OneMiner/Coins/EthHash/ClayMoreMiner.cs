@@ -181,7 +181,7 @@ namespace OneMiner.Coins.EthHash
         }
         public void KillMiner()
         {
-            Process [] allprocess=Process.GetProcessesByName()
+            //Process [] allprocess=Process.GetProcessesByName()
         }
 
 

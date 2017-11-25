@@ -37,6 +37,15 @@ namespace OneMiner
         {
             this.CenterToScreen();
             RunCarousal();
+            this.FormClosing += MainForm_FormClosing;
+            oneMinerNotifyIcon.ContextMenuStrip = taskbarMenu;
+
+        }
+
+        void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            Hide();
         }
         SettingsSummary m_SettingsSummary = new SettingsSummary();
         ProfitabilitySummary m_ProfitabilitySummary = new ProfitabilitySummary();
@@ -182,6 +191,17 @@ namespace OneMiner
         {
             Settings settings = new Settings();
             settings.ShowDialog();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Factory.Instance.CoreObject.CloseApp();
+        }
+
+        private void showToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Show();
+            WindowState = FormWindowState.Normal;
         }
 
 

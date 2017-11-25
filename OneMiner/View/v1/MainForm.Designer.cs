@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.miningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,7 +42,12 @@
             this.pnlMinerInfo = new System.Windows.Forms.Panel();
             this.pnlMiner = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlCarousal = new System.Windows.Forms.Panel();
+            this.oneMinerNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.taskbarMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
+            this.taskbarMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -147,6 +153,34 @@
             this.pnlCarousal.Size = new System.Drawing.Size(312, 264);
             this.pnlCarousal.TabIndex = 0;
             // 
+            // oneMinerNotifyIcon
+            // 
+            this.oneMinerNotifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("oneMinerNotifyIcon.Icon")));
+            this.oneMinerNotifyIcon.Text = "OneMiner";
+            this.oneMinerNotifyIcon.Visible = true;
+            // 
+            // taskbarMenu
+            // 
+            this.taskbarMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.taskbarMenu.Name = "taskbarMenu";
+            this.taskbarMenu.Size = new System.Drawing.Size(153, 70);
+            // 
+            // showToolStripMenuItem
+            // 
+            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.showToolStripMenuItem.Text = "Show";
+            this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -168,6 +202,7 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.taskbarMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,6 +222,10 @@
         private System.Windows.Forms.FlowLayoutPanel pnlMiner;
         private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem1;
         private System.Windows.Forms.Panel pnlCarousal;
+        private System.Windows.Forms.NotifyIcon oneMinerNotifyIcon;
+        private System.Windows.Forms.ContextMenuStrip taskbarMenu;
+        private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 
