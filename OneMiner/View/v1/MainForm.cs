@@ -72,14 +72,23 @@ namespace OneMiner
         {
             try
             {
-                foreach (Control item in pnlMiner.Controls)
+                if(this.InvokeRequired)
                 {
-                    MinerView form = item as MinerView;
-                    if(form!=null)
+                    this.BeginInvoke(new Action(UpDateMinerState),
+                                          new object[] {  });
+                }
+                else
+                {
+                    foreach (Control item in pnlMiner.Controls)
                     {
-                        form.UpdateState();
+                        MinerView form = item as MinerView;
+                        if (form != null)
+                        {
+                            form.UpdateState();
+                        }
                     }
                 }
+                
             }
             catch (Exception e)
             {

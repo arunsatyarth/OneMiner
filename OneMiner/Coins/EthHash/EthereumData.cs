@@ -108,10 +108,15 @@ namespace OneMiner.EthHash
             {
                 m_MinerRunningHash.Add(program.Type);
             }
-            if (MinerPrograms.Count == m_MinerRunningHash.Count)
-                MinerState = MinerProgramState.Running;
-            else 
+            if (m_MinerRunningHash.Count == 0)
+                MinerState = MinerProgramState.Stopped;
+            else if (m_MinerRunningHash.Count < MinerPrograms.Count)
                 MinerState = MinerProgramState.PartiallyRunning;
+            else if (m_MinerRunningHash.Count == MinerPrograms.Count)
+                MinerState = MinerProgramState.Running;
+            else
+                MinerState = MinerProgramState.Stopping;//ideally it shudnt com here
+            Factory.Instance.ViewObject.UpDateMinerState();
 
         }
         public void SetupMiner()
@@ -129,6 +134,7 @@ namespace OneMiner.EthHash
                 //push miners into mining queue wher they wud be picked up by threads and executed
                 Factory.Instance.CoreObject.MiningQueue.Enqueue(item);
             }
+            Factory.Instance.ViewObject.UpDateMinerState();
         }
         public void StopMining()
         {
@@ -141,6 +147,8 @@ namespace OneMiner.EthHash
                 item.KillMiner();
             }
             MinerState = MinerProgramState.Stopped;
+            Factory.Instance.ViewObject.UpDateMinerState();
+
 
         }
 

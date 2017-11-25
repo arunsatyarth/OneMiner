@@ -12,6 +12,7 @@ namespace OneMiner.View
         void InitializeView();
         void StartView();
         void UpdateMinerList();
+        void UpDateMinerState();
         void RegisterForTimer(OneMinerTimerEvent fun);
 
     }

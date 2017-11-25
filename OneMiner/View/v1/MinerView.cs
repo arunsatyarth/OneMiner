@@ -39,38 +39,41 @@ namespace OneMiner.View.v1
         }
         public void UpdateState()
         {
+            string labelName = "";
             switch(Miner.MinerState)
             {
                 case MinerProgramState.Starting:
                     lblMinerState.ForeColor = SystemColors.Info;
-                    lblMinerState.Text = Miner.MinerState.ToString();
+                    labelName = Miner.MinerState.ToString();
                     break;
                 case MinerProgramState.PartiallyRunning:
                     lblMinerState.ForeColor = SystemColors.Info;
-                    lblMinerState.Text = Miner.MinerState.ToString();
+                    labelName = Miner.MinerState.ToString();
                     break;
                 case MinerProgramState.Downloading:
                     lblMinerState.ForeColor = SystemColors.GradientActiveCaption;
-                    lblMinerState.Text = Miner.MinerState.ToString();
+                    labelName = Miner.MinerState.ToString();
                     break;
                 case MinerProgramState.Running:
                     lblMinerState.ForeColor = Color.MediumSeaGreen;
-                    lblMinerState.Text = Miner.MinerState.ToString();
+                    labelName = Miner.MinerState.ToString();
                     break;
                 case MinerProgramState.Stopping:
                        lblMinerState.ForeColor = Color.Tomato;
-                    lblMinerState.Text = Miner.MinerState.ToString();
+                    labelName = Miner.MinerState.ToString();
                     break;
                 case MinerProgramState.Stopped:
                     lblMinerState.ForeColor = Color.Tomato;
-                    lblMinerState.Text = Miner.MinerState.ToString();
+                    labelName = Miner.MinerState.ToString();
                     break;
                 default:
                     lblMinerState.ForeColor = SystemColors.Info;
-                    lblMinerState.Text = "unknown state";
+                    labelName = "unknown state";
                     break;
 
             }
+            lblMinerState.Text = labelName;
+
         }
         public void ActivateView()
         {

@@ -110,6 +110,7 @@ namespace OneMiner.Core
                             {
                                 if (!item.Running())
                                 {
+                                    item.SetRunningState(MinerProgramState.Stopped);
                                     //just to be sure. we never want to start miner twice
                                     item.KillMiner();
                                     //Dont directly start mining. push it to queue and let the workflow start

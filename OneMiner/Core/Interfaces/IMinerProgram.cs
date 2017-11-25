@@ -32,6 +32,8 @@ namespace OneMiner.Core.Interfaces
         void LoadScript();
         void ModifyScript(string script);
         string Script { get; set; }
+        void SetRunningState( MinerProgramState state);
+
 
 
 

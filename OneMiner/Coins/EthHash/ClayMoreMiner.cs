@@ -201,14 +201,26 @@ namespace OneMiner.Coins.EthHash
                 }
             }
         }
+        public void SetRunningState(MinerProgramState state)
+        {
+            lock (m_accesssynch)
+            {
+                try
+                {
+                    MinerState = state;
+                    Miner.SetRunningState(this, state);
+                }
+                catch (Exception e)
+                {
+                }
+            }
+        }
         public void KillMiner()
         {
             lock (m_accesssynch)
             {
                 try
                 {
-                    if (MinerState == MinerProgramState.Stopped)
-                        return;
                     if (m_Process != null)
                     {
                         try
