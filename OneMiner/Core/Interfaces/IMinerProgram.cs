@@ -12,6 +12,7 @@ namespace OneMiner.Core.Interfaces
         bool ProgramPresent();//exe files
         void DownloadProgram();
         void StartMining();
+        bool Running();
         /// <summary>
         /// to stop the miner
         /// </summary>

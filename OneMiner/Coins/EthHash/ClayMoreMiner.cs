@@ -152,37 +152,79 @@ namespace OneMiner.Coins.EthHash
 
         public void  StartMining()
         {
-            FileInfo file = new FileInfo(BATFILE);
             try
             {
-                MinerState = MinerProgramState.Running;
-                ProcessStartInfo info = new ProcessStartInfo();
-                info.UseShellExecute = false;
-                //Todo: Enable this when we have feature to configure the settings
-                //info.CreateNoWindow = ! Factory.Instance.Model.Data.Option.ShowMinerWindows;
-                info.FileName = BATFILE;
-                info.WindowStyle = ProcessWindowStyle.Hidden;
-                info.WorkingDirectory = file.DirectoryName + "\\";
+                FileInfo file = new FileInfo(BATFILE);
+                if(file.Exists)
+                {
+                    MinerState = MinerProgramState.Running;
+                    ProcessStartInfo info = new ProcessStartInfo();
+                    info.UseShellExecute = false;
+                    //Todo: Enable this when we have feature to configure the settings
+                    //info.CreateNoWindow = ! Factory.Instance.Model.Data.Option.ShowMinerWindows;
+                    info.FileName = BATFILE;
+                    info.WindowStyle = ProcessWindowStyle.Hidden;
+                    info.WorkingDirectory = file.DirectoryName + "\\";
 
-                m_Process = new Process();
-                m_Process.StartInfo = info;
-                m_Process.Start();
-                m_Process.WaitForExit();
+                    m_Process = new Process();
+                    m_Process.StartInfo = info;
+                    bool success=m_Process.Start();
+                    if(success)
+                    {
+                        MinerState = MinerProgramState.Running;
+                    }
+
+                }
+
             }
             catch (Exception e)
             {
             }
             finally
             {
-                MinerState = MinerProgramState.Stopped;
+                //MinerState = MinerProgramState.Stopped;
 
             }
 
         }
         public void KillMiner()
         {
-            //Process [] allprocess=Process.GetProcessesByName()
+            try
+            {
+                if (m_Process!=null)
+                {
+                    m_Process.Kill();
+                }
+                else
+                {
+                    Process[] allprocess = Process.GetProcessesByName(EXENAME);
+                    if(allprocess!=null && allprocess.Length>0)
+                    {
+                        foreach (Process item in allprocess)
+                        {
+                            item.Kill();
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+            }
         }
+        public bool Running()
+        {
+            bool running = false;
+            try
+            {
+                running= !m_Process.HasExited;
+            }
+            catch (Exception e)
+            {
+                running = false;
+            }
+            return running;
+        }
+
 
 
         public  string GenerateScript()

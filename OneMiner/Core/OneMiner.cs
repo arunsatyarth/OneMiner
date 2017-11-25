@@ -20,6 +20,7 @@ namespace OneMiner.Core
         public Queue<IMinerProgram> MiningQueue { get; set; }
         public Queue<IMinerProgram> DownloadingQueue { get; set; }
         public volatile bool m_keepMining = true;
+        public volatile bool m_keepRunning = true;
         Thread m_minerThread;
         Thread m_downloadingThread;
         private object m_locker = new object();
@@ -77,30 +78,56 @@ namespace OneMiner.Core
         void MiningThread(object obj)
         {
             IncrThreadCount();
-            while (m_keepMining)
+            List<IMinerProgram> runningMiners = new List<IMinerProgram>();
+            while (m_keepRunning)//thread runs as long as app is on
             {
-                if (MiningQueue.Count == 0)
-                    Thread.Sleep(4000);
+                if (MiningQueue.Count == 0 || m_keepMining==false)
+                    Thread.Sleep(2000);
                 else
                 {
                     IMinerProgram miner = MiningQueue.Dequeue();
                     if (miner.ReadyForMining())
                     {
                         miner.StartMining();
+                        runningMiners.Add(miner);
                     }
                     else
                         DownloadingQueue.Enqueue(miner);
                 }
+                if(m_keepMining)
+                {
+                    //Ensure all started miners are still running
+                    foreach (IMinerProgram item in runningMiners)
+                    {
+                        if(!item.Running())
+                        {
+                            //just to be sure. we never want to start miner twice
+                            item.KillMiner();
+                            //Dont directly start mining. push it to queue and let the workflow start
+                            MiningQueue.Enqueue(item);
+                        }
+                    }
+                }
+                else
+                {
+                    //Kill all running  miners and go to sleep for some time
+                    foreach (IMinerProgram item in runningMiners)
+                    {
+                        item.KillMiner();
+                    }
+
+                }
             }
+            DecrThreadCount();
 
         }
         void DownLoadingThread(object obj)
         {
             IncrThreadCount();
-            while (m_keepMining)
+            while (m_keepRunning)
             {
-                if (DownloadingQueue.Count == 0)
-                    Thread.Sleep(4000);
+                if (DownloadingQueue.Count == 0 || m_keepMining == false)
+                    Thread.Sleep(2000);
                 else
                 {
                     IMinerProgram miner = DownloadingQueue.Dequeue();
@@ -110,6 +137,8 @@ namespace OneMiner.Core
 
                 }
             }
+            DecrThreadCount();
+
         }
         void InitiateThreads()
         {
@@ -179,6 +208,7 @@ namespace OneMiner.Core
 
         public void CloseApp()
         {
+            m_keepRunning = false;
             Environment.Exit(0);
             
         }
