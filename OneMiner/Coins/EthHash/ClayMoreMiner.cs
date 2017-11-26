@@ -393,9 +393,12 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
         /// </summary>
         class ClayMoreReader:IOutputReader
         {
+            private const int MAX_QUEUESIZE = 100;
+
             private object s_accesssynch = new object();
             public string StatsLink { get; set; }
-            public string m_Lastlog = "";
+            private string m_Lastlog = "";
+            public Queue<string> m_AllLogs = new Queue<string>();
             public string LastLog
             {
                 get
@@ -429,6 +432,44 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
                     }
                 }
             }
+            public string NextLog
+            {
+                get
+                {
+                    lock (s_accesssynch)
+                    {
+                        try
+                        {
+                            return m_AllLogs.Dequeue();
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Instance.LogError(e.ToString());
+                            return "";
+                        }
+                    }
+                }
+                set
+                {
+                    lock (s_accesssynch)
+                    {
+                        try
+                        {
+                            if (value != null && value != "")
+                            {
+                                LastLog = value;
+                                m_AllLogs.Enqueue(value);
+                                if (m_AllLogs.Count >= MAX_QUEUESIZE)//if consumer is slower than producer, then we need to remove old vals
+                                    m_AllLogs.Dequeue();
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Instance.LogError(e.ToString());
+                        }
+                    }
+                }
+            }
 
             public ClayMoreReader(string link)
             {
@@ -448,7 +489,7 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
                 Stream stream = resp.GetResponseStream();
                 StreamReader sr = new StreamReader(stream);
                 string s = sr.ReadToEnd();
-                LastLog = s;
+                NextLog = s;
             }
             public void Parse()
             {

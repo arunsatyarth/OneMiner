@@ -11,5 +11,6 @@ namespace OneMiner.Core.Interfaces
         //or kep everything in queue here and push pul l wen needed
         void AlarmRaised();
         string LastLog { get; set; }
+        string NextLog { get; set; }
     }
 }
