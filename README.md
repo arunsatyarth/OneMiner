@@ -3,6 +3,7 @@ As the name suggests, this is a 1 click miner for all GPU coins viz Ethereum, Zc
 The name might hold a subtle  reference to the 'One Ring" from 'Lord of the Rings' but it holds no delusions of grandeur about its supremacy :).
 
 The main reason to use this tool is that  setting up a miner is difficult. Especially if you have different GPU cards or if you want to switch between mining different coins or to different wallet adddresses. It becomes a lot script heavy to handle such situations. This tool was built to have all such functionality in 1 place. It is open source hence anyone can download the code/tool and use it as is or make modifications to suit his needs.
+
 For instance, my prime motive behind the creation of this tool  was that I have a miner with both Nvidia and AMD cards. I was using Claymore miner for AMD and EWBF for Nvidia while mining Zcash. But sometimes when the newtwork is down the EWBF miner would die and never come back up. I had to manually launch it later. Writing scripts for everything was getting tedious. So I thought of creating this tool which would benefit everyone.
 
 I tried out things like Awesome Miner and Minergate but both being closed source I wasnt sure of its legitamacy. With this project I intend to create a one stop tool which can mine almost anything and in as little steps as possible.
@@ -10,13 +11,17 @@ I tried out things like Awesome Miner and Minergate but both being closed source
 I would like to hear your feedback and thoughts if any. Please use the github issue tracker  to notify me of any issues or enhanement requests or send a mail to arun.satyarth@gmail.com.
 
 If you would like to supprt my work, your donations would be greatly appreciated
+
 Bitcoin
+
 1MtjqqLDtbLvMY8s3vw2SCynGqSvszJf4V
 
 Ethereum
+
 0x033ff6918d434cef3887d8e529c14d1bcb91ca8b
 
 Litecoin
+
 LgPDDxVbtB4khAd4b6MmP6GGV3JSdyShpR
 
 
