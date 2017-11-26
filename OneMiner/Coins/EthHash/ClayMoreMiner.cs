@@ -9,6 +9,9 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Web.Script.Serialization;
+using System.Windows.Forms;
 
 namespace OneMiner.Coins.EthHash
 {
@@ -396,9 +399,44 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
             private const int MAX_QUEUESIZE = 5;
 
             private object s_accesssynch = new object();
+            private object s_resultSynch = new object();
             public string StatsLink { get; set; }
             private string m_Lastlog = "";
             public Queue<string> m_AllLogs = new Queue<string>();
+            MinerDataResult m_Result = new MinerDataResult();
+            public MinerDataResult MinerResult
+            {
+                get
+                {
+                    lock (s_resultSynch)
+                    {
+                        try
+                        {
+                            return m_Result;
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Instance.LogError(e.ToString());
+                            return null;
+                        }
+                    }
+                }
+                set
+                {
+                    lock (s_resultSynch)
+                    {
+                        try
+                        {
+                            m_Result = value;
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Instance.LogError(e.ToString());
+                            m_Lastlog = null;
+                        }
+                    }
+                }
+            }
             public string LastLog
             {
                 get
@@ -491,10 +529,7 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
                 string s = sr.ReadToEnd();
                 NextLog = s;
             }
-            public void Parse()
-            {
-               
-            }
+    
             public void AlarmRaised()
             {
                 try
@@ -506,6 +541,130 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
                 {
                 }
               
+            }
+            MinerDataResult GetResultsSection(string innerText)
+            {
+                try
+                {
+                    //string patternf = @"\{([a-z]|[^a-z])*\}";
+                    string pattern = @"\{([^()]|())*\}";
+                    Match resultmatch = Regex.Match(innerText, pattern);
+                    if(resultmatch.Success)
+                    {
+                        MinerDataResult results = (MinerDataResult)new JavaScriptSerializer().Deserialize(resultmatch.Value, typeof(MinerDataResult));
+                        return results;
+                    }
+                }
+                catch (Exception e)
+                {
+                }
+                return null;
+            }
+            public void Parse()
+            {
+                MinerDataResult minerResult =GetResultsSection(LastLog);
+                if (minerResult.Parse(new EtherClaymoreResultParser()))
+                    MinerResult = minerResult;
+            }
+
+            public class EtherClaymoreResultParser : IMinerResultParser
+            {
+                MinerDataResult m_MinerResult = null;
+                public bool Succeeded { get; set; }//if parsing succeeded without errors
+
+                public bool Parse(MinerDataResult obj)
+                {
+                    Succeeded = false;
+                    
+                    m_MinerResult = obj;
+                    try
+                    {
+                        if (obj == null)
+                            return false;
+                        if (m_MinerResult.result != null && m_MinerResult.result.Count >= 7)
+                        {
+                            ComputeRunningTime();
+                            ComputeHashnShares();
+                            ComputeGPUData();
+                            return true;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Succeeded = false;
+                    }
+                    return false;
+                    
+                }
+                public void ComputeRunningTime()
+                {
+                    try
+                    {
+                        m_MinerResult.RunningTime = Int32.Parse(m_MinerResult.result[1]);
+                    }
+                    catch (Exception )
+                    {
+                        m_MinerResult.RunningTime = 0;
+                        Succeeded = false;
+                        throw;
+                    }
+                }
+                public void ComputeHashnShares()
+                {
+                    try
+                    {
+                        string combined = m_MinerResult.result[2];
+                        string []data=combined.Split(';');
+                        if(data!=null && data.Length==3)
+                        {
+                            m_MinerResult.TotalHashrate = Int32.Parse(data[0]);//this is in H/s not MH/s UI will have to do conversion
+                            m_MinerResult.TotalShares = Int32.Parse(data[1]);
+                            m_MinerResult.Rejected = Int32.Parse(data[2]);
+
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        m_MinerResult.TotalHashrate = 0;
+                        m_MinerResult.TotalShares = 0;
+                        m_MinerResult.Rejected = 0;
+                        Succeeded = false;
+                        throw;
+                    }
+                }
+                public void ComputeGPUData()
+                {
+                    try
+                    {
+                        m_MinerResult.GPUs = new List<GpuData>();
+                        string hashCombined = m_MinerResult.result[3];
+                        string[] hashrates = hashCombined.Split(';');
+
+                        string fanTemp = m_MinerResult.result[6];
+                        string[] fanTempArr = fanTemp.Split(';');
+                        if (hashrates != null && hashrates.Length >0)
+                        {
+                            int j = 0;
+                            foreach (string item in hashrates)
+                            {
+                                GpuData gpu = new GpuData();
+
+                                gpu.Hashrate= item;
+                                gpu.Temperature = fanTempArr[j] +"C";
+                                gpu.FanSpeed = fanTempArr[j+1]+"%";
+                                j += 2;
+                                m_MinerResult.GPUs.Add(gpu);
+                            }
+                        }
+
+                    }
+                    catch (Exception)
+                    {
+                        Succeeded = false;
+                        throw;
+                    }
+                }
+
             }
         }
     }

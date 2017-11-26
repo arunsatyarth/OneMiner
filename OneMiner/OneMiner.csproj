@@ -53,6 +53,7 @@
     <Compile Include="Coins\EthHash\EtherClassic.cs" />
     <Compile Include="Core\Alarm.cs" />
     <Compile Include="Core\Factory.cs" />
+    <Compile Include="Core\Interfaces\IGpuData.cs" />
     <Compile Include="Core\Interfaces\ILogger.cs" />
     <Compile Include="Core\Interfaces\IMiner.cs" />
     <Compile Include="Core\Interfaces\ICoin.cs" />

@@ -9,7 +9,7 @@ namespace OneMiner.Core
 {
     public class Alarm
     {
-        private const int CORE_ALARM_INTERVAL = 3000;
+        private const int CORE_ALARM_INTERVAL = 13000;
         private const int CORE_ALARM_DELAY_START = 5000;
         static event OneMinerTimerEvent m_Events;
         static Timer m_timer = null;

@@ -36,6 +36,7 @@
             this.pbTemplate = new System.Windows.Forms.PictureBox();
             this.lblMinerState = new System.Windows.Forms.Label();
             this.pnlMinerInfo = new System.Windows.Forms.Panel();
+            this.lblTotalHashrate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbTemplate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,7 +114,7 @@
             // 
             this.lblMinerState.AutoSize = true;
             this.lblMinerState.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMinerState.Location = new System.Drawing.Point(83, 74);
+            this.lblMinerState.Location = new System.Drawing.Point(7, 100);
             this.lblMinerState.Name = "lblMinerState";
             this.lblMinerState.Size = new System.Drawing.Size(70, 13);
             this.lblMinerState.TabIndex = 13;
@@ -128,12 +129,23 @@
             this.pnlMinerInfo.Size = new System.Drawing.Size(841, 265);
             this.pnlMinerInfo.TabIndex = 14;
             // 
+            // lblTotalHashrate
+            // 
+            this.lblTotalHashrate.AutoSize = true;
+            this.lblTotalHashrate.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalHashrate.Location = new System.Drawing.Point(83, 85);
+            this.lblTotalHashrate.Name = "lblTotalHashrate";
+            this.lblTotalHashrate.Size = new System.Drawing.Size(91, 25);
+            this.lblTotalHashrate.TabIndex = 15;
+            this.lblTotalHashrate.Text = "Hashrate";
+            // 
             // MinerInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1091, 335);
+            this.Controls.Add(this.lblTotalHashrate);
             this.Controls.Add(this.pnlMinerInfo);
             this.Controls.Add(this.lblMinerState);
             this.Controls.Add(this.pbTemplate);
@@ -161,5 +173,6 @@
         private System.Windows.Forms.PictureBox pbTemplate;
         private System.Windows.Forms.Label lblMinerState;
         private System.Windows.Forms.Panel pnlMinerInfo;
+        private System.Windows.Forms.Label lblTotalHashrate;
     }
 }
