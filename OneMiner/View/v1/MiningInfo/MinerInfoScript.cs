@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace OneMiner.View.v1.MiningInfo
 {
-    public partial class MinerInfoScript : Form
+    public partial class MinerInfoScript : Form,IMinerInfoTab
     {
         public IMiner Miner { get; set; }
         MinerInfo m_Parent = null;
@@ -51,7 +51,7 @@ namespace OneMiner.View.v1.MiningInfo
             }
             m_currentButton.BackColor = Color.SteelBlue;
             m_currentButton.ForeColor = Color.White;
-            showScript(m_currentButton);
+            UpdateUI();
 
 
         }
@@ -60,14 +60,15 @@ namespace OneMiner.View.v1.MiningInfo
         {
             Button btn = sender as Button;
             m_currentButton = btn;
-            showScript(btn);
+            UpdateUI();
 
         }
-        void showScript(Button btn)
+
+        public void UpdateUI()
         {
-            if (btn != null)
+            if (m_currentButton != null)
             {
-                IMinerProgram prog = m_ButtonToMiner[btn.Name] as IMinerProgram;
+                IMinerProgram prog = m_ButtonToMiner[m_currentButton.Name] as IMinerProgram;
                 string script = prog.Script;
                 txtScriptArea.Text = script;
                 DisableEdit();
@@ -113,5 +114,7 @@ namespace OneMiner.View.v1.MiningInfo
 
             }
         }
+
+
     }
 }

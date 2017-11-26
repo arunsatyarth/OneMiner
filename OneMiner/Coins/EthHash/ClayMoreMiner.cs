@@ -23,7 +23,8 @@ namespace OneMiner.Coins.EthHash
         private const string MINERURL = "https://github.com/nanopool/Claymore-Dual-Miner/releases/download/v10.0/Claymore.s.Dual.Ethereum.Decred_Siacoin_Lbry_Pascal.AMD.NVIDIA.GPU.Miner.v10.0.zip";
         private const string EXENAME = "EthDcrMiner64.exe";
         private const string PROCESSNAME = "EthDcrMiner64";
-        private const string STATS_LINK = "http://127.0.0.1:3000/";
+        //private const string STATS_LINK = "http://127.0.0.1:3000/";//This is for zcash claymore
+        private const string STATS_LINK = "http://127.0.0.1:3333/";
 
         public string Script { get; set; }
         public IOutputReader Reader { get; set; }
@@ -50,7 +51,7 @@ namespace OneMiner.Coins.EthHash
         MinerDownloader m_downloader = null;
         private Process m_Process = null;
         private object m_accesssynch = new object();
-        IOutputReader m_OutputReader = new ClayMoreReader(STATS_LINK);
+        public IOutputReader OutputReader { get; set; }
 
 
 
@@ -70,6 +71,8 @@ namespace OneMiner.Coins.EthHash
             AutomaticScriptGeneration = true;
             Type = "Claymore";
             m_downloader = new MinerDownloader(MINERURL, EXENAME);
+            OutputReader = new ClayMoreReader(STATS_LINK);
+
             GenerateScript();
 
         }
@@ -192,7 +195,7 @@ namespace OneMiner.Coins.EthHash
                         {
                             MinerState = MinerProgramState.Running;
                             Miner.SetRunningState(this, MinerProgramState.Running);
-                            Alarm.RegisterForTimer(m_OutputReader.AlarmRaised);
+                            Alarm.RegisterForTimer(OutputReader.AlarmRaised);
                         }
 
                     }
@@ -406,8 +409,8 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
                         catch (Exception e)
                         {
                             Logger.Instance.LogError(e.ToString());
+                            return "";
                         }
-                        return "";
                     }
                 }            
                 set
@@ -421,8 +424,8 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
                         catch (Exception e)
                         {
                             Logger.Instance.LogError(e.ToString());
+                            m_Lastlog = "";
                         }
-                        m_Lastlog = "";
                     }
                 }
             }
@@ -444,7 +447,8 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
                 HttpWebResponse resp = request.GetResponse() as HttpWebResponse;
                 Stream stream = resp.GetResponseStream();
                 StreamReader sr = new StreamReader(stream);
-                LastLog = sr.ReadToEnd();
+                string s = sr.ReadToEnd();
+                LastLog = s;
             }
             public void Parse()
             {
@@ -452,8 +456,15 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
             }
             public void AlarmRaised()
             {
-                Read();
-                Parse();
+                try
+                {
+                    Read();
+                    Parse();
+                }
+                catch (Exception e)
+                {
+                }
+              
             }
         }
     }

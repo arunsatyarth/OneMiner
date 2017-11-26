@@ -19,7 +19,12 @@ namespace OneMiner.Core
         {
             try
             {
-                m_Events.Invoke();
+                if (m_Events != null)
+                {
+                    Delegate[] delegates = m_Events.GetInvocationList();
+                    if (delegates.Length > 0)
+                        m_Events.Invoke();
+                }
             }
             catch (Exception e)
             {

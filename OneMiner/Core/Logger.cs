@@ -45,7 +45,7 @@ namespace OneMiner.Core
                 {
                     string message = GetMessage(error);
 #if DEBUG
-                    MessageBox.Show(message);
+                    //MessageBox.Show(message);
 #endif
                 }
                 catch (Exception e)

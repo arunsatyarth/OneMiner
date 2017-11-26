@@ -27,6 +27,9 @@ namespace OneMiner
         int m_CurrentCarousal = 0;
         DateTime m_LastCarousalTurn = DateTime.Now;
         private const int CAROUSAL_WAIT=60000;
+        public MinerView MinerView { get; set; }//the selected minerview. not the activated one. this is the one which was clicked. 
+        public MinerInfo MinerInfo { get; set; }//the selected minerInfo. not the activated one. this is the one which was clicked. We need this object to show the logs etc
+
 
         private void btnAddMiner_Click(object sender, EventArgs e)
         {
@@ -65,8 +68,17 @@ namespace OneMiner
             Form next = m_Corousals.ElementAt<Form>(m_CurrentCarousal);
             BringToView(next);
 
+            Factory.Instance.ViewObject.RegisterForTimer(UpdateMinerInfo);
             Factory.Instance.ViewObject.RegisterForTimer(t_Tick);
             Factory.Instance.ViewObject.RegisterForTimer(UpDateMinerState);
+        }
+
+        public void UpdateMinerInfo()
+        {
+            if(MinerInfo!=null)
+            {
+                MinerInfo.UpdateUI();
+            }
         }
         public void UpDateMinerState()
         {
@@ -158,10 +170,19 @@ namespace OneMiner
         }
         public void SelectMiningView(MinerView view)
         {
+            view.SelectView();
+            this.MinerView = view;
+            ShowMiningInfo(view.Miner);
+
+        }
+        public void ChangeMiningView(MinerView view)
+        {
             foreach (MinerView item in pnlMiner.Controls)
             {
-                if(item==view)
-                    item.SelectView();
+                if (item == view)
+                {
+                    SelectMiningView(view);
+                }
                 else
                     item.DeSelectView();
             }
@@ -193,24 +214,29 @@ namespace OneMiner
                 view.Show();
                 if (Factory.Instance.CoreObject.SelectedMiner == item)
                 {
-                    view.SelectView();
-                    view.ActivateView();
-                    ShowMiningView(item);
+                    view.ActivateView();//makes it default. the tick mark
+
+                    //view.SelectView();//marks it as selected
+                    //ShowMiningInfo(item);
+                    //this.MinerView = view;
+                    SelectMiningView(view);
                 }
             }
             ShowSettingsCarausal();
         }
 
 
-        public void ShowMiningView(IMiner miner)
+        public void ShowMiningInfo(IMiner miner)
         {
-            MinerInfo view = new MinerInfo(miner, this);
-            view.TopLevel = false;
+            MinerInfo info = new MinerInfo(miner, this);
+            info.TopLevel = false;
             pnlMinerInfo.Controls.Clear();
-            pnlMinerInfo.Controls.Add(view);
-            view.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            view.Dock = DockStyle.Fill;
-            view.Show();
+            pnlMinerInfo.Controls.Add(info);
+            info.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            info.Dock = DockStyle.Fill;
+            this.MinerInfo = info;
+
+            info.Show();
         }
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)

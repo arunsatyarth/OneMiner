@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace OneMiner.View.v1.MiningInfo
 {
-    public partial class MinerInfoSummary : Form
+    public partial class MinerInfoSummary : Form,IMinerInfoTab
     {
         public IMiner Miner { get; set; }
         MinerInfo m_Parent = null;
@@ -24,6 +24,10 @@ namespace OneMiner.View.v1.MiningInfo
         private void MinerInfoSummary_Load(object sender, EventArgs e)
         {
 
+        }
+
+        public void UpdateUI()
+        {
         }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.btnTemplate = new System.Windows.Forms.Button();
+            this.logBrowser = new System.Windows.Forms.WebBrowser();
             this.SuspendLayout();
             // 
             // btnTemplate
@@ -37,7 +38,7 @@
             this.btnTemplate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnTemplate.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTemplate.ForeColor = System.Drawing.Color.White;
-            this.btnTemplate.Location = new System.Drawing.Point(-29, 12);
+            this.btnTemplate.Location = new System.Drawing.Point(-50, 12);
             this.btnTemplate.Name = "btnTemplate";
             this.btnTemplate.Size = new System.Drawing.Size(67, 23);
             this.btnTemplate.TabIndex = 12;
@@ -45,11 +46,22 @@
             this.btnTemplate.UseVisualStyleBackColor = false;
             this.btnTemplate.Visible = false;
             // 
+            // logBrowser
+            // 
+            this.logBrowser.IsWebBrowserContextMenuEnabled = false;
+            this.logBrowser.Location = new System.Drawing.Point(12, 41);
+            this.logBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.logBrowser.Name = "logBrowser";
+            this.logBrowser.Size = new System.Drawing.Size(884, 203);
+            this.logBrowser.TabIndex = 13;
+            // 
             // MinerInfoLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(926, 386);
+            this.Controls.Add(this.logBrowser);
             this.Controls.Add(this.btnTemplate);
             this.Name = "MinerInfoLogs";
             this.Text = "MinerInfoLogs";
@@ -61,5 +73,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnTemplate;
+        private System.Windows.Forms.WebBrowser logBrowser;
     }
 }

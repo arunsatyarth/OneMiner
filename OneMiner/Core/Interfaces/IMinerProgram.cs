@@ -22,6 +22,8 @@ namespace OneMiner.Core.Interfaces
         string BATFILE { get; set; }
         bool BATCopied { get; set; }
         IMiner Miner { get; set; }
+        IOutputReader OutputReader { get; set; }
+
 
 
         //if script HashSet been changed manually, WeakReference CannotUnloadAppDomainException generate script automatically anymore

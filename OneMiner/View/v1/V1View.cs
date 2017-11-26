@@ -17,9 +17,9 @@ namespace OneMiner.View.v1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             m_Timer = new System.Windows.Forms.Timer();
-            m_Timer.Interval = 60000;
+            m_Timer.Interval = 10000;
 #if DEBUG
-            m_Timer.Interval = 60000;
+            m_Timer.Interval = 10000;
 #endif
             m_Timer.Tick += t_Tick;
         }

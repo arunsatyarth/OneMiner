@@ -109,9 +109,7 @@ namespace OneMiner.View.v1
         }
         void pnlTemplate_Click(object sender, EventArgs e)
         {
-            m_Parent.SelectMiningView(this);
-
-            m_Parent.ShowMiningView(Miner);
+            m_Parent.ChangeMiningView(this);
         }
 
         private void pnlTemplate_Paint(object sender, PaintEventArgs e)

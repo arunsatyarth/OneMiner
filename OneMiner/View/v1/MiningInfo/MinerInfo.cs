@@ -18,6 +18,9 @@ namespace OneMiner.View.v1
         
         MainForm m_Parent = null;
         List<Button> m_tabButtons = new List<Button>();
+        public IMinerInfoTab CurrentTab { get; set; }
+
+        
 
         Form m_Summary = null;
         Form m_Script =null;
@@ -73,8 +76,21 @@ namespace OneMiner.View.v1
             pnlMinerInfo.Controls.Add(form);
             form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             form.Dock = DockStyle.Fill;
+            IMinerInfoTab tab = form as IMinerInfoTab;
+            if (tab != null)
+                tab.UpdateUI();
+            CurrentTab = tab;//its ok if its null after cast
             form.Show();
         }
+        public void UpdateUI()
+        {
+            if(CurrentTab!=null)
+            {
+                CurrentTab.UpdateUI();
+            }
+        }
+
+        
         private void btntabInfo_Click(object sender, EventArgs e)
         {
             SelectView(sender as Button) ;
