@@ -15,15 +15,15 @@ I would like to hear your feedback and thoughts if any. Please use the github is
 # Donations
 If you would like to supprt this project, your donations would be greatly appreciated
 
-Bitcoin
+## Bitcoin
 
 1MtjqqLDtbLvMY8s3vw2SCynGqSvszJf4V
 
-Ethereum
+## Ethereum
 
 0x033ff6918d434cef3887d8e529c14d1bcb91ca8b
 
-Litecoin
+## Litecoin
 
 LgPDDxVbtB4khAd4b6MmP6GGV3JSdyShpR
 
