@@ -34,10 +34,11 @@
             this.btntabInfo = new System.Windows.Forms.Button();
             this.lblMinerType = new System.Windows.Forms.Label();
             this.pbTemplate = new System.Windows.Forms.PictureBox();
-            this.lblMinerState = new System.Windows.Forms.Label();
             this.pnlMinerInfo = new System.Windows.Forms.Panel();
             this.lblTotalHashrate = new System.Windows.Forms.Label();
             this.lblShares = new System.Windows.Forms.Label();
+            this.btnStartMining = new System.Windows.Forms.Button();
+            this.lblMinerState = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbTemplate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,16 +112,6 @@
             this.pbTemplate.TabIndex = 12;
             this.pbTemplate.TabStop = false;
             // 
-            // lblMinerState
-            // 
-            this.lblMinerState.AutoSize = true;
-            this.lblMinerState.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMinerState.Location = new System.Drawing.Point(7, 100);
-            this.lblMinerState.Name = "lblMinerState";
-            this.lblMinerState.Size = new System.Drawing.Size(70, 13);
-            this.lblMinerState.TabIndex = 13;
-            this.lblMinerState.Text = "Defaultstate";
-            // 
             // pnlMinerInfo
             // 
             this.pnlMinerInfo.BackColor = System.Drawing.Color.White;
@@ -150,16 +141,40 @@
             this.lblShares.TabIndex = 16;
             this.lblShares.Text = "Shares: 0 S, 0 R";
             // 
+            // btnStartMining
+            // 
+            this.btnStartMining.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStartMining.Location = new System.Drawing.Point(10, 119);
+            this.btnStartMining.Name = "btnStartMining";
+            this.btnStartMining.Size = new System.Drawing.Size(53, 25);
+            this.btnStartMining.TabIndex = 17;
+            this.btnStartMining.Text = "Start";
+            this.btnStartMining.UseVisualStyleBackColor = true;
+            this.btnStartMining.Click += new System.EventHandler(this.btnStartMining_Click);
+            // 
+            // lblMinerState
+            // 
+            this.lblMinerState.AutoSize = true;
+            this.lblMinerState.BackColor = System.Drawing.Color.White;
+            this.lblMinerState.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMinerState.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblMinerState.Location = new System.Drawing.Point(9, 95);
+            this.lblMinerState.Name = "lblMinerState";
+            this.lblMinerState.Size = new System.Drawing.Size(54, 15);
+            this.lblMinerState.TabIndex = 18;
+            this.lblMinerState.Text = "Stopped";
+            // 
             // MinerInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1091, 335);
+            this.Controls.Add(this.lblMinerState);
+            this.Controls.Add(this.btnStartMining);
             this.Controls.Add(this.lblShares);
             this.Controls.Add(this.lblTotalHashrate);
             this.Controls.Add(this.pnlMinerInfo);
-            this.Controls.Add(this.lblMinerState);
             this.Controls.Add(this.pbTemplate);
             this.Controls.Add(this.lblMinerType);
             this.Controls.Add(this.btntabScript);
@@ -183,9 +198,10 @@
         private System.Windows.Forms.Button btntabInfo;
         private System.Windows.Forms.Label lblMinerType;
         private System.Windows.Forms.PictureBox pbTemplate;
-        private System.Windows.Forms.Label lblMinerState;
         private System.Windows.Forms.Panel pnlMinerInfo;
         private System.Windows.Forms.Label lblTotalHashrate;
         private System.Windows.Forms.Label lblShares;
+        private System.Windows.Forms.Button btnStartMining;
+        private System.Windows.Forms.Label lblMinerState;
     }
 }

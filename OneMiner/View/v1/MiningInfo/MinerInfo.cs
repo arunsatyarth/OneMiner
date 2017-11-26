@@ -84,6 +84,11 @@ namespace OneMiner.View.v1
             form.Show();
         }
 
+        public void UpdateState()
+        {
+            UiStateUtil.UpdateState(Miner, lblMinerState, btnStartMining, null);
+            
+        }
         public void CalculateTotalHashrate()
         {
             try
@@ -157,6 +162,12 @@ namespace OneMiner.View.v1
             SelectView(sender as Button);
             ShowTabInfo(m_Logs);
 
+
+        }
+
+        private void btnStartMining_Click(object sender, EventArgs e)
+        {
+            UiStateUtil.MiningStartAction(Miner);
 
         }
     }

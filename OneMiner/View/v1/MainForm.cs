@@ -93,11 +93,12 @@ namespace OneMiner
                 {
                     foreach (Control item in pnlMiner.Controls)
                     {
-                        MinerView form = item as MinerView;
-                        if (form != null)
+                        MinerView minerView = item as MinerView;
+                        if (minerView != null)
                         {
-                            form.UpdateState();
+                            minerView.UpdateState();
                         }
+                        MinerInfo.UpdateState();
                     }
                 }
                 
@@ -235,6 +236,7 @@ namespace OneMiner
             info.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             info.Dock = DockStyle.Fill;
             this.MinerInfo = info;
+            info.UpdateState();
 
             info.Show();
         }

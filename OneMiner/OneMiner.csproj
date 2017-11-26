@@ -183,6 +183,7 @@
     <Compile Include="View\v1\MiningInfo\MinerInfoSummary.Designer.cs">
       <DependentUpon>MinerInfoSummary.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\v1\UiStateUtil.cs" />
     <Compile Include="View\v1\V1View.cs" />
     <EmbeddedResource Include="View\v1\Corousal\ProfitabilitySummary.resx">
       <DependentUpon>ProfitabilitySummary.cs</DependentUpon>

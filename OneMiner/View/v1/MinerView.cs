@@ -39,53 +39,7 @@ namespace OneMiner.View.v1
         }
         public void UpdateState()
         {
-            string labelName = "";
-            string buttontext = "";
-
-            switch(Miner.MinerState)
-            {
-                case MinerProgramState.Starting:
-                    lblMinerState.ForeColor = SystemColors.Info;
-                    labelName = Miner.MinerState.ToString();
-                    buttontext = "Stop";
-                    break;
-                case MinerProgramState.PartiallyRunning:
-                    lblMinerState.ForeColor = SystemColors.Info;
-                    labelName = Miner.MinerState.ToString();
-                    buttontext = "Stop";
-                    break;
-                case MinerProgramState.Downloading:
-                    lblMinerState.ForeColor = SystemColors.HotTrack;
-                    labelName = Miner.MinerState.ToString();
-                    buttontext = "Stop";
-                    break;
-                case MinerProgramState.Running:
-                    lblMinerState.ForeColor = Color.MediumSeaGreen;
-                    labelName = Miner.MinerState.ToString();
-                    buttontext = "Stop";
-
-                    break;
-                case MinerProgramState.Stopping:
-                       lblMinerState.ForeColor = Color.Tomato;
-                    labelName = Miner.MinerState.ToString();
-                    buttontext = "Start";
-                    break;
-                case MinerProgramState.Stopped:
-                    lblMinerState.ForeColor = Color.Tomato;
-                    labelName = Miner.MinerState.ToString();
-                    buttontext = "Start";
-                    break;
-                default:
-                    lblMinerState.ForeColor = SystemColors.Info;
-                    labelName = "unknown state";
-                    buttontext = "unknown";
-                    break;
-
-            }
-            lblMinerState.Text = labelName;
-            btnStartMining.Text = buttontext;
-            optionsMenu.Items[1].Text = buttontext;
-
+            UiStateUtil.UpdateState(Miner,lblMinerState, btnStartMining, optionsMenu);
         }
 
         public void ActivateView()
@@ -119,29 +73,7 @@ namespace OneMiner.View.v1
 
         private void btnStartMining_Click(object sender, EventArgs e)
         {
-            switch (Miner.MinerState)
-            {
-                case MinerProgramState.Starting:
-                    Factory.Instance.CoreObject.StopMining();
-                    break;
-                case MinerProgramState.PartiallyRunning:
-                    Factory.Instance.CoreObject.StopMining();
-                    break;
-                case MinerProgramState.Downloading:
-                    Factory.Instance.CoreObject.StopMining();
-                    break;
-                case MinerProgramState.Running:
-                    Factory.Instance.CoreObject.StopMining();
-                    break;
-                case MinerProgramState.Stopping:
-                    Factory.Instance.CoreObject.StartMining(Miner);
-                    break;
-                case MinerProgramState.Stopped:
-                    Factory.Instance.CoreObject.StartMining(Miner);
-                    break;
-                default:
-                    break;
-            }
+            UiStateUtil.MiningStartAction(Miner);
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
