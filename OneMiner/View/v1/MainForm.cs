@@ -44,6 +44,9 @@ namespace OneMiner
             RunCarousal();
             this.FormClosing += MainForm_FormClosing;
             oneMinerNotifyIcon.ContextMenuStrip = taskbarMenu;
+            Factory.Instance.ViewObject.RegisterForTimer(UpdateMinerInfo);
+            Factory.Instance.ViewObject.RegisterForTimer(t_Tick);
+            Factory.Instance.ViewObject.RegisterForTimer(UpDateMinerState);
 
         }
 
@@ -68,9 +71,7 @@ namespace OneMiner
             Form next = m_Corousals.ElementAt<Form>(m_CurrentCarousal);
             BringToView(next);
 
-            Factory.Instance.ViewObject.RegisterForTimer(UpdateMinerInfo);
-            Factory.Instance.ViewObject.RegisterForTimer(t_Tick);
-            Factory.Instance.ViewObject.RegisterForTimer(UpDateMinerState);
+
         }
 
         public void UpdateMinerInfo()

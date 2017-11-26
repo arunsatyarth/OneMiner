@@ -28,6 +28,18 @@ namespace OneMiner.View.v1.MiningInfo
 
         public void UpdateUI()
         {
+            try
+            {
+                string linktext="Launch";
+                lblWalletname.Text = Miner.MainCoin.SettingsScreen.Wallet;
+                lnklblPool.Text = Miner.MainCoin.SettingsScreen.Pool+" "+linktext;
+                lnklblPool.LinkArea = new LinkArea(lnklblPool.Text.Length - linktext.Length, linktext.Length);
+
+                
+            }
+            catch (Exception e)
+            {
+            }
         }
     }
 }

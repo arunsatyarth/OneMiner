@@ -69,6 +69,8 @@ namespace OneMiner.View.v1
             m_tabButtons.Add(btntabLogs);
             m_tabButtons.Add(btntabScript);
             //btntabInfo.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            SelectView(btntabInfo);
+            ShowTabInfo(m_Summary);
         }
         public void ShowTabInfo(Form form)
         {
