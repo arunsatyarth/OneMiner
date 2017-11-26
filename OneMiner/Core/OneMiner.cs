@@ -211,6 +211,7 @@ namespace OneMiner.Core
         public void StopMining()
         {
             m_keepMining = false;
+            Alarm.Clear();
             MiningCommand = MinerProgramCommand.Stop;
             //clear both queues so that threads wint start running them 
             DownloadingQueue.Clear();
@@ -221,6 +222,7 @@ namespace OneMiner.Core
             RunningMiners.Clear();
 
             SelectedMiner.StopMining();
+            
 
             ActiveMiner = null;
         }

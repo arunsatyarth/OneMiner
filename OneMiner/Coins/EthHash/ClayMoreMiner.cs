@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 
 namespace OneMiner.Coins.EthHash
@@ -22,6 +23,8 @@ namespace OneMiner.Coins.EthHash
         private const string MINERURL = "https://github.com/nanopool/Claymore-Dual-Miner/releases/download/v10.0/Claymore.s.Dual.Ethereum.Decred_Siacoin_Lbry_Pascal.AMD.NVIDIA.GPU.Miner.v10.0.zip";
         private const string EXENAME = "EthDcrMiner64.exe";
         private const string PROCESSNAME = "EthDcrMiner64";
+        private const string STATS_LINK = "http://127.0.0.1:3000/";
+
         public string Script { get; set; }
         public IOutputReader Reader { get; set; }
 
@@ -47,6 +50,7 @@ namespace OneMiner.Coins.EthHash
         MinerDownloader m_downloader = null;
         private Process m_Process = null;
         private object m_accesssynch = new object();
+        IOutputReader m_OutputReader = new ClayMoreReader(STATS_LINK);
 
 
 
@@ -188,6 +192,7 @@ namespace OneMiner.Coins.EthHash
                         {
                             MinerState = MinerProgramState.Running;
                             Miner.SetRunningState(this, MinerProgramState.Running);
+                            Alarm.RegisterForTimer(m_OutputReader.AlarmRaised);
                         }
 
                     }
@@ -378,5 +383,79 @@ setx GPU_MAX_ALLOC_PERCENT 100
 setx GPU_SINGLE_ALLOC_PERCENT 100
 ";
 
+
+
+        /// <summary>
+        /// reads data for claymore miner
+        /// </summary>
+        class ClayMoreReader:IOutputReader
+        {
+            private object s_accesssynch = new object();
+            public string StatsLink { get; set; }
+            public string m_Lastlog = "";
+            public string LastLog
+            {
+                get
+                {
+                    lock (s_accesssynch)
+                    {
+                        try
+                        {
+                            return m_Lastlog;
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Instance.LogError(e.ToString());
+                        }
+                        return "";
+                    }
+                }            
+                set
+                {
+                    lock (s_accesssynch)
+                    {
+                        try
+                        {
+                            m_Lastlog=value;
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Instance.LogError(e.ToString());
+                        }
+                        m_Lastlog = "";
+                    }
+                }
+            }
+
+            public ClayMoreReader(string link)
+            {
+                StatsLink = link;
+            }
+            public void Read()
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(StatsLink);
+                request.Method = "GET";
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.UserAgent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 7.1; Trident/5.0)";
+                request.Accept = "/";
+                request.UseDefaultCredentials = true;
+                request.Proxy.Credentials = System.Net.CredentialCache.DefaultCredentials;
+                //doc.Save(request.GetRequestStream());
+                HttpWebResponse resp = request.GetResponse() as HttpWebResponse;
+                Stream stream = resp.GetResponseStream();
+                StreamReader sr = new StreamReader(stream);
+                LastLog = sr.ReadToEnd();
+            }
+            public void Parse()
+            {
+               
+            }
+            public void AlarmRaised()
+            {
+                Read();
+                Parse();
+            }
+        }
     }
+
 }

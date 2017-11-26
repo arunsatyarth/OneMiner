@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Coins\EthHash\ClaymoreMiner.cs" />
     <Compile Include="Coins\EthHash\EtherClassic.cs" />
+    <Compile Include="Core\Alarm.cs" />
     <Compile Include="Core\Factory.cs" />
     <Compile Include="Core\Interfaces\ILogger.cs" />
     <Compile Include="Core\Interfaces\IMiner.cs" />

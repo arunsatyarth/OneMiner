@@ -5,6 +5,11 @@ using System.Text;
 
 namespace OneMiner.Core.Interfaces
 {
+    /// <summary>
+    /// callback for all timers
+    /// </summary>
+    public delegate void OneMinerTimerEvent();
+
     public interface IHashAlgorithm
     {
         /// <summary>
