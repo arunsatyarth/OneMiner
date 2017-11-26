@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -79,6 +80,22 @@ namespace OneMiner.View.v1.MiningInfo
             {
             }
        
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                if (m_currentButton != null)
+                {
+                    IMinerProgram prog = m_ButtonToMiner[m_currentButton.Name] as IMinerProgram;
+                    Process.Start(prog.OutputReader.StatsLink);
+
+                }
+            }
+            catch (Exception se)
+            {
+            }
         }
     }
 }

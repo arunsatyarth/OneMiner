@@ -393,7 +393,7 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
         /// </summary>
         class ClayMoreReader:IOutputReader
         {
-            private const int MAX_QUEUESIZE = 25;
+            private const int MAX_QUEUESIZE = 5;
 
             private object s_accesssynch = new object();
             public string StatsLink { get; set; }

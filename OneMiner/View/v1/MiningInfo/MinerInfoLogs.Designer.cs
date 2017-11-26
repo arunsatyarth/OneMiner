@@ -30,6 +30,7 @@
         {
             this.btnTemplate = new System.Windows.Forms.Button();
             this.logBrowser = new System.Windows.Forms.WebBrowser();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // btnTemplate
@@ -56,18 +57,35 @@
             this.logBrowser.Size = new System.Drawing.Size(828, 213);
             this.logBrowser.TabIndex = 13;
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.LinkArea = new System.Windows.Forms.LinkArea(0, 4);
+            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.linkLabel1.LinkColor = System.Drawing.Color.DodgerBlue;
+            this.linkLabel1.Location = new System.Drawing.Point(497, 17);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(212, 17);
+            this.linkLabel1.TabIndex = 14;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Open in Browser. Logs are not Real Time";
+            this.linkLabel1.UseCompatibleTextRendering = true;
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // MinerInfoLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1017, 523);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.logBrowser);
             this.Controls.Add(this.btnTemplate);
             this.Name = "MinerInfoLogs";
             this.Text = "MinerInfoLogs";
             this.Load += new System.EventHandler(this.MinerInfoLogs_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -75,5 +93,6 @@
 
         private System.Windows.Forms.Button btnTemplate;
         private System.Windows.Forms.WebBrowser logBrowser;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
