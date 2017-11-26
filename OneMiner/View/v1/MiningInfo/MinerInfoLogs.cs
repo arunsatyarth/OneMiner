@@ -22,7 +22,6 @@ namespace OneMiner.View.v1.MiningInfo
             Miner = miner;
             m_Parent = parent;
             InitializeComponent();
-            //logBrowser.Navigate("about:blank");
 
         }
 
@@ -71,9 +70,8 @@ namespace OneMiner.View.v1.MiningInfo
                 if (m_currentButton != null)
                 {
                     IMinerProgram prog = m_ButtonToMiner[m_currentButton.Name] as IMinerProgram;
-                    string script = prog.OutputReader.LastLog;
+                    string script = prog.OutputReader.NextLog;
                     logBrowser.DocumentText = script;
-                    //logBrowser.Document.Write(script);
 
                 }
             }

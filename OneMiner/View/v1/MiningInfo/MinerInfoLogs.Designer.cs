@@ -49,10 +49,11 @@
             // logBrowser
             // 
             this.logBrowser.IsWebBrowserContextMenuEnabled = false;
-            this.logBrowser.Location = new System.Drawing.Point(12, 41);
+            this.logBrowser.Location = new System.Drawing.Point(9, 41);
             this.logBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.logBrowser.Name = "logBrowser";
-            this.logBrowser.Size = new System.Drawing.Size(884, 203);
+            this.logBrowser.ScriptErrorsSuppressed = true;
+            this.logBrowser.Size = new System.Drawing.Size(828, 213);
             this.logBrowser.TabIndex = 13;
             // 
             // MinerInfoLogs
@@ -60,7 +61,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(926, 386);
+            this.ClientSize = new System.Drawing.Size(1017, 523);
             this.Controls.Add(this.logBrowser);
             this.Controls.Add(this.btnTemplate);
             this.Name = "MinerInfoLogs";
