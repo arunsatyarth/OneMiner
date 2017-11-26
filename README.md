@@ -13,7 +13,7 @@ I tried out things like Awesome Miner and Minergate but both being closed source
 I would like to hear your feedback and thoughts if any. Please use the github issue tracker  to notify me of any issues or enhanement requests or send a mail to arun.satyarth@gmail.com.
 
 # Donations
-If you would like to supprt my work, your donations would be greatly appreciated
+If you would like to supprt this project, your donations would be greatly appreciated
 
 Bitcoin
 1MtjqqLDtbLvMY8s3vw2SCynGqSvszJf4V
