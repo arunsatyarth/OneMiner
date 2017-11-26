@@ -37,6 +37,7 @@
             this.lblMinerState = new System.Windows.Forms.Label();
             this.pnlMinerInfo = new System.Windows.Forms.Panel();
             this.lblTotalHashrate = new System.Windows.Forms.Label();
+            this.lblShares = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbTemplate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -139,12 +140,23 @@
             this.lblTotalHashrate.TabIndex = 15;
             this.lblTotalHashrate.Text = "Hashrate";
             // 
+            // lblShares
+            // 
+            this.lblShares.AutoSize = true;
+            this.lblShares.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShares.Location = new System.Drawing.Point(85, 119);
+            this.lblShares.Name = "lblShares";
+            this.lblShares.Size = new System.Drawing.Size(84, 13);
+            this.lblShares.TabIndex = 16;
+            this.lblShares.Text = "Shares: 0 S, 0 R";
+            // 
             // MinerInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1091, 335);
+            this.Controls.Add(this.lblShares);
             this.Controls.Add(this.lblTotalHashrate);
             this.Controls.Add(this.pnlMinerInfo);
             this.Controls.Add(this.lblMinerState);
@@ -174,5 +186,6 @@
         private System.Windows.Forms.Label lblMinerState;
         private System.Windows.Forms.Panel pnlMinerInfo;
         private System.Windows.Forms.Label lblTotalHashrate;
+        private System.Windows.Forms.Label lblShares;
     }
 }

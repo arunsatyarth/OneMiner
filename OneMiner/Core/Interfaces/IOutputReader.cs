@@ -13,6 +13,7 @@ namespace OneMiner.Core.Interfaces
         string LastLog { get; set; }
         string NextLog { get; set; }
         string StatsLink { get; set; }
+        MinerDataResult MinerResult { get; set; }
 
     }
 }

@@ -34,6 +34,7 @@ namespace OneMiner.View.v1
             m_Script = new MinerInfoScript(Miner, this);
             m_Logs = new MinerInfoLogs(Miner, this);
             InitializeComponent();
+            CalculateTotalHashrate();
         }
         public void SelectView(Button btn)
         {
@@ -82,8 +83,54 @@ namespace OneMiner.View.v1
             CurrentTab = tab;//its ok if its null after cast
             form.Show();
         }
+
+        public void CalculateTotalHashrate()
+        {
+            try
+            {
+                string hashrate = "",shares="Shares: ";
+                if (Miner.MinerState == MinerProgramState.Running)
+                {
+                    int totalHashrate = 0;
+                    int totalShares = 0;
+                    int totalSharesRejected = 0;
+                    List<IMinerProgram> programs = Miner.MinerPrograms;
+                    foreach (IMinerProgram item in programs)
+                    {
+                        MinerDataResult result = item.OutputReader.MinerResult;
+                        totalHashrate += result.TotalHashrate;
+                        totalShares += result.TotalShares;
+                        totalSharesRejected += result.Rejected;
+                    }
+                    if (totalHashrate > 10*1024)
+                    {
+                        int conversion = totalHashrate / 1024;
+                        hashrate = conversion.ToString()+ " MH/s";
+                
+                    }
+                    else
+                    {
+                        hashrate = totalHashrate.ToString() + " H/s";
+                    }
+                    shares += totalShares.ToString()+ " A, "+ totalSharesRejected.ToString()+" R";
+                    lblShares.Text = shares;
+                    lblTotalHashrate.Text = hashrate;
+
+                }
+                else
+                {
+                    lblShares.Text = "";
+                    lblTotalHashrate.Text = "";
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            
+        }
         public void UpdateUI()
         {
+            CalculateTotalHashrate();
             if(CurrentTab!=null)
             {
                 CurrentTab.UpdateUI();
