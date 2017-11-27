@@ -8,7 +8,7 @@ The main reason to use this tool is that  setting up a miner is difficult. Espec
 
 For instance, my prime motive behind the creation of this tool  was that I have a miner with both Nvidia and AMD cards. I was using Claymore miner for AMD and EWBF for Nvidia while mining Zcash. But sometimes when the newtwork is down the EWBF miner would die and never come back up. I had to manually launch it later. Writing scripts for everything was getting tedious. So I thought of creating this tool which would benefit everyone.
 
-I tried out things like Awesome Miner and Minergate but both being closed source I wasnt sure of its legitamacy. With this project I intend to create a one stop tool which can mine almost anything and in as little steps as possible.
+I tried out things like Awesome Miner and Minergate but both being closed source they wwere neither trustworthy nor extensible. With this project I intend to create a one stop tool which can mine almost anything and in as little steps as possible and which coule be extended by anyone to meet his needs.
 
 I would like to hear your feedback and thoughts if any. Please use the github issue tracker  to notify me of any issues or enhanement requests or send a mail to arun.satyarth@gmail.com.
 
