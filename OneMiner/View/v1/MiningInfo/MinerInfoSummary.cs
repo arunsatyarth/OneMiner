@@ -30,10 +30,14 @@ namespace OneMiner.View.v1.MiningInfo
         {
             try
             {
+                //We cant get proper wallet or pool if the script is edited manually
+                /*
                 string linktext="Launch";
                 lblWalletname.Text = Miner.MainCoin.SettingsScreen.Wallet;
                 lnklblPool.Text = Miner.MainCoin.SettingsScreen.Pool+" "+linktext;
                 lnklblPool.LinkArea = new LinkArea(lnklblPool.Text.Length - linktext.Length, linktext.Length);
+                 */
+
 
                 
             }
