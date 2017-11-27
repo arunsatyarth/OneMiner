@@ -12,20 +12,6 @@ I tried out things like Awesome Miner and Minergate but both being closed source
 
 I would like to hear your feedback and thoughts if any. Please use the github issue tracker  to notify me of any issues or enhanement requests or send a mail to arun.satyarth@gmail.com.
 
-# Donations
-If you would like to supprt this project, your donations would be greatly appreciated
-
-### Bitcoin
-1MtjqqLDtbLvMY8s3vw2SCynGqSvszJf4V
-
-### Ethereum
-0x033ff6918d434cef3887d8e529c14d1bcb91ca8b
-
-### Litecoin
-LgPDDxVbtB4khAd4b6MmP6GGV3JSdyShpR
-
-
-
 # Features
 Below are some of the features for first release
 
@@ -38,11 +24,23 @@ Below are some of the features for first release
 7. Open source. so no fear of hashrate stealing like in Minergate.
 
 
-
 # Future Planned Features
 1. Automatically mine the most profitable coin
 4. Automatic Dual mining off on temperature increase
 5. Benchmark against different algos with profitability
 6. Identify new coins in market for mining
 7. Automatic wallet generation for coins so that you dont have to enter wallet address.
+
+
+# Donations
+If you would like to supprt this project, your donations would be greatly appreciated
+
+### Bitcoin
+1MtjqqLDtbLvMY8s3vw2SCynGqSvszJf4V
+
+### Ethereum
+0x033ff6918d434cef3887d8e529c14d1bcb91ca8b
+
+### Litecoin
+LgPDDxVbtB4khAd4b6MmP6GGV3JSdyShpR
 	
