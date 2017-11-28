@@ -5,13 +5,25 @@ using System.Text;
 
 namespace OneMiner.Core.Interfaces
 {
+    public enum CardMake
+    {
+        Nvidia=0,
+        Amd,
+        CPU,
+        END
+    }
     public class GpuData 
     {
         public string Hashrate { get; set; }
         public string FanSpeed { get; set; }
         public string Temperature { get; set; }
         public string GPUName { get; set; }//eg GPU0
-        public string Make { get; set; }
+        public CardMake Make { get; set; }
+        public GpuData(string name)
+        {
+            Make = CardMake.END;
+            GPUName = name;
+        }
 
 
     }

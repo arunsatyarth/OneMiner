@@ -28,22 +28,38 @@ namespace OneMiner.View.v1.MiningInfo
 
         public void UpdateUI()
         {
-            try
-            {
+            try 
+	        {
                 //We cant get proper wallet or pool if the script is edited manually
                 /*
                 string linktext="Launch";
                 lblWalletname.Text = Miner.MainCoin.SettingsScreen.Wallet;
                 lnklblPool.Text = Miner.MainCoin.SettingsScreen.Pool+" "+linktext;
                 lnklblPool.LinkArea = new LinkArea(lnklblPool.Text.Length - linktext.Length, linktext.Length);
-                 */
+                    */
+                List<IMinerProgram> miners = Miner.MinerPrograms;
+                pnlGpus.Controls.Clear();
 
-
-                
-            }
-            catch (Exception e)
-            {
-            }
+                foreach (IMinerProgram item in miners)
+                {
+                    MinerDataResult result = item.OutputReader.MinerResult;
+                    if (result == null)
+                        continue;
+                    foreach (GpuData gpuData in result.GPUs)
+                    {
+                        GpuView gpu = new GpuView(gpuData, this);
+                        gpu.TopLevel = false;
+                        pnlGpus.Controls.Add(gpu);
+                        gpu.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+                        gpu.UpdateState();
+                        //view.Dock = DockStyle.Fill;
+                        gpu.Show();
+                    }
+                }
+	        }
+	        catch (Exception e)
+	        {
+	        }
         }
     }
 }

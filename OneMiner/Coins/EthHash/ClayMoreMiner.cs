@@ -3,6 +3,7 @@ using OneMiner.Core.Interfaces;
 using OneMiner.Model;
 using OneMiner.Model.Config;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -402,6 +403,8 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
             private object s_resultSynch = new object();
             public string StatsLink { get; set; }
             private string m_Lastlog = "";
+            //if true, next time we parse outputs, we will try to read the gpu names again. will reset when new object is made and miner is started
+            private bool ReREadGpuNames { get; set; }
             public Queue<string> m_AllLogs = new Queue<string>();
             MinerDataResult m_Result = new MinerDataResult();
             public MinerDataResult MinerResult
@@ -512,6 +515,7 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
             public ClayMoreReader(string link)
             {
                 StatsLink = link;
+                m_reReadGpunames = true;
             }
             public void Read()
             {
@@ -551,8 +555,8 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
                     Match resultmatch = Regex.Match(innerText, pattern);
                     if(resultmatch.Success)
                     {
-                        MinerDataResult results = (MinerDataResult)new JavaScriptSerializer().Deserialize(resultmatch.Value, typeof(MinerDataResult));
-                        return results;
+                        MinerDataResult minerResult = (MinerDataResult)new JavaScriptSerializer().Deserialize(resultmatch.Value, typeof(MinerDataResult));
+                        return minerResult;
                     }
                 }
                 catch (Exception e)
@@ -563,7 +567,7 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
             public void Parse()
             {
                 MinerDataResult minerResult =GetResultsSection(LastLog);
-                if (minerResult.Parse(new EtherClaymoreResultParser()))
+                if (minerResult.Parse(new EtherClaymoreResultParser(LastLog)))
                     MinerResult = minerResult;
             }
 
@@ -571,6 +575,13 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
             {
                 MinerDataResult m_MinerResult = null;
                 public bool Succeeded { get; set; }//if parsing succeeded without errors
+                Hashtable m_Gpus = new Hashtable();
+                bool m_identified = false;
+                string m_fullLog = "";
+                public EtherClaymoreResultParser(string fullLog)
+                {
+                    m_fullLog = fullLog;
+                }
 
                 public bool Parse(MinerDataResult obj)
                 {
@@ -581,6 +592,8 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
                     {
                         if (obj == null)
                             return false;
+                        if (!m_identified)
+                            IdentifyGPUs();
                         if (m_MinerResult.result != null && m_MinerResult.result.Count >= 7)
                         {
                             ComputeRunningTime();
@@ -642,17 +655,23 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
 
                         string fanTemp = m_MinerResult.result[6];
                         string[] fanTempArr = fanTemp.Split(';');
-                        if (hashrates != null && hashrates.Length >0)
+                        if (hashrates != null && hashrates.Length > 0)
                         {
                             int j = 0;
+                            int gpu_id = 0;
                             foreach (string item in hashrates)
                             {
-                                GpuData gpu = new GpuData();
+                                GpuData gpu=null;
+                                string gpu_idstr=gpu_id.ToString();
+                                gpu = m_Gpus[gpu_idstr] as GpuData;
+                                if(gpu==null)
+                                    gpu = new GpuData("GPU " + gpu_idstr);
 
-                                gpu.Hashrate= item;
-                                gpu.Temperature = fanTempArr[j] +"C";
-                                gpu.FanSpeed = fanTempArr[j+1]+"%";
+                                gpu.Hashrate = item;
+                                gpu.Temperature = fanTempArr[j] + "C";
+                                gpu.FanSpeed = fanTempArr[j + 1] + "%";
                                 j += 2;
+                                gpu_id++;
                                 m_MinerResult.GPUs.Add(gpu);
                             }
                         }
@@ -663,6 +682,84 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
                         Succeeded = false;
                         throw;
                     }
+                }
+                public void IdentifyGPUs()
+                {
+                    try
+                    {
+                        //splot onto many lines
+                        string[] result = Regex.Split(m_fullLog, "\r\n|\r|\n");
+                        string pattern = @"(GPU)(.){2,12}(recognized as)(.)*";
+
+                        foreach (string item in result)
+                        {
+                            Match r = Regex.Match(item, pattern);
+                            string gpu_id = "";
+                            string gpu_name = "";
+                            if (r.Success)
+                            {
+                                m_identified = true;
+
+                                string value = r.Value;
+                                //ideally i would have used this to find and then separate the gpu number
+                                //string pattern_gpuid = @"(#).";
+
+                                //but the following site explains a way to get string affter the match using "positive lookbehind assertion
+                                //https://stackoverflow.com/questions/5006716/getting-the-text-that-follows-after-the-regex-match
+
+                                string pattern_gpuid = @"(?<=#).";
+                                Match r_gpu_id = Regex.Match(value, pattern_gpuid);
+                                if (r_gpu_id.Success)
+                                {
+                                    gpu_id = r_gpu_id.Value;
+                                }
+
+                                string pattern_gpuname = @"(?<=recognized as).*";
+                                Match r_gpu_name = Regex.Match(value, pattern_gpuname);
+                                if (r_gpu_name.Success)
+                                {
+                                    gpu_name = r_gpu_name.Value;
+                                }
+                                if(!string.IsNullOrEmpty(gpu_id) && !string.IsNullOrEmpty(gpu_name))
+                                {
+                                    //check if there is an item alredy
+                                    object oldItem = m_Gpus[gpu_id];
+                                    if(oldItem==null)
+                                    {
+                                        GpuData gpu = new GpuData(gpu_name);
+                                        gpu.Make = Make(gpu_name);
+                                        gpu.GPUName = gpu_name;
+                                        m_Gpus[gpu_id] = gpu_name;
+                                    }
+                                }
+
+                            }
+
+                        } 
+
+
+                    }
+                    catch (Exception)
+                    {
+                        Succeeded = false;
+                        throw;
+                    }
+                }
+                private CardMake Make(string name)
+                {
+                    try
+                    {
+                        string pattern = "(N|n)(V|v)(I|i)(D|d)(I|i)(A|a)";
+                        Match r_gpu_id = Regex.Match(name, pattern);
+                        if (r_gpu_id.Success)
+                            return CardMake.Nvidia;
+                        else
+                            return CardMake.Amd;
+                    }
+                    catch (Exception)
+                    {
+                    }
+                    return CardMake.END;
                 }
 
             }

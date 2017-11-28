@@ -34,6 +34,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lnklblPool = new System.Windows.Forms.LinkLabel();
+            this.pnlGpus = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // label6
@@ -99,14 +100,22 @@
             this.lnklblPool.TabStop = true;
             this.lnklblPool.Text = "Pool";
             // 
+            // pnlGpus
+            // 
+            this.pnlGpus.Location = new System.Drawing.Point(12, 0);
+            this.pnlGpus.Name = "pnlGpus";
+            this.pnlGpus.Size = new System.Drawing.Size(825, 272);
+            this.pnlGpus.TabIndex = 19;
+            // 
             // MinerInfoSummary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(849, 314);
-            this.Controls.Add(this.lnklblPool);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.pnlGpus);
+            this.Controls.Add(this.lnklblPool);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblWalletname);
@@ -127,5 +136,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.LinkLabel lnklblPool;
+        private System.Windows.Forms.FlowLayoutPanel pnlGpus;
     }
 }
