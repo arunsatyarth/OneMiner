@@ -200,6 +200,7 @@ namespace OneMiner.Coins.EthHash
                             MinerState = MinerProgramState.Running;
                             Miner.SetRunningState(this, MinerProgramState.Running);
                             Alarm.RegisterForTimer(OutputReader.AlarmRaised);
+                            OutputReader.ReReadGpuNames = true;
                         }
 
                     }
@@ -404,7 +405,7 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
             public string StatsLink { get; set; }
             private string m_Lastlog = "";
             //if true, next time we parse outputs, we will try to read the gpu names again. will reset when new object is made and miner is started
-            private bool ReREadGpuNames { get; set; }
+            public  bool ReReadGpuNames { get; set; }
             public Queue<string> m_AllLogs = new Queue<string>();
             MinerDataResult m_Result = new MinerDataResult();
             public MinerDataResult MinerResult
@@ -515,7 +516,7 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
             public ClayMoreReader(string link)
             {
                 StatsLink = link;
-                m_reReadGpunames = true;
+                ReReadGpuNames = true;
             }
             public void Read()
             {
@@ -567,20 +568,26 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
             public void Parse()
             {
                 MinerDataResult minerResult =GetResultsSection(LastLog);
-                if (minerResult.Parse(new EtherClaymoreResultParser(LastLog)))
+                if (minerResult.Parse(new EtherClaymoreResultParser(LastLog, ReReadGpuNames)))
+                {
                     MinerResult = minerResult;
+                }
+                ReReadGpuNames = false;
             }
 
             public class EtherClaymoreResultParser : IMinerResultParser
             {
                 MinerDataResult m_MinerResult = null;
                 public bool Succeeded { get; set; }//if parsing succeeded without errors
-                Hashtable m_Gpus = new Hashtable();
-                bool m_identified = false;
+                static Hashtable m_Gpus = new Hashtable();// we only need t read gpu info once as it dosent change with more logs comining in
+                static bool m_identified = false;
+                bool m_reReadGpunames = false;
+                
                 string m_fullLog = "";
-                public EtherClaymoreResultParser(string fullLog)
+                public EtherClaymoreResultParser(string fullLog, bool reReadGpunames)
                 {
                     m_fullLog = fullLog;
+                    m_reReadGpunames = reReadGpunames;
                 }
 
                 public bool Parse(MinerDataResult obj)
@@ -592,8 +599,13 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
                     {
                         if (obj == null)
                             return false;
-                        if (!m_identified)
+
+                        if (!m_identified || m_reReadGpunames)
+                        {
+                            m_identified = false;
+                            m_Gpus.Clear();
                             IdentifyGPUs();
+                        }
                         if (m_MinerResult.result != null && m_MinerResult.result.Count >= 7)
                         {
                             ComputeRunningTime();
@@ -699,6 +711,7 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
                             if (r.Success)
                             {
                                 m_identified = true;
+                                m_reReadGpunames = false;//we dont need to read until told 
 
                                 string value = r.Value;
                                 //ideally i would have used this to find and then separate the gpu number
@@ -729,7 +742,7 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
                                         GpuData gpu = new GpuData(gpu_name);
                                         gpu.Make = Make(gpu_name);
                                         gpu.GPUName = gpu_name;
-                                        m_Gpus[gpu_id] = gpu_name;
+                                        m_Gpus[gpu_id] = gpu;
                                     }
                                 }
 

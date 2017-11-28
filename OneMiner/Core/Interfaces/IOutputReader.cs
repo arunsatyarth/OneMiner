@@ -14,6 +14,8 @@ namespace OneMiner.Core.Interfaces
         string NextLog { get; set; }
         string StatsLink { get; set; }
         MinerDataResult MinerResult { get; set; }
+        //if true, next time we parse outputs, we will try to read the gpu names again. will reset when new object is made and miner is started
+        bool ReReadGpuNames { get; set; }
 
     }
 }

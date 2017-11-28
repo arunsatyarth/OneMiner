@@ -42,7 +42,7 @@
             this.lblGpuhashrate.BackColor = System.Drawing.Color.White;
             this.lblGpuhashrate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGpuhashrate.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblGpuhashrate.Location = new System.Drawing.Point(31, 86);
+            this.lblGpuhashrate.Location = new System.Drawing.Point(11, 86);
             this.lblGpuhashrate.Name = "lblGpuhashrate";
             this.lblGpuhashrate.Size = new System.Drawing.Size(57, 15);
             this.lblGpuhashrate.TabIndex = 9;
@@ -64,7 +64,7 @@
             this.lbltemp.BackColor = System.Drawing.Color.White;
             this.lbltemp.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbltemp.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lbltemp.Location = new System.Drawing.Point(31, 102);
+            this.lbltemp.Location = new System.Drawing.Point(11, 102);
             this.lbltemp.Name = "lbltemp";
             this.lbltemp.Size = new System.Drawing.Size(39, 15);
             this.lbltemp.TabIndex = 10;
@@ -76,7 +76,7 @@
             this.lblGpuname.BackColor = System.Drawing.Color.White;
             this.lblGpuname.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGpuname.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblGpuname.Location = new System.Drawing.Point(31, 69);
+            this.lblGpuname.Location = new System.Drawing.Point(11, 69);
             this.lblGpuname.Name = "lblGpuname";
             this.lblGpuname.Size = new System.Drawing.Size(38, 15);
             this.lblGpuname.TabIndex = 11;
@@ -88,7 +88,7 @@
             this.lblFanSpeed.BackColor = System.Drawing.Color.White;
             this.lblFanSpeed.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFanSpeed.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblFanSpeed.Location = new System.Drawing.Point(32, 121);
+            this.lblFanSpeed.Location = new System.Drawing.Point(12, 121);
             this.lblFanSpeed.Name = "lblFanSpeed";
             this.lblFanSpeed.Size = new System.Drawing.Size(26, 15);
             this.lblFanSpeed.TabIndex = 12;
@@ -99,7 +99,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(130, 155);
+            this.ClientSize = new System.Drawing.Size(205, 174);
             this.Controls.Add(this.lblFanSpeed);
             this.Controls.Add(this.lblGpuname);
             this.Controls.Add(this.lbltemp);
