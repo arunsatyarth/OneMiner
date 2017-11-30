@@ -52,6 +52,8 @@
   <ItemGroup>
     <Compile Include="Coins\EthHash\ClaymoreMiner.cs" />
     <Compile Include="Coins\EthHash\EtherClassic.cs" />
+    <Compile Include="Coins\EthHash\Expanse.cs" />
+    <Compile Include="Coins\EthHash\Ubiq.cs" />
     <Compile Include="Core\Alarm.cs" />
     <Compile Include="Core\Factory.cs" />
     <Compile Include="Core\Interfaces\IGpuData.cs" />
@@ -306,6 +308,9 @@
     <None Include="View\v1\Images\selected.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Coins\EthHash\Images\expanse.png" />
+    <None Include="Coins\EthHash\Images\siacoin.png" />
+    <None Include="Coins\EthHash\Images\ubiq.png" />
     <Content Include="miner_icon.ico" />
     <None Include="View\v1\Images\gpu.png" />
     <None Include="View\v1\Images\cpu.png" />

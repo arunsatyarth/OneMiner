@@ -163,6 +163,16 @@ namespace OneMiner.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap expanse {
+            get {
+                object obj = ResourceManager.GetObject("expanse", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gpu {
             get {
                 object obj = ResourceManager.GetObject("gpu", resourceCulture);
@@ -216,6 +226,26 @@ namespace OneMiner.Properties {
         internal static System.Drawing.Bitmap selected {
             get {
                 object obj = ResourceManager.GetObject("selected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap siacoin {
+            get {
+                object obj = ResourceManager.GetObject("siacoin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ubiq {
+            get {
+                object obj = ResourceManager.GetObject("ubiq", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

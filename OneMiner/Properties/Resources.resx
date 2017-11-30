@@ -148,6 +148,9 @@
   <data name="ethereum_bg1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\View\v1\Images\ethereum_bg1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="expanse" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Coins\EthHash\Images\expanse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="gpu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\View\v1\Images\gpu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -165,6 +168,12 @@
   </data>
   <data name="selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\View\v1\Images\selected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="siacoin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Coins\EthHash\Images\siacoin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ubiq" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Coins\EthHash\Images\ubiq.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="zcash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\View\v1\Images\zcash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
