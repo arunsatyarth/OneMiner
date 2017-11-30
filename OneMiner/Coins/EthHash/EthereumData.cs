@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management;
 using System.Text;
 
 namespace OneMiner.EthHash
@@ -155,8 +156,35 @@ namespace OneMiner.EthHash
 
 
         }
+        /// <summary>
+        /// this is put here instead of in a central location like core because in future u might want to disable few graphic cards in which case
+        /// this class will have that info as disabling will be specific to a miner
+        /// </summary>
+        public List<GpuData> GetGpuList()
+        {
+            try
+            {
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
+                List<GpuData> gpus = new List<GpuData>();
 
-
+                string graphicsCard = string.Empty;
+                foreach (ManagementObject mo in searcher.Get())
+                {
+                    string name = mo["Name"] as string;
+                    if (!string.IsNullOrEmpty(name))
+                    {
+                        GpuData data = new GpuData(name);
+                        data.IdentifyMake();
+                        gpus.Add(data);
+                    }
+                }
+                return gpus;
+            }
+            catch (Exception e)
+            {
+            }
+            return null;
+        }
 
     }
 }

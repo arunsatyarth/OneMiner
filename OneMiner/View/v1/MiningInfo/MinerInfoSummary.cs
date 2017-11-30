@@ -25,37 +25,57 @@ namespace OneMiner.View.v1.MiningInfo
         {
 
         }
+        public void UpdateUIStatic()
+        {
+            try
+            {
+                List<GpuData> gpus = Miner.GetGpuList();
+                pnlGpus.Controls.Clear();
 
+                foreach (GpuData gpuData in gpus)
+                {
+                    GpuView gpu = new GpuView(gpuData, this);
+                    gpu.TopLevel = false;
+                    pnlGpus.Controls.Add(gpu);
+                    gpu.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+                    gpu.UpdateState(false);
+                    gpu.Show();
+                }
+            }
+            catch (Exception e)
+            {
+            }
+        }
         public void UpdateUI()
         {
             try 
 	        {
-                //We cant get proper wallet or pool if the script is edited manually
-                /*
-                string linktext="Launch";
-                lblWalletname.Text = Miner.MainCoin.SettingsScreen.Wallet;
-                lnklblPool.Text = Miner.MainCoin.SettingsScreen.Pool+" "+linktext;
-                lnklblPool.LinkArea = new LinkArea(lnklblPool.Text.Length - linktext.Length, linktext.Length);
-                    */
-                List<IMinerProgram> miners = Miner.MinerPrograms;
-                pnlGpus.Controls.Clear();
-
-                foreach (IMinerProgram item in miners)
+                if(Miner.MinerState==MinerProgramState.Running)
                 {
-                    MinerDataResult result = item.OutputReader.MinerResult;
-                    if (result == null)
-                        continue;
-                    foreach (GpuData gpuData in result.GPUs)
+                    List<IMinerProgram> miners = Miner.MinerPrograms;
+                    pnlGpus.Controls.Clear();
+
+                    foreach (IMinerProgram item in miners)
                     {
-                        GpuView gpu = new GpuView(gpuData, this);
-                        gpu.TopLevel = false;
-                        pnlGpus.Controls.Add(gpu);
-                        gpu.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-                        gpu.UpdateState();
-                        //view.Dock = DockStyle.Fill;
-                        gpu.Show();
+                        MinerDataResult result = item.OutputReader.MinerResult;
+                        if (result == null)
+                            continue;
+                        foreach (GpuData gpuData in result.GPUs)
+                        {
+                            GpuView gpu = new GpuView(gpuData, this);
+                            gpu.TopLevel = false;
+                            pnlGpus.Controls.Add(gpu);
+                            gpu.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+                            gpu.UpdateState(true);
+                            gpu.Show();
+                        }
                     }
                 }
+                else
+                {
+                    UpdateUIStatic();
+                }
+   
 	        }
 	        catch (Exception e)
 	        {

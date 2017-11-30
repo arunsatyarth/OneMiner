@@ -23,9 +23,12 @@ namespace OneMiner.View.v1.MiningInfo
 
         private void GpuData_Load(object sender, EventArgs e)
         {
-
+            Size s = new Size();
+            s.Width=pbCardType.Width+40;
+            s.Height = 100;
+            lblGpuname.MaximumSize = s;
         }
-        public void UpdateState()
+        public void UpdateState(bool showRunningData)
         {
             try
             {
@@ -51,9 +54,18 @@ namespace OneMiner.View.v1.MiningInfo
                     {
                         hashrate += totalHashrate.ToString() + " H/s";
                     }
-                    lblGpuhashrate.Text = hashrate;
-                    lbltemp.Text = shares+ GpuData.Temperature;
-                    lblFanSpeed.Text = "F: " + GpuData.FanSpeed;
+                    if (showRunningData)
+                    {
+                        lblGpuhashrate.Text = hashrate;
+                        lbltemp.Text = shares + GpuData.Temperature;
+                        lblFanSpeed.Text = "F: " + GpuData.FanSpeed;
+                    }
+                    else
+                    {
+                        lblGpuhashrate.Text = "";
+                        lbltemp.Text = "";
+                        lblFanSpeed.Text = "";
+                    }
                     lblGpuname.Text = GpuData.GPUName;
                 }
 

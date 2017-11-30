@@ -299,6 +299,8 @@ namespace OneMiner.Coins.EthHash
                     command += " -ftime 10 ";
 
                 }
+                command += " -allpools 1";
+
 
                 Script = SCRIPT1 + command;
                 AutomaticScriptGeneration = true;
@@ -740,8 +742,7 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
                                     if(oldItem==null)
                                     {
                                         GpuData gpu = new GpuData(gpu_name);
-                                        gpu.Make = Make(gpu_name);
-                                        gpu.GPUName = gpu_name;
+                                        gpu.IdentifyMake();
                                         m_Gpus[gpu_id] = gpu;
                                     }
                                 }

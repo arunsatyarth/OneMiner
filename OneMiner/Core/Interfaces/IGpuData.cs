@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace OneMiner.Core.Interfaces
 {
@@ -23,8 +24,27 @@ namespace OneMiner.Core.Interfaces
         {
             Make = CardMake.END;
             GPUName = name;
+            Hashrate = "0";
+            FanSpeed = "0";
+            Temperature = "0";
         }
-
+        public bool IdentifyMake()
+        {
+            try
+            {
+                string pattern = "(N|n)(V|v)(I|i)(D|d)(I|i)(A|a)";
+                Match r_gpu_id = Regex.Match(GPUName, pattern);
+                if (r_gpu_id.Success)
+                    Make= CardMake.Nvidia;
+                else
+                    Make= CardMake.Amd;
+                return true;
+            }
+            catch (Exception)
+            {
+            }
+            return false;
+        }
 
     }
     public class MinerDataResult

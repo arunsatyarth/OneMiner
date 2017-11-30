@@ -21,6 +21,7 @@ namespace OneMiner.Core.Interfaces
         void SetRunningState(IMinerProgram program, MinerProgramState state);
         MinerProgramState MinerState { get; set; }
 
+        List<GpuData> GetGpuList();
 
 
 
