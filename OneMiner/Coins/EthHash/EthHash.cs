@@ -143,6 +143,13 @@ namespace OneMiner.EthHash
                 case "Ethereum Classic":
                     coin = m_CoinsHash[EthHashCoins.EtherClassic] as ICoin;
                     break;
+                case "Expanse":
+                    coin = m_CoinsHash[EthHashCoins.Expanse] as ICoin;
+                    break;
+                case "Ubiq":
+                    coin = m_CoinsHash[EthHashCoins.Ubiq] as ICoin;
+                    break;
+
                 case "Decred":
                     coin = m_CoinsHash[EthHashDualCoins.Decred] as ICoin;
                     break;

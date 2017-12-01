@@ -105,9 +105,9 @@
             // pbTemplate
             // 
             this.pbTemplate.Image = global::OneMiner.Properties.Resources.ethereum;
-            this.pbTemplate.Location = new System.Drawing.Point(0, 24);
+            this.pbTemplate.Location = new System.Drawing.Point(12, 24);
             this.pbTemplate.Name = "pbTemplate";
-            this.pbTemplate.Size = new System.Drawing.Size(77, 63);
+            this.pbTemplate.Size = new System.Drawing.Size(65, 63);
             this.pbTemplate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTemplate.TabIndex = 12;
             this.pbTemplate.TabStop = false;
