@@ -28,7 +28,7 @@ namespace OneMiner.View.v1
         private bool AlgorithmSelected()
         {
             if ((lbAlgoSelect.SelectedIndex >= 0 && lbAlgoSelect.SelectedIndex <= (lbAlgoSelect.Items.Count - 1))
-               && (lbCoinSelect.SelectedIndex >= 0 && lbCoinSelect.SelectedIndex <= (lbCoinSelect.Items.Count - 1)))
+               && (lbCoinSelect.SelectedIndices[0] >= 0 && lbCoinSelect.SelectedIndices[0] <= (lbCoinSelect.Items.Count - 1)))
             {
                 return true;
             }
@@ -61,6 +61,7 @@ namespace OneMiner.View.v1
             {
                 m_parent.MakeSelectedCoin(m_defaultCoin);
                 lblSelectedCoin.Text = m_defaultCoin.Name;
+                pbSelectedMiner.Image = m_defaultCoin.Logo;
             }
             else
                 lblSelectedCoin.Text = "No Coin Selected";
@@ -76,15 +77,28 @@ namespace OneMiner.View.v1
         {
 
             m_defaultCoin = algo.DefaultCoin;
+            ImageList Imagelist = new ImageList();
+            Imagelist.ImageSize = new Size(25, 25);
+            foreach (ICoin item in algo.SupportedCoins)
+            {
+                Imagelist.Images.Add(item.Logo);
+            }
+            lbCoinSelect.LargeImageList = Imagelist;
+            lbCoinSelect.SmallImageList = Imagelist;
             int i = 0;
             foreach (ICoin item in algo.SupportedCoins)
             {
-                lbCoinSelect.Items.Add(item.Name);
+                lbCoinSelect.Items.Add(new ListViewItem { ImageIndex = i, Text = item.Name });
+
+
+                //lbCoinSelect.Items.Add(item.Name);
                 if (item == m_defaultCoin)
                     m_currentCoinIndex = i;
                 i++;
             }
-            lbCoinSelect.SelectedIndex = m_currentCoinIndex;
+
+            lbCoinSelect.Items[m_currentCoinIndex].Selected = true;
+            //lbCoinSelect.SelectedIndex = m_currentCoinIndex;
 
 
         }
@@ -123,7 +137,7 @@ namespace OneMiner.View.v1
         {
             try
             {
-                int index = lbCoinSelect.SelectedIndex;
+                int index = lbCoinSelect.SelectedIndices[0];
 
                 if (m_currentCoinIndex == index)
                     return;
