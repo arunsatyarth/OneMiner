@@ -21,35 +21,35 @@ namespace OneMiner.Coins.Equihash
     /// this represents a miner program inside a configured miner. there could be many miners of the same type. eg ethereum, ethereum_sia
     /// for the real representation fo a miner program, look at JsonData.MinerProgram
     /// </summary>
-    class ClaymoreMiner : MinerProgramBase
+    class EWBFMiner : MinerProgramBase
     {
 
         public override string MINERURL
         {
             get
             {
-                return "https://github.com/nanopool/Claymore-Dual-Miner/releases/download/v10.0/Claymore.s.Dual.Ethereum.Decred_Siacoin_Lbry_Pascal.AMD.NVIDIA.GPU.Miner.v10.0.zip";
+                return "https://github.com/nanopool/ewbf-miner/releases/download/v0.3.4b/Zec.miner.0.3.4b.zip";
             }
         }
         public override string EXENAME
         {
             get
             {
-                return "EthDcrMiner64.exe";
+                return "miner.exe";
             }
         }
         public override string PROCESSNAME
         {
             get
             {
-                return "EthDcrMiner64";
+                return "miner";
             }
         }
         public override string STATS_LINK
         {
             get
             {
-                return "http://127.0.0.1:3333/";
+                return "http://0.0.0.0:12345";
             }
         }
 
@@ -62,11 +62,11 @@ namespace OneMiner.Coins.Equihash
         public override IOutputReader OutputReader { get; set; }
 
 
-        public ClaymoreMiner(ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName, IMiner miner) :
+        public EWBFMiner(ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName, IMiner miner) :
             base(mainCoin, dualMining, dualCoin, minerName, miner)
         {
-            Type = "Claymore";
-            OutputReader = new ClayMoreReader(STATS_LINK);
+            Type = "Nvidia";
+            OutputReader = new EWBFReader(STATS_LINK);
         }
 
 
@@ -103,175 +103,22 @@ namespace OneMiner.Coins.Equihash
 
 
 
-        private const string SCRIPT1 =
-@"setx GPU_FORCE_64BIT_PTR 0
-setx GPU_MAX_HEAP_SIZE 100
-setx GPU_USE_SYNC_OBJECTS 1
-setx GPU_MAX_ALLOC_PERCENT 100
-setx GPU_SINGLE_ALLOC_PERCENT 100
-";
-
+        private const string SCRIPT1 = "";
 
 
         /// <summary>
         /// reads data for claymore miner
         /// </summary>
-        class ClayMoreReader : IOutputReader
+        class EWBFReader : OutputReaderBase
         {
-            private const int MAX_QUEUESIZE = 5;
-
-            private object s_accesssynch = new object();
-            private object s_resultSynch = new object();
-            public string StatsLink { get; set; }
-            private string m_Lastlog = "";
-            //if true, next time we parse outputs, we will try to read the gpu names again. will reset when new object is made and miner is started
-            public bool ReReadGpuNames { get; set; }
-            public Queue<string> m_AllLogs = new Queue<string>();
-            MinerDataResult m_Result = new MinerDataResult();
-            public MinerDataResult MinerResult
+            public EWBFReader(string link)
+                : base(link)
             {
-                get
-                {
-                    lock (s_resultSynch)
-                    {
-                        try
-                        {
-                            return m_Result;
-                        }
-                        catch (Exception e)
-                        {
-                            Logger.Instance.LogError(e.ToString());
-                            return null;
-                        }
-                    }
-                }
-                set
-                {
-                    lock (s_resultSynch)
-                    {
-                        try
-                        {
-                            m_Result = value;
-                        }
-                        catch (Exception e)
-                        {
-                            Logger.Instance.LogError(e.ToString());
-                            m_Lastlog = null;
-                        }
-                    }
-                }
-            }
-            public string LastLog
-            {
-                get
-                {
-                    lock (s_accesssynch)
-                    {
-                        try
-                        {
-                            return m_Lastlog;
-                        }
-                        catch (Exception e)
-                        {
-                            Logger.Instance.LogError(e.ToString());
-                            return "";
-                        }
-                    }
-                }
-                set
-                {
-                    lock (s_accesssynch)
-                    {
-                        try
-                        {
-                            m_Lastlog = value;
-                        }
-                        catch (Exception e)
-                        {
-                            Logger.Instance.LogError(e.ToString());
-                            m_Lastlog = "";
-                        }
-                    }
-                }
-            }
-            public string NextLog
-            {
-                get
-                {
-                    lock (s_accesssynch)
-                    {
-                        try
-                        {
-                            return m_AllLogs.Dequeue();
-                        }
-                        catch (Exception e)
-                        {
-                            Logger.Instance.LogError(e.ToString());
-                            return "";
-                        }
-                    }
-                }
-                set
-                {
-                    lock (s_accesssynch)
-                    {
-                        try
-                        {
-                            if (value != null && value != "")
-                            {
-                                LastLog = value;
-                                m_AllLogs.Enqueue(value);
-                                if (m_AllLogs.Count >= MAX_QUEUESIZE)//if consumer is slower than producer, then we need to remove old vals
-                                    m_AllLogs.Dequeue();
-                            }
-                        }
-                        catch (Exception e)
-                        {
-                            Logger.Instance.LogError(e.ToString());
-                        }
-                    }
-                }
-            }
-
-            public ClayMoreReader(string link)
-            {
-                StatsLink = link;
-                ReReadGpuNames = true;
-            }
-            public void Read()
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(StatsLink);
-                request.Method = "GET";
-                request.ContentType = "application/x-www-form-urlencoded";
-                request.UserAgent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 7.1; Trident/5.0)";
-                request.Accept = "/";
-                request.UseDefaultCredentials = true;
-                request.Proxy.Credentials = System.Net.CredentialCache.DefaultCredentials;
-                //doc.Save(request.GetRequestStream());
-                HttpWebResponse resp = request.GetResponse() as HttpWebResponse;
-                Stream stream = resp.GetResponseStream();
-                StreamReader sr = new StreamReader(stream);
-                string s = sr.ReadToEnd();
-                NextLog = s;
-            }
-
-            public void AlarmRaised()
-            {
-                try
-                {
-                    Read();
-                    Parse();
-                }
-                catch (Exception e)
-                {
-                }
-
             }
             MinerDataResult GetResultsSection(string innerText)
             {
                 try
                 {
-                    //string patternf = @"\{([a-z]|[^a-z])*\}";
                     string pattern = @"\{([^()]|())*\}";
                     Match resultmatch = Regex.Match(innerText, pattern);
                     if (resultmatch.Success)
@@ -285,17 +132,17 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
                 }
                 return null;
             }
-            public void Parse()
+            public override void Parse()
             {
                 MinerDataResult minerResult = GetResultsSection(LastLog);
-                if (minerResult.Parse(new EtherClaymoreResultParser(LastLog, ReReadGpuNames)))
+                if (minerResult.Parse(new EWBFReaderResultParser(LastLog, ReReadGpuNames)))
                 {
                     MinerResult = minerResult;
                 }
                 ReReadGpuNames = false;
             }
 
-            public class EtherClaymoreResultParser : IMinerResultParser
+            public class EWBFReaderResultParser : IMinerResultParser
             {
                 MinerDataResult m_MinerResult = null;
                 public bool Succeeded { get; set; }//if parsing succeeded without errors
@@ -304,7 +151,7 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
                 bool m_reReadGpunames = false;
 
                 string m_fullLog = "";
-                public EtherClaymoreResultParser(string fullLog, bool reReadGpunames)
+                public EWBFReaderResultParser(string fullLog, bool reReadGpunames)
                 {
                     m_fullLog = fullLog;
                     m_reReadGpunames = reReadGpunames;

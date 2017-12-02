@@ -66,8 +66,8 @@ namespace OneMiner.Coins.EthHash
             base(mainCoin, dualMining, dualCoin, minerName, miner)
 
         {
-            Type = "Claymore";
-            OutputReader = new ClayMoreReader(STATS_LINK);
+            Type = "AMD";
+            OutputReader = new ClayMoreEthReader(STATS_LINK);
         }
         
 
@@ -117,9 +117,10 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
         /// <summary>
         /// reads data for claymore miner
         /// </summary>
-        class ClayMoreReader : OutputReaderBase
+        class ClayMoreEthReader : OutputReaderBase
         {
-            public ClayMoreReader(string link):base(link)
+            public ClayMoreEthReader(string link)
+                : base(link)
             {
             }
             MinerDataResult GetResultsSection(string innerText)
