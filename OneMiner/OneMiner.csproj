@@ -57,6 +57,7 @@
     <Compile Include="Coins\EthHash\Expanse.cs" />
     <Compile Include="Coins\EthHash\Ubiq.cs" />
     <Compile Include="Coins\MinerProgramBase.cs" />
+    <Compile Include="Coins\OutputReaderBase.cs" />
     <Compile Include="Core\Alarm.cs" />
     <Compile Include="Core\Factory.cs" />
     <Compile Include="Core\Interfaces\IGpuData.cs" />
