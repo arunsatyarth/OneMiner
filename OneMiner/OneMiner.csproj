@@ -50,6 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Coins\Equihash\ClaymoreMiner.cs" />
+    <Compile Include="Coins\Equihash\Equihash.cs" />
+    <Compile Include="Coins\Equihash\EquihashMiner.cs" />
+    <Compile Include="Coins\Equihash\EWBFMiner.cs" />
+    <Compile Include="Coins\Equihash\Zcash.cs" />
     <Compile Include="Coins\EthHash\ClaymoreMiner.cs" />
     <Compile Include="Coins\EthHash\EtherClassic.cs" />
     <Compile Include="Coins\EthHash\Expanse.cs" />
@@ -311,12 +316,14 @@
     <None Include="Coins\EthHash\Images\expanse.png" />
     <None Include="Coins\EthHash\Images\siacoin.png" />
     <None Include="Coins\EthHash\Images\ubiq.png" />
+    <None Include="Coins\Equihash\Images\zcash.png" />
     <Content Include="miner_icon.ico" />
     <None Include="View\v1\Images\gpu.png" />
     <None Include="View\v1\Images\cpu.png" />
     <None Include="View\v1\Images\nvidia.png" />
     <None Include="View\v1\Images\amd.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
