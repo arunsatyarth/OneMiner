@@ -20,6 +20,8 @@ namespace OneMiner.Coins
         public ICoin MainCoin { get; set; }
         public ICoin DualCoin { get; set; }
         private IMinerData MinerData { get; set; }
+        public  int ActualProgramCount { get; set; }
+        public int MinerGpuType { get; set; }
 
         public bool DualMining { get; set; }
 
@@ -40,6 +42,22 @@ namespace OneMiner.Coins
             MinerData = minerData;
             MinerPrograms = new List<IMinerProgram>();
             SetupMiner();
+            IdentifyGpuTypes();
+            ActualProgramCount = MinerPrograms.Count;
+        }
+        public void IdentifyGpuTypes()
+        {
+            List<GpuData> gpus = GetGpuList();
+            int gpuType = 0;
+            foreach (GpuData gpuData in gpus)
+            {
+                if (gpuData.Make == CardMake.Nvidia)
+                    gpuType = gpuType | 1; 
+                if (gpuData.Make == CardMake.Amd)
+                    gpuType = gpuType | 2;
+            }
+            MinerGpuType = gpuType;
+
         }
         public void InitializePrograms()
         {
@@ -111,9 +129,9 @@ namespace OneMiner.Coins
             }
             if (m_MinerRunningHash.Count == 0)
                 MinerState = MinerProgramState.Stopped;
-            else if (m_MinerRunningHash.Count < MinerPrograms.Count)
+            else if (m_MinerRunningHash.Count < ActualProgramCount)
                 MinerState = MinerProgramState.PartiallyRunning;
-            else if (m_MinerRunningHash.Count == MinerPrograms.Count)
+            else if (m_MinerRunningHash.Count == ActualProgramCount)
                 MinerState = MinerProgramState.Running;
             else
                 MinerState = MinerProgramState.Stopping;//ideally it shudnt com here
@@ -128,16 +146,9 @@ namespace OneMiner.Coins
         {
             throw new NotImplementedException();
         }
-        public void StartMining()
+        public virtual void StartMining()
         {
-            MinerState = MinerProgramState.Starting;
-
-            foreach (IMinerProgram item in MinerPrograms)
-            {
-                //push miners into mining queue wher they wud be picked up by threads and executed
-                Factory.Instance.CoreObject.MiningQueue.Enqueue(item);
-            }
-            Factory.Instance.ViewObject.UpDateMinerState();
+            throw new NotImplementedException();
         }
         public void StopMining()
         {

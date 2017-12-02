@@ -26,6 +26,17 @@ namespace OneMiner.EthHash
             MinerPrograms.Add(prog);
             m_MinerProgsHash.Add(prog.Type, prog);
         }
+        public override void StartMining()
+        {
+            MinerState = MinerProgramState.Starting;
+
+            foreach (IMinerProgram item in MinerPrograms)
+            {
+                //push miners into mining queue wher they wud be picked up by threads and executed
+                Factory.Instance.CoreObject.MiningQueue.Enqueue(item);
+            }
+            Factory.Instance.ViewObject.UpDateMinerState();
+        }
         
 
     }

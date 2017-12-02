@@ -127,6 +127,7 @@ namespace OneMiner.Model.Config
         public string DualCoinPool { get; set; }
         public string DualCoinWallet { get; set; }
         public List<MinerScript> MinerScripts { get; set; }
+        public int MinerGpuType { get; set; }
 
         public MinerData()
         {
@@ -142,7 +143,7 @@ namespace OneMiner.Model.Config
             DualCoinPool ="";
             DualCoinWallet ="";
             MinerScripts = new List<MinerScript>();
-
+            MinerGpuType = 0;
         }
 
     }
@@ -287,6 +288,7 @@ namespace OneMiner.Model.Config
             newMiner.MainCoinPool =mainCoinConfigurer.Pool;
             newMiner.MainCoinWallet =mainCoinConfigurer.Wallet;
             newMiner.DualMining =miner.DualMining;
+            newMiner.MinerGpuType = miner.MinerGpuType;
             if (miner.DualMining)
             {
                 newMiner.DualCoin = miner.DualCoin.Name;

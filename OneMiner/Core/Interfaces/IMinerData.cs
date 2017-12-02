@@ -27,6 +27,8 @@ namespace OneMiner.Core.Interfaces
         string DualCoinPool { get; set; }
         string DualCoinWallet { get; set; }
         List<MinerScript> MinerScripts { get; set; }
+        int MinerGpuType { get; set; }
+
 
     }
 }
