@@ -28,6 +28,11 @@ namespace OneMiner.Equihash
 
         public Equihash()
         {
+            m_CoinsHash[EquihashCoins.Zcash] = new Zcash(this);
+
+
+            //Now add it to the lists
+            m_SupportedCoins.Add(m_CoinsHash[EquihashCoins.Zcash] as ICoin);
 
         }
         public string Name
