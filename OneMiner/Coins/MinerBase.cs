@@ -9,13 +9,13 @@ using System.Linq;
 using System.Management;
 using System.Text;
 
-namespace OneMiner.EthHash
+namespace OneMiner.Coins
 {
-    public class EthereumData : MinerData, IMiner
+    public class MinerBase : MinerData, IMiner
     {
         public List<IMinerProgram> MinerPrograms { get; set; }
-        Hashtable m_MinerProgsHash = new Hashtable();
-        HashSet<string> m_MinerRunningHash =new  HashSet<string>();
+        public Hashtable m_MinerProgsHash = new Hashtable();
+        HashSet<string> m_MinerRunningHash = new HashSet<string>();
 
         public ICoin MainCoin { get; set; }
         public ICoin DualCoin { get; set; }
@@ -29,7 +29,7 @@ namespace OneMiner.EthHash
         public MinerProgramState MinerState { get; set; }
 
 
-        public EthereumData(string id, ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName, IMinerData minerData)
+        public MinerBase(string id, ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName, IMinerData minerData)
         {
             MinerState = MinerProgramState.Stopped;
             Id = id;
@@ -61,35 +61,35 @@ namespace OneMiner.EthHash
                     List<MinerProgram> programs = algo.MinerPrograms;
                     //if (programs != null && programs.Count > 0)
                     //{
-                        //at least 1 program is there
-                        Hashtable progs = new Hashtable();
-                        Hashtable scripts = new Hashtable();
-                        foreach (MinerProgram item in programs)
+                    //at least 1 program is there
+                    Hashtable progs = new Hashtable();
+                    Hashtable scripts = new Hashtable();
+                    foreach (MinerProgram item in programs)
+                    {
+                        progs.Add(item.ProgramType, item);
+                    }
+                    foreach (MinerScript item in MinerData.MinerScripts)
+                    {
+                        scripts.Add(item.ProgramType, item);
+                    }
+                    foreach (IMinerProgram item in MinerPrograms)
+                    {
+                        MinerProgram p = progs[item.Type] as MinerProgram;
+                        MinerScript scr = scripts[item.Type] as MinerScript;
+                        if (p != null)
                         {
-                            progs.Add(item.ProgramType, item);
+                            item.MinerEXE = p.Exepath;
+                            item.MinerFolder = p.ExeFolder;
                         }
-                        foreach (MinerScript item in MinerData.MinerScripts)
+                        if (scr != null)
                         {
-                            scripts.Add(item.ProgramType, item);
-                        }
-                        foreach (IMinerProgram item in MinerPrograms)
-                        {
-                            MinerProgram p = progs[item.Type] as MinerProgram;
-                            MinerScript scr = scripts[item.Type] as MinerScript;
-                            if (p != null)
-                            {
-                                item.MinerEXE = p.Exepath;
-                                item.MinerFolder = p.ExeFolder;
-                            }
-                            if (scr != null)
-                            {
-                                item.BATFILE = scr.BATfile;
-                                item.BATCopied = scr.BATCopied;
-                                item.AutomaticScriptGeneration = scr.AutomaticScriptGeneration;
-                                item.LoadScript();
+                            item.BATFILE = scr.BATfile;
+                            item.BATCopied = scr.BATCopied;
+                            item.AutomaticScriptGeneration = scr.AutomaticScriptGeneration;
+                            item.LoadScript();
 
-                            }
                         }
+                    }
                     //}
 
                 }
@@ -101,7 +101,7 @@ namespace OneMiner.EthHash
         public void SetRunningState(IMinerProgram program, MinerProgramState state)
         {
             int count = MinerPrograms.Count;
-            if(state!=MinerProgramState.Running)
+            if (state != MinerProgramState.Running)
             {
                 m_MinerRunningHash.Remove(program.Type);
             }
@@ -124,11 +124,9 @@ namespace OneMiner.EthHash
             Factory.Instance.ViewObject.UpDateMinerState();
 
         }
-        public void SetupMiner()
+        public virtual void SetupMiner()
         {
-            IMinerProgram prog=new ClaymoreMiner(MainCoin, DualMining, DualCoin, Name,this);
-            MinerPrograms.Add(prog);
-            m_MinerProgsHash.Add(prog.Type, prog);
+            throw new NotImplementedException();
         }
         public void StartMining()
         {

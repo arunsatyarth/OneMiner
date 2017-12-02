@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Coins\Equihash\ClaymoreMiner.cs">
+    <Compile Include="Coins\Equihash\ClaymoreMinerZcash.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Coins\Equihash\Equihash.cs" />
@@ -58,10 +58,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Coins\Equihash\Zcash.cs" />
+    <Compile Include="Coins\Equihash\ZCashMiner.cs" />
     <Compile Include="Coins\EthHash\ClaymoreMiner.cs" />
     <Compile Include="Coins\EthHash\EtherClassic.cs" />
     <Compile Include="Coins\EthHash\Expanse.cs" />
     <Compile Include="Coins\EthHash\Ubiq.cs" />
+    <Compile Include="Coins\MinerBase.cs" />
     <Compile Include="Coins\MinerProgramBase.cs" />
     <Compile Include="Coins\OutputReaderBase.cs" />
     <Compile Include="Core\Alarm.cs" />
@@ -77,7 +79,7 @@
     <Compile Include="Core\Interfaces\IOutputReader.cs" />
     <Compile Include="Coins\EthHash\Decred.cs" />
     <Compile Include="Coins\EthHash\Ethereum.cs" />
-    <Compile Include="Coins\EthHash\EthereumData.cs" />
+    <Compile Include="Coins\EthHash\EthereumMiner.cs" />
     <Compile Include="Coins\EthHash\EthHash.cs" />
     <Compile Include="Core\TSList.cs" />
     <Compile Include="Core\TSQueue.cs" />

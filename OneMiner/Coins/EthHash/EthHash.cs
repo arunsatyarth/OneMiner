@@ -194,7 +194,7 @@ namespace OneMiner.EthHash
         private  IMiner CreateMiner(string id,ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName,IMinerData data)
         {
 
-            IMiner miner = new EthereumData(id, mainCoin, dualMining, dualCoin, minerName,data);
+            IMiner miner = new EthereumMiner(id, mainCoin, dualMining, dualCoin, minerName, data);
             return miner;
         }
 

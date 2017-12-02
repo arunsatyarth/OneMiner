@@ -1,4 +1,5 @@
-﻿using OneMiner.Coins.EthHash;
+﻿using OneMiner.Coins.Equihash;
+using OneMiner.Coins.EthHash;
 using OneMiner.Core;
 using OneMiner.Core.Interfaces;
 using OneMiner.EthHash;
@@ -168,7 +169,7 @@ namespace OneMiner.Equihash
         private  IMiner CreateMiner(string id,ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName,IMinerData data)
         {
 
-            IMiner miner = new EthereumData(id, mainCoin, dualMining, dualCoin, minerName,data);
+            IMiner miner = new ZCashMiner(id, mainCoin, dualMining, dualCoin, minerName, data);
             return miner;
         }
 
