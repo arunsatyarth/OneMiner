@@ -76,17 +76,15 @@ namespace OneMiner.Coins.Equihash
             try
             {
                 //generate script and write to folder
-                string command = EXENAME + " -epool " + MainCoinConfigurer.Pool;
-                command += " -ewal " + MainCoinConfigurer.Wallet;
-                command += " -epsw x ";
+                string command = EXENAME + " --server " + MainCoinConfigurer.Pool;
+                command += " --user " + MainCoinConfigurer.Wallet;
+                command += " --pass z ";
                 if (DualCoin != null)
                 {
-                    command += " -dpool " + DualCoinConfigurer.Pool;
-                    command += " -dwal " + MainCoinConfigurer.Wallet;
-                    command += " -ftime 10 ";
-
+                    //dualcoin not supported rite now for zcash
+                    command += "";
                 }
-                command += " -allpools 1";
+                command += " --port 6666";
 
 
                 Script = SCRIPT1 + command;

@@ -49,7 +49,7 @@ namespace OneMiner.Coins.Equihash
         {
             get
             {
-                return "http://127.0.0.1:3000";
+                return "http://127.0.0.1:5566";
             }
         }
 
@@ -75,17 +75,15 @@ namespace OneMiner.Coins.Equihash
             try
             {
                 //generate script and write to folder
-                string command = EXENAME + " -epool " + MainCoinConfigurer.Pool;
-                command += " -ewal " + MainCoinConfigurer.Wallet;
-                command += " -epsw x ";
+                string command = EXENAME + " -zpool " + MainCoinConfigurer.Pool;
+                command += " -zwal " + MainCoinConfigurer.Wallet;
+                command += " -zpsw x ";
                 if (DualCoin != null)
                 {
-                    command += " -dpool " + DualCoinConfigurer.Pool;
-                    command += " -dwal " + MainCoinConfigurer.Wallet;
-                    command += " -ftime 10 ";
+                    command +="";
 
                 }
-                command += " -allpools 1";
+                command += " -mport 5566";
 
 
                 Script = SCRIPT1 + command;
@@ -102,9 +100,13 @@ namespace OneMiner.Coins.Equihash
 
 
 
-        private const string SCRIPT1 = "";
-
-
+        private const string SCRIPT1 =
+@"GPU_FORCE_64BIT_PTR 1
+GPU_MAX_HEAP_SIZE 100
+GPU_USE_SYNC_OBJECTS 1
+GPU_MAX_ALLOC_PERCENT 100
+GPU_SINGLE_ALLOC_PERCENT 100
+";
 
         /// <summary>
         /// reads data for claymore miner

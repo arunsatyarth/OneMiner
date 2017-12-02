@@ -45,12 +45,12 @@ namespace OneMiner.View.v1
             switch (Miner.MinerState)
             {
                 case MinerProgramState.Starting:
-                    lblMinerState.ForeColor = SystemColors.Info;
+                    lblMinerState.ForeColor = SystemColors.HotTrack;
                     labelName = Miner.MinerState.ToString();
                     buttontext = "Stop";
                     break;
                 case MinerProgramState.PartiallyRunning:
-                    lblMinerState.ForeColor = SystemColors.Info;
+                    lblMinerState.ForeColor = SystemColors.HotTrack;
                     labelName = Miner.MinerState.ToString();
                     buttontext = "Stop";
                     break;
@@ -76,7 +76,7 @@ namespace OneMiner.View.v1
                     buttontext = "Start";
                     break;
                 default:
-                    lblMinerState.ForeColor = SystemColors.Info;
+                    lblMinerState.ForeColor = SystemColors.HotTrack;
                     labelName = "unknown state";
                     buttontext = "unknown";
                     break;
