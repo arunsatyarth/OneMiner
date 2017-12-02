@@ -50,15 +50,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Coins\Equihash\ClaymoreMiner.cs" />
     <Compile Include="Coins\Equihash\Equihash.cs" />
-    <Compile Include="Coins\Equihash\EquihashMiner.cs" />
-    <Compile Include="Coins\Equihash\EWBFMiner.cs" />
     <Compile Include="Coins\Equihash\Zcash.cs" />
     <Compile Include="Coins\EthHash\ClaymoreMiner.cs" />
     <Compile Include="Coins\EthHash\EtherClassic.cs" />
     <Compile Include="Coins\EthHash\Expanse.cs" />
     <Compile Include="Coins\EthHash\Ubiq.cs" />
+    <Compile Include="Coins\MinerProgramBase.cs" />
     <Compile Include="Core\Alarm.cs" />
     <Compile Include="Core\Factory.cs" />
     <Compile Include="Core\Interfaces\IGpuData.cs" />

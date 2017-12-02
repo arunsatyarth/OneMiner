@@ -38,6 +38,11 @@ namespace OneMiner.Core.Interfaces
         string Script { get; set; }
         void SetRunningState( MinerProgramState state);
 
+        string MINERURL { get; }
+        string EXENAME { get; }
+        string PROCESSNAME { get; }
+        string STATS_LINK { get; }
+
 
 
 
