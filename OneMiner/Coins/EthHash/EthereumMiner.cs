@@ -28,14 +28,10 @@ namespace OneMiner.EthHash
         }
         public override void StartMining()
         {
-            MinerState = MinerProgramState.Starting;
-
             foreach (IMinerProgram item in MinerPrograms)
             {
-                //push miners into mining queue wher they wud be picked up by threads and executed
-                Factory.Instance.CoreObject.MiningQueue.Enqueue(item);
+                ActualMinerPrograms.Add(item);
             }
-            Factory.Instance.ViewObject.UpDateMinerState();
         }
         
 

@@ -29,37 +29,26 @@ namespace OneMiner.Coins.Equihash
 
             m_MinerProgsHash.Add(CardMake.Amd, prog);
             m_MinerProgsHash.Add(CardMake.Nvidia, prog2);
-        }
-        public override void StartMining()
-        {
-            MinerState = MinerProgramState.Starting;
 
             if (MinerGpuType == 0 || MinerGpuType == 3)
             {
-
                 foreach (IMinerProgram item in MinerPrograms)
                 {
-                    //push miners into mining queue wher they wud be picked up by threads and executed
-                    Factory.Instance.CoreObject.MiningQueue.Enqueue(item);
+                    ActualMinerPrograms.Add(item);
                 }
             }
             else if (MinerGpuType == 1)
             {
-                IMinerProgram prog = m_MinerProgsHash[CardMake.Nvidia] as IMinerProgram;
+                IMinerProgram program = m_MinerProgsHash[CardMake.Nvidia] as IMinerProgram;
                 if (prog != null)
-                    Factory.Instance.CoreObject.MiningQueue.Enqueue(prog);
-                ActualProgramCount = 1;
-
+                    ActualMinerPrograms.Add(program);
             }
             else if (MinerGpuType == 2)
             {
-                IMinerProgram prog = m_MinerProgsHash[CardMake.Amd] as IMinerProgram;
+                IMinerProgram program = m_MinerProgsHash[CardMake.Amd] as IMinerProgram;
                 if (prog != null)
-                    Factory.Instance.CoreObject.MiningQueue.Enqueue(prog);
-                ActualProgramCount = 1;
+                    ActualMinerPrograms.Add(program);
             }
-
-            Factory.Instance.ViewObject.UpDateMinerState();
         }
 
     }

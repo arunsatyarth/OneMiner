@@ -13,14 +13,16 @@ namespace OneMiner.Coins
 {
     public class MinerBase : MinerData, IMiner
     {
+        //these are the miners thet the algo supports
         public List<IMinerProgram> MinerPrograms { get; set; }
+        //thse are the miners that are going to run based on what the gpu types are or what the user has selected
+        public List<IMinerProgram> ActualMinerPrograms { get; set; }
         public Hashtable m_MinerProgsHash = new Hashtable();
         HashSet<string> m_MinerRunningHash = new HashSet<string>();
 
         public ICoin MainCoin { get; set; }
         public ICoin DualCoin { get; set; }
         private IMinerData MinerData { get; set; }
-        public  int ActualProgramCount { get; set; }
         public int MinerGpuType { get; set; }
 
         public bool DualMining { get; set; }
@@ -40,10 +42,13 @@ namespace OneMiner.Coins
             DualMining = dualMining;
             Name = minerName;
             MinerData = minerData;
+            if (MinerData != null)
+                MinerGpuType = MinerData.MinerGpuType;
+            else
+                IdentifyGpuTypes();
             MinerPrograms = new List<IMinerProgram>();
+            ActualMinerPrograms = new List<IMinerProgram>();
             SetupMiner();
-            IdentifyGpuTypes();
-            ActualProgramCount = MinerPrograms.Count;
         }
         public void IdentifyGpuTypes()
         {
@@ -129,9 +134,9 @@ namespace OneMiner.Coins
             }
             if (m_MinerRunningHash.Count == 0)
                 MinerState = MinerProgramState.Stopped;
-            else if (m_MinerRunningHash.Count < ActualProgramCount)
+            else if (m_MinerRunningHash.Count < ActualMinerPrograms.Count)
                 MinerState = MinerProgramState.PartiallyRunning;
-            else if (m_MinerRunningHash.Count == ActualProgramCount)
+            else if (m_MinerRunningHash.Count == ActualMinerPrograms.Count)
                 MinerState = MinerProgramState.Running;
             else
                 MinerState = MinerProgramState.Stopping;//ideally it shudnt com here
@@ -148,7 +153,13 @@ namespace OneMiner.Coins
         }
         public virtual void StartMining()
         {
-            throw new NotImplementedException();
+            MinerState = MinerProgramState.Starting;
+            foreach (IMinerProgram item in ActualMinerPrograms)
+            {
+                //push miners into mining queue wher they wud be picked up by threads and executed
+                Factory.Instance.CoreObject.MiningQueue.Enqueue(item);
+            }
+            Factory.Instance.ViewObject.UpDateMinerState();
         }
         public void StopMining()
         {

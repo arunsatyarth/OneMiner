@@ -16,6 +16,7 @@ namespace OneMiner.View.v1.MiningInfo
         public IMiner Miner { get; set; }
         MinerInfo m_Parent = null;
         Hashtable m_ButtonToMiner = new Hashtable();
+        Hashtable m_CheckBoxToMiner = new Hashtable();
         Button m_currentButton = null;
         List<Button> m_tabButtons = new List<Button>();
 
@@ -55,8 +56,37 @@ namespace OneMiner.View.v1.MiningInfo
             m_currentButton.BackColor = Color.SteelBlue;
             m_currentButton.ForeColor = Color.White;
             UpdateUI();
+            AddCheckboxes();
 
+        }
+        
+        public void AddCheckboxes()
+        {
+            CheckBox leftCheckBox = chkTemplate;
+            int i = 0;
+            foreach (IMinerProgram item in Miner.MinerPrograms)
+            {
+                CheckBox chkBox = new CheckBox();
+                chkBox.Top = 10;
+                chkBox.Name = "chkBox" + i.ToString();
+                chkBox.Click += chkBox_Click;
+                chkBox.AutoSize = true;
+                chkBox.Text = item.Type;
+                chkBox.Left = leftCheckBox.Left + leftCheckBox.Width;
+                //chkBox.FlatStyle = FlatStyle.Popup;
+                //chkBox.BackColor = Color.LightSteelBlue;
+                //chkBox.ForeColor = Color.Black;
 
+                leftCheckBox = chkBox;
+                this.Controls.Add(chkBox);
+                i++;
+                m_CheckBoxToMiner.Add(chkBox.Name, item);
+            }
+        }
+
+        void chkBox_Click(object sender, EventArgs e)
+        {
+            
         }
 
         void btn_Click(object sender, EventArgs e)

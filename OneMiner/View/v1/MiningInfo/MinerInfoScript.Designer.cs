@@ -33,6 +33,8 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.lnkEdit = new System.Windows.Forms.LinkLabel();
             this.btnDefault = new System.Windows.Forms.Button();
+            this.chkTemplate = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnTemplate
@@ -91,12 +93,34 @@
             this.btnDefault.UseVisualStyleBackColor = true;
             this.btnDefault.Click += new System.EventHandler(this.btnDefault_Click);
             // 
+            // chkTemplate
+            // 
+            this.chkTemplate.AutoSize = true;
+            this.chkTemplate.Location = new System.Drawing.Point(329, 12);
+            this.chkTemplate.Name = "chkTemplate";
+            this.chkTemplate.Size = new System.Drawing.Size(60, 17);
+            this.chkTemplate.TabIndex = 24;
+            this.chkTemplate.Text = "Default";
+            this.chkTemplate.UseVisualStyleBackColor = true;
+            this.chkTemplate.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(299, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 13);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "Selected Miners: ";
+            // 
             // MinerInfoScript
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(927, 344);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.chkTemplate);
             this.Controls.Add(this.btnDefault);
             this.Controls.Add(this.lnkEdit);
             this.Controls.Add(this.btnSave);
@@ -117,5 +141,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.LinkLabel lnkEdit;
         private System.Windows.Forms.Button btnDefault;
+        private System.Windows.Forms.CheckBox chkTemplate;
+        private System.Windows.Forms.Label label1;
     }
 }

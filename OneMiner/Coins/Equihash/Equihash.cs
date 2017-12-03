@@ -156,7 +156,7 @@ namespace OneMiner.Equihash
                     }
                 }
                 miner = CreateMiner(minerData.Id, mainCoin, minerData.DualMining, dualCoin, minerData.Name,minerData);
-                miner.MinerGpuType = minerData.MinerGpuType;
+                //miner.MinerGpuType = minerData.MinerGpuType;
                 miner.InitializePrograms();
 
             }
