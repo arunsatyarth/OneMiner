@@ -17,6 +17,8 @@ namespace OneMiner.View.v1.MiningInfo
         MinerInfo m_Parent = null;
         Hashtable m_ButtonToMiner = new Hashtable();
         Button m_currentButton = null;
+        List<Button> m_tabButtons = new List<Button>();
+
 
         public MinerInfoScript(IMiner miner, MinerInfo parent)
         {
@@ -46,6 +48,7 @@ namespace OneMiner.View.v1.MiningInfo
 
                 leftbutton = btn;
                 this.Controls.Add(btn);
+                m_tabButtons.Add(btn);
                 i++;
                 m_ButtonToMiner.Add(btn.Name, item);
             }
@@ -59,11 +62,27 @@ namespace OneMiner.View.v1.MiningInfo
         void btn_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
+            SelectView(btn);
             m_currentButton = btn;
             UpdateUI();
 
         }
-
+        public void SelectView(Button btn)
+        {
+            foreach (Button item in m_tabButtons)
+            {
+                if (btn == item)
+                {
+                    item.BackColor = Color.SteelBlue;
+                    item.ForeColor = Color.White;
+                }
+                else
+                {
+                    item.BackColor = Color.LightSteelBlue;
+                    item.ForeColor = Color.Black;
+                }
+            }
+        }
         public void UpdateUI()
         {
             if (m_currentButton != null)
