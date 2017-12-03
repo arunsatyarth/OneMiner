@@ -23,6 +23,8 @@ namespace OneMiner.Core.Interfaces
         int MinerGpuType { get; set; }
 
         List<GpuData> GetGpuList();
+        void ChangeGPUType(IMinerProgram prog);
+
 
 
 

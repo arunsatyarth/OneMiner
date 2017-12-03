@@ -22,18 +22,22 @@ namespace OneMiner.Coins.Equihash
 
         public override void SetupMiner()
         {
+            ActualMinerPrograms.Clear();
+            MinerPrograms.Clear();
+            m_MinerProgsHash.Clear();
+
             IMinerProgram prog = new ClaymoreMinerZcash(MainCoin, DualMining, DualCoin, Name, this);
             MinerPrograms.Add(prog);
             IMinerProgram prog2 = new EWBFMiner(MainCoin, DualMining, DualCoin, Name, this);
             MinerPrograms.Add(prog2);
 
-            m_MinerProgsHash.Add(CardMake.Amd, prog);
-            m_MinerProgsHash.Add(CardMake.Nvidia, prog2);
-
+            m_MinerProgsHash.Add(prog.GPUType, prog);
+            m_MinerProgsHash.Add(prog2.GPUType, prog2);
             if (MinerGpuType == 0 || MinerGpuType == 3)
             {
                 foreach (IMinerProgram item in MinerPrograms)
                 {
+                    item.Enabled = true;
                     ActualMinerPrograms.Add(item);
                 }
             }
@@ -41,15 +45,22 @@ namespace OneMiner.Coins.Equihash
             {
                 IMinerProgram program = m_MinerProgsHash[CardMake.Nvidia] as IMinerProgram;
                 if (prog != null)
+                {
+                    program.Enabled = true;
                     ActualMinerPrograms.Add(program);
+                }
             }
             else if (MinerGpuType == 2)
             {
                 IMinerProgram program = m_MinerProgsHash[CardMake.Amd] as IMinerProgram;
                 if (prog != null)
+                {
+                    program.Enabled = true;
                     ActualMinerPrograms.Add(program);
+                }
             }
         }
+
 
     }
 }

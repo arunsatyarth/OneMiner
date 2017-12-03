@@ -50,6 +50,7 @@ namespace OneMiner.Coins
 
 
         public virtual string Script { get; set; }
+        public virtual bool Enabled { get; set; }
 
 
 
@@ -74,6 +75,7 @@ namespace OneMiner.Coins
         public bool DualMining { get; set; }
         public string Name { get; set; }
         public virtual string Type { get; set; }//claymore ccminer etc
+        public CardMake GPUType { get; set; }//AMD, NVidia or COmmon
         MinerDownloader m_downloader = null;
         private Process m_Process = null;
         private object m_accesssynch = new object();
@@ -96,7 +98,7 @@ namespace OneMiner.Coins
             Miner = miner;
             AutomaticScriptGeneration = true;
             m_downloader = new MinerDownloader(MINERURL, EXENAME);
-
+            Enabled = false;
             GenerateScript();
 
         }

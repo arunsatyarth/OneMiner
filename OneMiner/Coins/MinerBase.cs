@@ -57,11 +57,27 @@ namespace OneMiner.Coins
             foreach (GpuData gpuData in gpus)
             {
                 if (gpuData.Make == CardMake.Nvidia)
-                    gpuType = gpuType | 1; 
+                    //gpuType = gpuType | 1; 
+                    gpuType = gpuType | (1 << 0);
                 if (gpuData.Make == CardMake.Amd)
-                    gpuType = gpuType | 2;
+                    //gpuType = gpuType | 2;
+                    gpuType = gpuType | (1 << 1);
+
             }
             MinerGpuType = gpuType;
+
+        }
+        public void ChangeGPUType(IMinerProgram prog)
+        {
+            int gpuType = MinerGpuType;
+            if (prog.GPUType == CardMake.Nvidia)
+                gpuType = gpuType ^ (1 << 0);                
+            if (prog.GPUType == CardMake.Amd)
+                gpuType = gpuType ^ (1 << 1);
+            MinerGpuType = gpuType;
+            SetupMiner();
+            Factory.Instance.Model.AddMiner(this);
+
 
         }
         public void InitializePrograms()

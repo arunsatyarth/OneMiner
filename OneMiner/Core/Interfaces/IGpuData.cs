@@ -11,6 +11,7 @@ namespace OneMiner.Core.Interfaces
         Nvidia=0,
         Amd,
         CPU,
+        COMMON,//this means the gpu or the gpuminer is independend of type
         END
     }
     public class GpuData 

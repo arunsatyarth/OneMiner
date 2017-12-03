@@ -73,6 +73,7 @@ namespace OneMiner.View.v1.MiningInfo
                 chkBox.AutoSize = true;
                 chkBox.Text = item.Type;
                 chkBox.Left = leftCheckBox.Left + leftCheckBox.Width;
+                chkBox.Checked = item.Enabled;
                 //chkBox.FlatStyle = FlatStyle.Popup;
                 //chkBox.BackColor = Color.LightSteelBlue;
                 //chkBox.ForeColor = Color.Black;
@@ -86,7 +87,21 @@ namespace OneMiner.View.v1.MiningInfo
 
         void chkBox_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                CheckBox chk = sender as CheckBox;
+                if (chk != null)
+                {
+                    IMinerProgram prog = m_CheckBoxToMiner[chk.Name] as IMinerProgram;
+                    if(prog!=null)
+                    {
+                        Miner.ChangeGPUType(prog);
+                    }
+                }
+            }
+            catch (Exception ee)
+            {
+            }
         }
 
         void btn_Click(object sender, EventArgs e)

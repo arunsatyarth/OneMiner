@@ -18,10 +18,13 @@ namespace OneMiner.Core.Interfaces
         /// </summary>
         void KillMiner();
         string Type { get; set; }//claymore ccminer etc
+        CardMake GPUType { get; set; }//AMD, NVidia or COmmon
+        
         ICoin MainCoin { get; set; }
         string BATFILE { get; set; }
         bool BATCopied { get; set; }
         IMiner Miner { get; set; }
+        bool Enabled { get; set; }
         IOutputReader OutputReader { get; set; }
 
 

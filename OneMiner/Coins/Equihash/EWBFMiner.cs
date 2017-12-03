@@ -66,6 +66,7 @@ namespace OneMiner.Coins.Equihash
             base(mainCoin, dualMining, dualCoin, minerName, miner)
         {
             Type = "Nvidia";
+            GPUType = CardMake.Nvidia;
             OutputReader = new EWBFReader(STATS_LINK);
         }
 

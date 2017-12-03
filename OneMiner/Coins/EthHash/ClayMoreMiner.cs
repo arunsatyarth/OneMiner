@@ -66,7 +66,8 @@ namespace OneMiner.Coins.EthHash
             base(mainCoin, dualMining, dualCoin, minerName, miner)
 
         {
-            Type = "AMD";
+            Type = "Claymore";
+            GPUType = CardMake.COMMON;
             OutputReader = new ClayMoreEthReader(STATS_LINK);
         }
         

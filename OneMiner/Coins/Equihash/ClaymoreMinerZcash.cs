@@ -65,6 +65,8 @@ namespace OneMiner.Coins.Equihash
             base(mainCoin, dualMining, dualCoin, minerName, miner)
         {
             Type = "AMD";
+            GPUType = CardMake.Amd;
+
             OutputReader = new ClayMoreZcashReader(STATS_LINK);
         }
 

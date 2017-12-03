@@ -22,17 +22,17 @@ namespace OneMiner.EthHash
         
         public override void SetupMiner()
         {
+            ActualMinerPrograms.Clear();
+            MinerPrograms.Clear();
+            m_MinerProgsHash.Clear();
+
             IMinerProgram prog=new ClaymoreMiner(MainCoin, DualMining, DualCoin, Name,this);
+            prog.Enabled = true;
             MinerPrograms.Add(prog);
+            ActualMinerPrograms.Add(prog);
             m_MinerProgsHash.Add(prog.Type, prog);
         }
-        public override void StartMining()
-        {
-            foreach (IMinerProgram item in MinerPrograms)
-            {
-                ActualMinerPrograms.Add(item);
-            }
-        }
+
         
 
     }
