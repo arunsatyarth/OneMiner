@@ -133,7 +133,7 @@ namespace OneMiner.Coins.Equihash
         /// <summary>
         /// reads data for claymore miner
         /// </summary>
-        class EWBFReader : OutputReaderBase
+        public class EWBFReader : OutputReaderBase
         {
             public EWBFReader(string link)
                 : base(link)
@@ -181,7 +181,7 @@ namespace OneMiner.Coins.Equihash
                     m_EwbfData = obj as EWBFData;
                     try
                     {
-                        if (m_MinerResult == null)
+                        if (m_EwbfData == null)
                             return false;
 
                         ComputeGPUData();
@@ -199,6 +199,7 @@ namespace OneMiner.Coins.Equihash
                 {
                     try
                     {
+                        m_MinerResult = new MinerDataResult();
                         m_MinerResult.GPUs = new List<GpuData>();
 
                         int totalHashrate = 0,totalShares=0,rejected=0;
@@ -215,7 +216,6 @@ namespace OneMiner.Coins.Equihash
                             rejected += item.rejected_shares;
                         }
 
-                        m_MinerResult = new MinerDataResult();
                         m_MinerResult.TotalHashrate = totalHashrate;
                         m_MinerResult.TotalShares = totalShares;
                         m_MinerResult.Rejected = rejected;

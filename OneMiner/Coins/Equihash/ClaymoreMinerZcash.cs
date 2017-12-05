@@ -120,7 +120,7 @@ GPU_SINGLE_ALLOC_PERCENT 100
         /// <summary>
         /// reads data for claymore miner
         /// </summary>
-        class ClayMoreZcashReader : OutputReaderBase
+        public class ClayMoreZcashReader : OutputReaderBase
         {
             public ClayMoreZcashReader(string link)
                 : base(link)
@@ -258,8 +258,17 @@ GPU_SINGLE_ALLOC_PERCENT 100
                                     gpu = new GpuData("GPU " + gpu_idstr);
 
                                 gpu.Hashrate = item;
-                                gpu.Temperature = fanTempArr[j] + "C";
-                                gpu.FanSpeed = fanTempArr[j + 1] + "%";
+                                if (j < fanTempArr.Length)
+                                {
+                                    gpu.Temperature = fanTempArr[j] + "C";
+                                    gpu.FanSpeed = fanTempArr[j + 1] + "%";
+                                }
+                                else
+                                {
+                                    gpu.Temperature = "0C";
+                                    gpu.FanSpeed = "0%";
+                                }
+                   
                                 j += 2;
                                 gpu_id++;
                                 m_MinerResult.GPUs.Add(gpu);
@@ -267,7 +276,7 @@ GPU_SINGLE_ALLOC_PERCENT 100
                         }
 
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         Succeeded = false;
                         throw;

@@ -33,7 +33,7 @@ namespace OneMiner.Core.Interfaces
         {
             try
             {
-                string pattern = "(N|n)(V|v)(I|i)(D|d)(I|i)(A|a)";
+                string pattern = "(N|n)(V|v)(I|i)(D|d)(I|i)(A|a)|(G|g)(E|e)(F|f)(O|o)(R|r)(C|c)(E|e) ";
                 Match r_gpu_id = Regex.Match(GPUName, pattern);
                 if (r_gpu_id.Success)
                     Make= CardMake.Nvidia;
