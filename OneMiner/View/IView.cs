@@ -1,4 +1,5 @@
 ﻿using OneMiner.Core.Interfaces;
+using OneMiner.View.v1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace OneMiner.View
         void UpdateMinerList();
         void UpDateMinerState();
         void RegisterForTimer(OneMinerTimerEvent fun);
+        TSQueue<DownloadRequest> DownloadRequestQueue { get; set; }
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using OneMiner.Core;
 using OneMiner.Core.Interfaces;
+using OneMiner.View.v1;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace OneMiner.Coins
     /// <summary>
     /// reads data for  miner
     /// </summary>
-    class OutputReaderBase : IOutputReader
+    public class OutputReaderBase : IOutputReader
     {
         private const int MAX_QUEUESIZE = 5;
 
@@ -133,79 +134,37 @@ namespace OneMiner.Coins
                 }
             }
         }
-        private WebBrowser m_Browser = new WebBrowser();
 
         public OutputReaderBase(string link)
         {
             StatsLink = link;
             ReReadGpuNames = true;
-            m_Browser.Navigated += browser_Navigated;
-            m_Browser.DocumentCompleted += m_Browser_DocumentCompleted;
 
         }
 
-        void m_Browser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-            try
-            {
-                WebBrowser browser = sender as WebBrowser;
-                if (browser != null)
-                {
-                    HtmlElement body = browser.Document.Body;
-                    NextLog = body.InnerText;
-                    Parse();
-                }
 
-            }
-            catch (Exception ex)
-            {
-            }
-        }
 
         public void ReadWithBrowser()
         {
             try
             {
-                Thread.CurrentThread.SetApartmentState(ApartmentState.STA);
-                WebBrowser m_Browser = new WebBrowser();
-
-                //m_Browser.Navigate(StatsLink);
-                m_Browser.Navigate("https://coinmarketcap.com/");
-                HtmlElement body = m_Browser.Document.Body;
-                NextLog = body.InnerText;
-                Parse();
-
-                Thread.Sleep(4000);
-                body = m_Browser.Document.Body;
-                NextLog = body.InnerText;
-                Parse();
+                DownloadRequest request = new DownloadRequest();
+                request.LINK = StatsLink;
+                request.Reader = this;
+                Factory.Instance.ViewObject.DownloadRequestQueue.Enqueue(request);
             }
             catch (Exception e)
             {
             }
         }
 
-        void browser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
-        {
-            try
-            {
-                WebBrowser browser = sender as WebBrowser;
-                if (browser!=null)
-                {
-                    HtmlElement body = browser.Document.Body;
-                    NextLog = body.InnerText;
-                    Parse();
-                }
-            
-            }
-            catch (Exception ex)
-            {
-            }
-        }
+
         public void Read()
         {
             try
             {
+                //Todo: remove this after test
+                throw new Exception();
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(StatsLink);
                 request.Method = "GET";
                 request.KeepAlive = false;

@@ -29,7 +29,15 @@ namespace OneMiner
         private const int CAROUSAL_WAIT=60000;
         public MinerView MinerView { get; set; }//the selected minerview. not the activated one. this is the one which was clicked. 
         public MinerInfo MinerInfo { get; set; }//the selected minerInfo. not the activated one. this is the one which was clicked. We need this object to show the logs etc
+        WebBrowserEx m_DownloaderBrowser = new WebBrowserEx();
 
+        public WebBrowserEx DownloadBrowser
+        {
+            get
+            {
+                return m_DownloaderBrowser;
+            }
+        }
 
         private void btnAddMiner_Click(object sender, EventArgs e)
         {
