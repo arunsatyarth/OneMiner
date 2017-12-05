@@ -52,6 +52,13 @@ namespace OneMiner.Coins.EthHash
                 return "http://127.0.0.1:3333/";
             }
         }
+        public override string STATS_LINK_HTML
+        {
+            get
+            {
+                return "http://127.0.0.1:3333/";
+            }
+        }
 
 
         public override string Script { get; set; }
@@ -166,11 +173,11 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
                     m_reReadGpunames = reReadGpunames;
                 }
 
-                public bool Parse(MinerDataResult obj)
+                public bool Parse(object obj)
                 {
                     Succeeded = false;
-                    
-                    m_MinerResult = obj;
+
+                    m_MinerResult = obj as MinerDataResult;
                     try
                     {
                         if (obj == null)
@@ -333,22 +340,7 @@ setx GPU_SINGLE_ALLOC_PERCENT 100
                         throw;
                     }
                 }
-                private CardMake Make(string name)
-                {
-                    try
-                    {
-                        string pattern = "(N|n)(V|v)(I|i)(D|d)(I|i)(A|a)";
-                        Match r_gpu_id = Regex.Match(name, pattern);
-                        if (r_gpu_id.Success)
-                            return CardMake.Nvidia;
-                        else
-                            return CardMake.Amd;
-                    }
-                    catch (Exception)
-                    {
-                    }
-                    return CardMake.END;
-                }
+                
 
             }
         }

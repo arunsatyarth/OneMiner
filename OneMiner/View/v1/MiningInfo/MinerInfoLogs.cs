@@ -109,7 +109,7 @@ namespace OneMiner.View.v1.MiningInfo
                 if (m_currentButton != null)
                 {
                     IMinerProgram prog = m_ButtonToMiner[m_currentButton.Name] as IMinerProgram;
-                    Process.Start(prog.OutputReader.StatsLink);
+                    Process.Start(prog.STATS_LINK_HTML);
 
                 }
             }

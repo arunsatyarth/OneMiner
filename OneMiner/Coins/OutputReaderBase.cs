@@ -8,7 +8,9 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Web.Script.Serialization;
+using System.Windows.Forms;
 
 namespace OneMiner.Coins
 {
@@ -131,27 +133,100 @@ namespace OneMiner.Coins
                 }
             }
         }
+        private WebBrowser m_Browser = new WebBrowser();
 
         public OutputReaderBase(string link)
         {
             StatsLink = link;
             ReReadGpuNames = true;
+            m_Browser.Navigated += browser_Navigated;
+            m_Browser.DocumentCompleted += m_Browser_DocumentCompleted;
+
+        }
+
+        void m_Browser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            try
+            {
+                WebBrowser browser = sender as WebBrowser;
+                if (browser != null)
+                {
+                    HtmlElement body = browser.Document.Body;
+                    NextLog = body.InnerText;
+                    Parse();
+                }
+
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        public void ReadWithBrowser()
+        {
+            try
+            {
+                Thread.CurrentThread.SetApartmentState(ApartmentState.STA);
+                WebBrowser m_Browser = new WebBrowser();
+
+                //m_Browser.Navigate(StatsLink);
+                m_Browser.Navigate("https://coinmarketcap.com/");
+                HtmlElement body = m_Browser.Document.Body;
+                NextLog = body.InnerText;
+                Parse();
+
+                Thread.Sleep(4000);
+                body = m_Browser.Document.Body;
+                NextLog = body.InnerText;
+                Parse();
+            }
+            catch (Exception e)
+            {
+            }
+        }
+
+        void browser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
+        {
+            try
+            {
+                WebBrowser browser = sender as WebBrowser;
+                if (browser!=null)
+                {
+                    HtmlElement body = browser.Document.Body;
+                    NextLog = body.InnerText;
+                    Parse();
+                }
+            
+            }
+            catch (Exception ex)
+            {
+            }
         }
         public void Read()
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(StatsLink);
-            request.Method = "GET";
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.UserAgent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 7.1; Trident/5.0)";
-            request.Accept = "/";
-            request.UseDefaultCredentials = true;
-            request.Proxy.Credentials = System.Net.CredentialCache.DefaultCredentials;
-            //doc.Save(request.GetRequestStream());
-            HttpWebResponse resp = request.GetResponse() as HttpWebResponse;
-            Stream stream = resp.GetResponseStream();
-            StreamReader sr = new StreamReader(stream);
-            string s = sr.ReadToEnd();
-            NextLog = s;
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(StatsLink);
+                request.Method = "GET";
+                request.KeepAlive = false;
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.UserAgent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 7.1; Trident/5.0)";
+                request.Accept = "/";
+                request.UseDefaultCredentials = true;
+                request.Proxy.Credentials = System.Net.CredentialCache.DefaultCredentials;
+                //doc.Save(request.GetRequestStream());
+                HttpWebResponse resp = request.GetResponse() as HttpWebResponse;
+                Stream stream = resp.GetResponseStream();
+                StreamReader sr = new StreamReader(stream);
+                string s = sr.ReadToEnd();
+                NextLog = s;
+            }
+            catch (Exception e)
+            {
+                ReadWithBrowser();
+                throw;
+            }
+
         }
 
         public void AlarmRaised()

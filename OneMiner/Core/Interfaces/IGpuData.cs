@@ -68,6 +68,6 @@ namespace OneMiner.Core.Interfaces
     /// </summary>
     public interface IMinerResultParser
     {
-        bool Parse(MinerDataResult obj);
+        bool Parse(object obj);
     }
 }

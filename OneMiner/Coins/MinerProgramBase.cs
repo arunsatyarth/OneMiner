@@ -47,7 +47,13 @@ namespace OneMiner.Coins
                 throw new NotImplementedException();
             }
         }
-
+        public virtual string STATS_LINK_HTML
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
 
         public virtual string Script { get; set; }
         public virtual bool Enabled { get; set; }

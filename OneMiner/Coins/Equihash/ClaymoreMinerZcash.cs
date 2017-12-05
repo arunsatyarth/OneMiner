@@ -52,6 +52,13 @@ namespace OneMiner.Coins.Equihash
                 return "http://127.0.0.1:5566";
             }
         }
+        public override string STATS_LINK_HTML
+        {
+            get
+            {
+                return "http://127.0.0.1:5566";
+            }
+        }
 
         public override string Script { get; set; }
 
@@ -161,11 +168,11 @@ GPU_SINGLE_ALLOC_PERCENT 100
                     m_reReadGpunames = reReadGpunames;
                 }
 
-                public bool Parse(MinerDataResult obj)
+                public bool Parse(object obj)
                 {
                     Succeeded = false;
 
-                    m_MinerResult = obj;
+                    m_MinerResult = obj as MinerDataResult;
                     try
                     {
                         if (obj == null)

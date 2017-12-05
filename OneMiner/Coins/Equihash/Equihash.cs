@@ -100,7 +100,7 @@ namespace OneMiner.Equihash
                 if (mainCoin != null)
                 {
                     ICoinConfigurer mainCoinConfigurer = mainCoin.SettingsScreen;
-                    mainCoinConfigurer.Pool = "ssl://zec-eu1.nanopool.org:6633";
+                    mainCoinConfigurer.Pool = "eu1-zcash.flypool.org:3333";
                     mainCoinConfigurer.Wallet = "t1ZBzTwKs8wctQrcD6PmH3SRgJhAcLRwPZQ";
                 }
                 miner = CreateMiner(GenerateUniqueID(), mainCoin, false, null, "Default Zcash Miner",null);

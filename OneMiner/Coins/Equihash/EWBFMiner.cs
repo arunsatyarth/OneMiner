@@ -24,6 +24,8 @@ namespace OneMiner.Coins.Equihash
     class EWBFMiner : MinerProgramBase
     {
 
+        public const string STATSLINK2 = "127.0.0.1:12345";
+        public const string STATSLINK3 = "/getstat";
         public override string MINERURL
         {
             get
@@ -49,7 +51,14 @@ namespace OneMiner.Coins.Equihash
         {
             get
             {
-                return "http://0.0.0.0:12345";
+                return "http://" + STATSLINK2 + STATSLINK3;
+            }
+        }
+        public override string STATS_LINK_HTML
+        {
+            get
+            {
+                return "http://" + STATSLINK2;
             }
         }
 
@@ -76,8 +85,23 @@ namespace OneMiner.Coins.Equihash
         {
             try
             {
+                string host = "", port = "";
+                try
+                {
+                    string url=MainCoinConfigurer.Pool;
+                    if (!url.Contains("://"))
+                        url = "ssl://" + url;
+                    var uri = new Uri(url);
+                    host = uri.Host;
+                    port = uri.Port.ToString();
+                }
+                catch (Exception e)
+                {
+                    host = ""; port = "";
+                }
+                //var host = uri.Host;
                 //generate script and write to folder
-                string command = EXENAME + " --server " + MainCoinConfigurer.Pool;
+                string command = EXENAME + " --server " + host;
                 command += " --user " + MainCoinConfigurer.Wallet;
                 command += " --pass z ";
                 if (DualCoin != null)
@@ -85,7 +109,8 @@ namespace OneMiner.Coins.Equihash
                     //dualcoin not supported rite now for zcash
                     command += "";
                 }
-                command += " --port 6666";
+                command += " --port " + port;
+                command += " --api " + STATSLINK2;
 
 
                 Script = SCRIPT1 + command;
@@ -114,17 +139,12 @@ namespace OneMiner.Coins.Equihash
                 : base(link)
             {
             }
-            MinerDataResult GetResultsSection(string innerText)
+            EWBFData GetResultsSection(string innerText)
             {
                 try
                 {
-                    string pattern = @"\{([^()]|())*\}";
-                    Match resultmatch = Regex.Match(innerText, pattern);
-                    if (resultmatch.Success)
-                    {
-                        MinerDataResult minerResult = (MinerDataResult)new JavaScriptSerializer().Deserialize(resultmatch.Value, typeof(MinerDataResult));
-                        return minerResult;
-                    }
+                    EWBFData minerResult = (EWBFData)new JavaScriptSerializer().Deserialize(innerText, typeof(EWBFData));
+                    return minerResult;
                 }
                 catch (Exception e)
                 {
@@ -133,10 +153,10 @@ namespace OneMiner.Coins.Equihash
             }
             public override void Parse()
             {
-                MinerDataResult minerResult = GetResultsSection(LastLog);
-                if (minerResult.Parse(new EWBFReaderResultParser(LastLog, ReReadGpuNames)))
+                EWBFData ewbfData = GetResultsSection(LastLog);
+                if (ewbfData.Parse(new EWBFReaderResultParser(LastLog, ReReadGpuNames)))
                 {
-                    MinerResult = minerResult;
+                    MinerResult = ewbfData.MinerDataResult;
                 }
                 ReReadGpuNames = false;
             }
@@ -144,41 +164,28 @@ namespace OneMiner.Coins.Equihash
             public class EWBFReaderResultParser : IMinerResultParser
             {
                 MinerDataResult m_MinerResult = null;
+                EWBFData m_EwbfData = null;
                 public bool Succeeded { get; set; }//if parsing succeeded without errors
                 static Hashtable m_Gpus = new Hashtable();// we only need t read gpu info once as it dosent change with more logs comining in
-                static bool m_identified = false;
-                bool m_reReadGpunames = false;
 
                 string m_fullLog = "";
                 public EWBFReaderResultParser(string fullLog, bool reReadGpunames)
                 {
                     m_fullLog = fullLog;
-                    m_reReadGpunames = reReadGpunames;
                 }
 
-                public bool Parse(MinerDataResult obj)
+                public bool Parse(object obj)
                 {
                     Succeeded = false;
 
-                    m_MinerResult = obj;
+                    m_EwbfData = obj as EWBFData;
                     try
                     {
-                        if (obj == null)
+                        if (m_MinerResult == null)
                             return false;
 
-                        if (!m_identified || m_reReadGpunames)
-                        {
-                            m_identified = false;
-                            m_Gpus.Clear();
-                            IdentifyGPUs();
-                        }
-                        if (m_MinerResult.result != null && m_MinerResult.result.Count >= 7)
-                        {
-                            ComputeRunningTime();
-                            ComputeHashnShares();
-                            ComputeGPUData();
-                            return true;
-                        }
+                        ComputeGPUData();
+                        return true;
                     }
                     catch (Exception e)
                     {
@@ -187,72 +194,33 @@ namespace OneMiner.Coins.Equihash
                     return false;
 
                 }
-                public void ComputeRunningTime()
-                {
-                    try
-                    {
-                        m_MinerResult.RunningTime = Int32.Parse(m_MinerResult.result[1]);
-                    }
-                    catch (Exception)
-                    {
-                        m_MinerResult.RunningTime = 0;
-                        Succeeded = false;
-                        throw;
-                    }
-                }
-                public void ComputeHashnShares()
-                {
-                    try
-                    {
-                        string combined = m_MinerResult.result[2];
-                        string[] data = combined.Split(';');
-                        if (data != null && data.Length == 3)
-                        {
-                            m_MinerResult.TotalHashrate = Int32.Parse(data[0]);//this is in H/s not MH/s UI will have to do conversion
-                            m_MinerResult.TotalShares = Int32.Parse(data[1]);
-                            m_MinerResult.Rejected = Int32.Parse(data[2]);
 
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        m_MinerResult.TotalHashrate = 0;
-                        m_MinerResult.TotalShares = 0;
-                        m_MinerResult.Rejected = 0;
-                        Succeeded = false;
-                        throw;
-                    }
-                }
                 public void ComputeGPUData()
                 {
                     try
                     {
                         m_MinerResult.GPUs = new List<GpuData>();
-                        string hashCombined = m_MinerResult.result[3];
-                        string[] hashrates = hashCombined.Split(';');
 
-                        string fanTemp = m_MinerResult.result[6];
-                        string[] fanTempArr = fanTemp.Split(';');
-                        if (hashrates != null && hashrates.Length > 0)
+                        int totalHashrate = 0,totalShares=0,rejected=0;
+                        foreach (Result item in m_EwbfData.result)
                         {
-                            int j = 0;
-                            int gpu_id = 0;
-                            foreach (string item in hashrates)
-                            {
-                                GpuData gpu = null;
-                                string gpu_idstr = gpu_id.ToString();
-                                gpu = m_Gpus[gpu_idstr] as GpuData;
-                                if (gpu == null)
-                                    gpu = new GpuData("GPU " + gpu_idstr);
+                            GpuData gpu = new GpuData(item.name);
+                            gpu.IdentifyMake();
 
-                                gpu.Hashrate = item;
-                                gpu.Temperature = fanTempArr[j] + "C";
-                                gpu.FanSpeed = fanTempArr[j + 1] + "%";
-                                j += 2;
-                                gpu_id++;
-                                m_MinerResult.GPUs.Add(gpu);
-                            }
+                            gpu.Hashrate = item.speed_sps.ToString();
+                            gpu.Temperature = item.temperature+ "C";
+                            m_MinerResult.GPUs.Add(gpu);
+                            totalHashrate += item.speed_sps;
+                            totalShares += item.accepted_shares;
+                            rejected += item.rejected_shares;
                         }
+
+                        m_MinerResult = new MinerDataResult();
+                        m_MinerResult.TotalHashrate = totalHashrate;
+                        m_MinerResult.TotalShares = totalShares;
+                        m_MinerResult.Rejected = rejected;
+
+                        m_EwbfData.MinerDataResult = m_MinerResult;
 
                     }
                     catch (Exception)
@@ -261,87 +229,40 @@ namespace OneMiner.Coins.Equihash
                         throw;
                     }
                 }
-                public void IdentifyGPUs()
-                {
-                    try
-                    {
-                        //splot onto many lines
-                        string[] result = Regex.Split(m_fullLog, "\r\n|\r|\n");
-                        string pattern = @"(GPU)(.){2,12}(recognized as)(.)*";
-
-                        foreach (string item in result)
-                        {
-                            Match r = Regex.Match(item, pattern);
-                            string gpu_id = "";
-                            string gpu_name = "";
-                            if (r.Success)
-                            {
-                                m_identified = true;
-                                m_reReadGpunames = false;//we dont need to read until told 
-
-                                string value = r.Value;
-                                //ideally i would have used this to find and then separate the gpu number
-                                //string pattern_gpuid = @"(#).";
-
-                                //but the following site explains a way to get string affter the match using "positive lookbehind assertion
-                                //https://stackoverflow.com/questions/5006716/getting-the-text-that-follows-after-the-regex-match
-
-                                string pattern_gpuid = @"(?<=#).";
-                                Match r_gpu_id = Regex.Match(value, pattern_gpuid);
-                                if (r_gpu_id.Success)
-                                {
-                                    gpu_id = r_gpu_id.Value;
-                                }
-
-                                string pattern_gpuname = @"(?<=recognized as).*";
-                                Match r_gpu_name = Regex.Match(value, pattern_gpuname);
-                                if (r_gpu_name.Success)
-                                {
-                                    gpu_name = r_gpu_name.Value;
-                                }
-                                if (!string.IsNullOrEmpty(gpu_id) && !string.IsNullOrEmpty(gpu_name))
-                                {
-                                    //check if there is an item alredy
-                                    object oldItem = m_Gpus[gpu_id];
-                                    if (oldItem == null)
-                                    {
-                                        GpuData gpu = new GpuData(gpu_name);
-                                        gpu.IdentifyMake();
-                                        m_Gpus[gpu_id] = gpu;
-                                    }
-                                }
-
-                            }
-
-                        }
-
-
-                    }
-                    catch (Exception)
-                    {
-                        Succeeded = false;
-                        throw;
-                    }
-                }
-                private CardMake Make(string name)
-                {
-                    try
-                    {
-                        string pattern = "(N|n)(V|v)(I|i)(D|d)(I|i)(A|a)";
-                        Match r_gpu_id = Regex.Match(name, pattern);
-                        if (r_gpu_id.Success)
-                            return CardMake.Nvidia;
-                        else
-                            return CardMake.Amd;
-                    }
-                    catch (Exception)
-                    {
-                    }
-                    return CardMake.END;
-                }
-
             }
         }
+        public class Result
+        {
+            public int gpuid { get; set; }
+            public int cudaid { get; set; }
+            public string busid { get; set; }
+            public string name { get; set; }
+            public int gpu_status { get; set; }
+            public int solver { get; set; }
+            public int temperature { get; set; }
+            public int gpu_power_usage { get; set; }
+            public int speed_sps { get; set; }
+            public int accepted_shares { get; set; }
+            public int rejected_shares { get; set; }
+            public int start_time { get; set; }
+        }
+
+        public class EWBFData
+        {
+            public MinerDataResult MinerDataResult { get; set; }
+            public string method { get; set; }
+            public object error { get; set; }
+            public int start_time { get; set; }
+            public string current_server { get; set; }
+            public int available_servers { get; set; }
+            public int server_status { get; set; }
+            public List<Result> result { get; set; }
+            public bool Parse(IMinerResultParser parser)
+            {
+                return parser.Parse(this);
+            }
+        }
+        
     }
 
 }
