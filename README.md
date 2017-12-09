@@ -32,6 +32,12 @@ Below are some of the features for first release
 6. Identify new coins in market for mining
 7. Automatic wallet generation for coins so that you dont have to enter wallet address.
 
+# How to use
+1. The first time you open the app, you will have a "Default Ethereum Miner" configured. Right click and edit it to change the wallet address to your address.
+2. You could create more miners with the Add Miner button.
+3. The first time it would take a bit of time to start mining as it needs to download the miners.
+4. You can configure settings from the settings window to mine on launch etc
+
 
 # Donations
 If you would like to supprt this project, your donations would be greatly appreciated
