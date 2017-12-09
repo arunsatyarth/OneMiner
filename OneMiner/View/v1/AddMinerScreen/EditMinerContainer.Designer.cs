@@ -44,6 +44,7 @@
             this.btnFinish.TabIndex = 15;
             this.btnFinish.Text = "Finish";
             this.btnFinish.UseVisualStyleBackColor = true;
+            this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click);
             // 
             // btnAddDualMiner
             // 
@@ -54,6 +55,8 @@
             this.btnAddDualMiner.TabIndex = 14;
             this.btnAddDualMiner.Text = "Add Dual Miner";
             this.btnAddDualMiner.UseVisualStyleBackColor = true;
+            this.btnAddDualMiner.Visible = false;
+            this.btnAddDualMiner.Click += new System.EventHandler(this.btnAddDualMiner_Click);
             // 
             // btnPrevious
             // 
@@ -65,6 +68,7 @@
             this.btnPrevious.TabIndex = 13;
             this.btnPrevious.Text = "Previous";
             this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // btnNext
             // 
@@ -76,6 +80,7 @@
             this.btnNext.TabIndex = 12;
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // pnlForm
             // 
@@ -88,6 +93,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(761, 462);
             this.Controls.Add(this.btnFinish);
             this.Controls.Add(this.btnAddDualMiner);

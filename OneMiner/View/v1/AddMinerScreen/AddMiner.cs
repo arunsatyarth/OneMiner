@@ -76,8 +76,8 @@ namespace OneMiner.View.v1
         }
         private void DisplayCoinsinList(IHashAlgorithm algo)
         {
-
-            DefaultCoin = algo.DefaultCoin;
+            if (DefaultCoin==null)//when editing this wil be preset and not null
+                DefaultCoin = algo.DefaultCoin;
             ImageList Imagelist = new ImageList();
             Imagelist.ImageSize = new Size(25, 25);
             foreach (ICoin item in algo.SupportedCoins)
@@ -108,8 +108,12 @@ namespace OneMiner.View.v1
         {
             try
             {
+                txtMinername.Text = Minername;
+                if (DefaultAlgorithm == null)//when editing this wil be preset and not null
+                    DefaultAlgorithm = Factory.Instance.DefaultAlgorithm;
+
                 List<IHashAlgorithm> algos = Factory.Instance.Algorithms;
-                DefaultAlgorithm = Factory.Instance.DefaultAlgorithm;
+
                 int i=0;
                 foreach (IHashAlgorithm item in algos)
                 {

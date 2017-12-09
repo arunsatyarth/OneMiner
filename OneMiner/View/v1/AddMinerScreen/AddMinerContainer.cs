@@ -145,7 +145,8 @@ namespace OneMiner.View.v1
                 case 1:
                     EnablePreviousButton();
                     EnableNextButton();
-                    EnableDualMinerButton();
+                    if(m_selected_coin.Algorithm.SupportsDualMining)
+                        EnableDualMinerButton();
                     ReverseNextFinish(false);
                     break;
 

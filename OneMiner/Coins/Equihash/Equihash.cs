@@ -55,14 +55,14 @@ namespace OneMiner.Equihash
 
         public bool SupportsDualMining
         {
-            get { return true; }
+            get { return false; }
         }
 
         public List<ICoin> SupportedDualCoins
         {
             get
             {
-                return m_SupportedDualCoins;
+                return null;
             }
 
         }

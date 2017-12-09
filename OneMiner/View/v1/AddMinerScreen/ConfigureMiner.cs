@@ -33,6 +33,8 @@ namespace OneMiner.View.v1
         private void ConfigureMiner_Load(object sender, EventArgs e)
         {
             lblCoinName.Text = m_selected_coin.Name;
+            txtPool.Text = Pool;
+            txtWallet.Text = Wallet;
         }
 
         private void btnAddDualMiner_Click(object sender, EventArgs e)

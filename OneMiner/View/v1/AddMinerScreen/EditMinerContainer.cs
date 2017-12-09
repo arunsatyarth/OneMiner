@@ -17,6 +17,7 @@ namespace OneMiner.View.v1.AddMinerScreen
         private int m_currentState = 0;
         public AddMiner AddMiner { get; set; }
         public AddDualMiner AddDualMiner { get; set; }
+        public IMiner Miner { get; set; }
 
         AddMinerFinish m_finishScreen = null;
 
@@ -145,7 +146,8 @@ namespace OneMiner.View.v1.AddMinerScreen
                 case 1:
                     EnablePreviousButton();
                     EnableNextButton();
-                    EnableDualMinerButton();
+                    if (m_selected_coin.Algorithm.SupportsDualMining)
+                        EnableDualMinerButton();
                     ReverseNextFinish(false);
                     break;
 
@@ -310,22 +312,29 @@ namespace OneMiner.View.v1.AddMinerScreen
         }
         private void btnFinish_Click(object sender, EventArgs e)
         {
-            if (Verify())
+            try
             {
-                this.Close();
-                bool dualMining = false;
-                if (m_selected_dual_coin != null)
-                    dualMining = true;
-                IMiner miner = m_selected_coin.Algorithm.CreateMiner(m_selected_coin, dualMining, m_selected_dual_coin, AddMiner.Minername);
+                if (Verify())
+                {
+                    this.Close();
+                    bool dualMining = false;
+                    if (m_selected_dual_coin != null)
+                        dualMining = true;
+                    IMiner miner = m_selected_coin.Algorithm.CreateMiner(m_selected_coin, dualMining, m_selected_dual_coin, AddMiner.Minername);
 
-                Factory.Instance.CoreObject.AddMiner(miner, true);
-
+                    Factory.Instance.CoreObject.AddMiner(miner, true);
+                    Factory.Instance.CoreObject.RemoveMiner(Miner);
+                }
             }
+            catch (Exception ex)
+            {
+            }
+     
         }
 
-
-        public void LoadInfo(IMiner Miner)
+        public void LoadInfo(IMiner miner)
         {
+            Miner = miner;
             SelectedCoin = Miner.MainCoin;
             SelectedDualCoin = Miner.DualCoin;
 
@@ -343,5 +352,6 @@ namespace OneMiner.View.v1.AddMinerScreen
 
             
         }
+
     }
 }
