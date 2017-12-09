@@ -10,9 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace OneMiner.View.v1
+namespace OneMiner.View.v1.AddMinerScreen
 {
-    public partial class AddMinerContainer : Form, IMinerContainer
+    public partial class EditMinerContainer : Form, IMinerContainer
     {
         private int m_currentState = 0;
         public AddMiner AddMiner { get; set; }
@@ -56,7 +56,7 @@ namespace OneMiner.View.v1
 
 
         private bool m_bAddDualMiner = false;
-        public AddMinerContainer()
+        public EditMinerContainer()
         {
             AddMiner = new AddMiner(this);
             AddDualMiner = new AddDualMiner(this);
@@ -280,8 +280,9 @@ namespace OneMiner.View.v1
         {
         }
 
-        private void AddMinerContainer_Load(object sender, EventArgs e)
+        private void EditMinerContainer_Load(object sender, EventArgs e)
         {
+            m_currentState = 1;
             ShowStage();
             ChangeUIState();
             this.CenterToScreen();
@@ -320,6 +321,27 @@ namespace OneMiner.View.v1
                 Factory.Instance.CoreObject.AddMiner(miner, true);
 
             }
+        }
+
+
+        public void LoadInfo(IMiner Miner)
+        {
+            SelectedCoin = Miner.MainCoin;
+            SelectedDualCoin = Miner.DualCoin;
+
+            //configure addminer
+            AddMiner.Minername = Miner.Name;
+            AddMiner.DefaultAlgorithm = Miner.MainCoin.Algorithm;
+            AddMiner.DefaultCoin = Miner.MainCoin;
+
+            //configure dualminer
+            AddMiner.Minername = Miner.Name;
+            AddMiner.DefaultAlgorithm = Miner.MainCoin.Algorithm;
+            AddMiner.DefaultCoin = Miner.MainCoin;
+
+
+
+            
         }
     }
 }

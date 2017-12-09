@@ -98,6 +98,13 @@
     <Compile Include="Model\UnZip\UnZipRarLocal.cs" />
     <Compile Include="Model\UnZip\UnZipRarSystem.cs" />
     <Compile Include="View\IView.cs" />
+    <Compile Include="View\v1\AddMinerScreen\EditMinerContainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\v1\AddMinerScreen\EditMinerContainer.Designer.cs">
+      <DependentUpon>EditMinerContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\v1\AddMinerScreen\IMinerContainer.cs" />
     <Compile Include="View\v1\Corousal\ProfitabilitySummary.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +213,9 @@
     </Compile>
     <Compile Include="View\v1\UiStateUtil.cs" />
     <Compile Include="View\v1\V1View.cs" />
+    <EmbeddedResource Include="View\v1\AddMinerScreen\EditMinerContainer.resx">
+      <DependentUpon>EditMinerContainer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\v1\Corousal\ProfitabilitySummary.resx">
       <DependentUpon>ProfitabilitySummary.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,5 +1,6 @@
 ﻿using OneMiner.Core;
 using OneMiner.Core.Interfaces;
+using OneMiner.View.v1.AddMinerScreen;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,12 +14,12 @@ namespace OneMiner.View.v1
 {
     public partial class AddDualMiner : Form
     {
-        private AddMinerContainer m_parent = null;
+        private IMinerContainer m_parent = null;
         private ICoin m_selectedDualCoin = null;
         private int m_currentCoinIndex = 0;
         public ICoin SelectedCoin { get; set; }
 
-        public AddDualMiner(AddMinerContainer parent)
+        public AddDualMiner(IMinerContainer parent)
         {
             m_parent = parent;
             InitializeComponent();

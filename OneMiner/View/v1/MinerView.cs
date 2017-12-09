@@ -1,5 +1,6 @@
 ﻿using OneMiner.Core;
 using OneMiner.Core.Interfaces;
+using OneMiner.View.v1.AddMinerScreen;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -121,5 +122,15 @@ namespace OneMiner.View.v1
                 Factory.Instance.CoreObject.RemoveMiner(Miner);
             }
         }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditMinerContainer editMiner = new EditMinerContainer();
+            editMiner.LoadInfo(Miner);
+
+            editMiner.ShowDialog();
+        }
+
+
     }
 }

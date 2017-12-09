@@ -1,4 +1,5 @@
 ﻿using OneMiner.Core.Interfaces;
+using OneMiner.View.v1.AddMinerScreen;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,12 +13,12 @@ namespace OneMiner.View.v1
 {
     public partial class AddMinerFinish : Form
     {
-        private AddMinerContainer m_parent = null;
+        private IMinerContainer m_parent = null;
         //public ICoin SelectedCoin { get; set; }
         //public ICoin SelectedDualCoin { get; set; }
 
 
-        public AddMinerFinish(AddMinerContainer parent)
+        public AddMinerFinish(IMinerContainer parent)
         {
             m_parent = parent;
             InitializeComponent();
@@ -36,7 +37,7 @@ namespace OneMiner.View.v1
             }
             else
             {
-                string minername = m_parent.AddMiner.Minername;
+                string minername = m_parent.GetMinername();
                 string selection="";
                 if (selectedDualCoin == null)
                     selection = selectedCoin.Name;

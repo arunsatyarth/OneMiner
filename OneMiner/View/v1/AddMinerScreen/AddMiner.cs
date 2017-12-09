@@ -1,5 +1,6 @@
 ﻿using OneMiner.Core;
 using OneMiner.Core.Interfaces;
+using OneMiner.View.v1.AddMinerScreen;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,12 +16,12 @@ namespace OneMiner.View.v1
     {
         private int m_currentAlgoIndex = 0;
         private int m_currentCoinIndex = 0;
-        private AddMinerContainer m_parent = null;
-        private IHashAlgorithm m_defaultAlgorithm = null;
-        private ICoin m_defaultCoin = null;
+        private IMinerContainer m_parent = null;
+        public  IHashAlgorithm DefaultAlgorithm {get;set;}
+        public ICoin DefaultCoin { get; set; }
         public string Minername { get; set; }
 
-        public AddMiner(AddMinerContainer parent)
+        public AddMiner(IMinerContainer parent)
         {
             m_parent = parent;
             InitializeComponent();
@@ -57,11 +58,11 @@ namespace OneMiner.View.v1
         }
         public void MakeSelectedCoin()
         {
-            if (m_defaultCoin!=null)
+            if (DefaultCoin != null)
             {
-                m_parent.MakeSelectedCoin(m_defaultCoin);
-                lblSelectedCoin.Text = m_defaultCoin.Name;
-                pbSelectedMiner.Image = m_defaultCoin.Logo;
+                m_parent.MakeSelectedCoin(DefaultCoin);
+                lblSelectedCoin.Text = DefaultCoin.Name;
+                pbSelectedMiner.Image = DefaultCoin.Logo;
             }
             else
                 lblSelectedCoin.Text = "No Coin Selected";
@@ -76,7 +77,7 @@ namespace OneMiner.View.v1
         private void DisplayCoinsinList(IHashAlgorithm algo)
         {
 
-            m_defaultCoin = algo.DefaultCoin;
+            DefaultCoin = algo.DefaultCoin;
             ImageList Imagelist = new ImageList();
             Imagelist.ImageSize = new Size(25, 25);
             foreach (ICoin item in algo.SupportedCoins)
@@ -92,7 +93,7 @@ namespace OneMiner.View.v1
 
 
                 //lbCoinSelect.Items.Add(item.Name);
-                if (item == m_defaultCoin)
+                if (item == DefaultCoin)
                     m_currentCoinIndex = i;
                 i++;
             }
@@ -108,18 +109,18 @@ namespace OneMiner.View.v1
             try
             {
                 List<IHashAlgorithm> algos = Factory.Instance.Algorithms;
-                m_defaultAlgorithm = Factory.Instance.DefaultAlgorithm;
+                DefaultAlgorithm = Factory.Instance.DefaultAlgorithm;
                 int i=0;
                 foreach (IHashAlgorithm item in algos)
                 {
                     lbAlgoSelect.Items.Add(item.Name);
-                    if (item.Name == m_defaultAlgorithm.Name)
+                    if (item.Name == DefaultAlgorithm.Name)
                         m_currentAlgoIndex = i;
                     i++;
 
                 }
                 //by default select the first algo
-                SelectFirstAlgo(m_currentAlgoIndex, m_defaultAlgorithm);
+                SelectFirstAlgo(m_currentAlgoIndex, DefaultAlgorithm);
                 lbAlgoSelect.SelectedIndexChanged += lstAlgoSelect_SelectedIndexChanged;
                 lbCoinSelect.SelectedIndexChanged += lbCoinSelect_SelectedIndexChanged;
                 //check and eneble next button
@@ -141,9 +142,9 @@ namespace OneMiner.View.v1
 
                 if (m_currentCoinIndex == index)
                     return;
-                List<ICoin> coins = m_defaultAlgorithm.SupportedCoins;
+                List<ICoin> coins = DefaultAlgorithm.SupportedCoins;
 
-                m_defaultCoin = coins[index];
+                DefaultCoin = coins[index];
                 m_currentCoinIndex = index;
 
                 SetNextButtonState();
@@ -175,10 +176,10 @@ namespace OneMiner.View.v1
                 lbCoinSelect.Items.Clear();
                 List<IHashAlgorithm> algos = Factory.Instance.Algorithms;
 
-                m_defaultAlgorithm = algos[index];
+                DefaultAlgorithm = algos[index];
                 m_currentAlgoIndex = index;
 
-                DisplayCoinsinList(m_defaultAlgorithm);
+                DisplayCoinsinList(DefaultAlgorithm);
                 SetNextButtonState();
                 //Tell parent which coin is currently seelcted
                 MakeSelectedCoin();
