@@ -106,5 +106,20 @@ namespace OneMiner.View.v1
         {
             btnStartMining_Click(sender, e);
         }
+
+        private void deleteMinerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(Factory.Instance.CoreObject.Miners.Count<=1)
+            {
+                MessageBox.Show("Add another miner to delete this!", "Cannot delete the only Miner");
+                return;
+            }
+
+            DialogResult retVal=MessageBox.Show("Miners once deleted cannot be recovered. Are you sure?", "Delete Miner", MessageBoxButtons.YesNo);
+            if(retVal==DialogResult.Yes && Miner!=null)
+            {
+                Factory.Instance.CoreObject.RemoveMiner(Miner);
+            }
+        }
     }
 }

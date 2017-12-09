@@ -311,7 +311,7 @@ namespace OneMiner.Model.Config
             int i = 0;
             foreach (MinerData item in Miners)
             {
-                if (item.Name == miner.Name)
+                if (item.Id == miner.Id)
                 {
                     removeIds.Add(i);
                 }
@@ -324,6 +324,26 @@ namespace OneMiner.Model.Config
             Miners.Add(newMiner);
             toSave = true;
 
+            return toSave;
+        }
+        public bool RemoveMiner(IMiner miner)
+        {
+            bool toSave = false;
+            List<int> removeIds = new List<int>();
+            int i = 0;
+            foreach (MinerData item in Miners)
+            {
+                if (item.Id == miner.Id)
+                {
+                    removeIds.Add(i);
+                    toSave = true;
+                }
+                i++;
+            }
+            foreach (int j in removeIds)
+            {
+                Miners.RemoveAt(j);
+            }
             return toSave;
         }
 

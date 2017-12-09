@@ -130,6 +130,18 @@ namespace OneMiner.Model.Config
             }
 
         }
+        public void RemoveMiner(IMiner miner)
+        {
+            try
+            {
+                if (Data.RemoveMiner(miner))
+                    Save();
+            }
+            catch (Exception e)
+            {
+            }
+
+        }
         public bool IsMinernameUnique(string name)
         {
             try

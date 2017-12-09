@@ -66,13 +66,42 @@ namespace OneMiner.Core
         }
         public void AddMiner(IMiner miner, bool makeSelected)
         {
-            Miners.Add(miner);
-            Factory.Instance.Model.AddMiner(miner);
-            if (makeSelected)
+            try
             {
-                SelectMiner(miner);
+                Miners.Add(miner);
+                Factory.Instance.Model.AddMiner(miner);
+                if (makeSelected)
+                {
+                    SelectMiner(miner);
+                }
+                Factory.Instance.ViewObject.UpdateMinerList();
             }
-            Factory.Instance.ViewObject.UpdateMinerList();
+            catch (Exception e)
+            {
+            }
+
+        }
+
+        public void RemoveMiner(IMiner miner)
+        {
+            try
+            {
+                if (Miners.Count <= 1)
+                    return;
+                Miners.Remove(miner);
+
+                if (SelectedMiner==miner)
+                {
+                    SelectedMiner = Miners[0];
+                    Factory.Instance.Model.MakeSelectedMiner(SelectedMiner);
+                }
+                Factory.Instance.Model.RemoveMiner(miner);
+                Factory.Instance.ViewObject.UpdateMinerList();
+            }
+            catch (Exception e)
+            {
+            }
+  
         }
         public void SelectMiner(IMiner miner)
         {

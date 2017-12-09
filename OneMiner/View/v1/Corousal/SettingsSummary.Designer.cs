@@ -54,7 +54,7 @@
             this.lblRunningTime.AutoSize = true;
             this.lblRunningTime.BackColor = System.Drawing.Color.White;
             this.lblRunningTime.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRunningTime.Location = new System.Drawing.Point(137, 182);
+            this.lblRunningTime.Location = new System.Drawing.Point(149, 182);
             this.lblRunningTime.Name = "lblRunningTime";
             this.lblRunningTime.Size = new System.Drawing.Size(50, 17);
             this.lblRunningTime.TabIndex = 24;
@@ -65,7 +65,7 @@
             this.lblMineOnStartup.AutoSize = true;
             this.lblMineOnStartup.BackColor = System.Drawing.Color.White;
             this.lblMineOnStartup.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMineOnStartup.Location = new System.Drawing.Point(137, 93);
+            this.lblMineOnStartup.Location = new System.Drawing.Point(149, 93);
             this.lblMineOnStartup.Name = "lblMineOnStartup";
             this.lblMineOnStartup.Size = new System.Drawing.Size(26, 17);
             this.lblMineOnStartup.TabIndex = 23;
@@ -76,7 +76,7 @@
             this.lblActiveMiner.AutoSize = true;
             this.lblActiveMiner.BackColor = System.Drawing.Color.White;
             this.lblActiveMiner.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblActiveMiner.Location = new System.Drawing.Point(174, 62);
+            this.lblActiveMiner.Location = new System.Drawing.Point(186, 62);
             this.lblActiveMiner.Name = "lblActiveMiner";
             this.lblActiveMiner.Size = new System.Drawing.Size(86, 17);
             this.lblActiveMiner.TabIndex = 22;
@@ -100,7 +100,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.White;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(118, 182);
+            this.label7.Location = new System.Drawing.Point(130, 182);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(11, 17);
             this.label7.TabIndex = 20;
@@ -111,7 +111,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.White;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(118, 93);
+            this.label6.Location = new System.Drawing.Point(130, 93);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(11, 17);
             this.label6.TabIndex = 19;
@@ -122,7 +122,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.White;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(118, 62);
+            this.label5.Location = new System.Drawing.Point(130, 62);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(11, 17);
             this.label5.TabIndex = 18;
@@ -157,9 +157,9 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(10, 93);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 17);
+            this.label2.Size = new System.Drawing.Size(120, 17);
             this.label2.TabIndex = 15;
-            this.label2.Text = "Mine on Startup";
+            this.label2.Text = "Launch on Startup";
             // 
             // label1
             // 
@@ -177,7 +177,7 @@
             this.lblMineonLaunch.AutoSize = true;
             this.lblMineonLaunch.BackColor = System.Drawing.Color.White;
             this.lblMineonLaunch.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMineonLaunch.Location = new System.Drawing.Point(137, 123);
+            this.lblMineonLaunch.Location = new System.Drawing.Point(149, 123);
             this.lblMineonLaunch.Name = "lblMineonLaunch";
             this.lblMineonLaunch.Size = new System.Drawing.Size(26, 17);
             this.lblMineonLaunch.TabIndex = 27;
@@ -188,7 +188,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.White;
             this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(118, 123);
+            this.label9.Location = new System.Drawing.Point(130, 123);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(11, 17);
             this.label9.TabIndex = 26;
@@ -199,7 +199,7 @@
             this.lblShowMinerUi.AutoSize = true;
             this.lblShowMinerUi.BackColor = System.Drawing.Color.White;
             this.lblShowMinerUi.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShowMinerUi.Location = new System.Drawing.Point(137, 152);
+            this.lblShowMinerUi.Location = new System.Drawing.Point(149, 152);
             this.lblShowMinerUi.Name = "lblShowMinerUi";
             this.lblShowMinerUi.Size = new System.Drawing.Size(26, 17);
             this.lblShowMinerUi.TabIndex = 30;
@@ -210,7 +210,7 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.White;
             this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(118, 152);
+            this.label12.Location = new System.Drawing.Point(130, 152);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(11, 17);
             this.label12.TabIndex = 29;
@@ -241,7 +241,7 @@
             // pbSelectedMiner
             // 
             this.pbSelectedMiner.Image = global::OneMiner.Properties.Resources.ethereum;
-            this.pbSelectedMiner.Location = new System.Drawing.Point(133, 54);
+            this.pbSelectedMiner.Location = new System.Drawing.Point(145, 54);
             this.pbSelectedMiner.Name = "pbSelectedMiner";
             this.pbSelectedMiner.Size = new System.Drawing.Size(35, 32);
             this.pbSelectedMiner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

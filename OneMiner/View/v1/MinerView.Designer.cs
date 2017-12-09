@@ -134,33 +134,34 @@
             this.editToolStripMenuItem,
             this.deleteMinerToolStripMenuItem});
             this.optionsMenu.Name = "optionsMenu";
-            this.optionsMenu.Size = new System.Drawing.Size(142, 92);
+            this.optionsMenu.Size = new System.Drawing.Size(153, 114);
             // 
             // selectToolStripMenuItem
             // 
             this.selectToolStripMenuItem.Name = "selectToolStripMenuItem";
-            this.selectToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.selectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.selectToolStripMenuItem.Text = "Activate";
             this.selectToolStripMenuItem.Click += new System.EventHandler(this.selectToolStripMenuItem_Click);
             // 
             // startMiningToolStripMenuItem
             // 
             this.startMiningToolStripMenuItem.Name = "startMiningToolStripMenuItem";
-            this.startMiningToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.startMiningToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.startMiningToolStripMenuItem.Text = "Start";
             this.startMiningToolStripMenuItem.Click += new System.EventHandler(this.startMiningToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editToolStripMenuItem.Text = "Edit Miner";
             // 
             // deleteMinerToolStripMenuItem
             // 
             this.deleteMinerToolStripMenuItem.Name = "deleteMinerToolStripMenuItem";
-            this.deleteMinerToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.deleteMinerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.deleteMinerToolStripMenuItem.Text = "Delete Miner";
+            this.deleteMinerToolStripMenuItem.Click += new System.EventHandler(this.deleteMinerToolStripMenuItem_Click);
             // 
             // MinerView
             // 
