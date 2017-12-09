@@ -44,13 +44,20 @@ namespace OneMiner.View.v1
                 else
                     selection = selectedCoin.Name + " + " + selectedDualCoin.Name;
 
-                string commandline = "";
+                lblMinername.Text = minername;
+                lblMinerType.Text = selection;
+                pbSelectedMiner.Image = selectedCoin.Logo;
+                lblSelectedCoin.Text = selectedCoin.Name;
+                lblMaincoinPool.Text = selectedCoin.SettingsScreen.Pool;
+                lblMainCoinWallet.Text = selectedCoin.SettingsScreen.Wallet;
 
-                rchFinish.Text = minername;
-                rchFinish.Text += "\n";
-                rchFinish.Text += selection;
-
-
+                if (selectedDualCoin != null)
+                {
+                    pbDualCoin.Image = selectedDualCoin.Logo;
+                    lblSelectedDualCoin.Text = selectedDualCoin.Name;
+                    lblDualCoinPool.Text = selectedDualCoin.SettingsScreen.Pool;
+                    lblDualCoinWallet.Text = selectedDualCoin.SettingsScreen.Wallet;
+                }
 
 
             }
