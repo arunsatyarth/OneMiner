@@ -107,6 +107,7 @@ namespace OneMiner
                         {
                             minerView.UpdateState();
                         }
+                        //Todo: this seems to be a duplicate call as timer invokes this separately. analyze
                         MinerInfo.UpdateState();
                     }
                 }
