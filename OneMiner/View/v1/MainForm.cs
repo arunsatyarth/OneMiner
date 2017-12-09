@@ -5,6 +5,7 @@ using OneMiner.View;
 using OneMiner.View.v1;
 using OneMiner.View.v1.Corousal;
 using OneMiner.View.v1.ExtraScreens;
+using OneMiner.View.v1.Profitability;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -282,6 +283,18 @@ namespace OneMiner
         {
             Show();
             WindowState = FormWindowState.Normal;
+        }
+
+        private void profitabilityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Profitability profit = new Profitability();
+            profit.ShowDialog();
+        }
+
+        private void donateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OneMiner.View.v1.ExtraScreens.Help h = new View.v1.ExtraScreens.Help();
+            h.ShowDialog();
         }
 
 

@@ -76,6 +76,7 @@
             this.profitabilityToolStripMenuItem.Name = "profitabilityToolStripMenuItem";
             this.profitabilityToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.profitabilityToolStripMenuItem.Text = "Profitability";
+            this.profitabilityToolStripMenuItem.Click += new System.EventHandler(this.profitabilityToolStripMenuItem_Click);
             // 
             // advancedToolStripMenuItem
             // 
@@ -96,13 +97,14 @@
             // donateToolStripMenuItem
             // 
             this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
-            this.donateToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.donateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.donateToolStripMenuItem.Text = "Help";
+            this.donateToolStripMenuItem.Click += new System.EventHandler(this.donateToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem1.Text = "About";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
@@ -165,19 +167,19 @@
             this.showToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.taskbarMenu.Name = "taskbarMenu";
-            this.taskbarMenu.Size = new System.Drawing.Size(153, 70);
+            this.taskbarMenu.Size = new System.Drawing.Size(104, 48);
             // 
             // showToolStripMenuItem
             // 
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.showToolStripMenuItem.Text = "Show";
             this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 

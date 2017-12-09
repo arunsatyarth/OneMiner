@@ -1,5 +1,4 @@
-﻿using OneMiner.View.v1;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,46 +8,29 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace OneMiner.View
+namespace OneMiner.View.v1.ExtraScreens
 {
-    public partial class About : Form
+    public partial class Help : Form
     {
-        public About()
+        public Help()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Process.Start("https://arunsatyarth.github.io/OneMiner/");
-            }
-            catch (Exception se)
-            {
-            }
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
             {
-                Process.Start("https://github.com/arunsatyarth/OneMiner");
+                Process.Start("https://github.com/arunsatyarth/OneMiner/issues");
             }
             catch (Exception se)
             {
             }
         }
 
-        private void About_Load(object sender, EventArgs e)
+        private void Help_Load(object sender, EventArgs e)
         {
             this.CenterToScreen();
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Donate d = new Donate();
-            d.ShowDialog();
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {

@@ -28,10 +28,16 @@ namespace OneMiner.View.v1
         }
         private bool AlgorithmSelected()
         {
-            if ((lbAlgoSelect.SelectedIndex >= 0 && lbAlgoSelect.SelectedIndex <= (lbAlgoSelect.Items.Count - 1))
-               && (lbCoinSelect.SelectedIndices[0] >= 0 && lbCoinSelect.SelectedIndices[0] <= (lbCoinSelect.Items.Count - 1)))
+            try
             {
-                return true;
+                if ((lbAlgoSelect.SelectedIndex >= 0 && lbAlgoSelect.SelectedIndex <= (lbAlgoSelect.Items.Count - 1))
+              && (lbCoinSelect.SelectedIndices[0] >= 0 && lbCoinSelect.SelectedIndices[0] <= (lbCoinSelect.Items.Count - 1)))
+                {
+                    return true;
+                }
+            }
+            catch (Exception es)
+            {
             }
             return false;
         }

@@ -81,6 +81,9 @@ namespace OneMiner.View.v1
             lblDual1.Visible = false;
             lblDual2.Visible = false;
             lblDual3.Visible = false;
+            lblDual4.Visible = false;
+            lblDual5.Visible = false;
+            lblDual6.Visible = false;
             btnDual1.Visible = false;
         }
         private void ShowDualCoins()
@@ -92,6 +95,9 @@ namespace OneMiner.View.v1
             lblDual1.Visible = true;
             lblDual2.Visible = true;
             lblDual3.Visible = true;
+            lblDual4.Visible = true;
+            lblDual5.Visible = true;
+            lblDual6.Visible = true;
             btnDual1.Visible = true;
         }
         private void btnDual1_Click(object sender, EventArgs e)
