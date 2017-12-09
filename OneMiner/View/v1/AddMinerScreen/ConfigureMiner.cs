@@ -32,9 +32,40 @@ namespace OneMiner.View.v1
 
         private void ConfigureMiner_Load(object sender, EventArgs e)
         {
-            lblCoinName.Text = m_selected_coin.Name;
-            txtPool.Text = Pool;
-            txtWallet.Text = Wallet;
+
+
+
+            if(m_selected_coin!=null)
+            {
+                lblCoinName.Text = m_selected_coin.Name;
+                txtPool.Text = Pool;
+                txtWallet.Text = Wallet;
+
+                cmbPoolList.SelectedIndexChanged += cmbPoolList_SelectedIndexChanged;
+                foreach(Pool item in m_selected_coin.GetPools())
+                {
+                    cmbPoolList.Items.Add(item.Name);
+
+                }
+
+            }
+        }
+
+        void cmbPoolList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Pool> pools=m_selected_coin.GetPools();
+                int index = cmbPoolList.SelectedIndex;
+                Pool pool = pools[index];
+                if(pool!=null)
+                {
+                    txtPool.Text = pool.Link;
+                }
+            }
+            catch (Exception de)
+            {
+            }
         }
 
         private void btnAddDualMiner_Click(object sender, EventArgs e)

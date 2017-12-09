@@ -42,5 +42,20 @@ namespace OneMiner.Coins.EthHash
                 return Configurer;
             }
         }
+        public List<Pool> GetPools()
+        {
+            List<Pool> pools = new List<Pool>();
+            try
+            {
+                Pool pool2 = new Pool("Nanopool", "sia-us-west1.nanopool.org:7777");
+                pools.Add(pool2);
+
+                return pools;
+            }
+            catch (Exception e)
+            {
+            }
+            return pools;
+        }
     }
 }

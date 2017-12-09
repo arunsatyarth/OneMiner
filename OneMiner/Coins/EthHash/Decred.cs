@@ -42,6 +42,21 @@ namespace OneMiner.EthHash
                 return Configurer;
             }
         }
+        public List<Pool> GetPools()
+        {
+            List<Pool> pools = new List<Pool>();
+            try
+            {
+                Pool pool1 = new Pool("Supernova", "dcr.suprnova.cc:3252");
+                pools.Add(pool1);
+
+                return pools;
+            }
+            catch (Exception e)
+            {
+            }
+            return pools;
+        }
 
     }
 }

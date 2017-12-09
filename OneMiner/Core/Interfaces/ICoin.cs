@@ -7,6 +7,16 @@ using System.Windows.Forms;
 
 namespace OneMiner.Core.Interfaces
 {
+    public class Pool
+    {
+        public string Name { get; set; }
+        public string Link { get; set; }
+        public Pool(string name, string link)
+        {
+            Name = name;
+            Link = link;
+        }
+    }
     public interface ICoin
     {
         /// <summary>
@@ -24,6 +34,8 @@ namespace OneMiner.Core.Interfaces
         /// a custom ui to take the settings
         /// </summary>
         ICoinConfigurer SettingsScreen { get; }
+
+        List<Pool> GetPools();
 
         /// <summary>
         /// The output of different miners would come i different formats
