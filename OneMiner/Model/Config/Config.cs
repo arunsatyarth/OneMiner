@@ -1,4 +1,5 @@
-﻿using OneMiner.Core;
+﻿using Microsoft.Win32;
+using OneMiner.Core;
 using OneMiner.Core.Interfaces;
 using System;
 using System.Collections;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Script.Serialization;
+using System.Windows.Forms;
 
 namespace OneMiner.Model.Config
 {
@@ -160,6 +162,41 @@ namespace OneMiner.Model.Config
                 tries++;
             }
             return name;
+        }
+        public void SetLaunchOnStartup(bool set)
+        {
+            try
+            {
+                string regKeystr = "OneMiner";
+                RegistryKey rkApp = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+                if(set)
+                {
+                    if (rkApp.GetValue(regKeystr) == null)
+                    {
+                        rkApp.SetValue(regKeystr, Application.ExecutablePath);
+                    }
+                    else
+                    {
+                        Logger.Instance.LogInfo("Item is alredy there in startup");
+                    }
+                }
+                else
+                {
+                    if (rkApp.GetValue(regKeystr) == null)
+                    {
+                        Logger.Instance.LogInfo("Item is not there in  startup anyway");
+                    }
+                    else
+                    {
+                        rkApp.DeleteValue(regKeystr, false);
+                    }
+                }
+         
+            }
+            catch (Exception e)
+            {
+            }
+     
         }
 
     }

@@ -68,6 +68,8 @@ namespace OneMiner.View.v1.ExtraScreens
             {
                 data.Option.Startup = chkLaunchStartup.Checked;
                 Factory.Instance.Model.Save();
+                Factory.Instance.Model.SetLaunchOnStartup(chkLaunchStartup.Checked);
+                
             }
         }
 

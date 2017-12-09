@@ -73,7 +73,7 @@ namespace OneMiner.Model.Config
         public Options()
         {
             Startup = true;
-            MineOnStartup = true;
+            MineOnStartup = false;
             ShowMinerWindows = true;
         }
     }

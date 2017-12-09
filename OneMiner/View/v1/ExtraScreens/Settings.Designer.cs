@@ -44,7 +44,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.White;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(220, 72);
+            this.label7.Location = new System.Drawing.Point(227, 68);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(11, 17);
             this.label7.TabIndex = 31;
@@ -55,7 +55,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.White;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(220, 37);
+            this.label6.Location = new System.Drawing.Point(227, 33);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(11, 17);
             this.label6.TabIndex = 30;
@@ -66,7 +66,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(43, 72);
+            this.label4.Location = new System.Drawing.Point(50, 68);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(105, 17);
             this.label4.TabIndex = 28;
@@ -77,7 +77,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(43, 37);
+            this.label2.Location = new System.Drawing.Point(50, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(120, 17);
             this.label2.TabIndex = 26;
@@ -88,7 +88,7 @@
             this.chkLaunchStartup.AutoSize = true;
             this.chkLaunchStartup.Checked = true;
             this.chkLaunchStartup.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkLaunchStartup.Location = new System.Drawing.Point(242, 39);
+            this.chkLaunchStartup.Location = new System.Drawing.Point(249, 35);
             this.chkLaunchStartup.Name = "chkLaunchStartup";
             this.chkLaunchStartup.Size = new System.Drawing.Size(44, 17);
             this.chkLaunchStartup.TabIndex = 36;
@@ -101,7 +101,7 @@
             this.chkMineLaunch.AutoSize = true;
             this.chkMineLaunch.Checked = true;
             this.chkMineLaunch.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkMineLaunch.Location = new System.Drawing.Point(242, 74);
+            this.chkMineLaunch.Location = new System.Drawing.Point(249, 70);
             this.chkMineLaunch.Name = "chkMineLaunch";
             this.chkMineLaunch.Size = new System.Drawing.Size(44, 17);
             this.chkMineLaunch.TabIndex = 37;
@@ -114,7 +114,7 @@
             this.chkShowMinerUI.AutoSize = true;
             this.chkShowMinerUI.Checked = true;
             this.chkShowMinerUI.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkShowMinerUI.Location = new System.Drawing.Point(242, 108);
+            this.chkShowMinerUI.Location = new System.Drawing.Point(249, 104);
             this.chkShowMinerUI.Name = "chkShowMinerUI";
             this.chkShowMinerUI.Size = new System.Drawing.Size(44, 17);
             this.chkShowMinerUI.TabIndex = 40;
@@ -127,7 +127,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(220, 106);
+            this.label1.Location = new System.Drawing.Point(227, 102);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(11, 17);
             this.label1.TabIndex = 39;
@@ -138,7 +138,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(43, 106);
+            this.label3.Location = new System.Drawing.Point(50, 102);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(140, 17);
             this.label3.TabIndex = 38;

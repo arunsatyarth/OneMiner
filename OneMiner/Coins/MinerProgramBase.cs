@@ -214,8 +214,7 @@ namespace OneMiner.Coins
                         MinerState = MinerProgramState.Running;
                         ProcessStartInfo info = new ProcessStartInfo();
                         info.UseShellExecute = false;
-                        //Todo: Enable this when we have feature to configure the settings
-                        //info.CreateNoWindow = ! Factory.Instance.Model.Data.Option.ShowMinerWindows;
+                        info.CreateNoWindow = ! Factory.Instance.Model.Data.Option.ShowMinerWindows;
                         info.FileName = BATFILE;
                         info.WindowStyle = ProcessWindowStyle.Hidden;
                         info.WorkingDirectory = file.DirectoryName + "\\";

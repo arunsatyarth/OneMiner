@@ -208,6 +208,10 @@ namespace OneMiner.Core
             SelectedMiner = miner;
             StartMining();
         }
+        public void StartMiningDefaultMiner()
+        {
+            StartMining(SelectedMiner);
+        }
         public void StopMining()
         {
             m_keepMining = false;

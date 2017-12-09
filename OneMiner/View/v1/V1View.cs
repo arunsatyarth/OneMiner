@@ -1,4 +1,5 @@
 ﻿using OneMiner.Coins;
+using OneMiner.Core;
 using OneMiner.Core.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -40,12 +41,21 @@ namespace OneMiner.View.v1
         }
         public void StartView()
         {
+            try
+            {
+                m_MainForm = new MainForm();
+                m_MainForm.DownloadBrowser.DocumentCompleted += DownloadBrowser_DocumentCompleted;
+                UpdateMinerList();
 
-            m_MainForm = new MainForm();
-            m_MainForm.DownloadBrowser.DocumentCompleted += DownloadBrowser_DocumentCompleted;
-            UpdateMinerList();
-            m_Timer.Start();
-            Application.Run(m_MainForm);
+                if (Factory.Instance.Model.Data.Option.MineOnStartup)
+                    Factory.Instance.CoreObject.StartMiningDefaultMiner();
+
+                m_Timer.Start();
+                Application.Run(m_MainForm);
+            }
+            catch (Exception e)
+            {
+            }
         }
         void t_Tick(object sender, EventArgs e)
         {
