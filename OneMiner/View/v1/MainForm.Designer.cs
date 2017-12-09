@@ -97,14 +97,14 @@
             // donateToolStripMenuItem
             // 
             this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
-            this.donateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.donateToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.donateToolStripMenuItem.Text = "Help";
             this.donateToolStripMenuItem.Click += new System.EventHandler(this.donateToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem1.Text = "About";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
@@ -119,7 +119,8 @@
             // 
             this.btnAddMiner.BackColor = System.Drawing.Color.SteelBlue;
             this.btnAddMiner.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAddMiner.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddMiner.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddMiner.ForeColor = System.Drawing.Color.White;
             this.btnAddMiner.Location = new System.Drawing.Point(15, 27);
             this.btnAddMiner.Name = "btnAddMiner";
             this.btnAddMiner.Size = new System.Drawing.Size(75, 23);
@@ -134,7 +135,7 @@
             this.pnlMinerInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlMinerInfo.Location = new System.Drawing.Point(12, 326);
             this.pnlMinerInfo.Name = "pnlMinerInfo";
-            this.pnlMinerInfo.Size = new System.Drawing.Size(1117, 323);
+            this.pnlMinerInfo.Size = new System.Drawing.Size(1117, 358);
             this.pnlMinerInfo.TabIndex = 2;
             this.pnlMinerInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMinerInfo_Paint);
             // 
@@ -189,7 +190,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::OneMiner.Properties.Resources.ethereum_bg1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1141, 658);
+            this.ClientSize = new System.Drawing.Size(1141, 696);
             this.Controls.Add(this.pnlCarousal);
             this.Controls.Add(this.pnlMiner);
             this.Controls.Add(this.pnlMinerInfo);

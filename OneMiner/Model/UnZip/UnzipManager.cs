@@ -26,7 +26,7 @@ namespace OneMiner.Model.FileIO
             try
             {
                 //Uses Chain of Responsibility pattern to unzip the file using different methods
-                IUnzip unzip1 = new UnZipGZipStream(new UnZipRarLocal(new UnZipRarSystem(null)));
+                IUnzip unzip1 = new UnZipZipFile(new UnZipRarLocal(new UnZipRarSystem(null)));
                 unzip1.Init(ZipFileName, OutputFolderName, VerifyName);
                 return unzip1.Unzip();
                 

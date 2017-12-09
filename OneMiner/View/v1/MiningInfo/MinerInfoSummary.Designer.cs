@@ -93,7 +93,7 @@
             // 
             this.pnlGpus.Location = new System.Drawing.Point(12, 0);
             this.pnlGpus.Name = "pnlGpus";
-            this.pnlGpus.Size = new System.Drawing.Size(825, 272);
+            this.pnlGpus.Size = new System.Drawing.Size(825, 302);
             this.pnlGpus.TabIndex = 19;
             // 
             // MinerInfoSummary

@@ -57,7 +57,7 @@
             this.btntabScript.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btntabScript.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btntabScript.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntabScript.Location = new System.Drawing.Point(310, 12);
+            this.btntabScript.Location = new System.Drawing.Point(342, 12);
             this.btntabScript.Name = "btntabScript";
             this.btntabScript.Size = new System.Drawing.Size(75, 23);
             this.btntabScript.TabIndex = 10;
@@ -70,7 +70,7 @@
             this.btntabLogs.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btntabLogs.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btntabLogs.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntabLogs.Location = new System.Drawing.Point(381, 12);
+            this.btntabLogs.Location = new System.Drawing.Point(413, 12);
             this.btntabLogs.Name = "btntabLogs";
             this.btntabLogs.Size = new System.Drawing.Size(75, 23);
             this.btntabLogs.TabIndex = 9;
@@ -84,7 +84,7 @@
             this.btntabInfo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btntabInfo.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btntabInfo.ForeColor = System.Drawing.Color.White;
-            this.btntabInfo.Location = new System.Drawing.Point(238, 12);
+            this.btntabInfo.Location = new System.Drawing.Point(270, 12);
             this.btntabInfo.Name = "btntabInfo";
             this.btntabInfo.Size = new System.Drawing.Size(75, 23);
             this.btntabInfo.TabIndex = 8;
@@ -116,9 +116,9 @@
             // 
             this.pnlMinerInfo.BackColor = System.Drawing.Color.White;
             this.pnlMinerInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlMinerInfo.Location = new System.Drawing.Point(238, 41);
+            this.pnlMinerInfo.Location = new System.Drawing.Point(270, 41);
             this.pnlMinerInfo.Name = "pnlMinerInfo";
-            this.pnlMinerInfo.Size = new System.Drawing.Size(841, 265);
+            this.pnlMinerInfo.Size = new System.Drawing.Size(821, 293);
             this.pnlMinerInfo.TabIndex = 14;
             // 
             // lblTotalHashrate
@@ -169,7 +169,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1091, 335);
+            this.ClientSize = new System.Drawing.Size(1091, 346);
             this.Controls.Add(this.lblMinerState);
             this.Controls.Add(this.btnStartMining);
             this.Controls.Add(this.lblShares);
