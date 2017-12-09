@@ -24,7 +24,6 @@ namespace OneMiner.View.v1
 
 
             pbTemplate.Image = Miner.MainCoin.Logo;
-            pnlTemplate.Click += pnlTemplate_Click;
 
             lblCoinType.Text = Miner.MainCoin.Name;
             if(miner.DualMining)
@@ -36,6 +35,17 @@ namespace OneMiner.View.v1
         private void MinerView_Load(object sender, EventArgs e)
         {
             this.ContextMenuStrip = optionsMenu;
+            pbTemplate.Click += FormFocus_handler_Click;
+            lblCoinType.Click += FormFocus_handler_Click;
+            lblMinername.Click += FormFocus_handler_Click;
+            lblMinerState.Click += FormFocus_handler_Click;
+            pnlTemplate.Click += FormFocus_handler_Click;
+
+        }
+
+        void FormFocus_handler_Click(object sender, EventArgs e)
+        {
+            m_Parent.ChangeMiningView(this);
         }
         public void UpdateState()
         {
@@ -61,10 +71,7 @@ namespace OneMiner.View.v1
             this.BackColor = Color.White;
 
         }
-        void pnlTemplate_Click(object sender, EventArgs e)
-        {
-            m_Parent.ChangeMiningView(this);
-        }
+
 
         private void pnlTemplate_Paint(object sender, PaintEventArgs e)
         {
