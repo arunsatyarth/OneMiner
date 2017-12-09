@@ -22,6 +22,15 @@ namespace OneMiner.View.v1
 
         private ICoin m_selected_coin = null;
         private ICoin m_selected_dual_coin = null;
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
 
         public ICoin SelectedCoin
         {
