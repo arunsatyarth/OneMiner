@@ -53,7 +53,7 @@
             this.btnAddDualMiner.Name = "btnAddDualMiner";
             this.btnAddDualMiner.Size = new System.Drawing.Size(111, 23);
             this.btnAddDualMiner.TabIndex = 14;
-            this.btnAddDualMiner.Text = "Add Dual Miner";
+            this.btnAddDualMiner.Text = "Edit Dual Miner";
             this.btnAddDualMiner.UseVisualStyleBackColor = true;
             this.btnAddDualMiner.Visible = false;
             this.btnAddDualMiner.Click += new System.EventHandler(this.btnAddDualMiner_Click);

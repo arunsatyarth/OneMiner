@@ -169,6 +169,9 @@
   <data name="selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\View\v1\Images\selected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="sia" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Coins\EthHash\Images\sia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="siacoin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Coins\EthHash\Images\siacoin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

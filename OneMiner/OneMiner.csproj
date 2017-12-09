@@ -62,6 +62,7 @@
     <Compile Include="Coins\EthHash\ClaymoreMiner.cs" />
     <Compile Include="Coins\EthHash\EtherClassic.cs" />
     <Compile Include="Coins\EthHash\Expanse.cs" />
+    <Compile Include="Coins\EthHash\Sia.cs" />
     <Compile Include="Coins\EthHash\Ubiq.cs" />
     <Compile Include="Coins\MinerBase.cs" />
     <Compile Include="Coins\MinerProgramBase.cs" />
@@ -334,6 +335,7 @@
     <None Include="Coins\EthHash\Images\siacoin.png" />
     <None Include="Coins\EthHash\Images\ubiq.png" />
     <None Include="Coins\Equihash\Images\zcash.png" />
+    <None Include="Coins\EthHash\Images\sia.png" />
     <Content Include="miner_icon.ico" />
     <None Include="View\v1\Images\gpu.png" />
     <None Include="View\v1\Images\cpu.png" />

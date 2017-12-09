@@ -37,6 +37,7 @@ namespace OneMiner.EthHash
             m_CoinsHash[EthHashCoins.Ubiq] = new Ubiq(this);
 
             m_CoinsHash[EthHashDualCoins.Decred] = new Decred(this);
+            m_CoinsHash[EthHashDualCoins.Siacoin] = new Sia(this);
 
             //Now add it to the lists
             m_SupportedCoins.Add(m_CoinsHash[EthHashCoins.EtherClassic] as ICoin);
@@ -46,6 +47,7 @@ namespace OneMiner.EthHash
 
 
             m_SupportedDualCoins.Add(m_CoinsHash[EthHashDualCoins.Decred] as ICoin);
+            m_SupportedDualCoins.Add(m_CoinsHash[EthHashDualCoins.Siacoin] as ICoin);
 
         }
         public string Name
@@ -152,6 +154,9 @@ namespace OneMiner.EthHash
 
                 case "Decred":
                     coin = m_CoinsHash[EthHashDualCoins.Decred] as ICoin;
+                    break;
+                case "SiaCoin":
+                    coin = m_CoinsHash[EthHashDualCoins.Siacoin] as ICoin;
                     break;
             }
             return coin;

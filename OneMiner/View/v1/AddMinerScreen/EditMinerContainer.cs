@@ -344,9 +344,7 @@ namespace OneMiner.View.v1.AddMinerScreen
             AddMiner.DefaultCoin = Miner.MainCoin;
 
             //configure dualminer
-            AddMiner.Minername = Miner.Name;
-            AddMiner.DefaultAlgorithm = Miner.MainCoin.Algorithm;
-            AddMiner.DefaultCoin = Miner.MainCoin;
+            AddDualMiner.SelectedDualCoin = Miner.DualCoin;
 
 
 

@@ -91,7 +91,7 @@ namespace OneMiner.Coins.EthHash
                 if (DualCoin != null)
                 {
                     command += " -dpool " + DualCoinConfigurer.Pool;
-                    command += " -dwal " + MainCoinConfigurer.Wallet;
+                    command += " -dwal " + DualCoinConfigurer.Wallet;
                     command += " -ftime 10 ";
 
                 }

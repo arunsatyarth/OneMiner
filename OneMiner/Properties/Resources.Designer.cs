@@ -233,6 +233,16 @@ namespace OneMiner.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap sia {
+            get {
+                object obj = ResourceManager.GetObject("sia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap siacoin {
             get {
                 object obj = ResourceManager.GetObject("siacoin", resourceCulture);

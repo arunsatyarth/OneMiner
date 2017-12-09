@@ -15,7 +15,9 @@ namespace OneMiner.View.v1
     public partial class AddDualMiner : Form
     {
         private IMinerContainer m_parent = null;
-        private ICoin m_selectedDualCoin = null;
+        //private ICoin m_selectedDualCoin = null;
+        public ICoin SelectedDualCoin { get; set; }
+
         private int m_currentCoinIndex = 0;
         public ICoin SelectedCoin { get; set; }
 
@@ -26,12 +28,13 @@ namespace OneMiner.View.v1
         }
         private bool AlgorithmSelected()
         {
-            if (lbCoinSelect.SelectedIndex >= 0 && lbCoinSelect.SelectedIndex <= (lbCoinSelect.Items.Count - 1))
+            if (lbCoinSelect.SelectedIndices[0] >= 0 && lbCoinSelect.SelectedIndices[0] <= (lbCoinSelect.Items.Count - 1))
             {
                 return true;
             }
             return false;
         }
+
         public void SetNextButtonState()
         {
             if (AlgorithmSelected() )
@@ -47,19 +50,38 @@ namespace OneMiner.View.v1
                 
                 int i = 0;
                 IHashAlgorithm algo= SelectedCoin.Algorithm;
-                m_selectedDualCoin = algo.DefaultDualCoin;
+                if (SelectedDualCoin == null)
+                    SelectedDualCoin = algo.DefaultDualCoin;
 
+
+
+
+                ImageList Imagelist = new ImageList();
+                Imagelist.ImageSize = new Size(25, 25);
                 foreach (ICoin item in algo.SupportedDualCoins)
                 {
-                    lbCoinSelect.Items.Add(item.Name);
-                    if (item.Name == m_selectedDualCoin.Name)
+                    Imagelist.Images.Add(item.Logo);
+                }
+                lbCoinSelect.LargeImageList = Imagelist;
+                lbCoinSelect.SmallImageList = Imagelist;
+                i = 0;
+                foreach (ICoin item in algo.SupportedDualCoins)
+                {
+                    lbCoinSelect.Items.Add(new ListViewItem { ImageIndex = i, Text = item.Name });
+
+
+                    //lbCoinSelect.Items.Add(item.Name);
+                    if (item == SelectedDualCoin)
                         m_currentCoinIndex = i;
                     i++;
-
                 }
-                lbCoinSelect.SelectedIndex = m_currentCoinIndex;
 
-                lbCoinSelect.SelectedIndex = m_currentCoinIndex;
+                lbCoinSelect.Items[m_currentCoinIndex].Selected = true;
+
+
+                //lbCoinSelect.SelectedIndex = m_currentCoinIndex;
+
+               // lbCoinSelect.SelectedIndex = m_currentCoinIndex;
                 lbCoinSelect.SelectedIndexChanged+=lbCoinSelect_SelectedIndexChanged;
                 SetNextButtonState();
                 MakeSelectedDualCoin();
@@ -71,10 +93,10 @@ namespace OneMiner.View.v1
         }
         public void MakeSelectedDualCoin()
         {
-            if (m_selectedDualCoin != null)
+            if (SelectedDualCoin != null)
             {
-                m_parent.MakeSelectedDualCoin(m_selectedDualCoin);
-                lblSelectedCoin.Text = m_selectedDualCoin.Name;
+                m_parent.MakeSelectedDualCoin(SelectedDualCoin);
+                lblSelectedCoin.Text = SelectedDualCoin.Name;
             }
             else
                 lblSelectedCoin.Text = "No Coin Selected";
@@ -84,13 +106,13 @@ namespace OneMiner.View.v1
         {
             try
             {
-                int index = lbCoinSelect.SelectedIndex;
+                int index = lbCoinSelect.SelectedIndices[0];
 
                 if (m_currentCoinIndex == index)
                     return;
                 List<ICoin> coins = SelectedCoin.Algorithm.SupportedDualCoins;
 
-                m_selectedDualCoin = coins[index];
+                SelectedDualCoin = coins[index];
                 m_currentCoinIndex = index;
 
                 SetNextButtonState();
