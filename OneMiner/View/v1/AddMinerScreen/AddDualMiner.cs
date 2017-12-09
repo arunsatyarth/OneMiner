@@ -43,13 +43,20 @@ namespace OneMiner.View.v1
                 m_parent.DisableNextButton();
 
         }
+        public void Init()
+        {
+            IHashAlgorithm algo = SelectedCoin.Algorithm;
+            if (SelectedDualCoin == null)
+                SelectedDualCoin = algo.DefaultDualCoin;
+            MakeSelectedDualCoin();
+        }
         private void AddDualMiner_Load(object sender, EventArgs e)
         {
             try
             {
-                
+
                 int i = 0;
-                IHashAlgorithm algo= SelectedCoin.Algorithm;
+                IHashAlgorithm algo = SelectedCoin.Algorithm;
                 if (SelectedDualCoin == null)
                     SelectedDualCoin = algo.DefaultDualCoin;
 
@@ -81,11 +88,11 @@ namespace OneMiner.View.v1
 
                 //lbCoinSelect.SelectedIndex = m_currentCoinIndex;
 
-               // lbCoinSelect.SelectedIndex = m_currentCoinIndex;
-                lbCoinSelect.SelectedIndexChanged+=lbCoinSelect_SelectedIndexChanged;
+                // lbCoinSelect.SelectedIndex = m_currentCoinIndex;
+                lbCoinSelect.SelectedIndexChanged += lbCoinSelect_SelectedIndexChanged;
                 SetNextButtonState();
                 MakeSelectedDualCoin();
-                
+
             }
             catch (Exception ex)
             {

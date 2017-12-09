@@ -10,6 +10,8 @@ namespace OneMiner.View.v1.AddMinerScreen
     {
         ICoin SelectedCoin { get; set; }
         ICoin SelectedDualCoin { get; set; }
+        bool BAddDualMiner { get; set; }
+        
         void DisableFinishButton();
         void EnableNextButton();
         void DisableNextButton();

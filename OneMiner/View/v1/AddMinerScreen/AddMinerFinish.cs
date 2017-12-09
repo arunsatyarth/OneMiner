@@ -28,6 +28,11 @@ namespace OneMiner.View.v1
         private void AddMinerFinish_Load(object sender, EventArgs e)
         {
 
+            UpdateUI();
+        }
+
+        public void UpdateUI()
+        {
             ICoin selectedCoin = m_parent.SelectedCoin;
             ICoin selectedDualCoin = m_parent.SelectedDualCoin;
             if (selectedCoin == null)
@@ -38,7 +43,7 @@ namespace OneMiner.View.v1
             else
             {
                 string minername = m_parent.GetMinername();
-                string selection="";
+                string selection = "";
                 if (selectedDualCoin == null)
                     selection = selectedCoin.Name;
                 else
@@ -51,16 +56,50 @@ namespace OneMiner.View.v1
                 lblMaincoinPool.Text = selectedCoin.SettingsScreen.Pool;
                 lblMainCoinWallet.Text = selectedCoin.SettingsScreen.Wallet;
 
-                if (selectedDualCoin != null)
+                if (selectedDualCoin == null)
+                {
+                    HideDualCoins();
+                }
+                else
                 {
                     pbDualCoin.Image = selectedDualCoin.Logo;
                     lblSelectedDualCoin.Text = selectedDualCoin.Name;
                     lblDualCoinPool.Text = selectedDualCoin.SettingsScreen.Pool;
                     lblDualCoinWallet.Text = selectedDualCoin.SettingsScreen.Wallet;
+                    ShowDualCoins();
                 }
 
 
             }
+        }
+        private void HideDualCoins()
+        {
+            pbDualCoin.Visible = false;
+            lblSelectedDualCoin.Visible = false;
+            lblDualCoinPool.Visible = false;
+            lblDualCoinWallet.Visible = false;
+            lblDual1.Visible = false;
+            lblDual2.Visible = false;
+            lblDual3.Visible = false;
+            btnDual1.Visible = false;
+        }
+        private void ShowDualCoins()
+        {
+            pbDualCoin.Visible = true;
+            lblSelectedDualCoin.Visible = true;
+            lblDualCoinPool.Visible = true;
+            lblDualCoinWallet.Visible = true;
+            lblDual1.Visible = true;
+            lblDual2.Visible = true;
+            lblDual3.Visible = true;
+            btnDual1.Visible = true;
+        }
+        private void btnDual1_Click(object sender, EventArgs e)
+        {
+            m_parent.SelectedDualCoin = null;
+            m_parent.BAddDualMiner = false;
+            
+            HideDualCoins();
         }
 
 

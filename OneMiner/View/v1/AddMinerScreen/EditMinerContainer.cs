@@ -56,7 +56,8 @@ namespace OneMiner.View.v1.AddMinerScreen
 
 
 
-        private bool m_bAddDualMiner = false;
+        public bool BAddDualMiner { get; set; }
+        
         public EditMinerContainer()
         {
             AddMiner = new AddMiner(this);
@@ -181,7 +182,7 @@ namespace OneMiner.View.v1.AddMinerScreen
                     m_currentState++;
                     break;
                 case 1:
-                    if (m_bAddDualMiner)
+                    if (BAddDualMiner)
                         m_currentState++;
                     else
                         m_currentState += 3;//to finish. skip dualminerselection and dual miner configuraton
@@ -210,7 +211,7 @@ namespace OneMiner.View.v1.AddMinerScreen
                     m_currentState--;
                     break;
                 case 4://Finish screen
-                    if (m_bAddDualMiner)
+                    if (BAddDualMiner)
                         m_currentState--;
                     else
                         m_currentState -= 3;
@@ -241,10 +242,11 @@ namespace OneMiner.View.v1.AddMinerScreen
                     break;
                 case 2://Dual miner selection screen
                     AddDualMiner.SelectedCoin = m_selected_coin;
+                    AddDualMiner.Init();
                     objForm = AddDualMiner;
                     break;
                 case 3://Dual miner settings screen
-                    if (m_selected_coin != null)
+                    if (m_selected_dual_coin != null)
                     {
                         ICoinConfigurer form = m_selected_dual_coin.SettingsScreen;
                         form.AssignParent(this);
@@ -254,7 +256,7 @@ namespace OneMiner.View.v1.AddMinerScreen
                 case 4://Finish screen
                     //m_finishScreen.SelectedCoin = m_selected_coin;
                     //m_finishScreen.SelectedDualCoin = m_selected_dual_coin;
-
+                    m_finishScreen.UpdateUI();
                     objForm = m_finishScreen;
                     break;
 
@@ -303,7 +305,7 @@ namespace OneMiner.View.v1.AddMinerScreen
 
         private void btnAddDualMiner_Click(object sender, EventArgs e)
         {
-            m_bAddDualMiner = true;
+            BAddDualMiner = true;
             NextStage();
         }
         private bool Verify()
