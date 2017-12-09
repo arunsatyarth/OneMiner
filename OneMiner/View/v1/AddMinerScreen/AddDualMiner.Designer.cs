@@ -36,36 +36,41 @@
             // 
             // lbCoinSelect
             // 
+            this.lbCoinSelect.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCoinSelect.FormattingEnabled = true;
+            this.lbCoinSelect.ItemHeight = 15;
             this.lbCoinSelect.Location = new System.Drawing.Point(160, 103);
             this.lbCoinSelect.Name = "lbCoinSelect";
-            this.lbCoinSelect.Size = new System.Drawing.Size(162, 160);
+            this.lbCoinSelect.Size = new System.Drawing.Size(162, 154);
             this.lbCoinSelect.TabIndex = 9;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(157, 56);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 13);
+            this.label2.Size = new System.Drawing.Size(134, 15);
             this.label2.TabIndex = 8;
             this.label2.Text = "Select Dual Mining Coin";
             // 
             // lblSelectedCoin
             // 
             this.lblSelectedCoin.AutoSize = true;
+            this.lblSelectedCoin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSelectedCoin.Location = new System.Drawing.Point(313, 292);
             this.lblSelectedCoin.Name = "lblSelectedCoin";
-            this.lblSelectedCoin.Size = new System.Drawing.Size(88, 13);
+            this.lblSelectedCoin.Size = new System.Drawing.Size(96, 15);
             this.lblSelectedCoin.TabIndex = 11;
             this.lblSelectedCoin.Text = "Default Selection";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(157, 292);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 13);
+            this.label3.Size = new System.Drawing.Size(79, 15);
             this.label3.TabIndex = 10;
             this.label3.Text = "Selected Coin";
             // 

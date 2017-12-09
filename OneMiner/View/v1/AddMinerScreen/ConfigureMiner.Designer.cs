@@ -38,43 +38,48 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(84, 94);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 13);
+            this.label1.Size = new System.Drawing.Size(31, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Pool";
             // 
             // txtPool
             // 
+            this.txtPool.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPool.Location = new System.Drawing.Point(197, 91);
             this.txtPool.Name = "txtPool";
-            this.txtPool.Size = new System.Drawing.Size(285, 20);
+            this.txtPool.Size = new System.Drawing.Size(285, 23);
             this.txtPool.TabIndex = 1;
             this.txtPool.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // txtWallet
             // 
+            this.txtWallet.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWallet.Location = new System.Drawing.Point(197, 128);
             this.txtWallet.Name = "txtWallet";
-            this.txtWallet.Size = new System.Drawing.Size(285, 20);
+            this.txtWallet.Size = new System.Drawing.Size(285, 23);
             this.txtWallet.TabIndex = 3;
             this.txtWallet.TextChanged += new System.EventHandler(this.txtWallet_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(84, 135);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 13);
+            this.label2.Size = new System.Drawing.Size(85, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "Wallet Address";
             // 
             // lblCoinName
             // 
             this.lblCoinName.AutoSize = true;
+            this.lblCoinName.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCoinName.Location = new System.Drawing.Point(84, 24);
             this.lblCoinName.Name = "lblCoinName";
-            this.lblCoinName.Size = new System.Drawing.Size(56, 13);
+            this.lblCoinName.Size = new System.Drawing.Size(81, 20);
             this.lblCoinName.TabIndex = 4;
             this.lblCoinName.Text = "CoinName";
             // 

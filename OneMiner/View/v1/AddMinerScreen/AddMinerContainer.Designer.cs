@@ -46,6 +46,7 @@
             // btnNext
             // 
             this.btnNext.Enabled = false;
+            this.btnNext.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNext.Location = new System.Drawing.Point(586, 388);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
@@ -57,6 +58,7 @@
             // btnPrevious
             // 
             this.btnPrevious.Enabled = false;
+            this.btnPrevious.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrevious.Location = new System.Drawing.Point(59, 388);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(75, 23);
@@ -67,9 +69,10 @@
             // 
             // btnAddDualMiner
             // 
-            this.btnAddDualMiner.Location = new System.Drawing.Point(469, 388);
+            this.btnAddDualMiner.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddDualMiner.Location = new System.Drawing.Point(442, 388);
             this.btnAddDualMiner.Name = "btnAddDualMiner";
-            this.btnAddDualMiner.Size = new System.Drawing.Size(95, 23);
+            this.btnAddDualMiner.Size = new System.Drawing.Size(111, 23);
             this.btnAddDualMiner.TabIndex = 9;
             this.btnAddDualMiner.Text = "Add Dual Miner";
             this.btnAddDualMiner.UseVisualStyleBackColor = true;
@@ -77,6 +80,7 @@
             // 
             // btnFinish
             // 
+            this.btnFinish.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFinish.Location = new System.Drawing.Point(586, 388);
             this.btnFinish.Name = "btnFinish";
             this.btnFinish.Size = new System.Drawing.Size(75, 23);
