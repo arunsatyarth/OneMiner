@@ -13,6 +13,7 @@ namespace OneMiner.View
         void InitializeView();
         void StartView();
         void UpdateMinerList();
+        void UpdateSettingsCarousal();
         void UpDateMinerState();
         void RegisterForTimer(OneMinerTimerEvent fun);
         TSQueue<DownloadRequest> DownloadRequestQueue { get; set; }

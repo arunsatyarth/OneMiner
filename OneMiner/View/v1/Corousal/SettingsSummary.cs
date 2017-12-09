@@ -56,18 +56,39 @@ namespace OneMiner.View.v1.Corousal
                 IMiner miner = Factory.Instance.CoreObject.SelectedMiner;
                 if (miner != null)
                 {
+                    pbSelectedMiner.Image = miner.MainCoin.Logo;
                     lblActiveMiner.Text = miner.Name;
                 }
-                string mineonStartup = "No";
-                if (model.Data.Option.MineOnStartup)
-                    mineonStartup = "Yes";
-                lblMineOnStartup.Text = mineonStartup;
+                LoadData();
 
                 UpdateTime();
             }
             catch (Exception e)
             {
             }
+        }
+        public void SetCheckBoxData(Label chkBox, bool state)
+        {
+            if (state == true)
+            {
+                chkBox.Text = "Yes";
+            }
+            else
+            {
+                chkBox.Text = "No";
+            }
+        }
+        public void LoadData()
+        {
+            DB data = Factory.Instance.Model.Data;
+            if (data != null)
+            {
+                SetCheckBoxData(lblMineOnStartup, data.Option.Startup);
+                SetCheckBoxData(lblMineonLaunch, data.Option.MineOnStartup);
+                SetCheckBoxData(lblShowMinerUi, data.Option.ShowMinerWindows);
+
+            }
+
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

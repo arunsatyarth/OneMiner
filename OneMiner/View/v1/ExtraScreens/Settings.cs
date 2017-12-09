@@ -69,6 +69,7 @@ namespace OneMiner.View.v1.ExtraScreens
                 data.Option.Startup = chkLaunchStartup.Checked;
                 Factory.Instance.Model.Save();
                 Factory.Instance.Model.SetLaunchOnStartup(chkLaunchStartup.Checked);
+                Factory.Instance.ViewObject.UpdateSettingsCarousal();
                 
             }
         }
@@ -81,6 +82,7 @@ namespace OneMiner.View.v1.ExtraScreens
             {
                 data.Option.MineOnStartup = chkMineLaunch.Checked;
                 Factory.Instance.Model.Save();
+                Factory.Instance.ViewObject.UpdateSettingsCarousal();
             }
         }
 
@@ -92,6 +94,7 @@ namespace OneMiner.View.v1.ExtraScreens
             {
                 data.Option.ShowMinerWindows = chkShowMinerUI.Checked;
                 Factory.Instance.Model.Save();
+                Factory.Instance.ViewObject.UpdateSettingsCarousal();
             }
         }
     }

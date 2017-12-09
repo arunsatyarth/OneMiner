@@ -65,6 +65,11 @@ namespace OneMiner.View.v1
         {
             m_MainForm.UpdateMinerList();
         }
+        public void UpdateSettingsCarousal()
+        {
+            m_MainForm.ShowSettingsCarausal();
+        }
+        
         public void UpDateMinerState()
         {
             m_MainForm.UpDateMinerState();
