@@ -93,6 +93,12 @@ namespace OneMiner.Coins.EthHash
                     command += " -dpool " + DualCoinConfigurer.Pool;
                     command += " -dwal " + DualCoinConfigurer.Wallet;
                     command += " -ftime 10 ";
+                    command += " -mode 0 ";//dual mining mode
+
+                }
+                else
+                {
+                    command += " -mode 1 ";//eth only mode
 
                 }
                 command += " -allpools 1";

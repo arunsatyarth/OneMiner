@@ -111,7 +111,7 @@ namespace OneMiner.View.v1
                     }
                     if (totalHashrate > 10*1024)
                     {
-                        int conversion = totalHashrate / 1024;
+                        float conversion = totalHashrate / 1000;// 1024;
                         hashrate = conversion.ToString()+ " MH/s";
                 
                     }
