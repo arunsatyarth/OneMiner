@@ -31,6 +31,7 @@ namespace OneMiner.View.v1.MiningInfo
             {
                 List<GpuData> gpus = Miner.GetGpuList();
                 pnlGpus.Controls.Clear();
+                lblGpuInfoStatic.Visible = true;
 
                 foreach (GpuData gpuData in gpus)
                 {
@@ -54,6 +55,7 @@ namespace OneMiner.View.v1.MiningInfo
                 {
                     List<IMinerProgram> miners = Miner.MinerPrograms;
                     pnlGpus.Controls.Clear();
+                    lblGpuInfoStatic.Visible = false;
 
                     foreach (IMinerProgram item in miners)
                     {

@@ -28,73 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblWalletname = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lnklblPool = new System.Windows.Forms.LinkLabel();
             this.pnlGpus = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblGpuInfoStatic = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(54, 28);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 13);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Wallet ";
-            // 
-            // lblWalletname
-            // 
-            this.lblWalletname.AutoSize = true;
-            this.lblWalletname.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWalletname.Location = new System.Drawing.Point(154, 28);
-            this.lblWalletname.Name = "lblWalletname";
-            this.lblWalletname.Size = new System.Drawing.Size(40, 13);
-            this.lblWalletname.TabIndex = 13;
-            this.lblWalletname.Text = "Wallet";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(54, 60);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 13);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Pool";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(114, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(10, 13);
-            this.label3.TabIndex = 16;
-            this.label3.Text = ":";
-            // 
-            // lnklblPool
-            // 
-            this.lnklblPool.AutoSize = true;
-            this.lnklblPool.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnklblPool.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.lnklblPool.LinkColor = System.Drawing.Color.SteelBlue;
-            this.lnklblPool.Location = new System.Drawing.Point(154, 60);
-            this.lnklblPool.Name = "lnklblPool";
-            this.lnklblPool.Size = new System.Drawing.Size(30, 13);
-            this.lnklblPool.TabIndex = 18;
-            this.lnklblPool.TabStop = true;
-            this.lnklblPool.Text = "Pool";
             // 
             // pnlGpus
             // 
+            this.pnlGpus.BackColor = System.Drawing.Color.White;
             this.pnlGpus.Location = new System.Drawing.Point(12, 0);
             this.pnlGpus.Name = "pnlGpus";
             this.pnlGpus.Size = new System.Drawing.Size(825, 302);
             this.pnlGpus.TabIndex = 19;
+            // 
+            // lblGpuInfoStatic
+            // 
+            this.lblGpuInfoStatic.AutoSize = true;
+            this.lblGpuInfoStatic.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGpuInfoStatic.ForeColor = System.Drawing.Color.DarkGray;
+            this.lblGpuInfoStatic.Location = new System.Drawing.Point(250, 137);
+            this.lblGpuInfoStatic.Name = "lblGpuInfoStatic";
+            this.lblGpuInfoStatic.Size = new System.Drawing.Size(282, 25);
+            this.lblGpuInfoStatic.TabIndex = 20;
+            this.lblGpuInfoStatic.Text = "Gpu Info will be populated here";
             // 
             // MinerInfoSummary
             // 
@@ -102,12 +57,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(849, 314);
+            this.Controls.Add(this.lblGpuInfoStatic);
             this.Controls.Add(this.pnlGpus);
-            this.Controls.Add(this.lnklblPool);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.lblWalletname);
-            this.Controls.Add(this.label6);
             this.Name = "MinerInfoSummary";
             this.Text = "MinerInfoSummary";
             this.Load += new System.EventHandler(this.MinerInfoSummary_Load);
@@ -118,11 +69,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lblWalletname;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.LinkLabel lnklblPool;
         private System.Windows.Forms.FlowLayoutPanel pnlGpus;
+        private System.Windows.Forms.Label lblGpuInfoStatic;
     }
 }
