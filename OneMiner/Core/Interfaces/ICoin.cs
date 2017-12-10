@@ -45,6 +45,13 @@ namespace OneMiner.Core.Interfaces
 
         IHashAlgorithm Algorithm { get; set; }
 
+        /// <summary>
+        /// takes an existing script and adds coin specific data to it
+        /// </summary>
+        /// <param name="script"></param>
+        /// <returns></returns>
+        string GetScript(string script);
+
 
     }
 }

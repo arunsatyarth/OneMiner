@@ -57,5 +57,11 @@ namespace OneMiner.Coins.EthHash
             }
             return pools;
         }
+        public string GetScript(string script)
+        {
+            string scr = script;
+            scr += " -dcoin sia ";
+            return scr;
+        }
     }
 }

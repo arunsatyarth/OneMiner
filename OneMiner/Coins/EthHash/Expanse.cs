@@ -58,5 +58,9 @@ namespace OneMiner.Coins.EthHash
             }
             return pools;
         }
+        public string GetScript(string script)
+        {
+            return script;
+        }
     }
 }

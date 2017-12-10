@@ -130,6 +130,8 @@ namespace OneMiner.View.v1.MiningInfo
         }
         public void UpdateUI()
         {
+            if (EditingInProgress)
+                return;
             if (m_currentButton != null)
             {
                 IMinerProgram prog = m_ButtonToMiner[m_currentButton.Name] as IMinerProgram;
@@ -139,14 +141,17 @@ namespace OneMiner.View.v1.MiningInfo
 
             }
         }
+        public bool EditingInProgress { get; set; }
         private void DisableEdit()
         {
+            EditingInProgress = false;
             txtScriptArea.ReadOnly = true;
             lnkEdit.Enabled = true;
             btnSave.Enabled = false;
         }
         private void Enabledit()
         {
+            EditingInProgress = true;
             txtScriptArea.ReadOnly = false;
             lnkEdit.Enabled = false;
             btnSave.Enabled = true;

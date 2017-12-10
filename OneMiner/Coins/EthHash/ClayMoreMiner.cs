@@ -94,7 +94,7 @@ namespace OneMiner.Coins.EthHash
                     command += " -dwal " + DualCoinConfigurer.Wallet;
                     command += " -ftime 10 ";
                     command += " -mode 0 ";//dual mining mode
-
+                    command = DualCoin.GetScript(command);
                 }
                 else
                 {
@@ -103,6 +103,7 @@ namespace OneMiner.Coins.EthHash
                 }
                 command += " -allpools 1";
 
+                command = MainCoin.GetScript(command);
 
                 Script = SCRIPT1 + command;
                 AutomaticScriptGeneration = true;
