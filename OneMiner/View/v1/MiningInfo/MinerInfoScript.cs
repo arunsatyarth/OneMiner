@@ -109,6 +109,7 @@ namespace OneMiner.View.v1.MiningInfo
             Button btn = sender as Button;
             SelectView(btn);
             m_currentButton = btn;
+            EditingInProgress = false;//if this was not set then ui would show previous tab script
             UpdateUI();
 
         }

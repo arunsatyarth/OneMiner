@@ -68,7 +68,7 @@
             this.lblMinerState.BackColor = System.Drawing.Color.White;
             this.lblMinerState.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMinerState.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblMinerState.Location = new System.Drawing.Point(232, 30);
+            this.lblMinerState.Location = new System.Drawing.Point(209, 27);
             this.lblMinerState.Name = "lblMinerState";
             this.lblMinerState.Size = new System.Drawing.Size(54, 15);
             this.lblMinerState.TabIndex = 5;
@@ -100,7 +100,8 @@
             // 
             this.lblCoinType.AutoSize = true;
             this.lblCoinType.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCoinType.Location = new System.Drawing.Point(83, 28);
+            this.lblCoinType.Location = new System.Drawing.Point(83, 25);
+            this.lblCoinType.MaximumSize = new System.Drawing.Size(150, 0);
             this.lblCoinType.Name = "lblCoinType";
             this.lblCoinType.Size = new System.Drawing.Size(58, 15);
             this.lblCoinType.TabIndex = 2;
