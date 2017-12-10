@@ -56,6 +56,10 @@ namespace OneMiner.Core.Interfaces
         public int Rejected { get; set; }
         public int RunningTime { get; set; }
         public List<GpuData> GPUs { get; set; }
+        public MinerDataResult()
+        {
+            GPUs = new List<GpuData>();
+        }
         //this class does not know how to parse the results as different miners have data in different formats
         //So it accepts a visitor which can do it
         public bool Parse(IMinerResultParser parser)

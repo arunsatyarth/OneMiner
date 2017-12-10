@@ -1,4 +1,5 @@
-﻿using OneMiner.Core.Interfaces;
+﻿using OneMiner.Core;
+using OneMiner.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -81,6 +82,7 @@ namespace OneMiner.View.v1.MiningInfo
 	        }
 	        catch (Exception e)
 	        {
+                Logger.Instance.LogError(e.Message);
 	        }
         }
     }

@@ -9,6 +9,11 @@ using System.Windows.Forms;
 
 namespace OneMiner.View.v1
 {
+    public class WebBrowserEx : WebBrowser
+    {
+        public DownloadRequest DownloadRequest { get; set; }
+
+    }
     class V1View: IView
     {
         MainForm m_MainForm = null;
@@ -26,7 +31,7 @@ namespace OneMiner.View.v1
             
             m_Timer = new System.Windows.Forms.Timer();
             RegisterForTimer(ExecuteDownloadRequests);
-            m_Timer.Interval = 3000;
+            m_Timer.Interval = 10000;
 #if DEBUG
             m_Timer.Interval = 10000;
 #endif
@@ -115,10 +120,5 @@ namespace OneMiner.View.v1
         public string LINK { get; set; }
         public OutputReaderBase Reader{ get; set; }
     }
-    public class WebBrowserEx: WebBrowser
-    {
-        public DownloadRequest DownloadRequest { get; set; }
 
-         
-    }
 }
