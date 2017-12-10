@@ -3,6 +3,9 @@ As the name suggests, this is a 1 click miner for all GPU coins viz Ethereum, Zc
 
 The name might hold a subtle  reference to the 'One Ring" from 'Lord of the Rings' but it holds no delusions of grandeur about its supremacy :).
 
+Download from Github
+https://github.com/arunsatyarth/OneMiner/releases/tag/v1.1
+
 # Reasons to Use
 The main reason to use this tool is that  setting up a miner is difficult. Especially if you have different GPU cards or if you want to switch between mining different coins or to different wallet adddresses. It becomes a lot script heavy to handle such situations. This tool was built to have all such functionality in 1 place. It is open source hence anyone can download the code/tool and use it as is or make modifications to suit his needs.
 
