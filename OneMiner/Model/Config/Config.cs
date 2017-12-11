@@ -48,6 +48,8 @@ namespace OneMiner.Model.Config
                     Data = d;
                     PopulateData();
                 }
+                SetLaunchOnStartup(Data.Option.Startup);
+
 
             }
             catch (Exception ex)

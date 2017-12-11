@@ -41,5 +41,16 @@ namespace OneMiner.View.v1.ExtraScreens
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start("https://arunsatyarth.github.io/OneMiner/");
+            }
+            catch (Exception se)
+            {
+            }
+        }
     }
 }
