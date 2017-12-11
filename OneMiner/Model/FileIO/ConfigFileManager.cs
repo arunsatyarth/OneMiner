@@ -7,20 +7,38 @@ using System.Text;
 
 namespace OneMiner.Model
 {
+    /// <summary>
+    /// Todo:
+    /// have a primary(local) and secondayy(appdata)
+    /// while reading
+    ///     read primary
+    ///     if failed(becoz its missing)
+    ///         read secondary
+    ///         copy to primary
+    ///     else(if success)
+    ///         copy to secondary
+    /// while writing
+    ///     write primary
+    ///     if failed 
+    ///         write secondary
+    ///         copy to primary
+    ///     else
+    ///         copy to sencondary
+    /// </summary>
     class ConfigFileManager
     {
+        const string minerfileName = "oneminer.json";
         string m_filepath = "";
-        private IFileIO m_fileio = null;
+        private IFileIO m_fileio = null;//object whic cretes the config. usually appdata
         //private string m_data = "";
         public string Data { get; set; }
         private IFileIO GetFileIOObject()
         {
             IFileIO fileio = null;
-        
-            fileio = new AppData("OneMiner", "config.json");
+            fileio = new AppData("OneMiner", minerfileName);
             if (fileio.Verify())
                 return fileio;
-            fileio = new LocalFolder("OneMiner", "config.json");
+            fileio = new LocalFolder("OneMiner", minerfileName);
             if (fileio.Verify())
                 return fileio;
          
