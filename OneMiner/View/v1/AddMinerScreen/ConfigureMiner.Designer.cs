@@ -92,6 +92,7 @@
             this.cmbPoolList.Name = "cmbPoolList";
             this.cmbPoolList.Size = new System.Drawing.Size(121, 21);
             this.cmbPoolList.TabIndex = 5;
+            this.cmbPoolList.Text = "Select Pools";
             // 
             // label3
             // 

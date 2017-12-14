@@ -79,6 +79,8 @@
     </Compile>
     <Compile Include="Coins\Equihash\Zcash.cs" />
     <Compile Include="Coins\Equihash\ZCashMiner.cs" />
+    <Compile Include="Coins\Equihash\ZClassic.cs" />
+    <Compile Include="Coins\Equihash\ZenCash.cs" />
     <Compile Include="Coins\EthHash\ClaymoreMiner.cs" />
     <Compile Include="Coins\EthHash\EtherClassic.cs" />
     <Compile Include="Coins\EthHash\Expanse.cs" />
@@ -374,6 +376,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Coins\Equihash\Images\bitcoin-gold.png" />
+    <None Include="Coins\Equihash\Images\zclassic.png" />
+    <None Include="Coins\Equihash\Images\zencash.png" />
     <Content Include="oneminer.ico" />
     <None Include="View\v1\Images\github.png" />
     <None Include="View\v1\Images\remove.png" />
