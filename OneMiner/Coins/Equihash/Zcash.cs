@@ -24,7 +24,7 @@ namespace OneMiner.EthHash
             Algorithm = algo;
 
         }
-        public  string Name
+        public string Name
         {
             get { return "Zcash"; }
         }
@@ -32,7 +32,7 @@ namespace OneMiner.EthHash
         public Bitmap Logo
         {
             get { return OneMiner.Properties.Resources.zcash; }
-            
+
         }
 
         public ICoinConfigurer SettingsScreen
@@ -52,8 +52,8 @@ namespace OneMiner.EthHash
             List<Pool> pools = new List<Pool>();
             try
             {
-                Pool pool1 = new Pool("Flypool", "ssl://eu1-zcash.flypool.org:3443");
-                Pool pool2 = new Pool("Nanopool", "zec-us-east1.nanopool.org:6666");
+                Pool pool1 = new FlyPool("Flypool", "ssl://eu1-zcash.flypool.org:3443");
+                Pool pool2 = new NanoPool("Nanopool", "zec-us-east1.nanopool.org:6666");
                 pools.Add(pool1);
                 pools.Add(pool2);
 
@@ -68,7 +68,48 @@ namespace OneMiner.EthHash
         {
             return script;
         }
+        class FlyPool : Pool
+        {
+            public FlyPool(string name, string url)
+                : base(name, url)
+            {
 
-  
+            }
+            public override string GetAccountLink(string wallet)
+            {
+                string acc = "";
+                try
+                {
+                    acc = "http://zcash.flypool.org/miners/" + wallet;
+                }
+                catch (Exception)
+                {
+                }
+                return acc;
+            }
+        }
+        class NanoPool : Pool
+        {
+            public NanoPool(string name, string url)
+                : base(name, url)
+            {
+
+            }
+            public override string GetAccountLink(string wallet)
+            {
+                string acc = "";
+                try
+                {
+                    acc = "https://zec.nanopool.org/account/" + wallet;
+
+                }
+                catch (Exception)
+                {
+                }
+                return acc;
+            }
+        }
+
     }
+
 }

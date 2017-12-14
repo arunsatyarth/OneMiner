@@ -16,6 +16,22 @@ namespace OneMiner.Core.Interfaces
             Name = name;
             Link = link;
         }
+        /// <summary>
+        /// this generic implementation is not giarenteed to work with every pool
+        /// </summary>
+        /// <param name="wallet"></param>
+        /// <returns></returns>
+        public virtual  string GetAccountLink(string wallet)
+        {
+            try
+            {
+                return Link + "/" + wallet;
+            }
+            catch (Exception e)
+            {
+            }
+            return "";
+        }
     }
     public interface ICoin
     {
