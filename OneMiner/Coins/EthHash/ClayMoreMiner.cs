@@ -101,7 +101,7 @@ namespace OneMiner.Coins.EthHash
                     command += " -mode 1 ";//eth only mode
 
                 }
-                command += " -allpools 1";
+                command += " -allpools 1 ";
 
                 command = MainCoin.GetScript(command);
 

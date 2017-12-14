@@ -127,6 +127,9 @@
   <data name="bitcoin_address" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\View\v1\Images\MyAddr\bitcoin_address.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="bitcoin_gold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Coins\Equihash\Images\bitcoin-gold.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="cpu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\View\v1\Images\cpu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

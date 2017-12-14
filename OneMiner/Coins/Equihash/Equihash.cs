@@ -17,6 +17,7 @@ namespace OneMiner.Equihash
         enum EquihashCoins
         {
             Zcash=0,
+            Bitcoin_Gold,
             End
         }
         enum EthHashDualCoins
@@ -30,10 +31,12 @@ namespace OneMiner.Equihash
         public Equihash()
         {
             m_CoinsHash[EquihashCoins.Zcash] = new Zcash(this);
+            m_CoinsHash[EquihashCoins.Bitcoin_Gold] = new BitcoinGold(this);
 
 
             //Now add it to the lists
             m_SupportedCoins.Add(m_CoinsHash[EquihashCoins.Zcash] as ICoin);
+            m_SupportedCoins.Add(m_CoinsHash[EquihashCoins.Bitcoin_Gold] as ICoin);
 
         }
         public string Name
@@ -127,6 +130,9 @@ namespace OneMiner.Equihash
             {
                 case "Zcash":
                     coin = m_CoinsHash[EquihashCoins.Zcash] as ICoin;
+                    break;                
+                case "Bitcoin Gold":
+                    coin = m_CoinsHash[EquihashCoins.Bitcoin_Gold] as ICoin;
                     break;
             }
             return coin;

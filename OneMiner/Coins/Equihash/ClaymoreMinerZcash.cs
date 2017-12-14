@@ -92,6 +92,8 @@ namespace OneMiner.Coins.Equihash
                     command +="";
 
                 }
+                command += " -allpools 1 ";
+
                 command += " -mport 5566";
 
 

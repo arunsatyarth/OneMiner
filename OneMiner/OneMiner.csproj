@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Coins\Equihash\BitcoinGold.cs" />
     <Compile Include="Coins\Equihash\ClaymoreMinerZcash.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -372,6 +373,7 @@
     <None Include="View\v1\Images\selected.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Coins\Equihash\Images\bitcoin-gold.png" />
     <Content Include="oneminer.ico" />
     <None Include="View\v1\Images\github.png" />
     <None Include="View\v1\Images\remove.png" />
