@@ -296,6 +296,12 @@ namespace OneMiner
             OneMiner.View.v1.ExtraScreens.Help h = new View.v1.ExtraScreens.Help();
             h.ShowDialog();
         }
+        public void ShowHardwareMissingError()
+        {
+            MessageBox.Show("System could not detect any Nvidia or AMD graphics card in your machine! If this is by mistake please select the Graphics card make  from Scripts tab ",
+                "Hardware Missing");
+        }
+        
 
 
 

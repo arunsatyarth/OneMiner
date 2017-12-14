@@ -74,6 +74,11 @@ namespace OneMiner.Coins
                 gpuType = gpuType ^ (1 << 0);                
             if (prog.GPUType == CardMake.Amd)
                 gpuType = gpuType ^ (1 << 1);
+            if (prog.GPUType == CardMake.COMMON)
+            {
+                gpuType = gpuType ^ (1 << 0);
+                gpuType = gpuType ^ (1 << 1);
+            }
             MinerGpuType = gpuType;
             SetupMiner();
             Factory.Instance.Model.AddMiner(this);
@@ -170,6 +175,12 @@ namespace OneMiner.Coins
         public virtual void StartMining()
         {
             MinerState = MinerProgramState.Starting;
+            if (ActualMinerPrograms.Count==0)
+            {
+                Factory.Instance.ViewObject.ShowHardwareMissingError();
+                StopMining();
+                return;
+            }
             foreach (IMinerProgram item in ActualMinerPrograms)
             {
                 //push miners into mining queue wher they wud be picked up by threads and executed

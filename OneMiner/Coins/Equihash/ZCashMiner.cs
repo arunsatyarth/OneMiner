@@ -33,7 +33,7 @@ namespace OneMiner.Coins.Equihash
 
             m_MinerProgsHash.Add(prog.GPUType, prog);
             m_MinerProgsHash.Add(prog2.GPUType, prog2);
-            if (MinerGpuType == 0 || MinerGpuType == 3)
+            if ( MinerGpuType == 3)
             {
                 foreach (IMinerProgram item in MinerPrograms)
                 {

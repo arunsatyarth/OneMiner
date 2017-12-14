@@ -79,6 +79,11 @@ namespace OneMiner.View.v1
         {
             m_MainForm.UpDateMinerState();
         }
+        public void ShowHardwareMissingError()
+        {
+            m_MainForm.ShowHardwareMissingError();
+        }
+        
 
         void DownloadBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {

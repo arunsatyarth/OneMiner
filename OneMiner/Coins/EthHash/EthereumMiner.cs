@@ -25,11 +25,14 @@ namespace OneMiner.EthHash
             ActualMinerPrograms.Clear();
             MinerPrograms.Clear();
             m_MinerProgsHash.Clear();
-
+ 
             IMinerProgram prog=new ClaymoreMiner(MainCoin, DualMining, DualCoin, Name,this);
-            prog.Enabled = true;
             MinerPrograms.Add(prog);
-            ActualMinerPrograms.Add(prog);
+            if (MinerGpuType >= 1 && MinerGpuType <= 3)
+            {
+                prog.Enabled = true;
+                ActualMinerPrograms.Add(prog);
+            }
             m_MinerProgsHash.Add(prog.Type, prog);
         }
 

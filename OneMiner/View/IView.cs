@@ -15,6 +15,7 @@ namespace OneMiner.View
         void UpdateMinerList();
         void UpdateSettingsCarousal();
         void UpDateMinerState();
+        void ShowHardwareMissingError();
         void RegisterForTimer(OneMinerTimerEvent fun);
         TSQueue<DownloadRequest> DownloadRequestQueue { get; set; }
 

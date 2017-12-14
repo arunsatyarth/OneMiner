@@ -12,6 +12,7 @@ namespace OneMiner.Core.Interfaces
         Amd,
         CPU,
         COMMON,//this means the gpu or the gpuminer is independend of type
+        UNKNOWN,
         END
     }
     public class GpuData 
@@ -33,12 +34,16 @@ namespace OneMiner.Core.Interfaces
         {
             try
             {
-                string pattern = "(N|n)(V|v)(I|i)(D|d)(I|i)(A|a)|(G|g)(E|e)(F|f)(O|o)(R|r)(C|c)(E|e) ";
-                Match r_gpu_id = Regex.Match(GPUName, pattern);
-                if (r_gpu_id.Success)
+                string nvidia_pattern = "(N|n)(V|v)(I|i)(D|d)(I|i)(A|a)|(G|g)(E|e)(F|f)(O|o)(R|r)(C|c)(E|e) ";
+                string amd_pattern = "(A|a)(M|m)(D|d)|(R|r)(A|a)(D|d)(E|e)(O|o)(N|n)";
+                Match r_nvidia_id = Regex.Match(GPUName, nvidia_pattern);
+                Match r_amd_id = Regex.Match(GPUName, amd_pattern);
+                if (r_nvidia_id.Success)
                     Make= CardMake.Nvidia;
+                else if (r_amd_id.Success)
+                    Make = CardMake.Amd;
                 else
-                    Make= CardMake.Amd;
+                    Make = CardMake.UNKNOWN;
                 return true;
             }
             catch (Exception)
