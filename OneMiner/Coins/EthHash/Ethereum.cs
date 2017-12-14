@@ -52,8 +52,8 @@ namespace OneMiner.EthHash
             List<Pool> pools = new List<Pool>();
             try
             {
-                Pool pool1 = new Pool("Ethermine", "us1.ethermine.org:4444");
-                Pool pool2 = new Pool("Nanopool", "eth-us-west1.nanopool.org:9999");
+                Pool pool1 = new Ethermine("Ethermine", "us1.ethermine.org:4444");
+                Pool pool2 = new Nanopool("Nanopool", "eth-us-west1.nanopool.org:9999");
                 pools.Add(pool1);
                 pools.Add(pool2);
 
@@ -69,7 +69,48 @@ namespace OneMiner.EthHash
             return script;
         }
 
+        class Ethermine : Pool
+        {
+            public Ethermine(string name, string url)
+                : base(name, url)
+            {
 
+            }
+            public override string GetAccountLink(string wallet)
+            {
+                string acc = "";
+                try
+                {
+                    acc = "https://ethermine.org/miners/" + wallet;
+                    
+                }
+                catch (Exception)
+                {
+                }
+                return acc;
+            }
+        }
+        class Nanopool : Pool
+        {
+            public Nanopool(string name, string url)
+                : base(name, url)
+            {
+
+            }
+            public override string GetAccountLink(string wallet)
+            {
+                string acc = "";
+                try
+                {
+                    acc = "https://eth.nanopool.org/account/" + wallet;
+
+                }
+                catch (Exception)
+                {
+                }
+                return acc;
+            }
+        }
 
   
     }

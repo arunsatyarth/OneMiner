@@ -52,8 +52,8 @@ namespace OneMiner.EthHash
             List<Pool> pools = new List<Pool>();
             try
             {
-                Pool pool1 = new Pool("ZenMine.Pro", "ssl://eu.zenmine.pro:9999");
-                Pool pool2 = new Pool("minez.zone", "stratum+tcp://ny1.minez.zone:3035");
+                Pool pool1 = new ZenMinePro("ZenMine.Pro", "ssl://eu.zenmine.pro:9999");
+                Pool pool2 = new MinezZone("minez.zone", "stratum+tcp://ny1.minez.zone:3035");
                 pools.Add(pool1);
                 pools.Add(pool2);
 
@@ -69,6 +69,43 @@ namespace OneMiner.EthHash
             return script;
         }
 
-
+        class MinezZone : Pool
+        {
+            public MinezZone(string name, string url)
+                : base(name, url)
+            {
+            }
+            public override string GetAccountLink(string wallet)
+            {
+                string acc = "";
+                try
+                {
+                    acc = "https://minez.zone/workers/" + wallet;
+                }
+                catch (Exception)
+                {
+                }
+                return acc;
+            }
+        }
+        class ZenMinePro : Pool
+        {
+            public ZenMinePro(string name, string url)
+                : base(name, url)
+            {
+            }
+            public override string GetAccountLink(string wallet)
+            {
+                string acc = "";
+                try
+                {
+                    acc = "https://zenmine.pro/#/account/" + wallet;
+                }
+                catch (Exception)
+                {
+                }
+                return acc;
+            }
+        }
     }
 }

@@ -47,7 +47,7 @@ namespace OneMiner.Coins.EthHash
             List<Pool> pools = new List<Pool>();
             try
             {
-                Pool pool2 = new Pool("Nanopool", "sia-us-west1.nanopool.org:7777");
+                Pool pool2 = new Nanopool("Nanopool", "sia-us-west1.nanopool.org:7777");
                 pools.Add(pool2);
 
                 return pools;
@@ -62,6 +62,26 @@ namespace OneMiner.Coins.EthHash
             string scr = script;
             scr += " -dcoin sia ";
             return scr;
+        }
+
+        class Nanopool : Pool
+        {
+            public Nanopool(string name, string url)
+                : base(name, url)
+            {
+            }
+            public override string GetAccountLink(string wallet)
+            {
+                string acc = "";
+                try
+                {
+                    acc = "https://sia.nanopool.org/account/" + wallet;
+                }
+                catch (Exception)
+                {
+                }
+                return acc;
+            }
         }
     }
 }

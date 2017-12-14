@@ -48,7 +48,7 @@ namespace OneMiner.Coins.EthHash
             List<Pool> pools = new List<Pool>();
             try
             {
-                Pool pool1 = new Pool("Expmine", "us.expmine.pro:9009 ");
+                Pool pool1 = new Expmine("Expmine", "us.expmine.pro:9009 ");
                 pools.Add(pool1);
 
                 return pools;
@@ -61,6 +61,27 @@ namespace OneMiner.Coins.EthHash
         public string GetScript(string script)
         {
             return script;
+        }
+
+
+        class Expmine : Pool
+        {
+            public Expmine(string name, string url)
+                : base(name, url)
+            {
+            }
+            public override string GetAccountLink(string wallet)
+            {
+                string acc = "";
+                try
+                {
+                    acc = "https://expmine.pro/#/account/" + wallet;
+                }
+                catch (Exception)
+                {
+                }
+                return acc;
+            }
         }
     }
 }

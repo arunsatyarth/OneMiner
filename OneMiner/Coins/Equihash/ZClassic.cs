@@ -52,7 +52,7 @@ namespace OneMiner.EthHash
             List<Pool> pools = new List<Pool>();
             try
             {
-                Pool pool1 = new Pool("zclmine.pro", "eu.zclmine.pro:9009");
+                Pool pool1 = new ZclMine("zclmine.pro", "eu.zclmine.pro:9009");
                 pools.Add(pool1);
 
                 return pools;
@@ -67,6 +67,26 @@ namespace OneMiner.EthHash
             return script;
         }
 
+
+        class ZclMine : Pool
+        {
+            public ZclMine(string name, string url)
+                : base(name, url)
+            {
+            }
+            public override string GetAccountLink(string wallet)
+            {
+                string acc = "";
+                try
+                {
+                    acc = "https://zclmine.pro/#/miners" + wallet;
+                }
+                catch (Exception)
+                {
+                }
+                return acc;
+            }
+        }
 
     }
 }

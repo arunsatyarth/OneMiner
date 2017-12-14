@@ -52,7 +52,7 @@ namespace OneMiner.EthHash
             List<Pool> pools = new List<Pool>();
             try
             {
-                Pool pool1 = new Pool("Pool Gold", "eu.pool.gold:3044");
+                Pool pool1 = new PoolGold("Pool Gold", "eu.pool.gold:3044");
                 pools.Add(pool1);
 
                 return pools;
@@ -67,6 +67,27 @@ namespace OneMiner.EthHash
             return script;
         }
 
+
+
+        class PoolGold : Pool
+        {
+            public PoolGold(string name, string url)
+                : base(name, url)
+            {
+            }
+            public override string GetAccountLink(string wallet)
+            {
+                string acc = "";
+                try
+                {
+                    acc = "https://mine.pool.gold/workers/" + wallet;
+                }
+                catch (Exception)
+                {
+                }
+                return acc;
+            }
+        }
 
     }
 }

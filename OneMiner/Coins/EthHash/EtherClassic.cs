@@ -47,7 +47,7 @@ namespace OneMiner.Coins.EthHash
             List<Pool> pools = new List<Pool>();
             try
             {
-                Pool pool1 = new Pool("Ethermine", "us1-etc.ethermine.org:4444");
+                Pool pool1 = new Ethermine("Ethermine", "us1-etc.ethermine.org:4444");
                 pools.Add(pool1);
 
                 return pools;
@@ -62,5 +62,27 @@ namespace OneMiner.Coins.EthHash
             return script;
         }
 
+
+
+        class Ethermine : Pool
+        {
+            public Ethermine(string name, string url)
+                : base(name, url)
+            {
+            }
+            public override string GetAccountLink(string wallet)
+            {
+                string acc = "";
+                try
+                {
+                    acc = "https://etc.ethermine.org/miners/" + wallet;
+                }
+                catch (Exception)
+                {
+                }
+                return acc;
+            }
+        }
+       
     }
 }

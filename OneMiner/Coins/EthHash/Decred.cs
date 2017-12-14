@@ -47,7 +47,7 @@ namespace OneMiner.EthHash
             List<Pool> pools = new List<Pool>();
             try
             {
-                Pool pool1 = new Pool("Supernova", "dcr.suprnova.cc:3252");
+                Pool pool1 = new Supernova("Supernova", "dcr.suprnova.cc:3252");
                 pools.Add(pool1);
 
                 return pools;
@@ -60,6 +60,26 @@ namespace OneMiner.EthHash
         public string GetScript(string script)
         {
             return script;
+        }
+
+        class Supernova : Pool
+        {
+            public Supernova(string name, string url)
+                : base(name, url)
+            {
+            }
+            public override string GetAccountLink(string wallet)
+            {
+                string acc = "";
+                try
+                {
+                    acc = "https://dcr.suprnova.cc/index.php?page=dashboard";
+                }
+                catch (Exception)
+                {
+                }
+                return acc;
+            }
         }
 
     }
