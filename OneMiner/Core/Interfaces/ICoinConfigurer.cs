@@ -17,7 +17,8 @@ namespace OneMiner.Core.Interfaces
 
         string Pool {get;set;}
 
-        string Wallet {get;set;}
+        string Wallet { get; set; }
+        string PoolAccount { get; set; }
 
     }
 }

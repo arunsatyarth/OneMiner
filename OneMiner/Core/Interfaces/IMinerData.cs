@@ -22,10 +22,12 @@ namespace OneMiner.Core.Interfaces
         string MainCoin { get; set; }
         string MainCoinPool { get; set; }
         string MainCoinWallet { get; set; }
+        string MainCoinPoolAccount { get; set; }
         bool DualMining { get; set; }
         string DualCoin { get; set; }
         string DualCoinPool { get; set; }
         string DualCoinWallet { get; set; }
+        string DualCoinPoolAccount { get; set; }
         List<MinerScript> MinerScripts { get; set; }
         int MinerGpuType { get; set; }
 

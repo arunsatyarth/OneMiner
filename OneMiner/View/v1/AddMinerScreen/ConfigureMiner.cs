@@ -15,6 +15,9 @@ namespace OneMiner.View.v1
         private AddMinerContainer m_parent = null;
         private ICoin m_selected_coin = null;
 
+        public string Pool { get; set; }
+        public string Wallet { get; set; }
+        public string PoolAccount { get; set; }
 
         public ConfigureMiner()
         {
@@ -35,14 +38,15 @@ namespace OneMiner.View.v1
 
 
 
-            if(m_selected_coin!=null)
+            if (m_selected_coin != null)
             {
                 lblCoinName.Text = m_selected_coin.Name;
                 txtPool.Text = Pool;
                 txtWallet.Text = Wallet;
+                txtPoolAccount.Text = PoolAccount;
 
                 cmbPoolList.SelectedIndexChanged += cmbPoolList_SelectedIndexChanged;
-                foreach(Pool item in m_selected_coin.GetPools())
+                foreach (Pool item in m_selected_coin.GetPools())
                 {
                     cmbPoolList.Items.Add(item.Name);
 
@@ -50,17 +54,30 @@ namespace OneMiner.View.v1
 
             }
         }
-
+        private Pool GetPool()
+        {
+            Pool pool = null;
+            try
+            {
+                List<Pool> pools = m_selected_coin.GetPools();
+                int index = cmbPoolList.SelectedIndex;
+                pool = pools[index];
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+            return pool;
+        }
         void cmbPoolList_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                List<Pool> pools=m_selected_coin.GetPools();
-                int index = cmbPoolList.SelectedIndex;
-                Pool pool = pools[index];
-                if(pool!=null)
+                Pool pool = GetPool();
+                if (pool != null)
                 {
                     txtPool.Text = pool.Link;
+                    txtPoolAccount.Text = pool.GetAccountLink(txtWallet.Text);
                 }
             }
             catch (Exception de)
@@ -72,19 +89,40 @@ namespace OneMiner.View.v1
         {
 
         }
-        public string Pool { get; set; }
 
-        public string Wallet { get; set; }
+        public void CalculatePoolAccount()
+        {
+            try
+            {
+                Pool pool = GetPool();
+                if (pool != null)
+                {
+                    txtPoolAccount.Text = pool.GetAccountLink(txtWallet.Text);
+                }
+            }
+            catch (Exception de)
+            {
+            }
+        }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             Pool = txtPool.Text.Trim();
-
+            //CalculatePoolAccount();
+            //cmbPoolList.SelectedIndex = -1;
+            cmbPoolList.Text = "Select Pool";
         }
 
         private void txtWallet_TextChanged(object sender, EventArgs e)
         {
             Wallet = txtWallet.Text.Trim();
+            CalculatePoolAccount();
+
+        }
+
+        private void txtPoolAccount_TextChanged(object sender, EventArgs e)
+        {
+            PoolAccount = txtPoolAccount.Text.Trim();
 
         }
     }

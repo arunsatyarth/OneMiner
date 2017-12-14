@@ -122,10 +122,14 @@ namespace OneMiner.Model.Config
         public string MainCoin { get; set; }
         public string MainCoinPool { get; set; }
         public string MainCoinWallet { get; set; }
+        public string MainCoinPoolAccount { get; set; }
+
+
         public bool DualMining { get; set; }
         public string DualCoin { get; set; }
         public string DualCoinPool { get; set; }
         public string DualCoinWallet { get; set; }
+        public string DualCoinPoolAccount { get; set; }
         public List<MinerScript> MinerScripts { get; set; }
         public int MinerGpuType { get; set; }
 
@@ -286,7 +290,8 @@ namespace OneMiner.Model.Config
             //newMiner.BATFileName ="";
             newMiner.MainCoin=miner.MainCoin.Name;
             newMiner.MainCoinPool =mainCoinConfigurer.Pool;
-            newMiner.MainCoinWallet =mainCoinConfigurer.Wallet;
+            newMiner.MainCoinWallet = mainCoinConfigurer.Wallet;
+            newMiner.MainCoinPoolAccount = mainCoinConfigurer.PoolAccount;
             newMiner.DualMining =miner.DualMining;
             newMiner.MinerGpuType = miner.MinerGpuType;
             if (miner.DualMining)
@@ -294,6 +299,7 @@ namespace OneMiner.Model.Config
                 newMiner.DualCoin = miner.DualCoin.Name;
                 newMiner.DualCoinPool = dualCoinConfigurer.Pool;
                 newMiner.DualCoinWallet = dualCoinConfigurer.Wallet;
+                newMiner.DualCoinPoolAccount = dualCoinConfigurer.PoolAccount;
             }
             //minerprograms
             foreach (IMinerProgram item in miner.MinerPrograms)
