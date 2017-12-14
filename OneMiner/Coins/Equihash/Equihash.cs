@@ -40,9 +40,9 @@ namespace OneMiner.Equihash
 
             //Now add it to the lists
             m_SupportedCoins.Add(m_CoinsHash[EquihashCoins.Zcash] as ICoin);
+            m_SupportedCoins.Add(m_CoinsHash[EquihashCoins.Bitcoin_Gold] as ICoin);
             m_SupportedCoins.Add(m_CoinsHash[EquihashCoins.ZenCash] as ICoin);
             m_SupportedCoins.Add(m_CoinsHash[EquihashCoins.ZClassic] as ICoin);
-            m_SupportedCoins.Add(m_CoinsHash[EquihashCoins.Bitcoin_Gold] as ICoin);
 
         }
         public string Name
