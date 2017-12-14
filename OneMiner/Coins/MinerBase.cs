@@ -74,11 +74,6 @@ namespace OneMiner.Coins
                 gpuType = gpuType ^ (1 << 0);                
             if (prog.GPUType == CardMake.Amd)
                 gpuType = gpuType ^ (1 << 1);
-            if (prog.GPUType == CardMake.COMMON)
-            {
-                gpuType = gpuType ^ (1 << 0);
-                gpuType = gpuType ^ (1 << 1);
-            }
             MinerGpuType = gpuType;
             SetupMiner();
             Factory.Instance.Model.AddMiner(this);

@@ -74,7 +74,7 @@ namespace OneMiner.Coins.EthHash
 
         {
             Type = "Claymore";
-            GPUType = CardMake.COMMON;
+            GPUType = CardMake.Amd;//Dont change this to common. it creates problem while we switch miner on/off in checkbox
             OutputReader = new ClayMoreEthReader(STATS_LINK);
         }
         

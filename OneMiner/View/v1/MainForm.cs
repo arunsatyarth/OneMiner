@@ -298,7 +298,7 @@ namespace OneMiner
         }
         public void ShowHardwareMissingError()
         {
-            MessageBox.Show("System could not detect any Nvidia or AMD graphics card in your machine! If this is by mistake please select the Graphics card make  from Scripts tab ",
+            MessageBox.Show("System could not detect any Nvidia or AMD graphics card in your machine! If this is by mistake, please select correct miners from Script tab ",
                 "Hardware Missing");
         }
         
