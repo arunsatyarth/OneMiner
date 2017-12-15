@@ -18,11 +18,14 @@ namespace OneMiner.EthHash
 
         ICoinConfigurer Configurer;
 
+        public string DefaultAddress { get; set; }
 
         public BitcoinGold(IHashAlgorithm algo)
         {
             Algorithm = algo;
 
+            //This is only used in Debug mode for quick testing of the miner
+            DefaultAddress = "16ZhgdGXwoD1NFUWwRYFkZEPjQcAuKP9Ho";
         }
         public string Name
         {

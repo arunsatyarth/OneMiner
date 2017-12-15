@@ -38,6 +38,7 @@
             this.txtPoolAccount = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnFillDefaultAddress = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -137,12 +138,24 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Optional";
             // 
+            // btnFillDefaultAddress
+            // 
+            this.btnFillDefaultAddress.Location = new System.Drawing.Point(520, 130);
+            this.btnFillDefaultAddress.Name = "btnFillDefaultAddress";
+            this.btnFillDefaultAddress.Size = new System.Drawing.Size(121, 23);
+            this.btnFillDefaultAddress.TabIndex = 10;
+            this.btnFillDefaultAddress.Text = "Default Address";
+            this.btnFillDefaultAddress.UseVisualStyleBackColor = true;
+            this.btnFillDefaultAddress.Visible = false;
+            this.btnFillDefaultAddress.Click += new System.EventHandler(this.btnFillDefaultAddress_Click);
+            // 
             // ConfigureMiner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(708, 394);
+            this.Controls.Add(this.btnFillDefaultAddress);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtPoolAccount);
             this.Controls.Add(this.label4);
@@ -173,5 +186,6 @@
         private System.Windows.Forms.TextBox txtPoolAccount;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnFillDefaultAddress;
     }
 }

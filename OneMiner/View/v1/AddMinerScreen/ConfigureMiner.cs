@@ -23,6 +23,9 @@ namespace OneMiner.View.v1
         {
 
             InitializeComponent();
+#if DEBUG
+            btnFillDefaultAddress.Visible = true;
+#endif
         }
         public void AssignParent(object parent)
         {
@@ -124,6 +127,11 @@ namespace OneMiner.View.v1
         {
             PoolAccount = txtPoolAccount.Text.Trim();
 
+        }
+
+        private void btnFillDefaultAddress_Click(object sender, EventArgs e)
+        {
+            txtWallet.Text=m_selected_coin.DefaultAddress;
         }
     }
 }

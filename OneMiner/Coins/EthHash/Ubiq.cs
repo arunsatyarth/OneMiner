@@ -14,10 +14,14 @@ namespace OneMiner.Coins.EthHash
 
         ICoinConfigurer Configurer;
 
+        public string DefaultAddress { get; set; }
 
         public Ubiq(IHashAlgorithm algo)
         {
             Algorithm = algo;
+
+            //This is only used in Debug mode for quick testing of the miner
+            DefaultAddress = "0xee994c363f4db07e9126d9c2f9935f6030ed49fe";
 
         }
         public string Name

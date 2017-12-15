@@ -18,10 +18,14 @@ namespace OneMiner.EthHash
 
         ICoinConfigurer Configurer;
 
+        public string DefaultAddress { get; set; }
         
         public Ethereum(IHashAlgorithm algo)
         {
             Algorithm = algo;
+
+            //This is only used in Debug mode for quick testing of the miner
+            DefaultAddress = "0x033ff6918d434cef3887d8e529c14d1bcb91ca8b";
 
         }
         public  string Name

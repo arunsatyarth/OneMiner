@@ -68,6 +68,12 @@ namespace OneMiner.Core.Interfaces
         /// <returns></returns>
         string GetScript(string script);
 
+        /// <summary>
+        /// Please Note this is only used in Debug mode for wuick testing of the miner
+        /// </summary>
+        string DefaultAddress { get; set; }
+
+
 
     }
 }

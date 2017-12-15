@@ -18,10 +18,14 @@ namespace OneMiner.EthHash
 
         ICoinConfigurer Configurer;
 
+        public string DefaultAddress { get; set; }
 
         public ZClassic(IHashAlgorithm algo)
         {
             Algorithm = algo;
+
+            //This is only used in Debug mode for quick testing of the miner
+            DefaultAddress = "t1X2L5WS4UKDm3fk1n72og6iiKgYVW4WWow";
 
         }
         public string Name

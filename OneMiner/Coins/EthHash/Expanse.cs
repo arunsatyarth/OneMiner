@@ -14,10 +14,14 @@ namespace OneMiner.Coins.EthHash
 
         ICoinConfigurer Configurer;
 
+        public string DefaultAddress { get; set; }
 
         public Expanse(IHashAlgorithm algo)
         {
             Algorithm = algo;
+
+            //This is only used in Debug mode for quick testing of the miner
+            DefaultAddress = "0x8201b27781456b75502b1aed759dcc001a03f4aa";
 
         }
         public  string Name

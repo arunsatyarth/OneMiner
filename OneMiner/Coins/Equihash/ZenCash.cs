@@ -18,11 +18,14 @@ namespace OneMiner.EthHash
 
         ICoinConfigurer Configurer;
 
+        public string DefaultAddress { get; set; }
 
         public ZenCash(IHashAlgorithm algo)
         {
             Algorithm = algo;
 
+            //This is only used in Debug mode for quick testing of the miner
+            DefaultAddress = "znoxX7U7EYC3XaAN81eziNk7YYboA2wHZMF";
         }
         public string Name
         {
