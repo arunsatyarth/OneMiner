@@ -28,6 +28,10 @@ Below are some of the features for first release
 7. Open source. so no fear of hashrate stealing like in Minergate.
 8. 1 click Jump to pool account
 
+# Screenshot
+1. With Just 1 GPU
+
+![alt text](https://github.com/arunsatyarth/OneMiner/blob/master/Screenshots/1GPU.PNG)
 
 # Future Planned Features
 1. Automatically mine the most profitable coin
