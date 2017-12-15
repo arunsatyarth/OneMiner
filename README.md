@@ -6,6 +6,11 @@ The name might hold a subtle  reference to the 'One Ring" from 'Lord of the Ring
 Download from Github
 https://github.com/arunsatyarth/OneMiner/releases
 
+# Screenshot
+With Just 1 GPU. Additional Gpus would show up on the right of it.
+
+![alt text](https://github.com/arunsatyarth/OneMiner/blob/master/Screenshots/1GPU.PNG)
+
 # Reasons to Use
 The main reason to use this tool is that  setting up a miner is difficult. Especially if you have different GPU cards or if you want to switch between mining different coins or to different wallet adddresses. It becomes a lot script heavy to handle such situations. This tool was built to have all such functionality in 1 place. It is open source hence anyone can download the code/tool and use it as is or make modifications to suit his needs.
 
@@ -22,16 +27,11 @@ Below are some of the features for first release
 2. Support mixed GPUs. Nvidia and AMD
 3. Easy switch between different configured miners. Mine different coins with ease.
 4. Mine on Startup
-5. Automatically restart miner in case of crash or accidental close.
-5. Automatic connection to Wifi. Sometimes when network goes and comes back up, wifi dosen't connect and miner would be stuck. With this, it would connect automatically
-6. Launching scripts, commands at specifc times,eg: To restart machine at a set time.
-7. Open source. so no fear of hashrate stealing like in Minergate.
-8. 1 click Jump to pool account
+5. Automatically restart miner in case of crash or accidental close. eg: Zcash EWBF miner would always close on network unavailablity.
+6. Open source. so no fear of hashrate stealing like in Minergate.
+7. 1 click Jump to pool account
 
-# Screenshot
-1. With Just 1 GPU
 
-![alt text](https://github.com/arunsatyarth/OneMiner/blob/master/Screenshots/1GPU.PNG)
 
 # Future Planned Features
 1. Automatically mine the most profitable coin
@@ -39,6 +39,8 @@ Below are some of the features for first release
 5. Benchmark against different algos with profitability
 6. Identify new coins in market for mining
 7. Automatic wallet generation for coins so that you dont have to enter wallet address.
+8. Automatic connection to Wifi. Sometimes when network goes and comes back up, wifi dosen't connect and miner would be stuck. With this, it would connect automatically
+9. Launching scripts, commands at specifc times,eg: To restart machine at a set time.
 
 # How to use
 1. The first time you open the app, you will have a "Default Ethereum Miner" configured. Right click and edit it to change the wallet address to your address.
