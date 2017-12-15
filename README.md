@@ -46,7 +46,9 @@ Below are some of the features for first release
 1. The first time you open the app, you will have a "Default Ethereum Miner" configured. Right click and edit it to change the wallet address to your address.
 2. You could create more miners with the Add Miner button.
 3. The first time it would take a bit of time to start mining as it needs to download the miners.
-4. You can configure settings from the settings window to mine on launch etc
+4. You can configure settings from the settings window to mine on launch etc.
+5. Right click on the miner to Activate a miner, edit it or delete it.
+6. Activated miner: Any miner can be started by the start button but the Activated miner would be the miner which starts when system restarts and "Mine on Launch" is configured to Yes
 
 
 # Donations
