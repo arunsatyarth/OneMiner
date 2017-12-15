@@ -83,7 +83,7 @@ namespace OneMiner.EthHash
                 string acc = "";
                 try
                 {
-                    acc = "https://zclmine.pro/#/miners" + wallet;
+                    acc = "https://zclmine.pro/#/miners/" + wallet;
                 }
                 catch (Exception)
                 {
