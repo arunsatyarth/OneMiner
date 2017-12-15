@@ -18,7 +18,7 @@ I would like to hear your feedback and thoughts if any. Please use the github is
 # Features
 Below are some of the features for first release
 
-1. Mine any GPU based coins(Ethereum, Zcash, Ethereum Classic, Ubiq)
+1. Mine any GPU based coins(Ethereum, Zcash,Bitcoin Gold, Zencash, Ethereum Classic, Ubiq, Expanse, ZClassic )
 2. Support mixed GPUs. Nvidia and AMD
 3. Easy switch between different configured miners. Mine different coins with ease.
 4. Mine on Startup
@@ -26,6 +26,7 @@ Below are some of the features for first release
 5. Automatic connection to Wifi. Sometimes when network goes and comes back up, wifi dosen't connect and miner would be stuck. With this, it would connect automatically
 6. Launching scripts, commands at specifc times,eg: To restart machine at a set time.
 7. Open source. so no fear of hashrate stealing like in Minergate.
+8. 1 click Jump to pool account
 
 
 # Future Planned Features
