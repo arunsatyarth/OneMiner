@@ -62,7 +62,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(771, 80);
+            this.btnSave.Location = new System.Drawing.Point(763, 80);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(59, 23);
             this.btnSave.TabIndex = 14;
@@ -75,7 +75,7 @@
             this.lnkEdit.AutoSize = true;
             this.lnkEdit.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.lnkEdit.LinkColor = System.Drawing.Color.SteelBlue;
-            this.lnkEdit.Location = new System.Drawing.Point(768, 53);
+            this.lnkEdit.Location = new System.Drawing.Point(760, 53);
             this.lnkEdit.Name = "lnkEdit";
             this.lnkEdit.Size = new System.Drawing.Size(25, 13);
             this.lnkEdit.TabIndex = 22;
@@ -85,7 +85,7 @@
             // 
             // btnDefault
             // 
-            this.btnDefault.Location = new System.Drawing.Point(771, 125);
+            this.btnDefault.Location = new System.Drawing.Point(763, 125);
             this.btnDefault.Name = "btnDefault";
             this.btnDefault.Size = new System.Drawing.Size(59, 23);
             this.btnDefault.TabIndex = 23;

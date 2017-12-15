@@ -162,6 +162,8 @@ namespace OneMiner.Equihash
                     ICoinConfigurer mainCoinConfigurer = mainCoin.SettingsScreen;
                     mainCoinConfigurer.Pool = minerData.MainCoinPool;
                     mainCoinConfigurer.Wallet = minerData.MainCoinWallet;
+                    mainCoinConfigurer.PoolAccount = minerData.MainCoinPoolAccount;
+
                     if (minerData.DualMining)
                     {
                         dualCoin = CreateCoinObject(minerData.DualCoin);
@@ -170,6 +172,8 @@ namespace OneMiner.Equihash
                             ICoinConfigurer dualCoinConfigurer = dualCoin.SettingsScreen;
                             dualCoinConfigurer.Pool = minerData.DualCoinPool;
                             dualCoinConfigurer.Wallet = minerData.DualCoinWallet;
+                            dualCoinConfigurer.PoolAccount = minerData.DualCoinPoolAccount;
+
                         }
                     }
                 }

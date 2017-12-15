@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -89,7 +90,10 @@ namespace OneMiner.View.v1
         public void UpdateState()
         {
             UiStateUtil.UpdateState(Miner, lblMinerState, btnStartMining, null);
-            
+            if(Miner.DualMining)
+            {
+                lnDualCoinPool.Visible = true;
+            }
         }
         public void CalculateTotalHashrate()
         {
@@ -171,6 +175,28 @@ namespace OneMiner.View.v1
         {
             UiStateUtil.MiningStartAction(Miner);
 
+        }
+
+        private void lnlMainCoinPool_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                Process.Start(Miner.MainCoin.SettingsScreen.PoolAccount);
+            }
+            catch (Exception se)
+            {
+            }
+        }
+
+        private void lnDualCoinPool_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                Process.Start(Miner.DualCoin.SettingsScreen.PoolAccount);
+            }
+            catch (Exception se)
+            {
+            }
         }
     }
 }

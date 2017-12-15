@@ -39,7 +39,11 @@
             this.lblShares = new System.Windows.Forms.Label();
             this.btnStartMining = new System.Windows.Forms.Button();
             this.lblMinerState = new System.Windows.Forms.Label();
+            this.lnlMainCoinPool = new System.Windows.Forms.LinkLabel();
+            this.lnDualCoinPool = new System.Windows.Forms.LinkLabel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbTemplate)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblMinername
@@ -118,14 +122,14 @@
             this.pnlMinerInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlMinerInfo.Location = new System.Drawing.Point(270, 41);
             this.pnlMinerInfo.Name = "pnlMinerInfo";
-            this.pnlMinerInfo.Size = new System.Drawing.Size(821, 293);
+            this.pnlMinerInfo.Size = new System.Drawing.Size(832, 293);
             this.pnlMinerInfo.TabIndex = 14;
             // 
             // lblTotalHashrate
             // 
             this.lblTotalHashrate.AutoSize = true;
             this.lblTotalHashrate.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalHashrate.Location = new System.Drawing.Point(83, 85);
+            this.lblTotalHashrate.Location = new System.Drawing.Point(97, 95);
             this.lblTotalHashrate.Name = "lblTotalHashrate";
             this.lblTotalHashrate.Size = new System.Drawing.Size(91, 25);
             this.lblTotalHashrate.TabIndex = 15;
@@ -135,7 +139,7 @@
             // 
             this.lblShares.AutoSize = true;
             this.lblShares.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShares.Location = new System.Drawing.Point(85, 119);
+            this.lblShares.Location = new System.Drawing.Point(99, 129);
             this.lblShares.Name = "lblShares";
             this.lblShares.Size = new System.Drawing.Size(84, 13);
             this.lblShares.TabIndex = 16;
@@ -164,12 +168,55 @@
             this.lblMinerState.TabIndex = 18;
             this.lblMinerState.Text = "Stopped";
             // 
+            // lnlMainCoinPool
+            // 
+            this.lnlMainCoinPool.AutoSize = true;
+            this.lnlMainCoinPool.LinkArea = new System.Windows.Forms.LinkArea(0, 15);
+            this.lnlMainCoinPool.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.lnlMainCoinPool.LinkColor = System.Drawing.Color.RoyalBlue;
+            this.lnlMainCoinPool.Location = new System.Drawing.Point(8, 21);
+            this.lnlMainCoinPool.Name = "lnlMainCoinPool";
+            this.lnlMainCoinPool.Size = new System.Drawing.Size(55, 17);
+            this.lnlMainCoinPool.TabIndex = 19;
+            this.lnlMainCoinPool.TabStop = true;
+            this.lnlMainCoinPool.Text = "Main Pool";
+            this.lnlMainCoinPool.UseCompatibleTextRendering = true;
+            this.lnlMainCoinPool.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnlMainCoinPool_LinkClicked);
+            // 
+            // lnDualCoinPool
+            // 
+            this.lnDualCoinPool.AutoSize = true;
+            this.lnDualCoinPool.LinkArea = new System.Windows.Forms.LinkArea(0, 15);
+            this.lnDualCoinPool.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.lnDualCoinPool.LinkColor = System.Drawing.Color.RoyalBlue;
+            this.lnDualCoinPool.Location = new System.Drawing.Point(101, 21);
+            this.lnDualCoinPool.Name = "lnDualCoinPool";
+            this.lnDualCoinPool.Size = new System.Drawing.Size(53, 17);
+            this.lnDualCoinPool.TabIndex = 21;
+            this.lnDualCoinPool.TabStop = true;
+            this.lnDualCoinPool.Text = "Dual Pool";
+            this.lnDualCoinPool.UseCompatibleTextRendering = true;
+            this.lnDualCoinPool.Visible = false;
+            this.lnDualCoinPool.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnDualCoinPool_LinkClicked);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lnlMainCoinPool);
+            this.groupBox1.Controls.Add(this.lnDualCoinPool);
+            this.groupBox1.Location = new System.Drawing.Point(68, 290);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(162, 44);
+            this.groupBox1.TabIndex = 22;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Visit Pool Account";
+            // 
             // MinerInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1091, 346);
+            this.ClientSize = new System.Drawing.Size(1132, 346);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblMinerState);
             this.Controls.Add(this.btnStartMining);
             this.Controls.Add(this.lblShares);
@@ -185,6 +232,8 @@
             this.Text = "MinerInfo";
             this.Load += new System.EventHandler(this.MinerInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbTemplate)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,5 +252,8 @@
         private System.Windows.Forms.Label lblShares;
         private System.Windows.Forms.Button btnStartMining;
         private System.Windows.Forms.Label lblMinerState;
+        private System.Windows.Forms.LinkLabel lnlMainCoinPool;
+        private System.Windows.Forms.LinkLabel lnDualCoinPool;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
