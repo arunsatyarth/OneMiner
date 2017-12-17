@@ -62,10 +62,10 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(48, 47);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(759, 20);
+            this.label1.Size = new System.Drawing.Size(566, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "OneMiner is an open source project which runs on donations. Would really apprecia" +
-    "te if you would like to donate.";
+            this.label1.Text = "If you would like to supprt this project, your donations would be greatly appreci" +
+    "ated";
             // 
             // label2
             // 
