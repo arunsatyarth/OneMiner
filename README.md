@@ -7,9 +7,9 @@ Download from Github
 https://github.com/arunsatyarth/OneMiner/releases
 
 # Screenshot
-With Just 1 GPU. Additional Gpus would show up on the right of it.
+Screenshot of a 6 GPU Rig mining ZCash with 3 AMD and # NVidia cards 
 
-![alt text](https://github.com/arunsatyarth/OneMiner/blob/master/Screenshots/1GPU.PNG)
+![Running View](https://github.com/arunsatyarth/OneMiner/blob/master/Screenshots/1.PNG)
 
 # Reasons to Use
 The main reason to use this tool is that  setting up a miner is difficult. Especially if you have different GPU cards or if you want to switch between mining different coins or to different wallet adddresses. It becomes a lot script heavy to handle such situations. This tool was built to have all such functionality in 1 place. It is open source hence anyone can download the code/tool and use it as is or make modifications to suit his needs.
@@ -62,4 +62,32 @@ If you would like to supprt this project, your donations would be greatly apprec
 
 ### Litecoin
 LgPDDxVbtB4khAd4b6MmP6GGV3JSdyShpR
+
+
+# Screenshots of different screens
+1. Miner options menu on Right click on Miner list
+
+![Miner options](https://github.com/arunsatyarth/OneMiner/blob/master/Screenshots/2.png)
+
+2. Adding a Miner
+
+![Adding a Miner](https://github.com/arunsatyarth/OneMiner/blob/master/Screenshots/3.PNG)
+
+3. Minner Settings
+
+You can select any pool. Even the ones which are not present in the list. Be sure to give correpsonding Pool Account link so you can quickly access it when needed.
+![Adding a Miner](https://github.com/arunsatyarth/OneMiner/blob/master/Screenshots/4.PNG)
+
+4. Script Tab
+
+You can edit everything about the miner from the script tab. It will have subtabe for individual miner programs. No matter what is shown in UI or configured outside, this script is what would run finally. So editing this would give you maximum control.
+Also you can switch on/off AMD/NVidia miners individually using the chackboxes.
+![Adding a Miner](https://github.com/arunsatyarth/OneMiner/blob/master/Screenshots/5.png)
+
+
+
+
+
+
+
 	
