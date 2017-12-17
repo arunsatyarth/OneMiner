@@ -34,8 +34,8 @@ namespace OneMiner.Core.Interfaces
         {
             try
             {
-                string nvidia_pattern = "(N|n)(V|v)(I|i)(D|d)(I|i)(A|a)|(G|g)(E|e)(F|f)(O|o)(R|r)(C|c)(E|e) ";
-                string amd_pattern = "(A|a)(M|m)(D|d)|(R|r)(A|a)(D|d)(E|e)(O|o)(N|n)";
+                string nvidia_pattern = "(N|n)(V|v)(I|i)(D|d)(I|i)(A|a)|(G|g)(E|e)(F|f)(O|o)(R|r)(C|c)(E|e)|(G|g)(T|t)(X|x) ";
+                string amd_pattern = "(A|a)(M|m)(D|d)|(R|r)(A|a)(D|d)(E|e)(O|o)(N|n)|(R|r)(X|x)";
                 Match r_nvidia_id = Regex.Match(GPUName, nvidia_pattern);
                 Match r_amd_id = Regex.Match(GPUName, amd_pattern);
                 if (r_nvidia_id.Success)

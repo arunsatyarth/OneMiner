@@ -25,7 +25,10 @@ namespace OneMiner.Core.Interfaces
         List<GpuData> GetGpuList();
         void ChangeGPUType(IMinerProgram prog);
 
-
+        /// <summary>
+        /// tells wether this is a default miner or not.
+        /// </summary>
+        bool DefaultMiner { get; set; }
 
 
     }

@@ -54,7 +54,7 @@ namespace OneMiner.EthHash
             List<Pool> pools = new List<Pool>();
             try
             {
-                Pool pool1 = new FlyPool("Flypool", "ssl://eu1-zcash.flypool.org:3443");
+                Pool pool1 = new FlyPool("Flypool", "eu1-zcash.flypool.org:3333");
                 Pool pool2 = new NanoPool("Nanopool", "zec-us-east1.nanopool.org:6666");
                 pools.Add(pool1);
                 pools.Add(pool2);

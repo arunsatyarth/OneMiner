@@ -122,6 +122,12 @@
     <Compile Include="Model\UnZip\UnZipRarSystem.cs" />
     <Compile Include="Model\UnZip\UnZipZipFile.cs" />
     <Compile Include="View\IView.cs" />
+    <Compile Include="View\v1\AddMinerScreen\DefaultMinerMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\v1\AddMinerScreen\DefaultMinerMessage.Designer.cs">
+      <DependentUpon>DefaultMinerMessage.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\v1\AddMinerScreen\EditMinerContainer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,6 +257,9 @@
     <Compile Include="View\v1\V1View.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="View\v1\AddMinerScreen\DefaultMinerMessage.resx">
+      <DependentUpon>DefaultMinerMessage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\v1\AddMinerScreen\EditMinerContainer.resx">
       <DependentUpon>EditMinerContainer.cs</DependentUpon>
     </EmbeddedResource>

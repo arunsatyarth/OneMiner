@@ -32,6 +32,7 @@ namespace OneMiner.Coins
         public string Logo { get; set; }//not sure if needed
         public MinerProgramState MinerState { get; set; }
 
+        public bool DefaultMiner { get; set; }
 
         public MinerBase(string id, ICoin mainCoin, bool dualMining, ICoin dualCoin, string minerName, IMinerData minerData)
         {
@@ -49,6 +50,7 @@ namespace OneMiner.Coins
             MinerPrograms = new List<IMinerProgram>();
             ActualMinerPrograms = new List<IMinerProgram>();
             SetupMiner();
+            DefaultMiner = false;
         }
         public void IdentifyGpuTypes()
         {

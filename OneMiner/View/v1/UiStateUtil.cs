@@ -1,5 +1,6 @@
 ﻿using OneMiner.Core;
 using OneMiner.Core.Interfaces;
+using OneMiner.View.v1.AddMinerScreen;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,6 +12,31 @@ namespace OneMiner.View.v1
 {
     class UiStateUtil
     {
+        public static  void StartMiner(IMiner miner)
+        {
+            if(miner.DefaultMiner)
+            {
+                DefaultMinerMessage message = new DefaultMinerMessage();
+                message.ShowDialog();
+                if (message.MinerAction == DefaultMinerAction.Continue)
+                    Factory.Instance.CoreObject.StartMining(miner);
+                else if (message.MinerAction == DefaultMinerAction.Edit)
+                {
+                    EditMinerContainer editMiner = new EditMinerContainer();
+                    editMiner.LoadInfo(miner);
+                    editMiner.ShowDialog();
+                    Factory.Instance.CoreObject.StartMining(editMiner.Miner);
+                }
+                else
+                    return;
+
+            }
+            else
+            {
+                Factory.Instance.CoreObject.StartMining(miner);
+            }
+
+        }
         public static  void MiningStartAction(IMiner miner)
         {
             switch (miner.MinerState)
@@ -28,10 +54,10 @@ namespace OneMiner.View.v1
                     Factory.Instance.CoreObject.StopMining();
                     break;
                 case MinerProgramState.Stopping:
-                    Factory.Instance.CoreObject.StartMining(miner);
+                    StartMiner(miner);
                     break;
                 case MinerProgramState.Stopped:
-                    Factory.Instance.CoreObject.StartMining(miner);
+                    StartMiner(miner);
                     break;
                 default:
                     break;

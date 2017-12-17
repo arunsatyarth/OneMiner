@@ -335,6 +335,8 @@ namespace OneMiner.View.v1.AddMinerScreen
 
                     Factory.Instance.CoreObject.AddMiner(miner, true);
                     Factory.Instance.CoreObject.RemoveMiner(Miner);
+
+                    Miner = miner;
                 }
             }
             catch (Exception ex)

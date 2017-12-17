@@ -109,10 +109,21 @@ namespace OneMiner.Equihash
                 if (mainCoin != null)
                 {
                     ICoinConfigurer mainCoinConfigurer = mainCoin.SettingsScreen;
-                    mainCoinConfigurer.Pool = "eu1-zcash.flypool.org:3333";
+                    List<Pool> pools = mainCoin.GetPools();
                     mainCoinConfigurer.Wallet = "t1ZBzTwKs8wctQrcD6PmH3SRgJhAcLRwPZQ";
+
+                    if (pools.Count > 0)
+                    {
+                        Pool pool = pools[0];
+                        mainCoinConfigurer.Pool = pool.Link;
+                        mainCoinConfigurer.PoolAccount = pool.GetAccountLink(mainCoinConfigurer.Wallet);
+                    }
+                    else
+                        mainCoinConfigurer.Pool = "eu1-zcash.flypool.org:3333";
                 }
+
                 miner = CreateMiner(GenerateUniqueID(), mainCoin, false, null, "Default Zcash Miner",null);
+                miner.DefaultMiner = true;
 
             }
             catch (Exception e)
