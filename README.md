@@ -66,19 +66,23 @@ LgPDDxVbtB4khAd4b6MmP6GGV3JSdyShpR
 
 # Screenshots of different screens
 1. Miner options menu on Right click on Miner list
-![Miner options](https://github.com/arunsatyarth/OneMiner/blob/master/Screenshots/2.PNG)
+
+![Miner options](https://github.com/arunsatyarth/OneMiner/blob/master/Screenshots/2.png)
 
 2. Adding a Miner
+
 ![Adding a Miner](https://github.com/arunsatyarth/OneMiner/blob/master/Screenshots/3.PNG)
 
 3. Minner Settings
+
 You can select any pool. Even the ones which are not present in the list. Be sure to give correpsonding Pool Account link so you can quickly access it when needed.
 ![Adding a Miner](https://github.com/arunsatyarth/OneMiner/blob/master/Screenshots/4.PNG)
 
 4. Script Tab
+
 You can edit everything about the miner from the script tab. It will have subtabe for individual miner programs. No matter what is shown in UI or configured outside, this script is what would run finally. So editing this would give you maximum control.
 Also you can switch on/off AMD/NVidia miners individually using the chackboxes.
-![Adding a Miner](https://github.com/arunsatyarth/OneMiner/blob/master/Screenshots/5.PNG)
+![Adding a Miner](https://github.com/arunsatyarth/OneMiner/blob/master/Screenshots/5.png)
 
 
 
