@@ -103,7 +103,7 @@ namespace OneMiner.Coins
             Name = minerName;
             Miner = miner;
             AutomaticScriptGeneration = true;
-            m_downloader = new MinerDownloader(MINERURL, EXENAME);
+            m_downloader = new MinerDownloader(MINERURL, EXENAME,Miner);
             Enabled = false;
             GenerateScript();
 

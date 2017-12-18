@@ -82,7 +82,7 @@ namespace OneMiner.View.v1
                     break;
                 case MinerProgramState.Downloading:
                     lblMinerState.ForeColor = SystemColors.HotTrack;
-                    labelName = Miner.MinerState.ToString();
+                    labelName = Miner.MinerState.ToString() +" "+ Miner.DownloadPercentage.ToString()+"%";
                     buttontext = "Stop";
                     break;
                 case MinerProgramState.Running:

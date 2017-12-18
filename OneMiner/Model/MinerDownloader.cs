@@ -1,4 +1,6 @@
 ﻿using Microsoft.Win32;
+using OneMiner.Core;
+using OneMiner.Core.Interfaces;
 using OneMiner.Model.FileIO;
 using System;
 using System.Collections.Generic;
@@ -8,6 +10,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 
 namespace OneMiner.Model
 {
@@ -19,12 +22,14 @@ namespace OneMiner.Model
         private string m_UnzipedFilePath;
         private string m_verifyName;
         private IFileIO m_fileio = null;
+        private IMiner  m_Miner = null;
 
-        public MinerDownloader(string url,string verifyName)
+        public MinerDownloader(string url,string verifyName,IMiner miner)
         {
             m_url = url;
             m_verifyName = verifyName;
             m_fileio = GetFileIOObject();
+            m_Miner = miner;
 
         }
         private IFileIO GetFileIOObject()
@@ -60,6 +65,7 @@ namespace OneMiner.Model
                 return "";
             }
         }
+        bool stilldownloading = false;
         /// <summary>
         /// doenloads the zip file uncompresses it and returns the foldername
         /// </summary>
@@ -83,8 +89,14 @@ namespace OneMiner.Model
                 {
                     using (var client = new WebClient())
                     {
-                        client.DownloadFile(m_url, m_zipFilePath);
-
+                        stilldownloading = true;
+                        client.DownloadProgressChanged += client_DownloadProgressChanged;
+                        client.DownloadFileCompleted += client_DownloadFileCompleted;
+                        client.DownloadFileAsync(new Uri(m_url), m_zipFilePath);
+                        while (stilldownloading)
+                        {
+                            Thread.Sleep(4000);
+                        }
                     }
                     //unzip
                     return Decompress();
@@ -97,6 +109,21 @@ namespace OneMiner.Model
             {
             }
             return "";
+
+        }
+
+        void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            m_Miner.DownloadPercentage=e.ProgressPercentage;
+            Factory.Instance.ViewObject.UpDateMinerState();
+
+        }
+
+        void client_DownloadFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            m_Miner.DownloadPercentage = 100;
+            stilldownloading = false;
+            Factory.Instance.ViewObject.UpDateMinerState();
 
         }
         /// <summary>

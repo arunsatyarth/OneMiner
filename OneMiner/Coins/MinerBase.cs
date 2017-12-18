@@ -31,6 +31,7 @@ namespace OneMiner.Coins
         public string Name { get; set; }
         public string Logo { get; set; }//not sure if needed
         public MinerProgramState MinerState { get; set; }
+        public int DownloadPercentage { get; set; }
 
         public bool DefaultMiner { get; set; }
 
@@ -51,6 +52,7 @@ namespace OneMiner.Coins
             ActualMinerPrograms = new List<IMinerProgram>();
             SetupMiner();
             DefaultMiner = false;
+            DownloadPercentage = 0;
         }
         public void IdentifyGpuTypes()
         {

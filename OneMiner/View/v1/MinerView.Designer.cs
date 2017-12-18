@@ -88,7 +88,7 @@
             // btnStartMining
             // 
             this.btnStartMining.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStartMining.Location = new System.Drawing.Point(301, 23);
+            this.btnStartMining.Location = new System.Drawing.Point(305, 23);
             this.btnStartMining.Name = "btnStartMining";
             this.btnStartMining.Size = new System.Drawing.Size(53, 25);
             this.btnStartMining.TabIndex = 3;
