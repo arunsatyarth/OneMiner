@@ -118,7 +118,7 @@ namespace OneMiner.Core
                 try
                 {
                     if (MiningQueue.Count == 0 || m_keepMining == false)
-                        Thread.Sleep(4000);
+                        Thread.Sleep(3000);
                     else
                     {
                         IMinerProgram miner = MiningQueue.Dequeue();
@@ -193,7 +193,7 @@ namespace OneMiner.Core
                 {
                     m_Downloading = false;
                     if (DownloadingQueue.Count == 0 || m_keepMining == false)
-                        Thread.Sleep(4000);
+                        Thread.Sleep(3000);
                     else
                     {
                         IMinerProgram miner = DownloadingQueue.Dequeue();
