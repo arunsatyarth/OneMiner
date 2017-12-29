@@ -132,7 +132,7 @@
             // pbDualCoin
             // 
             this.pbDualCoin.Image = global::OneMiner.Properties.Resources.ethereum;
-            this.pbDualCoin.Location = new System.Drawing.Point(237, 210);
+            this.pbDualCoin.Location = new System.Drawing.Point(237, 213);
             this.pbDualCoin.Name = "pbDualCoin";
             this.pbDualCoin.Size = new System.Drawing.Size(42, 32);
             this.pbDualCoin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -143,7 +143,7 @@
             // 
             this.lblDual1.AutoSize = true;
             this.lblDual1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDual1.Location = new System.Drawing.Point(75, 219);
+            this.lblDual1.Location = new System.Drawing.Point(75, 222);
             this.lblDual1.Name = "lblDual1";
             this.lblDual1.Size = new System.Drawing.Size(108, 17);
             this.lblDual1.TabIndex = 22;
@@ -174,6 +174,7 @@
             this.lblMainCoinWallet.AutoSize = true;
             this.lblMainCoinWallet.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMainCoinWallet.Location = new System.Drawing.Point(234, 166);
+            this.lblMainCoinWallet.MaximumSize = new System.Drawing.Size(450, 0);
             this.lblMainCoinWallet.Name = "lblMainCoinWallet";
             this.lblMainCoinWallet.Size = new System.Drawing.Size(44, 17);
             this.lblMainCoinWallet.TabIndex = 29;
@@ -193,7 +194,8 @@
             // 
             this.lblDualCoinWallet.AutoSize = true;
             this.lblDualCoinWallet.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDualCoinWallet.Location = new System.Drawing.Point(232, 278);
+            this.lblDualCoinWallet.Location = new System.Drawing.Point(232, 281);
+            this.lblDualCoinWallet.MaximumSize = new System.Drawing.Size(450, 0);
             this.lblDualCoinWallet.Name = "lblDualCoinWallet";
             this.lblDualCoinWallet.Size = new System.Drawing.Size(44, 17);
             this.lblDualCoinWallet.TabIndex = 33;
@@ -203,7 +205,7 @@
             // 
             this.lblDualCoinPool.AutoSize = true;
             this.lblDualCoinPool.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDualCoinPool.Location = new System.Drawing.Point(232, 252);
+            this.lblDualCoinPool.Location = new System.Drawing.Point(232, 255);
             this.lblDualCoinPool.Name = "lblDualCoinPool";
             this.lblDualCoinPool.Size = new System.Drawing.Size(34, 17);
             this.lblDualCoinPool.TabIndex = 32;
@@ -213,7 +215,7 @@
             // 
             this.lblDual3.AutoSize = true;
             this.lblDual3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDual3.Location = new System.Drawing.Point(115, 278);
+            this.lblDual3.Location = new System.Drawing.Point(115, 281);
             this.lblDual3.Name = "lblDual3";
             this.lblDual3.Size = new System.Drawing.Size(44, 17);
             this.lblDual3.TabIndex = 31;
@@ -223,7 +225,7 @@
             // 
             this.lblDual2.AutoSize = true;
             this.lblDual2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDual2.Location = new System.Drawing.Point(115, 252);
+            this.lblDual2.Location = new System.Drawing.Point(115, 255);
             this.lblDual2.Name = "lblDual2";
             this.lblDual2.Size = new System.Drawing.Size(34, 17);
             this.lblDual2.TabIndex = 30;
@@ -233,7 +235,7 @@
             // 
             this.btnDual1.BackgroundImage = global::OneMiner.Properties.Resources.remove;
             this.btnDual1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDual1.Location = new System.Drawing.Point(36, 211);
+            this.btnDual1.Location = new System.Drawing.Point(36, 214);
             this.btnDual1.Name = "btnDual1";
             this.btnDual1.Size = new System.Drawing.Size(33, 31);
             this.btnDual1.TabIndex = 34;
@@ -267,7 +269,7 @@
             this.lblDual5.AutoSize = true;
             this.lblDual5.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblDual5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDual5.Location = new System.Drawing.Point(208, 252);
+            this.lblDual5.Location = new System.Drawing.Point(208, 255);
             this.lblDual5.Name = "lblDual5";
             this.lblDual5.Size = new System.Drawing.Size(11, 17);
             this.lblDual5.TabIndex = 42;
@@ -300,7 +302,7 @@
             this.lblDual6.AutoSize = true;
             this.lblDual6.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblDual6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDual6.Location = new System.Drawing.Point(208, 278);
+            this.lblDual6.Location = new System.Drawing.Point(208, 281);
             this.lblDual6.Name = "lblDual6";
             this.lblDual6.Size = new System.Drawing.Size(11, 17);
             this.lblDual6.TabIndex = 45;
@@ -310,7 +312,7 @@
             // 
             this.lblSelectedDualCoin.AutoSize = true;
             this.lblSelectedDualCoin.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectedDualCoin.Location = new System.Drawing.Point(281, 216);
+            this.lblSelectedDualCoin.Location = new System.Drawing.Point(281, 219);
             this.lblSelectedDualCoin.Name = "lblSelectedDualCoin";
             this.lblSelectedDualCoin.Size = new System.Drawing.Size(125, 20);
             this.lblSelectedDualCoin.TabIndex = 23;
@@ -321,7 +323,7 @@
             this.lblDual4.AutoSize = true;
             this.lblDual4.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblDual4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDual4.Location = new System.Drawing.Point(208, 217);
+            this.lblDual4.Location = new System.Drawing.Point(208, 220);
             this.lblDual4.Name = "lblDual4";
             this.lblDual4.Size = new System.Drawing.Size(11, 17);
             this.lblDual4.TabIndex = 46;
