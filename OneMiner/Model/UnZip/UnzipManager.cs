@@ -25,13 +25,23 @@ namespace OneMiner.Model.FileIO
         {
             try
             {
+                try
+                {
+                    //try cleaning up and existing folder first. but dont stop if clean fails
+                    DirectoryInfo f = new DirectoryInfo(OutputFolderName);
+                    if (f.Exists)
+                        f.Delete(true);
+                }
+                catch (Exception e)
+                {
+                }
                 //Uses Chain of Responsibility pattern to unzip the file using different methods
                 IUnzip unzip1 = new UnZipZipFile(new UnZipRarLocal(new UnZipRarSystem(null)));
                 unzip1.Init(ZipFileName, OutputFolderName, VerifyName);
                 return unzip1.Unzip();
                 
             }
-            catch (Exception )
+            catch (Exception e)
             {
             }
             return false;

@@ -84,8 +84,9 @@ namespace OneMiner.Model
                 m_UnzipedFilePath = curFile.Remove(curFile.Length -fileInfo.Extension.Length);
                 m_UnzipedFilePath += "\\";
                 DirectoryInfo unzippedFolder = new DirectoryInfo(m_UnzipedFilePath);
+                FileInfo minerFile = new FileInfo(unzippedFolder + "\\"+ m_verifyName);
                 //download only if unzipped folder dosent exist
-                if(!unzippedFolder.Exists)
+                if (!minerFile.Exists)
                 {
                     using (var client = new WebClient())
                     {
