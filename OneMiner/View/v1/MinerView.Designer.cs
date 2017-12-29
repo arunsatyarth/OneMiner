@@ -68,7 +68,7 @@
             this.lblMinerState.BackColor = System.Drawing.Color.White;
             this.lblMinerState.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMinerState.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblMinerState.Location = new System.Drawing.Point(209, 27);
+            this.lblMinerState.Location = new System.Drawing.Point(194, 27);
             this.lblMinerState.Name = "lblMinerState";
             this.lblMinerState.Size = new System.Drawing.Size(54, 15);
             this.lblMinerState.TabIndex = 5;
@@ -88,7 +88,7 @@
             // btnStartMining
             // 
             this.btnStartMining.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStartMining.Location = new System.Drawing.Point(310, 23);
+            this.btnStartMining.Location = new System.Drawing.Point(307, 23);
             this.btnStartMining.Name = "btnStartMining";
             this.btnStartMining.Size = new System.Drawing.Size(53, 25);
             this.btnStartMining.TabIndex = 3;
