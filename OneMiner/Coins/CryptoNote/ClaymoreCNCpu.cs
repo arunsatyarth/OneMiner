@@ -72,7 +72,7 @@ namespace OneMiner.Coins.CryptoNote
             base(mainCoin, dualMining, dualCoin, minerName, miner)
         {
             Type = "CPU";
-            GPUType = CardMake.Amd;
+            GPUType = CardMake.CPU;
 
             OutputReader = new ClayMoreZcashReader(STATS_LINK);
         }

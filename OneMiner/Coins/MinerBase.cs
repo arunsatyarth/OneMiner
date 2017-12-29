@@ -50,7 +50,7 @@ namespace OneMiner.Coins
                 IdentifyGpuTypes();
             MinerPrograms = new List<IMinerProgram>();
             ActualMinerPrograms = new List<IMinerProgram>();
-            SetupMiner();
+            SetupMiner(true);
             DefaultMiner = false;
             DownloadPercentage = 0;
         }
@@ -75,11 +75,13 @@ namespace OneMiner.Coins
         {
             int gpuType = MinerGpuType;
             if (prog.GPUType == CardMake.Nvidia)
-                gpuType = gpuType ^ (1 << 0);                
+                gpuType = gpuType ^ (1 << 0);
             if (prog.GPUType == CardMake.Amd)
                 gpuType = gpuType ^ (1 << 1);
+            if (prog.GPUType == CardMake.CPU)
+                gpuType = gpuType ^ (1 << 2);
             MinerGpuType = gpuType;
-            SetupMiner();
+            SetupMiner(false);
             Factory.Instance.Model.AddMiner(this);
 
 
@@ -167,12 +169,13 @@ namespace OneMiner.Coins
             Factory.Instance.ViewObject.UpDateMinerState();
 
         }
-        public virtual void SetupMiner()
+        public virtual void SetupMiner(bool minerCreation)
         {
             throw new NotImplementedException();
         }
         public virtual void StartMining()
         {
+            DownloadPercentage = 0;
             MinerState = MinerProgramState.Starting;
             if (ActualMinerPrograms.Count==0)
             {
@@ -189,6 +192,7 @@ namespace OneMiner.Coins
         }
         public void StopMining()
         {
+            DownloadPercentage = 0;
             MinerState = MinerProgramState.Stopping;
             m_MinerRunningHash.Clear();
 

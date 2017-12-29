@@ -20,7 +20,7 @@ namespace OneMiner.Coins.CryptoNote
 
         }
 
-        public override void SetupMiner()
+        public override void SetupMiner(bool minerCreation)
         {
             ActualMinerPrograms.Clear();
             MinerPrograms.Clear();
@@ -36,15 +36,8 @@ namespace OneMiner.Coins.CryptoNote
             m_MinerProgsHash.Add(prog.GPUType, prog);
             m_MinerProgsHash.Add(prog2.GPUType, prog2);
             m_MinerProgsHash.Add(CardMake.CPU, prog3);
-            if ( MinerGpuType == 3)
-            {
-                foreach (IMinerProgram item in MinerPrograms)
-                {
-                    item.Enabled = true;
-                    ActualMinerPrograms.Add(item);
-                }
-            }
-            else if (MinerGpuType == 1)
+
+            if ((MinerGpuType & 1) > 0)
             {
                 IMinerProgram program = m_MinerProgsHash[CardMake.Nvidia] as IMinerProgram;
                 if (prog != null)
@@ -53,7 +46,7 @@ namespace OneMiner.Coins.CryptoNote
                     ActualMinerPrograms.Add(program);
                 }
             }
-            else if (MinerGpuType == 2)
+            if ((MinerGpuType & 2)>0)
             {
                 IMinerProgram program = m_MinerProgsHash[CardMake.Amd] as IMinerProgram;
                 if (prog != null)
@@ -62,9 +55,14 @@ namespace OneMiner.Coins.CryptoNote
                     ActualMinerPrograms.Add(program);
                 }
             }
-
-            if (ActualMinerPrograms.Count==0)//if no gpu miners found, only then add a cpu miner by default
+            //Add CPU miner in 2 condition
+            //1. User explicitely asked to add
+            //2. During creation of miner, there was no GPU miner available
+            if ((MinerGpuType & 4) > 0 || 
+                ( minerCreation && ActualMinerPrograms.Count == 0))
             {
+                //To know why 2 shits are used, refer MinerBase::ChangeGPUType. So 0 shift is 1, 1 shift is 2 and 2 shift is 4
+                MinerGpuType = MinerGpuType | (1 << 2); 
                 IMinerProgram program = m_MinerProgsHash[CardMake.CPU] as IMinerProgram;
                 if (prog != null)
                 {
@@ -72,6 +70,7 @@ namespace OneMiner.Coins.CryptoNote
                     ActualMinerPrograms.Add(program);
                 }
             }
+
         }
 
 

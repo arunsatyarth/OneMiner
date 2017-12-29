@@ -20,7 +20,7 @@ namespace OneMiner.Coins.Equihash
 
         }
 
-        public override void SetupMiner()
+        public override void SetupMiner(bool minerCreation)
         {
             ActualMinerPrograms.Clear();
             MinerPrograms.Clear();
