@@ -133,6 +133,16 @@ namespace OneMiner.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap electroneum {
+            get {
+                object obj = ResourceManager.GetObject("electroneum", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ethclassic {
             get {
                 object obj = ResourceManager.GetObject("ethclassic", resourceCulture);
@@ -227,6 +237,16 @@ namespace OneMiner.Properties {
             get {
                 object obj = ResourceManager.GetObject("miner_icon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap monero {
+            get {
+                object obj = ResourceManager.GetObject("monero", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

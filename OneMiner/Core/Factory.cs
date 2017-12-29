@@ -61,6 +61,9 @@ namespace OneMiner.Core
                 case "Equihash":
                     algo = new Equihash.Equihash();
                     break;
+                case "CryptoNote":
+                    algo = new Coins.CryptoNote.CryptoNote();
+                    break;
 
             }
             return algo;
@@ -86,6 +89,7 @@ namespace OneMiner.Core
                 List<IHashAlgorithm> algos = new List<IHashAlgorithm>();
                 algos.Add(new EthHash.EthHash());
                 algos.Add(new Equihash.Equihash());
+                algos.Add(new Coins.CryptoNote.CryptoNote());
                 return algos;
             }
         }
