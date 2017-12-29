@@ -50,9 +50,13 @@ Below are some of the features for first release
 5. Right click on the miner to Activate a miner, edit it or delete it.
 6. Activated miner: Any miner can be started by the start button but the Activated miner would be the miner which starts when system restarts and "Mine on Launch" is configured to Yes
 
+# System requirements
+1. Currently supports only Windows 7 and upwards
+2. .Net Framework 4.5
+3. Monero mining on Nvidia requires Visusl studio redistributables to be installed.https://www.microsoft.com/en-in/download/details.aspx?id=5555
 
 # Donations
-If you would like to supprt this project, your donations would be greatly appreciated
+If you would like to support this project, your donations would be greatly appreciated
 
 ### Bitcoin
 1MtjqqLDtbLvMY8s3vw2SCynGqSvszJf4V
