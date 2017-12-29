@@ -13,6 +13,7 @@ namespace OneMiner.Core.Interfaces
         bool DualMining { get; set; }
         string Id { get; set; }
         List<IMinerProgram> MinerPrograms { get; set; }
+        List<IMinerProgram> ActualMinerPrograms { get; set; }
 
 
         void StartMining();

@@ -184,7 +184,6 @@ GPU_SINGLE_ALLOC_PERCENT 100
                         {
                             m_identified = false;
                             m_Gpus.Clear();
-                            IdentifyGPUs();
                         }
                         if (m_MinerResult.result != null && m_MinerResult.result.Count >= 7)
                         {
@@ -257,9 +256,10 @@ GPU_SINGLE_ALLOC_PERCENT 100
                                 string gpu_idstr = gpu_id.ToString();
                                 gpu = m_Gpus[gpu_idstr] as GpuData;
                                 if (gpu == null)
-                                    gpu = new GpuData("GPU " + gpu_idstr);
+                                    gpu = new GpuData("CPU " + (gpu_id+1).ToString());
 
                                 gpu.Hashrate = item;
+                                gpu.Make = CardMake.CPU;
                                 if (j < fanTempArr.Length)
                                 {
                                     gpu.Temperature = fanTempArr[j] + "C";
@@ -284,84 +284,7 @@ GPU_SINGLE_ALLOC_PERCENT 100
                         throw;
                     }
                 }
-                public void IdentifyGPUs()
-                {
-                    try
-                    {
-                        //splot onto many lines
-                        string[] result = Regex.Split(m_fullLog, "\r\n|\r|\n");
-                        string pattern = @"(GPU)(.){2,12}(recognized as)(.)*";
 
-                        foreach (string item in result)
-                        {
-                            Match r = Regex.Match(item, pattern);
-                            string gpu_id = "";
-                            string gpu_name = "";
-                            if (r.Success)
-                            {
-                                m_identified = true;
-                                m_reReadGpunames = false;//we dont need to read until told 
-
-                                string value = r.Value;
-                                //ideally i would have used this to find and then separate the gpu number
-                                //string pattern_gpuid = @"(#).";
-
-                                //but the following site explains a way to get string affter the match using "positive lookbehind assertion
-                                //https://stackoverflow.com/questions/5006716/getting-the-text-that-follows-after-the-regex-match
-
-                                string pattern_gpuid = @"(?<=#).";
-                                Match r_gpu_id = Regex.Match(value, pattern_gpuid);
-                                if (r_gpu_id.Success)
-                                {
-                                    gpu_id = r_gpu_id.Value;
-                                }
-
-                                string pattern_gpuname = @"(?<=recognized as).*";
-                                Match r_gpu_name = Regex.Match(value, pattern_gpuname);
-                                if (r_gpu_name.Success)
-                                {
-                                    gpu_name = r_gpu_name.Value;
-                                }
-                                if (!string.IsNullOrEmpty(gpu_id) && !string.IsNullOrEmpty(gpu_name))
-                                {
-                                    //check if there is an item alredy
-                                    object oldItem = m_Gpus[gpu_id];
-                                    if (oldItem == null)
-                                    {
-                                        GpuData gpu = new GpuData(gpu_name);
-                                        gpu.IdentifyMake();
-                                        m_Gpus[gpu_id] = gpu;
-                                    }
-                                }
-
-                            }
-
-                        }
-
-
-                    }
-                    catch (Exception)
-                    {
-                        Succeeded = false;
-                        throw;
-                    }
-                }
-                private CardMake Make(string name)
-                {
-                    try
-                    {
-                        string pattern = "(N|n)(V|v)(I|i)(D|d)(I|i)(A|a)";
-                        Match r_gpu_id = Regex.Match(name, pattern);
-                        if (r_gpu_id.Success)
-                            return CardMake.Nvidia;
-                        else
-                            return CardMake.Amd;
-                    }
-                    catch (Exception)
-                    {
-                    }
-                    return CardMake.END;
-                }
 
             }
         }

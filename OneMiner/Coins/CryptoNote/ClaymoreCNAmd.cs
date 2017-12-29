@@ -346,22 +346,7 @@ GPU_SINGLE_ALLOC_PERCENT 100
                         throw;
                     }
                 }
-                private CardMake Make(string name)
-                {
-                    try
-                    {
-                        string pattern = "(N|n)(V|v)(I|i)(D|d)(I|i)(A|a)";
-                        Match r_gpu_id = Regex.Match(name, pattern);
-                        if (r_gpu_id.Success)
-                            return CardMake.Nvidia;
-                        else
-                            return CardMake.Amd;
-                    }
-                    catch (Exception)
-                    {
-                    }
-                    return CardMake.END;
-                }
+
 
             }
         }

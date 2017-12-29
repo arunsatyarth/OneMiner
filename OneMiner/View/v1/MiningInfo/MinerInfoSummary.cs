@@ -54,7 +54,7 @@ namespace OneMiner.View.v1.MiningInfo
 	        {
                 if(Miner.MinerState==MinerProgramState.Running)
                 {
-                    List<IMinerProgram> miners = Miner.MinerPrograms;
+                    List<IMinerProgram> miners = Miner.ActualMinerPrograms;
                     pnlGpus.Controls.Clear();
                     lblGpuInfoStatic.Visible = false;
 
