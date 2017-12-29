@@ -84,15 +84,15 @@ namespace OneMiner.Coins.CryptoNote
             try
             {
                 //generate script and write to folder
-                string command = EXENAME + " -o " + MainCoinConfigurer.Pool;
-                command += " -u " + MainCoinConfigurer.Wallet;
-                command += " -p x ";
+                string command = EXENAME + " -xpool " + MainCoinConfigurer.Pool;
+                command += " -xwal  " + MainCoinConfigurer.Wallet;
+                command += " -xpsw x ";
                 if (DualCoin != null)
                 {
                     command +="";
 
                 }
-               // command += " -allpools 1 ";
+                command += " -allpools 1 ";
 
                 command += " -mport 7899";
 
