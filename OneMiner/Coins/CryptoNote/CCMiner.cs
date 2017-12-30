@@ -17,9 +17,9 @@ using System.Windows.Forms;
 namespace OneMiner.Coins.CryptoNote
 {
     /// <summary>
-    /// this class does not represent a miner program. coz this contains specif info like batfilepath etc
-    /// this represents a miner program inside a configured miner. there could be many miners of the same type. eg ethereum, ethereum_sia
-    /// for the real representation fo a miner program, look at JsonData.MinerProgram
+    /// Resources::
+    /// https://www.cryptocurrencyfreak.com/2017/08/13/monero-gpu-mining-ccminer-2-2/
+    /// http://cryptomining-blog.com/3987-new-ccminer-1-5-fork-by-tpruvot-with-websocket-api-example-available/
     /// </summary>
     class CCMiner : MinerProgramBase
     {
