@@ -1,10 +1,23 @@
 # OneMiner
-As the name suggests, this is a 1 click miner for all GPU coins viz Ethereum, Zcash, Ubiq etc. It uses the tried and tested Mining softwares like Claymore, EWBF internally and keeps all the complications of using them hidden from the end user. It is especially built to handle situations when you have both AMD and Nvidia cards and have to use different softwares to mine on both cards.
+As the name suggests, this is a 1 click miner for all GPU coins viz Ethereum, Zcash, Ubiq etc. It uses the tried and tested Mining softwares like Claymore, EWBF internally and keeps all the complications of using them hidden from the end user. It is especially built to handle situations when you have both AMD and Nvidia cards and have to use different softwares to mine on both cards. The primary goal of this software is user experience and making mining as easy as possible.
 
 The name might hold a subtle  reference to the 'One Ring" from 'Lord of the Rings' but it holds no delusions of grandeur about its supremacy :).
 
 Download from Github
 https://github.com/arunsatyarth/OneMiner/releases
+
+# Donations
+If you would like to support this project, your donations would be greatly appreciated
+
+### Bitcoin
+1MtjqqLDtbLvMY8s3vw2SCynGqSvszJf4V
+
+### Ethereum
+0x033ff6918d434cef3887d8e529c14d1bcb91ca8b
+
+### Litecoin
+LgPDDxVbtB4khAd4b6MmP6GGV3JSdyShpR
+
 
 # Screenshot
 Screenshot of a 6 GPU Rig mining ZCash with 3 AMD and # NVidia cards 
@@ -23,13 +36,14 @@ I would like to hear your feedback and thoughts if any. Please use the github is
 # Features
 Below are some of the features for first release
 
-1. Mine any GPU based coins(Ethereum, Zcash,Bitcoin Gold, Zencash, Ethereum Classic, Ubiq, Expanse, ZClassic )
+1. Mine any GPU based coins(Ethereum, Zcash, Monero, Bitcoin Gold, Zencash, Ethereum Classic, Ubiq, Expanse, ZClassic )
 2. Support mixed GPUs. Nvidia and AMD
 3. Easy switch between different configured miners. Mine different coins with ease.
 4. Mine on Startup
 5. Automatically restart miner in case of crash or accidental close. eg: Zcash EWBF miner would always close on network unavailablity.
 6. Open source. so no fear of hashrate stealing like in Minergate.
 7. 1 click Jump to pool account
+8. CrytoNight based coins especially Monero has been added in v1.8 onwards on AMD Radeon GPUs and CPU. 
 
 
 
@@ -53,19 +67,11 @@ Below are some of the features for first release
 # System requirements
 1. Currently supports only Windows 7 and upwards
 2. .Net Framework 4.5
-3. Monero mining on Nvidia requires Visusl studio redistributables to be installed.https://www.microsoft.com/en-in/download/details.aspx?id=5555
 
-# Donations
-If you would like to support this project, your donations would be greatly appreciated
-
-### Bitcoin
-1MtjqqLDtbLvMY8s3vw2SCynGqSvszJf4V
-
-### Ethereum
-0x033ff6918d434cef3887d8e529c14d1bcb91ca8b
-
-### Litecoin
-LgPDDxVbtB4khAd4b6MmP6GGV3JSdyShpR
+# For running Monero/Cryptonight on Nvidia
+Nvidia(ccminer)  has been found to be a bit unstable on cryptonight. Also some antivirus wrongly classifies ccminer as a virus. This in turn makes it to classify OneMiner as a virus. So Nvidia for Cryptonight is not supported in the main OneMiner release. But starting v1.8, an alternate exe will be released(OneMiner_CryptoNight.exe) which supports Nvidia as well. 
+--Either an exception will have to be added to Antivirus or Antivirus will have to be disabled for it.
+--Monero mining on Nvidia requires Visual studio redistributables to be installed.https://www.microsoft.com/en-in/download/details.aspx?id=5555
 
 
 # Screenshots of different screens
