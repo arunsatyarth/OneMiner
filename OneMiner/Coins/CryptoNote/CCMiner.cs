@@ -76,7 +76,7 @@ namespace OneMiner.Coins.CryptoNote
         {
             Type = "Nvidia";
             GPUType = CardMake.Nvidia;
-            OutputReader = new EWBFReader(STATS_LINK);
+            OutputReader = new CCReader(STATS_LINK);
         }
 
         public override string GenerateScript()
@@ -113,17 +113,17 @@ namespace OneMiner.Coins.CryptoNote
         /// <summary>
         /// reads data for claymore miner
         /// </summary>
-        public class EWBFReader : OutputReaderBase
+        public class CCReader : OutputReaderBase
         {
-            public EWBFReader(string link)
+            public CCReader(string link)
                 : base(link)
             {
             }
-            EWBFData GetResultsSection(string innerText)
+            CCMinerData GetResultsSection(string innerText)
             {
                 try
                 {
-                    EWBFData minerResult = (EWBFData)new JavaScriptSerializer().Deserialize(innerText, typeof(EWBFData));
+                    CCMinerData minerResult = (CCMinerData)new JavaScriptSerializer().Deserialize(innerText, typeof(CCMinerData));
                     return minerResult;
                 }
                 catch (Exception e)
@@ -133,7 +133,7 @@ namespace OneMiner.Coins.CryptoNote
             }
             public override void Parse()
             {
-                EWBFData ewbfData = GetResultsSection(LastLog);
+                CCMinerData ewbfData = GetResultsSection(LastLog);
                 if (ewbfData.Parse(new EWBFReaderResultParser(LastLog, ReReadGpuNames)))
                 {
                     MinerResult = ewbfData.MinerDataResult;
@@ -144,7 +144,7 @@ namespace OneMiner.Coins.CryptoNote
             public class EWBFReaderResultParser : IMinerResultParser
             {
                 MinerDataResult m_MinerResult = null;
-                EWBFData m_EwbfData = null;
+                CCMinerData m_EwbfData = null;
                 public bool Succeeded { get; set; }//if parsing succeeded without errors
                 static Hashtable m_Gpus = new Hashtable();// we only need t read gpu info once as it dosent change with more logs comining in
 
@@ -158,7 +158,7 @@ namespace OneMiner.Coins.CryptoNote
                 {
                     Succeeded = false;
 
-                    m_EwbfData = obj as EWBFData;
+                    m_EwbfData = obj as CCMinerData;
                     try
                     {
                         if (m_EwbfData == null)
@@ -227,7 +227,7 @@ namespace OneMiner.Coins.CryptoNote
             public int start_time { get; set; }
         }
 
-        public class EWBFData
+        public class CCMinerData
         {
             public MinerDataResult MinerDataResult { get; set; }
             public string method { get; set; }

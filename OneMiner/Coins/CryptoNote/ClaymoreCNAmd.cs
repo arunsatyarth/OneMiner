@@ -74,7 +74,7 @@ namespace OneMiner.Coins.CryptoNote
             Type = "AMD";
             GPUType = CardMake.Amd;
 
-            OutputReader = new ClayMoreZcashReader(STATS_LINK);
+            OutputReader = new ClayMoreCNAmdReader(STATS_LINK);
         }
 
 
@@ -122,9 +122,9 @@ GPU_SINGLE_ALLOC_PERCENT 100
         /// <summary>
         /// reads data for claymore miner
         /// </summary>
-        public class ClayMoreZcashReader : OutputReaderBase
+        public class ClayMoreCNAmdReader : OutputReaderBase
         {
-            public ClayMoreZcashReader(string link)
+            public ClayMoreCNAmdReader(string link)
                 : base(link)
             {
             }
@@ -148,14 +148,14 @@ GPU_SINGLE_ALLOC_PERCENT 100
             public override void Parse()
             {
                 MinerDataResult minerResult = GetResultsSection(LastLog);
-                if (minerResult.Parse(new ZcashClaymoreResultParser(LastLog, ReReadGpuNames)))
+                if (minerResult.Parse(new CNAmdClaymoreResultParser(LastLog, ReReadGpuNames)))
                 {
                     MinerResult = minerResult;
                 }
                 ReReadGpuNames = false;
             }
 
-            public class ZcashClaymoreResultParser : IMinerResultParser
+            public class CNAmdClaymoreResultParser : IMinerResultParser
             {
                 MinerDataResult m_MinerResult = null;
                 public bool Succeeded { get; set; }//if parsing succeeded without errors
@@ -164,7 +164,7 @@ GPU_SINGLE_ALLOC_PERCENT 100
                 bool m_reReadGpunames = false;
 
                 string m_fullLog = "";
-                public ZcashClaymoreResultParser(string fullLog, bool reReadGpunames)
+                public CNAmdClaymoreResultParser(string fullLog, bool reReadGpunames)
                 {
                     m_fullLog = fullLog;
                     m_reReadGpunames = reReadGpunames;
