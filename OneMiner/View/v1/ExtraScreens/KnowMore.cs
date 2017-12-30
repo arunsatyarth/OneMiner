@@ -50,9 +50,8 @@ and hardware among other coins present here. If you still face issues, try with 
                     break;
 
                 case "CryptoNote":
-                    linkLabel1.Text = @"CryptoNight is supported on CPUs and AMD GPUs. If you are running the OneMiner_CryptoNight version, you can use 
-CryptoNight with Nvidia as well. But it is known to have various issues. Some Antivirus, tags the ccminer.exe which is used for mining in Nvidia as a virus and hence even OneMiner as a virus. Henceforth it is not supported in the normal release.
-
+                    linkLabel1.Text = @"CryptoNight is supported on CPUs and AMD GPUs. Nvidia(ccminer) has been found to be a bit unstable on cryptonight. Some Antivirus, tags the ccminer.exe which is used for mining in Nvidia, as a virus and hence even OneMiner as a virus. Henceforth it is supported but not selected by default while creating a new miner.
+But it can be manually selected from checkbox in the scripts tab. Use it only if you need it.
 Also monitoring of hashrate and shares submitted, does not work for NVidia. But do not worry as the miner is submitting shares behind the scenes.";
                     break;
 
