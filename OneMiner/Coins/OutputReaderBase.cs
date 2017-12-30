@@ -163,8 +163,6 @@ namespace OneMiner.Coins
         {
             try
             {
-                //Todo: remove this after test
-                throw new Exception();
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(StatsLink);
                 request.Method = "GET";
                 request.KeepAlive = false;
