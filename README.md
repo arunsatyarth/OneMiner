@@ -67,9 +67,10 @@ LgPDDxVbtB4khAd4b6MmP6GGV3JSdyShpR
 1. Currently supports only Windows 7 and upwards
 2. .Net Framework 4.5
 
-## For running Monero/Cryptonight on Nvidia
-Nvidia(ccminer)  has been found to be a bit unstable on cryptonight. Also some antivirus wrongly classifies ccminer as a virus. This in turn makes it to classify OneMiner as a virus. So Nvidia for Cryptonight is not supported in the main OneMiner release. But starting v1.8, an alternate exe will be released(OneMiner_CryptoNight.exe) which supports Nvidia as well. 
-
+## Nvidia known issue with Monero/Cryptonight
+Nvidia(ccminer)  has been found to be a bit unstable on cryptonight. Some antivirus wrongly classifies ccminer as a virus. This in turn makes it to classify OneMiner as a virus. In the current release, Nvidia is supported but not selected by default while creating a new miner. But it can be manually selected from checkbox in the scripts tab. Use it only if you need it.
+In future if AV becomes a problem, Nvidia for Cryptonight will not be supported in the main OneMiner release. It might however be provided as a seperate release candidate. 
+Also monitoring of hashrate and shares are not currently supported for Nvidia for cryptonight coins. 
 1. Either an exception will have to be added to Antivirus or Antivirus will have to be disabled for it.
 2. Monero mining on Nvidia requires Visual studio redistributables to be installed.https://www.microsoft.com/en-in/download/details.aspx?id=5555
 
