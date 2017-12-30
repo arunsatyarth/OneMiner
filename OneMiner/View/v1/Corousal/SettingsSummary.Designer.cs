@@ -77,7 +77,7 @@
             this.lblActiveMiner.BackColor = System.Drawing.Color.White;
             this.lblActiveMiner.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblActiveMiner.Location = new System.Drawing.Point(186, 56);
-            this.lblActiveMiner.MaximumSize = new System.Drawing.Size(150, 0);
+            this.lblActiveMiner.MaximumSize = new System.Drawing.Size(140, 0);
             this.lblActiveMiner.Name = "lblActiveMiner";
             this.lblActiveMiner.Size = new System.Drawing.Size(118, 34);
             this.lblActiveMiner.TabIndex = 22;

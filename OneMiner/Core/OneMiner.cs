@@ -1,4 +1,5 @@
-﻿using OneMiner.Core.Interfaces;
+﻿using OneMiner.Coins;
+using OneMiner.Core.Interfaces;
 using OneMiner.Model.Config;
 using System;
 using System.Collections;
@@ -270,9 +271,24 @@ namespace OneMiner.Core
                 IHashAlgorithm algo = Factory.Instance.DefaultAlgorithm;
                 IMiner miner = algo.DefaultMiner();
                 if (miner != null)
+                {
+                    List<GpuData> gpus = ((MinerBase)miner).GetGpuList();
+                    bool atLeast1GPu = false;
+                    foreach (GpuData gpuData in gpus)
+                    {
+                        if (gpuData.Make == CardMake.Nvidia || gpuData.Make == CardMake.Amd)
+                            atLeast1GPu = true;
+                    }
+                    if(!atLeast1GPu)
+                    {
+                        //add a cpu monero miner
+                        IHashAlgorithm cryptonight = new Coins.CryptoNote.CryptoNote();
+                        miner = cryptonight.DefaultMiner();
+                    }
                     Miners.Add(miner);
-                SelectedMiner = miner;
+                    SelectedMiner = miner;
 
+                }
 
 
             }
