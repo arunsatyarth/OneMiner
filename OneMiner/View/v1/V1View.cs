@@ -64,7 +64,14 @@ namespace OneMiner.View.v1
         }
         void t_Tick(object sender, EventArgs e)
         {
-            m_UIEvents.Invoke();
+            try
+            {
+                m_UIEvents.Invoke();
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.LogError(ex.ToString());
+            }
         }
         public void UpdateMinerList()
         {
