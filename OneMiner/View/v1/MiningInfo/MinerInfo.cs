@@ -1,4 +1,5 @@
 ﻿using OneMiner.Core.Interfaces;
+using OneMiner.View.v1.ExtraScreens;
 using OneMiner.View.v1.MiningInfo;
 using System;
 using System.Collections.Generic;
@@ -197,6 +198,12 @@ namespace OneMiner.View.v1
             catch (Exception se)
             {
             }
+        }
+
+        private void lnkKnowMore_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            KnowMore k = new KnowMore(Miner.MainCoin);
+            k.ShowDialog();
         }
     }
 }
