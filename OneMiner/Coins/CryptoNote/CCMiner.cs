@@ -24,13 +24,13 @@ namespace OneMiner.Coins.CryptoNote
     class CCMiner : MinerProgramBase
     {
 
-        public const string STATSLINK2 = "127.0.0.1:12333";
+        public const string STATSLINK2 = "127.0.0.1:4068";
         public const string STATSLINK3 = "";
         public override string MINERURL
         {
             get
             {
-                return "https://github.com/tsiv/ccminer-cryptonight/releases/download/v0.17/ccminer-cryptonight_20140926.zip";
+                return "https://github.com/tpruvot/ccminer/releases/download/2.2.3-tpruvot/ccminer-x86-2.2.3-cuda9.7z";
             }
         }
         public override string EXENAME
@@ -84,7 +84,7 @@ namespace OneMiner.Coins.CryptoNote
             try
             {
 
-                string command = EXENAME + " -o " + MainCoinConfigurer.Pool;
+                string command = EXENAME + " -a cryptonight -o " + MainCoinConfigurer.Pool;
                 command += " -u " + MainCoinConfigurer.Wallet;
                 command += " -p x ";
                 if (DualCoin != null)
@@ -92,7 +92,7 @@ namespace OneMiner.Coins.CryptoNote
                     command += "";
 
                 }
-                command += " -b "+STATSLINK2;
+                command += " --api-bind " + STATSLINK2;
 
 
                 Script = SCRIPT1 + command;
