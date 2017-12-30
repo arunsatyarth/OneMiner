@@ -14,7 +14,7 @@ namespace OneMiner.Coins.CryptoNote
         enum EquihashCoins
         {
             Monero=0,
-            //Electroneum,
+            Electroneum,
             End
         }
         enum EthHashDualCoins
@@ -28,12 +28,12 @@ namespace OneMiner.Coins.CryptoNote
         public CryptoNote()
         {
             m_CoinsHash[EquihashCoins.Monero] = new Monero(this);
-            //m_CoinsHash[EquihashCoins.Electroneum] = new ZenCash(this);
+            m_CoinsHash[EquihashCoins.Electroneum] = new Electroneum(this);
 
 
             //Now add it to the lists
             m_SupportedCoins.Add(m_CoinsHash[EquihashCoins.Monero] as ICoin);
-            //m_SupportedCoins.Add(m_CoinsHash[EquihashCoins.Bitcoin_Gold] as ICoin);
+            m_SupportedCoins.Add(m_CoinsHash[EquihashCoins.Electroneum] as ICoin);
 
         }
         public string Name
@@ -138,6 +138,9 @@ namespace OneMiner.Coins.CryptoNote
             {
                 case "Monero":
                     coin = m_CoinsHash[EquihashCoins.Monero] as ICoin;
+                    break;
+                case "Electroneum":
+                    coin = m_CoinsHash[EquihashCoins.Electroneum] as ICoin;
                     break;
 
             }
