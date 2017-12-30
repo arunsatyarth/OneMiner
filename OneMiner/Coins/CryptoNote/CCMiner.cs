@@ -30,7 +30,7 @@ namespace OneMiner.Coins.CryptoNote
         {
             get
             {
-                return "https://github.com/tpruvot/ccminer/releases/download/2.2.3-tpruvot/ccminer-x86-2.2.3-cuda9.7z";
+                return "https://github.com/arunsatyarth/MinerRepos/releases/download/1.0/ccminer-x86-2.2.3-cuda9.zip";
             }
         }
         public override string EXENAME
