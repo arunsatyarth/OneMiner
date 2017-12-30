@@ -37,7 +37,7 @@ namespace OneMiner.Coins.CryptoNote
             m_MinerProgsHash.Add(prog2.GPUType, prog2);
             m_MinerProgsHash.Add(CardMake.CPU, prog3);
 
-            if ((MinerGpuType & 1) > 0)
+            if (!minerCreation &&  (MinerGpuType & 1) > 0)//nvidia supported only if manually added
             {
                 IMinerProgram program = m_MinerProgsHash[CardMake.Nvidia] as IMinerProgram;
                 if (prog != null)
@@ -46,7 +46,7 @@ namespace OneMiner.Coins.CryptoNote
                     ActualMinerPrograms.Add(program);
                 }
             }
-            if ((MinerGpuType & 2)>0)
+            if ((MinerGpuType & 2) > 0)
             {
                 IMinerProgram program = m_MinerProgsHash[CardMake.Amd] as IMinerProgram;
                 if (prog != null)
