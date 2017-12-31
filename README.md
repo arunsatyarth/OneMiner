@@ -24,14 +24,15 @@ I would like to hear your feedback and thoughts if any. Please use the github is
 # Features
 Below are some of the features for first release
 
-1. Mine any GPU based coins(Ethereum, Zcash, Monero, Bitcoin Gold, Zencash, Ethereum Classic, Ubiq, Expanse, ZClassic )
-2. Support mixed GPUs. Nvidia and AMD
-3. Easy switch between different configured miners. Mine different coins with ease.
-4. Mine on Startup
-5. Automatically restart miner in case of crash or accidental close. eg: Zcash EWBF miner would always close on network unavailablity.
-6. Open source. so no fear of hashrate stealing like in Minergate.
-7. 1 click Jump to pool account
-8. **CrytoNight based coins viz. Monero, Electroneum has been added in v1.8 onwards on AMD Radeon GPUs and CPU.**
+1. Mine any GPU based coins(Ethereum, Zcash, Monero, Bitcoin Gold, Electroneum,  Zencash, Ethereum Classic, Ubiq, Expanse, ZClassic )
+2. CPU mining with Monero and Electroneum
+3. Support mixed GPUs. Nvidia and AMD
+4. Easy switch between different configured miners. Mine different coins with ease.
+5. Mine on Startup
+6. Automatically restart miner in case of crash or accidental close. eg: Zcash EWBF miner would always close on network unavailablity.
+7. Open source. so no fear of hashrate stealing like in Minergate.
+8. 1 click Jump to pool account
+9. **CrytoNight based coins viz. Monero, Electroneum has been added in v1.8 onwards on AMD Radeon GPUs and CPU.**
 
 # Donations
 If you would like to support this project, your donations would be greatly appreciated
