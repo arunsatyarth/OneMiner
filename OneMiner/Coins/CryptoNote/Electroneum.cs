@@ -81,7 +81,7 @@ namespace OneMiner.Coins.CryptoNote
                 string acc = "";
                 try
                 {
-                    acc = "http://us-etn-stats.hashparty.io";
+                    acc = "https://uspool.electroneum.com/";
                 }
                 catch (Exception)
                 {
@@ -101,9 +101,7 @@ namespace OneMiner.Coins.CryptoNote
                 string acc = "";
                 try
                 {
-                    acc = "https://uspool.electroneum.com/";
-
-
+                    acc = "http://us-etn-stats.hashparty.io";
                 }
                 catch (Exception)
                 {

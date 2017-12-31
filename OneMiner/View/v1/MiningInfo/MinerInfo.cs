@@ -124,7 +124,7 @@ namespace OneMiner.View.v1
                     {
                         hashrate = totalHashrate.ToString() + " H/s";
                     }
-                    shares += totalShares.ToString()+ " A, "+ totalSharesRejected.ToString()+" R";
+                    shares +=  " A: "+totalShares.ToString()+ "   R: "+ totalSharesRejected.ToString();
                     lblShares.Text = shares;
                     lblTotalHashrate.Text = hashrate;
 
