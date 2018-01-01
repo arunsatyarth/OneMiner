@@ -111,13 +111,7 @@ namespace OneMiner.Coins.CryptoNote
 
 
 
-        private const string SCRIPT1 =
-@"GPU_FORCE_64BIT_PTR 1
-GPU_MAX_HEAP_SIZE 100
-GPU_USE_SYNC_OBJECTS 1
-GPU_MAX_ALLOC_PERCENT 100
-GPU_SINGLE_ALLOC_PERCENT 100
-";
+        private const string SCRIPT1 = "";//maybe these variables work only with amd. not required for cpu
 
         /// <summary>
         /// reads data for claymore miner

@@ -7,7 +7,7 @@ Download from Github
 https://github.com/arunsatyarth/OneMiner/releases
 
 # Screenshot
-Screenshot of a 6 GPU Rig mining ZCash with 3 AMD and # NVidia cards 
+Screenshot of a 6 GPU Rig mining ZCash with 3 AMD and 3 NVidia cards 
 
 ![Running View](https://github.com/arunsatyarth/OneMiner/blob/master/Screenshots/1.PNG)
 
@@ -33,6 +33,18 @@ Below are some of the features for first release
 8. 1 click Jump to pool account
 9. **CrytoNight based coins viz. Monero, Electroneum has been added in v1.8 onwards on AMD Radeon GPUs and CPU.**
 
+# Donations
+If you would like to support this project, your donations would be greatly appreciated
+
+### Bitcoin
+1MtjqqLDtbLvMY8s3vw2SCynGqSvszJf4V
+
+### Ethereum
+0x033ff6918d434cef3887d8e529c14d1bcb91ca8b
+
+### Litecoin
+LgPDDxVbtB4khAd4b6MmP6GGV3JSdyShpR
+
 
 # How to use
 - The first time you open the app, you will have a "Default Ethereum Miner" configured. It exists to give a quick way to test out the app. 
@@ -50,19 +62,7 @@ Below are some of the features for first release
 - oneminer.json file contains all your configuration information. Deleting this will make you have to configure it again. It wont make you loose your payouts.
 - **Transferring this software to a new machine** just involves copying the oneminer.json file over to the other machine into the same %Appdata%\OneMiner folder.
 - If **miner windows keep closing**, it means some issue with the underlying hardware. Mostly if the hardware is not suited for mining.
-
-
-# Donations
-If you would like to support this project, your donations would be greatly appreciated
-
-### Bitcoin
-1MtjqqLDtbLvMY8s3vw2SCynGqSvszJf4V
-
-### Ethereum
-0x033ff6918d434cef3887d8e529c14d1bcb91ca8b
-
-### Litecoin
-LgPDDxVbtB4khAd4b6MmP6GGV3JSdyShpR
+- Show consoles can be disabled in settings screen to not show the miner UIs. This is however not recommended.
 
 
 # System requirements

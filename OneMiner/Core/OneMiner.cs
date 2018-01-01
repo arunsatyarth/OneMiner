@@ -228,37 +228,43 @@ namespace OneMiner.Core
         public void StartMining()
         {
             m_keepMining = true;
-            ActiveMiner = SelectedMiner;
-            SelectedMiner.StartMining();
+            ActiveMiner.StartMining();
         }
         public void StartMining(IMiner miner)
         {
             StopMining();
             MiningCommand = MinerProgramCommand.Run;
-            SelectedMiner = miner;
+            ActiveMiner = miner;
             StartMining();
         }
         public void StartMiningDefaultMiner()
         {
-            StartMining(SelectedMiner);
+            ActiveMiner = SelectedMiner;
+            StartMining(ActiveMiner);
         }
         public void StopMining()
         {
-            m_keepMining = false;
-            Alarm.Clear();
-            MiningCommand = MinerProgramCommand.Stop;
-            //clear both queues so that threads wint start running them 
-            DownloadingQueue.Clear();
-            //sometimes if downloaidnf thread is stuck in a long download and we want to stop we might hav to abort thread
-            if (m_Downloading)
-                m_downloadingThread.Abort();
-            MiningQueue.Clear();
-            RunningMiners.Clear();
-
-            SelectedMiner.StopMining();
-            
-
-            ActiveMiner = null;
+            try
+            {
+                m_keepMining = false;
+                Alarm.Clear();
+                MiningCommand = MinerProgramCommand.Stop;
+                //clear both queues so that threads wint start running them 
+                DownloadingQueue.Clear();
+                //sometimes if downloaidnf thread is stuck in a long download and we want to stop we might hav to abort thread
+                if (m_Downloading)
+                    m_downloadingThread.Abort();
+                MiningQueue.Clear();
+                RunningMiners.Clear();
+                if (ActiveMiner != null)
+                {
+                    ActiveMiner.StopMining();
+                    ActiveMiner = null;
+                }
+            }
+            catch (Exception e)
+            {
+            }
         }
         public void LoadDBData()
         {

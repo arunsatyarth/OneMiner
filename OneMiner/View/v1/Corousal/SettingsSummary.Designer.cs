@@ -147,9 +147,9 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(10, 62);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 17);
+            this.label3.Size = new System.Drawing.Size(90, 17);
             this.label3.TabIndex = 16;
-            this.label3.Text = "Active Miner";
+            this.label3.Text = "Default Miner";
             // 
             // label2
             // 
@@ -224,9 +224,9 @@
             this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(10, 153);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(97, 17);
+            this.label10.Size = new System.Drawing.Size(99, 17);
             this.label10.TabIndex = 40;
-            this.label10.Text = "Show Miner UI";
+            this.label10.Text = "Show Consoles";
             // 
             // label13
             // 
