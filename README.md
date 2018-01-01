@@ -1,10 +1,22 @@
 # OneMiner
-As the name suggests, this is a 1 click miner for all GPU coins viz Ethereum, Zcash, Ubiq etc. It uses the tried and tested Mining softwares like Claymore, EWBF internally and keeps all the complications of using them hidden from the end user. It is especially built to handle situations when you have both AMD and Nvidia cards and have to use different softwares to mine on both cards. The primary goal of this software is user experience and making mining as easy as possible.
+As the name suggests, this is a 1 click miner for all GPU coins viz Ethereum, Zcash, Bitcoin Gold, Ubiq etc. It uses the tried and tested Mining softwares like Claymore, EWBF internally and keeps all the complications of using them hidden from the end user. It is especially built to handle situations when you have both AMD and Nvidia cards and have to use different softwares to mine on both cards. The primary goal of this software is user experience and making mining as easy as possible.
 
 The name might hold a subtle  reference to the 'One Ring" from 'Lord of the Rings' but it holds no delusions of grandeur about its supremacy :).
 
 Download from Github
 https://github.com/arunsatyarth/OneMiner/releases
+
+# Donations
+If you would like to support this project, your donations would be greatly appreciated
+
+### Bitcoin
+1MtjqqLDtbLvMY8s3vw2SCynGqSvszJf4V
+
+### Ethereum
+0x033ff6918d434cef3887d8e529c14d1bcb91ca8b
+
+### Litecoin
+LgPDDxVbtB4khAd4b6MmP6GGV3JSdyShpR
 
 
 # Screenshot
@@ -17,7 +29,7 @@ The main reason to use this tool is that  setting up a miner is difficult. Espec
 
 For instance, my prime motive behind the creation of this tool  was that I have a miner with both Nvidia and AMD cards. I was using Claymore miner for AMD and EWBF for Nvidia while mining Zcash. But sometimes when the newtwork is down the EWBF miner would die and never come back up. I had to manually launch it later. Writing scripts for everything was getting tedious. So I thought of creating this tool which would benefit everyone.
 
-I tried out things like Awesome Miner and Minergate but both being closed source they wwere neither trustworthy nor extensible. With this project I intend to create a one stop tool which can mine almost anything and in as little steps as possible and which coule be extended by anyone to meet his needs.
+I tried out things like Awesome Miner and Minergate but both being closed source they where neither trustworthy nor extensible. With this project I intend to create a one stop tool which can mine almost anything and in as little steps as possible and which could be extended by anyone to meet his needs.
 
 I would like to hear your feedback and thoughts if any. Please use the github issue tracker  to notify me of any issues or enhanement requests or send a mail to arun.satyarth@gmail.com.
 
@@ -34,17 +46,28 @@ Below are some of the features for first release
 8. 1 click Jump to pool account
 9. **CrytoNight based coins viz. Monero, Electroneum has been added in v1.8 onwards on AMD Radeon GPUs and CPU.**
 
-# Donations
-If you would like to support this project, your donations would be greatly appreciated
 
-### Bitcoin
-1MtjqqLDtbLvMY8s3vw2SCynGqSvszJf4V
+# How to use
+- The first time you open the app, you will have a "Default Ethereum Miner" configured. It exists to give a quick way to test out the app. 
+- It can be edited and used, in which case it turns into a  normal miner. Right click and select "Edit Miner" to change the wallet address to your address.
+- Alternatively, you can click **"Add Miner"** and create a new miner.
+- Adding a miner will remove the unedited default miners in the next restart of the application.
+- There is a **right click menu** on the miner list. It can be used to Edit/Delete or activate a miner.
+- Activated miner: Any miner can be started by the start button but the Activated miner would be the miner which starts when system restarts and "Mine on Launch" is configured to Yes.
+- The first time it would take a bit of time to start mining as it needs to download the miners.
+- Settings screen: If you intend to mine, it is important to edit the settings and **enable "Launch on Start" and "Mine on Launch".**
+- **Script tab** shows the script which will run. You can edit this by clicking on Edit at the right side and then saving the changes with Save.
+- Closing OneMiner does not kill it. It minimizes it to tray. You will have to manually open **system tray** and right click and select Exit.
+- Closing OneMiner while it is mining does not stop the running miners. This can be used if you do not need the GUI after configuration.
+- The downloaded miners and files are stored in %Appdata%\OneMiner. It creates a <your_miner>.bat file inside the software used for mining. It is only advised to fiddle with it if you know what you are doing.
+- oneminer.json file contains all your configuration information. Deleting this will make you have to configure it again. It wont make you loose your payouts.
+- **Transferring this software to a new machine** just involves copying the oneminer.json file over to the other machine into the same %Appdata%\OneMiner folder.
+- If **miner windows keep closing**, it means some issue with the underlying hardware. Mostly if the hardware is not suited for mining.
 
-### Ethereum
-0x033ff6918d434cef3887d8e529c14d1bcb91ca8b
 
-### Litecoin
-LgPDDxVbtB4khAd4b6MmP6GGV3JSdyShpR
+# System requirements
+1. Currently supports only Windows 7 and upwards
+2. .Net Framework 4.5
 
 
 # Future Planned Features
@@ -56,17 +79,6 @@ LgPDDxVbtB4khAd4b6MmP6GGV3JSdyShpR
 8. Automatic connection to Wifi. Sometimes when network goes and comes back up, wifi dosen't connect and miner would be stuck. With this, it would connect automatically
 9. Launching scripts, commands at specifc times,eg: To restart machine at a set time.
 
-# How to use
-1. The first time you open the app, you will have a "Default Ethereum Miner" configured. Right click and edit it to change the wallet address to your address.
-2. You could create more miners with the Add Miner button.
-3. The first time it would take a bit of time to start mining as it needs to download the miners.
-4. You can configure settings from the settings window to mine on launch etc.
-5. Right click on the miner to Activate a miner, edit it or delete it.
-6. Activated miner: Any miner can be started by the start button but the Activated miner would be the miner which starts when system restarts and "Mine on Launch" is configured to Yes
-
-# System requirements
-1. Currently supports only Windows 7 and upwards
-2. .Net Framework 4.5
 
 ## Nvidia known issue with Monero/Cryptonight
 Nvidia(ccminer)  has been found to be a bit unstable on cryptonight. Some antivirus wrongly classifies ccminer as a virus. This in turn makes it to classify OneMiner as a virus. In the current release, Nvidia is supported but not selected by default while creating a new miner. But it can be manually selected from checkbox in the scripts tab. Use it only if you need it.
