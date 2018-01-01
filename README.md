@@ -6,19 +6,6 @@ The name might hold a subtle  reference to the 'One Ring" from 'Lord of the Ring
 Download from Github
 https://github.com/arunsatyarth/OneMiner/releases
 
-# Donations
-If you would like to support this project, your donations would be greatly appreciated
-
-### Bitcoin
-1MtjqqLDtbLvMY8s3vw2SCynGqSvszJf4V
-
-### Ethereum
-0x033ff6918d434cef3887d8e529c14d1bcb91ca8b
-
-### Litecoin
-LgPDDxVbtB4khAd4b6MmP6GGV3JSdyShpR
-
-
 # Screenshot
 Screenshot of a 6 GPU Rig mining ZCash with 3 AMD and # NVidia cards 
 
@@ -65,20 +52,33 @@ Below are some of the features for first release
 - If **miner windows keep closing**, it means some issue with the underlying hardware. Mostly if the hardware is not suited for mining.
 
 
+# Donations
+If you would like to support this project, your donations would be greatly appreciated
+
+### Bitcoin
+1MtjqqLDtbLvMY8s3vw2SCynGqSvszJf4V
+
+### Ethereum
+0x033ff6918d434cef3887d8e529c14d1bcb91ca8b
+
+### Litecoin
+LgPDDxVbtB4khAd4b6MmP6GGV3JSdyShpR
+
+
 # System requirements
 1. Currently supports only Windows 7 and upwards
 2. .Net Framework 4.5
 
 
 # Future Planned Features
-1. Automatically mine the most profitable coin
-4. Automatic Dual mining off on temperature increase
-5. Benchmark against different algos with profitability
-6. Identify new coins in market for mining
-7. Automatic wallet generation for coins so that you dont have to enter wallet address.
-8. Automatic connection to Wifi. Sometimes when network goes and comes back up, wifi dosen't connect and miner would be stuck. With this, it would connect automatically
-9. Launching scripts, commands at specifc times,eg: To restart machine at a set time.
-
+- Automatically mine the most profitable coin
+- Benchmarking and profitability calculator
+- Mine 2 different coins together on different GPUs.
+- Identify new coins in market for mining
+- Automatic wallet generation for coins so that you dont have to enter wallet address.
+- Automatic connection to Wifi. Sometimes when network goes and comes back up, wifi dosen't connect and miner would be stuck. With this, it would connect automatically
+- Launching scripts, commands at specifc times,eg: To restart machine at a set time.
+- Automatic Dual mining off on temperature increase
 
 ## Nvidia known issue with Monero/Cryptonight
 Nvidia(ccminer)  has been found to be a bit unstable on cryptonight. Some antivirus wrongly classifies ccminer as a virus. This in turn makes it to classify OneMiner as a virus. In the current release, Nvidia is supported but not selected by default while creating a new miner. But it can be manually selected from checkbox in the scripts tab. Use it only if you need it.
@@ -110,8 +110,3 @@ Also you can switch on/off AMD/NVidia miners individually using the chackboxes.
 
 
 
-
-
-
-
-	
