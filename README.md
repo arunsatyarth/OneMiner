@@ -109,4 +109,9 @@ Also you can switch on/off AMD/NVidia miners individually using the chackboxes.
 ![Adding a Miner](https://github.com/arunsatyarth/OneMiner/blob/master/Screenshots/5.png)
 
 
-
+## Contributing
+1. Fork this repo to your github account
+2. Clone the repo to your machine `git clone https://github.com/<yourusername>/OneMiner`
+3. Make sure you are in the project directory, then run `git remote add upstream https://github.com/OneMiner/OneMiner`
+4. Make sure you are on the master branch, run `git pull --rebase upstream master`. This will insure you are up-to-date with main repo. 
+5. Finally, create a branch and fix/improve something.  
