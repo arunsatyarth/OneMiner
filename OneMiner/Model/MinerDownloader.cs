@@ -90,6 +90,8 @@ namespace OneMiner.Model
                 {
                     using (var client = new WebClient())
                     {
+                        //this is needed for error could not create secure connection 
+                        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                         stilldownloading = true;
                         client.DownloadProgressChanged += client_DownloadProgressChanged;
                         client.DownloadFileCompleted += client_DownloadFileCompleted;
